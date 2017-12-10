@@ -1,0 +1,416 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		49BA78C420163EE3DDC041E9 /* Pods_Tailgate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410830783C54B0E57F8DD1DD /* Pods_Tailgate.framework */; };
+		B10E9E6B1FDCB6A200DB4751 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */; };
+		B10E9E6D1FDCB6A200DB4751 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E6C1FDCB6A200DB4751 /* ViewController.swift */; };
+		B10E9E701FDCB6A200DB4751 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */; };
+		B10E9E721FDCB6A200DB4751 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E711FDCB6A200DB4751 /* Assets.xcassets */; };
+		B10E9E751FDCB6A200DB4751 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */; };
+		B10E9E7D1FDCB76900DB4751 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3AE3B1693BC377D8745FDBA2 /* Pods-Tailgate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailgate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tailgate/Pods-Tailgate.debug.xcconfig"; sourceTree = "<group>"; };
+		410830783C54B0E57F8DD1DD /* Pods_Tailgate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tailgate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A49879F753DFD1B6BC81285F /* Pods-Tailgate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailgate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailgate/Pods-Tailgate.release.xcconfig"; sourceTree = "<group>"; };
+		B10E9E671FDCB6A200DB4751 /* Tailgate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tailgate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B10E9E6C1FDCB6A200DB4751 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B10E9E6F1FDCB6A200DB4751 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B10E9E711FDCB6A200DB4751 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B10E9E741FDCB6A200DB4751 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B10E9E761FDCB6A200DB4751 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B10E9E641FDCB6A200DB4751 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49BA78C420163EE3DDC041E9 /* Pods_Tailgate.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B10E9E5E1FDCB6A200DB4751 = {
+			isa = PBXGroup;
+			children = (
+				B10E9E691FDCB6A200DB4751 /* Tailgate */,
+				B10E9E681FDCB6A200DB4751 /* Products */,
+				B35A248CDA90288FA61D2FFC /* Pods */,
+				C4A653074DD7537DA2A99FDB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B10E9E681FDCB6A200DB4751 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B10E9E671FDCB6A200DB4751 /* Tailgate.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B10E9E691FDCB6A200DB4751 /* Tailgate */ = {
+			isa = PBXGroup;
+			children = (
+				B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */,
+				B10E9E6C1FDCB6A200DB4751 /* ViewController.swift */,
+				B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */,
+				B10E9E711FDCB6A200DB4751 /* Assets.xcassets */,
+				B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */,
+				B10E9E761FDCB6A200DB4751 /* Info.plist */,
+				B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */,
+			);
+			path = Tailgate;
+			sourceTree = "<group>";
+		};
+		B35A248CDA90288FA61D2FFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3AE3B1693BC377D8745FDBA2 /* Pods-Tailgate.debug.xcconfig */,
+				A49879F753DFD1B6BC81285F /* Pods-Tailgate.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C4A653074DD7537DA2A99FDB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				410830783C54B0E57F8DD1DD /* Pods_Tailgate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B10E9E661FDCB6A200DB4751 /* Tailgate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B10E9E791FDCB6A200DB4751 /* Build configuration list for PBXNativeTarget "Tailgate" */;
+			buildPhases = (
+				088B9970E24A658D8A877E45 /* [CP] Check Pods Manifest.lock */,
+				B10E9E631FDCB6A200DB4751 /* Sources */,
+				B10E9E641FDCB6A200DB4751 /* Frameworks */,
+				B10E9E651FDCB6A200DB4751 /* Resources */,
+				F02A6E99B0BD6DCB999C9E7E /* [CP] Embed Pods Frameworks */,
+				60910EFD716524CFCD15C5ED /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tailgate;
+			productName = Tailgate;
+			productReference = B10E9E671FDCB6A200DB4751 /* Tailgate.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B10E9E5F1FDCB6A200DB4751 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Michael Onjack";
+				TargetAttributes = {
+					B10E9E661FDCB6A200DB4751 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = B10E9E621FDCB6A200DB4751 /* Build configuration list for PBXProject "Tailgate" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B10E9E5E1FDCB6A200DB4751;
+			productRefGroup = B10E9E681FDCB6A200DB4751 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B10E9E661FDCB6A200DB4751 /* Tailgate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B10E9E651FDCB6A200DB4751 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10E9E751FDCB6A200DB4751 /* LaunchScreen.storyboard in Resources */,
+				B10E9E7D1FDCB76900DB4751 /* GoogleService-Info.plist in Resources */,
+				B10E9E721FDCB6A200DB4751 /* Assets.xcassets in Resources */,
+				B10E9E701FDCB6A200DB4751 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		088B9970E24A658D8A877E45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tailgate-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60910EFD716524CFCD15C5ED /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tailgate/Pods-Tailgate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F02A6E99B0BD6DCB999C9E7E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Tailgate/Pods-Tailgate-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tailgate/Pods-Tailgate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B10E9E631FDCB6A200DB4751 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10E9E6D1FDCB6A200DB4751 /* ViewController.swift in Sources */,
+				B10E9E6B1FDCB6A200DB4751 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B10E9E6F1FDCB6A200DB4751 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B10E9E741FDCB6A200DB4751 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B10E9E771FDCB6A200DB4751 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B10E9E781FDCB6A200DB4751 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B10E9E7A1FDCB6A200DB4751 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AE3B1693BC377D8745FDBA2 /* Pods-Tailgate.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 64B49T3B7F;
+				INFOPLIST_FILE = Tailgate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.michaelonjack.Tailgate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B10E9E7B1FDCB6A200DB4751 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A49879F753DFD1B6BC81285F /* Pods-Tailgate.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 64B49T3B7F;
+				INFOPLIST_FILE = Tailgate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.michaelonjack.Tailgate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B10E9E621FDCB6A200DB4751 /* Build configuration list for PBXProject "Tailgate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B10E9E771FDCB6A200DB4751 /* Debug */,
+				B10E9E781FDCB6A200DB4751 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B10E9E791FDCB6A200DB4751 /* Build configuration list for PBXNativeTarget "Tailgate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B10E9E7A1FDCB6A200DB4751 /* Debug */,
+				B10E9E7B1FDCB6A200DB4751 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B10E9E5F1FDCB6A200DB4751 /* Project object */;
+}
