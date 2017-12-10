@@ -17,6 +17,8 @@
 		B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */; };
 		B10E9E811FDCBA6100DB4751 /* Tailgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E801FDCBA6100DB4751 /* Tailgate.swift */; };
 		B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */; };
+		B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9EA01FDCE4D600DB4751 /* TailgateAnnotationARView.swift */; };
+		B10E9EA31FDCE6C300DB4751 /* TailgateAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9EA21FDCE6C300DB4751 /* TailgateAR.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B10E9E801FDCBA6100DB4751 /* Tailgate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tailgate.swift; sourceTree = "<group>"; };
 		B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationView.swift; sourceTree = "<group>"; };
+		B10E9EA01FDCE4D600DB4751 /* TailgateAnnotationARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationARView.swift; sourceTree = "<group>"; };
+		B10E9EA21FDCE6C300DB4751 /* TailgateAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAR.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 				B10E9E9D1FDCC25400DB4751 /* Controller */,
 				B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */,
 				B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */,
+				B10E9EA01FDCE4D600DB4751 /* TailgateAnnotationARView.swift */,
 				B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */,
 				B10E9E711FDCB6A200DB4751 /* Assets.xcassets */,
 				B10E9E9C1FDCC22900DB4751 /* Other */,
@@ -94,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				B10E9E801FDCBA6100DB4751 /* Tailgate.swift */,
+				B10E9EA21FDCE6C300DB4751 /* TailgateAR.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -267,6 +273,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
+				B10E9EA31FDCE6C300DB4751 /* TailgateAR.swift in Sources */,
+				B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */,
 				B10E9E811FDCBA6100DB4751 /* Tailgate.swift in Sources */,
 				B10E9E6D1FDCB6A200DB4751 /* ViewController.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,

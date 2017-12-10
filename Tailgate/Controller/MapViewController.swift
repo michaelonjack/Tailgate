@@ -9,17 +9,20 @@
 import UIKit
 import MapKit
 import CoreLocation
+import HDAugmentedReality
 
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     fileprivate let locationManager = CLLocationManager()
+    fileprivate var arViewController: ARViewController!
     var tailgates: [Tailgate] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         locationManager.delegate = self
+        mapView.delegate = self
         
         // register the custom tailgate view with the map view’s default reuse identifier
         mapView.register(TailgateAnnotationView.self,
@@ -46,12 +49,53 @@ extension MapViewController: MKMapViewDelegate {
     // If the user taps this info button, this method is called
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-        // you grab the Artwork object that this tap refers to
-        let location = view.annotation as! Artwork
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-        location.mapItem().openInMaps(launchOptions: launchOptions)
+        
+        // you grab the Tailgate object that this tap refers to
+        let tailgate = view.annotation as! Tailgate
+        
+        arViewController = ARViewController()
+        // First the dataSource for the arViewController is set. The dataSource provides views for visible POIs
+        arViewController.dataSource = self
+        
+        arViewController.setAnnotations( [TailgateAR(location: tailgate.location, name: tailgate.title!, school: tailgate.school, owner: tailgate.owner)!] )
+        
+        // show the AR view
+        self.present(arViewController, animated: true, completion: nil)
     }
 }
+
+
+
+extension MapViewController: ARDataSource {
+    func ar(_ arViewController: ARViewController, viewForAnnotation: ARAnnotation) -> ARAnnotationView {
+        let annotationView = TailgateAnnotationARView()
+        annotationView.annotation = viewForAnnotation
+        annotationView.delegate = self
+        annotationView.frame = CGRect(x: 0, y: 0, width: 250, height: 100)
+        
+        return annotationView
+    }
+}
+
+
+
+extension MapViewController: AnnotationViewDelegate {
+    func didTouch(annotationView: TailgateAnnotationARView) {
+        // First you cast annotationViews annotation to a Tailgate
+        if let annotation = annotationView.annotation as? TailgateAR {
+            self.showInfoView(forTailgate: annotation)
+        }
+    }
+    
+    func showInfoView(forTailgate tailgate: TailgateAR) {
+        // To show the additional info you create an alert view with the POIs name as title and an info text as message
+        let alert = UIAlertController(title: tailgate.name , message: tailgate.description, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        // Since ViewController is not a part of the view hirarchy right now, you use arViewController to show the alert
+        arViewController.present(alert, animated: true, completion: nil)
+    }
+}
+
 
 
 
@@ -77,14 +121,16 @@ extension MapViewController: CLLocationManagerDelegate {
                 let loc4 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.0001), longitude: location.coordinate.longitude.advanced(by: -0.0001))
                 let loc5 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.00029), longitude: location.coordinate.longitude.advanced(by: 0.0002))
                 
-                mapView.addAnnotation( Tailgate(title: "My dope ass tailgate", school: "psu", owner: "Michael Onjack", coordinate: loc1.coordinate) )
-                mapView.addAnnotation( Tailgate(title: "Tailgate w/ titties", school: "psu", owner: "Ben Hagan", coordinate: loc2.coordinate) )
-                mapView.addAnnotation( Tailgate(title: "Tailgate w/ extra titties", school: "psu", owner: "Ben Hagan", coordinate: loc3.coordinate) )
-                mapView.addAnnotation( Tailgate(title: "Dumb fucking tailgate", school: "osu", owner: "Ben Hagan", coordinate: loc4.coordinate) )
-                mapView.addAnnotation( Tailgate(title: "Muffin workout sesh", school: "psu", owner: "Muffin Lawler", coordinate: loc5.coordinate) )
+                mapView.addAnnotation( Tailgate(title: "My dope ass tailgate", school: "psu", owner: "Michael Onjack", location: loc1) )
+                mapView.addAnnotation( Tailgate(title: "Tailgate2", school: "psu", owner: "Ben Hagan", location: loc2) )
+                mapView.addAnnotation( Tailgate(title: "Tailgate3", school: "psu", owner: "Ben Hagan", location: loc3) )
+                mapView.addAnnotation( Tailgate(title: "Tailgate4", school: "osu", owner: "Ben Hagan", location: loc4) )
+                mapView.addAnnotation( Tailgate(title: "Muffin workout sesh", school: "psu", owner: "Muffin Lawler", location: loc5) )
             }
         }
     }
+    
+    
     
     
     
