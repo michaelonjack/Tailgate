@@ -14,6 +14,9 @@
 		B10E9E721FDCB6A200DB4751 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E711FDCB6A200DB4751 /* Assets.xcassets */; };
 		B10E9E751FDCB6A200DB4751 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */; };
 		B10E9E7D1FDCB76900DB4751 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */; };
+		B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */; };
+		B10E9E811FDCBA6100DB4751 /* Tailgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E801FDCBA6100DB4751 /* Tailgate.swift */; };
+		B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		B10E9E741FDCB6A200DB4751 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B10E9E761FDCB6A200DB4751 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B10E9E801FDCBA6100DB4751 /* Tailgate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tailgate.swift; sourceTree = "<group>"; };
+		B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,15 +69,50 @@
 		B10E9E691FDCB6A200DB4751 /* Tailgate */ = {
 			isa = PBXGroup;
 			children = (
-				B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */,
-				B10E9E6C1FDCB6A200DB4751 /* ViewController.swift */,
-				B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */,
-				B10E9E711FDCB6A200DB4751 /* Assets.xcassets */,
-				B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */,
 				B10E9E761FDCB6A200DB4751 /* Info.plist */,
-				B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */,
+				B10E9E9B1FDCC20200DB4751 /* Model */,
+				B10E9E9D1FDCC25400DB4751 /* Controller */,
+				B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */,
+				B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */,
+				B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */,
+				B10E9E711FDCB6A200DB4751 /* Assets.xcassets */,
+				B10E9E9C1FDCC22900DB4751 /* Other */,
+				B10E9E9A1FDCC1DD00DB4751 /* Supporting Files */,
 			);
 			path = Tailgate;
+			sourceTree = "<group>";
+		};
+		B10E9E9A1FDCC1DD00DB4751 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B10E9E9B1FDCC20200DB4751 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B10E9E801FDCBA6100DB4751 /* Tailgate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B10E9E9C1FDCC22900DB4751 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		B10E9E9D1FDCC25400DB4751 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B10E9E6C1FDCB6A200DB4751 /* ViewController.swift */,
+				B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		B35A248CDA90288FA61D2FFC /* Pods */ = {
@@ -204,11 +245,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Tailgate/Pods-Tailgate-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/HDAugmentedReality/HDAugmentedReality.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDAugmentedReality.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,7 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
+				B10E9E811FDCBA6100DB4751 /* Tailgate.swift in Sources */,
 				B10E9E6D1FDCB6A200DB4751 /* ViewController.swift in Sources */,
+				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,
 				B10E9E6B1FDCB6A200DB4751 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

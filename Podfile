@@ -7,5 +7,6 @@ target 'Tailgate' do
 
   # Pods for Tailgate
   pod 'Firebase/Core'
+  pod 'HDAugmentedReality'
 
 end
