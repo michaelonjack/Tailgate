@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		49BA78C420163EE3DDC041E9 /* Pods_Tailgate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410830783C54B0E57F8DD1DD /* Pods_Tailgate.framework */; };
 		B10E9E6B1FDCB6A200DB4751 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */; };
-		B10E9E6D1FDCB6A200DB4751 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E6C1FDCB6A200DB4751 /* ViewController.swift */; };
+		B10E9E6D1FDCB6A200DB4751 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */; };
 		B10E9E701FDCB6A200DB4751 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */; };
 		B10E9E721FDCB6A200DB4751 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E711FDCB6A200DB4751 /* Assets.xcassets */; };
 		B10E9E751FDCB6A200DB4751 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */; };
@@ -19,6 +19,13 @@
 		B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */; };
 		B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9EA01FDCE4D600DB4751 /* TailgateAnnotationARView.swift */; };
 		B10E9EA31FDCE6C300DB4751 /* TailgateAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9EA21FDCE6C300DB4751 /* TailgateAR.swift */; };
+		B1E83BD71FDCFBE200185E17 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */; };
+		B1E83BD91FDCFC5600185E17 /* TailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD81FDCFC5600185E17 /* TailgateViewController.swift */; };
+		B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */; };
+		B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BDD1FDD74B400185E17 /* SignUpEmailViewController.swift */; };
+		B1E83BE01FDD795000185E17 /* SignUpPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BDF1FDD795000185E17 /* SignUpPasswordViewController.swift */; };
+		B1E83BE41FDD857A00185E17 /* TopDownSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE31FDD857A00185E17 /* TopDownSegue.swift */; };
+		B1E83BE61FDD890500185E17 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE51FDD890500185E17 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +34,7 @@
 		A49879F753DFD1B6BC81285F /* Pods-Tailgate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailgate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailgate/Pods-Tailgate.release.xcconfig"; sourceTree = "<group>"; };
 		B10E9E671FDCB6A200DB4751 /* Tailgate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tailgate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B10E9E6C1FDCB6A200DB4751 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B10E9E6F1FDCB6A200DB4751 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B10E9E711FDCB6A200DB4751 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B10E9E741FDCB6A200DB4751 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +45,13 @@
 		B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationView.swift; sourceTree = "<group>"; };
 		B10E9EA01FDCE4D600DB4751 /* TailgateAnnotationARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationARView.swift; sourceTree = "<group>"; };
 		B10E9EA21FDCE6C300DB4751 /* TailgateAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAR.swift; sourceTree = "<group>"; };
+		B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B1E83BD81FDCFC5600185E17 /* TailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateViewController.swift; sourceTree = "<group>"; };
+		B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameViewController.swift; sourceTree = "<group>"; };
+		B1E83BDD1FDD74B400185E17 /* SignUpEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailViewController.swift; sourceTree = "<group>"; };
+		B1E83BDF1FDD795000185E17 /* SignUpPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordViewController.swift; sourceTree = "<group>"; };
+		B1E83BE31FDD857A00185E17 /* TopDownSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownSegue.swift; sourceTree = "<group>"; };
+		B1E83BE51FDD890500185E17 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,10 +90,10 @@
 				B10E9E761FDCB6A200DB4751 /* Info.plist */,
 				B10E9E9B1FDCC20200DB4751 /* Model */,
 				B10E9E9D1FDCC25400DB4751 /* Controller */,
-				B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */,
 				B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */,
 				B10E9EA01FDCE4D600DB4751 /* TailgateAnnotationARView.swift */,
 				B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */,
+				B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */,
 				B10E9E711FDCB6A200DB4751 /* Assets.xcassets */,
 				B10E9E9C1FDCC22900DB4751 /* Other */,
 				B10E9E9A1FDCC1DD00DB4751 /* Supporting Files */,
@@ -98,6 +112,7 @@
 		B10E9E9B1FDCC20200DB4751 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B1E83BE51FDD890500185E17 /* User.swift */,
 				B10E9E801FDCBA6100DB4751 /* Tailgate.swift */,
 				B10E9EA21FDCE6C300DB4751 /* TailgateAR.swift */,
 			);
@@ -107,6 +122,7 @@
 		B10E9E9C1FDCC22900DB4751 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				B1E83BE31FDD857A00185E17 /* TopDownSegue.swift */,
 				B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */,
 			);
 			path = Other;
@@ -115,10 +131,23 @@
 		B10E9E9D1FDCC25400DB4751 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B10E9E6C1FDCB6A200DB4751 /* ViewController.swift */,
+				B1E83BD81FDCFC5600185E17 /* TailgateViewController.swift */,
+				B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */,
+				B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */,
+				B1E83BDC1FDD712C00185E17 /* SignUpControllers */,
 				B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		B1E83BDC1FDD712C00185E17 /* SignUpControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */,
+				B1E83BDD1FDD74B400185E17 /* SignUpEmailViewController.swift */,
+				B1E83BDF1FDD795000185E17 /* SignUpPasswordViewController.swift */,
+			);
+			path = SignUpControllers;
 			sourceTree = "<group>";
 		};
 		B35A248CDA90288FA61D2FFC /* Pods */ = {
@@ -250,14 +279,24 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Tailgate/Pods-Tailgate-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HDAugmentedReality/HDAugmentedReality.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
+				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDAugmentedReality.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,12 +311,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1E83BD91FDCFC5600185E17 /* TailgateViewController.swift in Sources */,
 				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
 				B10E9EA31FDCE6C300DB4751 /* TailgateAR.swift in Sources */,
 				B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */,
+				B1E83BE41FDD857A00185E17 /* TopDownSegue.swift in Sources */,
+				B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */,
+				B1E83BE61FDD890500185E17 /* User.swift in Sources */,
 				B10E9E811FDCBA6100DB4751 /* Tailgate.swift in Sources */,
-				B10E9E6D1FDCB6A200DB4751 /* ViewController.swift in Sources */,
+				B10E9E6D1FDCB6A200DB4751 /* LoginViewController.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,
+				B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */,
+				B1E83BE01FDD795000185E17 /* SignUpPasswordViewController.swift in Sources */,
+				B1E83BD71FDCFBE200185E17 /* ProfileViewController.swift in Sources */,
 				B10E9E6B1FDCB6A200DB4751 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

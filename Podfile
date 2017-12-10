@@ -7,6 +7,11 @@ target 'Tailgate' do
 
   # Pods for Tailgate
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
   pod 'HDAugmentedReality'
+  pod 'YPImagePicker'
+  pod 'SDWebImage'
 
 end
