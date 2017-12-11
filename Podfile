@@ -13,5 +13,6 @@ target 'Tailgate' do
   pod 'HDAugmentedReality'
   pod 'YPImagePicker'
   pod 'SDWebImage'
+  pod 'IQKeyboardManagerSwift'
 
 end

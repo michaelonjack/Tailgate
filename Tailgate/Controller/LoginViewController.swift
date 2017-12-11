@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
         let password = loginPassword.text!
         
         Auth.auth().signIn(withEmail: email, password: password) {user,  error in
-            if let user = Auth.auth().currentUser {
+            if let _ = Auth.auth().currentUser {
                 self.performSegue(withIdentifier: "LoginToProfile", sender: nil)
             }
             

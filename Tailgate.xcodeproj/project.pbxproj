@@ -26,6 +26,8 @@
 		B1E83BE01FDD795000185E17 /* SignUpPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BDF1FDD795000185E17 /* SignUpPasswordViewController.swift */; };
 		B1E83BE41FDD857A00185E17 /* TopDownSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE31FDD857A00185E17 /* TopDownSegue.swift */; };
 		B1E83BE61FDD890500185E17 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE51FDD890500185E17 /* User.swift */; };
+		B1E83BE81FDDAFA900185E17 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE71FDDAFA900185E17 /* DatabaseHelper.swift */; };
+		B1E83BEA1FDDBF6100185E17 /* RightLeftSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		B1E83BDF1FDD795000185E17 /* SignUpPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordViewController.swift; sourceTree = "<group>"; };
 		B1E83BE31FDD857A00185E17 /* TopDownSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownSegue.swift; sourceTree = "<group>"; };
 		B1E83BE51FDD890500185E17 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B1E83BE71FDDAFA900185E17 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatabaseHelper.swift; path = /Users/MichaelOnjack/Desktop/Programming/iOSDev/Swift/Tailgate/Tailgate/Other/DatabaseHelper.swift; sourceTree = "<absolute>"; };
+		B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightLeftSegue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 		B10E9E9C1FDCC22900DB4751 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */,
+				B1E83BE71FDDAFA900185E17 /* DatabaseHelper.swift */,
 				B1E83BE31FDD857A00185E17 /* TopDownSegue.swift */,
 				B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */,
 			);
@@ -282,6 +288,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HDAugmentedReality/HDAugmentedReality.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
 				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
@@ -293,6 +300,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDAugmentedReality.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
@@ -312,6 +320,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1E83BD91FDCFC5600185E17 /* TailgateViewController.swift in Sources */,
+				B1E83BEA1FDDBF6100185E17 /* RightLeftSegue.swift in Sources */,
+				B1E83BE81FDDAFA900185E17 /* DatabaseHelper.swift in Sources */,
 				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
 				B10E9EA31FDCE6C300DB4751 /* TailgateAR.swift in Sources */,
 				B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */,

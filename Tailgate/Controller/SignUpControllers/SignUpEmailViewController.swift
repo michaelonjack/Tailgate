@@ -47,6 +47,21 @@ class SignUpEmailViewController: UIViewController {
         }
     }
     
+    
+    
+    /////////////////////////////////////////////////////
+    //
+    //  touchesBegan
+    //
+    //  Hides the keyboard when the user selects a non-textfield area
+    //
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let passwordVC: SignUpPasswordViewController = segue.destination as! SignUpPasswordViewController
         passwordVC.firstName = self.firstName

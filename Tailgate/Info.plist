@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For taking pictures</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>For recording videos</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Needed for AR</string>
 	<key>NSCameraUsageDescription</key>
