@@ -9,19 +9,51 @@
 import UIKit
 import Firebase
 import YPImagePicker
+import SDWebImage
 
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profilePictureButton: UIButton!
+    let currentUserRef = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
+    let currentUserStorageRef = Storage.storage().reference(withPath: "images/" + (Auth.auth().currentUser?.uid)!)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadProfilePicture()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    /////////////////////////////////////////////////////
+    //
+    // loadProfilePicture
+    //
+    //  Pulls the user's profile picture from the database if it exists
+    //
+    func loadProfilePicture() {
+        // Load the stored image
+        currentUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let storedData = snapshot.value as? NSDictionary
+            
+            // Load user's profile picture from Firebase Storage if it exists (exists if the user has a profPic URL in the database)
+            if snapshot.hasChild("profilePictureUrl") {
+                let picUrlStr = storedData?["profilePictureUrl"] as? String ?? ""
+                if picUrlStr != "" {
+                    let picUrl = URL(string: picUrlStr)
+                    self.profilePictureButton.sd_setImage(with: picUrl, for: .normal, placeholderImage: UIImage(named: "Avatar"))
+                }
+            } else {
+                print("Error -- Loading Profile Picture")
+            }
+        })
+    }
+    
+    
     
     @IBAction func profilePicturePressed(_ sender: UIButton) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
@@ -50,7 +82,16 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func aroundMePressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "ProfileToMap", sender: nil)
+        let mapViewController = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        DispatchQueue.main.async {
+            self.present(mapViewController, animated: false, completion: nil)
+        }
     }
     
 

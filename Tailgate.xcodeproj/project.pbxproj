@@ -91,7 +91,6 @@
 		B10E9E691FDCB6A200DB4751 /* Tailgate */ = {
 			isa = PBXGroup;
 			children = (
-				B10E9E761FDCB6A200DB4751 /* Info.plist */,
 				B10E9E9B1FDCC20200DB4751 /* Model */,
 				B10E9E9D1FDCC25400DB4751 /* Controller */,
 				B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */,
@@ -101,6 +100,7 @@
 				B10E9E711FDCB6A200DB4751 /* Assets.xcassets */,
 				B10E9E9C1FDCC22900DB4751 /* Other */,
 				B10E9E9A1FDCC1DD00DB4751 /* Supporting Files */,
+				B10E9E761FDCB6A200DB4751 /* Info.plist */,
 			);
 			path = Tailgate;
 			sourceTree = "<group>";

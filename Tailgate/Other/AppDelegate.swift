@@ -15,9 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    // Move firebase configuration to init to avoid race conditions with the database instantiation on the login page
+    override init() {
+        super.init()
+        
+        FirebaseApp.configure()
+        // Allow Firebase database to work offline
+        Database.database().isPersistenceEnabled = true
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
         
         // Make navigation bar transparent
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
@@ -29,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //BarButtonItemAppearance.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear], for: .normal)
         
         IQKeyboardManager.sharedManager().enable = true
+        
+        // Determine wh
         
         return true
     }
