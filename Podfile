@@ -14,5 +14,6 @@ target 'Tailgate' do
   pod 'YPImagePicker'
   pod 'SDWebImage'
   pod 'IQKeyboardManagerSwift'
+  pod 'SwipeNavigationController'
 
 end

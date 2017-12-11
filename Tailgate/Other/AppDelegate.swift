@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import IQKeyboardManagerSwift
+import SwipeNavigationController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,7 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // User is logged in, go right to profile
         if (Auth.auth().currentUser != nil) {
-            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+            let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+            let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
+            let mapViewController = mainStoryboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+            
+            let swipeNavigationController = SwipeNavigationController(centerViewController: profileViewController)
+            swipeNavigationController.leftViewController = tailgateViewController
+            swipeNavigationController.rightViewController = mapViewController
+            swipeNavigationController.shouldShowTopViewController = false
+            swipeNavigationController.shouldShowBottomViewController = false
+            
+            initialViewController = swipeNavigationController
         }
         
         // User is not logged in, go to home

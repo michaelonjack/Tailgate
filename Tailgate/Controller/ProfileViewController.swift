@@ -82,17 +82,11 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func aroundMePressed(_ sender: Any) {
-        let mapViewController = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.type = kCATransitionPush
-        transition.subtype = kCATransitionFromRight
-        view.window!.layer.add(transition, forKey: kCATransition)
-        
-        DispatchQueue.main.async {
-            self.present(mapViewController, animated: false, completion: nil)
-        }
+        self.containerSwipeNavigationController?.showEmbeddedView(position: .right)
     }
     
-
+    @IBAction func myTailgatePressed(_ sender: Any) {
+        self.containerSwipeNavigationController?.showEmbeddedView(position: .left)
+    }
+    
 }

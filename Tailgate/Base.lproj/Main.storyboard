@@ -15,11 +15,28 @@
         <!--Tailgate View Controller-->
         <scene sceneID="psj-lL-smu">
             <objects>
-                <viewController id="QSN-9N-nPm" customClass="TailgateViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TailgateViewController" id="QSN-9N-nPm" customClass="TailgateViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="obV-eo-60i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="px3-3w-08m">
+                                <rect key="frame" x="335" y="20" width="40" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="px3-3w-08m" secondAttribute="height" multiplier="8:7" id="1pJ-bU-BnA"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="BackArrowRight"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="QSN-9N-nPm" eventType="touchUpInside" id="2hH-An-PrA"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="px3-3w-08m" firstAttribute="height" secondItem="obV-eo-60i" secondAttribute="height" multiplier="0.05247" id="iJr-mc-3aV"/>
+                            <constraint firstItem="px3-3w-08m" firstAttribute="trailing" secondItem="c7u-l6-ZVB" secondAttribute="trailing" id="k42-3X-gVb"/>
+                            <constraint firstItem="px3-3w-08m" firstAttribute="top" secondItem="c7u-l6-ZVB" secondAttribute="top" id="qy4-A2-T4i"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="c7u-l6-ZVB"/>
                     </view>
                 </viewController>
@@ -59,6 +76,9 @@
                                 <state key="normal" title="&lt;    MY TAILGATE">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="myTailgatePressed:" destination="x2u-Jm-Rys" eventType="touchUpInside" id="Qis-2p-J5T"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnX-qB-j59">
                                 <rect key="frame" x="82.5" y="54" width="210" height="210"/>
@@ -633,6 +653,7 @@
         <image name="Avatar" width="256" height="256"/>
         <image name="Avatar-Man" width="128" height="128"/>
         <image name="BackArrowLeft" width="270" height="270"/>
+        <image name="BackArrowRight" width="270" height="270"/>
         <image name="Friends" width="128" height="128"/>
         <image name="Settings" width="128" height="128"/>
     </resources>

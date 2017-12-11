@@ -54,6 +54,7 @@ PODS:
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
   - SteviaLayout (4.0.0)
+  - SwipeNavigationController (2.0.2)
   - YPImagePicker (2.3.0):
     - SteviaLayout (~> 4.0.0)
 
@@ -65,6 +66,7 @@ DEPENDENCIES:
   - HDAugmentedReality
   - IQKeyboardManagerSwift
   - SDWebImage
+  - SwipeNavigationController
   - YPImagePicker
 
 SPEC CHECKSUMS:
@@ -83,8 +85,9 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SteviaLayout: 2d6b6d7e9554fa7b2c7c2aba12337b23cf897123
+  SwipeNavigationController: 592681599a3105a44484e5b7af9055cee7a0d7b9
   YPImagePicker: b753fdfc3e90566ba14d1820da468d9a5e5c6f5c
 
-PODFILE CHECKSUM: 03848f0a697473ded938209ac97857a2fa225754
+PODFILE CHECKSUM: 2712f9d5fcd8397db410c67ee6d2d98992757edb
 
 COCOAPODS: 1.3.1

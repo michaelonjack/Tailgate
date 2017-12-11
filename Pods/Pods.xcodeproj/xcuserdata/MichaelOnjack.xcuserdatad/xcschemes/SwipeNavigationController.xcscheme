@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B59AE611439307A29A586E5257FCD67F"
-               BuildableName = "Stevia.framework"
-               BlueprintName = "SteviaLayout"
+               BlueprintIdentifier = "92799C240BFAB44665B37D7A5F1EDACC"
+               BuildableName = "SwipeNavigationController.framework"
+               BlueprintName = "SwipeNavigationController"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B59AE611439307A29A586E5257FCD67F"
-            BuildableName = "Stevia.framework"
-            BlueprintName = "SteviaLayout"
+            BlueprintIdentifier = "92799C240BFAB44665B37D7A5F1EDACC"
+            BuildableName = "SwipeNavigationController.framework"
+            BlueprintName = "SwipeNavigationController"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
