@@ -30,7 +30,7 @@
         <!--Profile View Controller-->
         <scene sceneID="yLT-BS-NhE">
             <objects>
-                <viewController id="x2u-Jm-Rys" customClass="ProfileViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="x2u-Jm-Rys" customClass="ProfileViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A45-Rb-3MN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,7 +181,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="JPg-vV-Mqm" secondAttribute="height" multiplier="8:7" id="Eyq-A0-VVS"/>
                                 </constraints>
-                                <state key="normal" image="BackArrow"/>
+                                <state key="normal" image="BackArrowLeft"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="GTv-zW-I56" eventType="touchUpInside" id="SGr-AS-zjL"/>
                                 </connections>
@@ -207,10 +207,10 @@
             </objects>
             <point key="canvasLocation" x="1246" y="-715"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -632,7 +632,7 @@
     <resources>
         <image name="Avatar" width="256" height="256"/>
         <image name="Avatar-Man" width="128" height="128"/>
-        <image name="BackArrow" width="270" height="270"/>
+        <image name="BackArrowLeft" width="270" height="270"/>
         <image name="Friends" width="128" height="128"/>
         <image name="Settings" width="128" height="128"/>
     </resources>

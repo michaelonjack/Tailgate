@@ -28,6 +28,7 @@
 		B1E83BE61FDD890500185E17 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE51FDD890500185E17 /* User.swift */; };
 		B1E83BE81FDDAFA900185E17 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE71FDDAFA900185E17 /* DatabaseHelper.swift */; };
 		B1E83BEA1FDDBF6100185E17 /* RightLeftSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */; };
+		B1E83BEC1FDE286B00185E17 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		B1E83BE51FDD890500185E17 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B1E83BE71FDDAFA900185E17 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatabaseHelper.swift; path = /Users/MichaelOnjack/Desktop/Programming/iOSDev/Swift/Tailgate/Tailgate/Other/DatabaseHelper.swift; sourceTree = "<absolute>"; };
 		B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightLeftSegue.swift; sourceTree = "<group>"; };
+		B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		B10E9E9D1FDCC25400DB4751 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */,
 				B1E83BD81FDCFC5600185E17 /* TailgateViewController.swift */,
 				B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */,
 				B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */,
@@ -322,6 +325,7 @@
 				B1E83BD91FDCFC5600185E17 /* TailgateViewController.swift in Sources */,
 				B1E83BEA1FDDBF6100185E17 /* RightLeftSegue.swift in Sources */,
 				B1E83BE81FDDAFA900185E17 /* DatabaseHelper.swift in Sources */,
+				B1E83BEC1FDE286B00185E17 /* HomeViewController.swift in Sources */,
 				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
 				B10E9EA31FDCE6C300DB4751 /* TailgateAR.swift in Sources */,
 				B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */,

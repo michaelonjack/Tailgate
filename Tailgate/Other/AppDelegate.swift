@@ -37,7 +37,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.sharedManager().enable = true
         
-        // Determine wh
+        // Determine which view controller should be initially shown
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var initialViewController: UIViewController = UIViewController()
+        
+        // User is logged in, go right to profile
+        if (Auth.auth().currentUser != nil) {
+            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        }
+        
+        // User is not logged in, go to home
+        else {
+            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        }
+        
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
         
         return true
     }
