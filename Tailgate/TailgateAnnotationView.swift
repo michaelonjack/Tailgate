@@ -8,6 +8,8 @@
 
 import Foundation
 import MapKit
+import Firebase
+import SDWebImage
 
 class TailgateAnnotationView: MKAnnotationView {
     override var annotation: MKAnnotation? {
@@ -28,7 +30,22 @@ class TailgateAnnotationView: MKAnnotationView {
             detailLabel.text = tailgate.owner
             detailCalloutAccessoryView = detailLabel
             
-            image = UIImage(named: tailgate.school)
+            let schoolPath = tailgate.school.replacingOccurrences(of: " ", with: "")
+            let schoolReference = Database.database().reference(withPath: "schools/" + schoolPath)
+            schoolReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                let dataDict = snapshot.value as? NSDictionary
+                
+                if snapshot.hasChild("annotationImageUrl") {
+                    let picUrlStr = dataDict?["annotationImageUrl"] as? String ?? ""
+                    
+                    if picUrlStr != "" {
+                        let picUrl = URL(string: picUrlStr)
+                        self.sd_setImage(with: picUrl, completed: nil)
+                    }
+                }
+            })
+            
+            image = tailgate.annotationImageView?.image
         }
     }
 }

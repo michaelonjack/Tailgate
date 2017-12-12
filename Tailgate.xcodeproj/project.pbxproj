@@ -102,7 +102,6 @@
 				B10E9E711FDCB6A200DB4751 /* Assets.xcassets */,
 				B10E9E9C1FDCC22900DB4751 /* Other */,
 				B10E9E9A1FDCC1DD00DB4751 /* Supporting Files */,
-				B10E9E761FDCB6A200DB4751 /* Info.plist */,
 			);
 			path = Tailgate;
 			sourceTree = "<group>";
@@ -110,6 +109,7 @@
 		B10E9E9A1FDCC1DD00DB4751 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B10E9E761FDCB6A200DB4751 /* Info.plist */,
 				B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
@@ -211,6 +211,7 @@
 				TargetAttributes = {
 					B10E9E661FDCB6A200DB4751 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -478,12 +479,15 @@
 			baseConfigurationReference = 3AE3B1693BC377D8745FDBA2 /* Pods-Tailgate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64B49T3B7F;
-				INFOPLIST_FILE = Tailgate/Info.plist;
+				INFOPLIST_FILE = "Tailgate/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaelonjack.Tailgate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -494,12 +498,14 @@
 			baseConfigurationReference = A49879F753DFD1B6BC81285F /* Pods-Tailgate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64B49T3B7F;
-				INFOPLIST_FILE = Tailgate/Info.plist;
+				INFOPLIST_FILE = "Tailgate/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaelonjack.Tailgate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -13,6 +13,7 @@ target 'Tailgate' do
   pod 'HDAugmentedReality'
   pod 'YPImagePicker'
   pod 'SDWebImage'
+  pod 'SDWebImage/MapKit'
   pod 'IQKeyboardManagerSwift'
   pod 'SwipeNavigationController'
 

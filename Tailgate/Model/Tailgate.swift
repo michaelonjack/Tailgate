@@ -8,6 +8,8 @@
 
 import Foundation
 import MapKit
+import Firebase
+import SDWebImage
 
 class Tailgate: NSObject, MKAnnotation {
     let location: CLLocation
@@ -15,6 +17,7 @@ class Tailgate: NSObject, MKAnnotation {
     let title: String?
     let school: String
     let owner: String
+    var annotationImageView: UIImageView?
 
     
     init(title:String, school: String, owner: String, location: CLLocation) {

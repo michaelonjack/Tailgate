@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwipeNavigationController
 
 class LoginViewController: UIViewController {
     
@@ -20,7 +21,11 @@ class LoginViewController: UIViewController {
         // If a user is already logged in, skip login view and continue to their profile
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil { //}&& (user?.isEmailVerified)! {
-                self.performSegue(withIdentifier: "LoginToProfile", sender: nil)
+                let swipeNavigationController = self.createSwipeController()
+                
+                DispatchQueue.main.async {
+                    self.present(swipeNavigationController, animated: true, completion: nil)
+                }
             }
         }
     }
@@ -46,7 +51,12 @@ class LoginViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: email, password: password) {user,  error in
             if let _ = Auth.auth().currentUser {
-                self.performSegue(withIdentifier: "LoginToProfile", sender: nil)
+                
+                let swipeNavigationController = self.createSwipeController()
+                
+                DispatchQueue.main.async {
+                    self.present(swipeNavigationController, animated: true, completion: nil)
+                }
             }
             
             // Login failed -- show error message
@@ -62,5 +72,21 @@ class LoginViewController: UIViewController {
         }
     }
     
+    
+    func createSwipeController() -> SwipeNavigationController {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
+        let mapViewController = mainStoryboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        
+        let swipeNavigationController = SwipeNavigationController(centerViewController: profileViewController)
+        swipeNavigationController.leftViewController = tailgateViewController
+        swipeNavigationController.rightViewController = mapViewController
+        swipeNavigationController.shouldShowTopViewController = false
+        swipeNavigationController.shouldShowBottomViewController = false
+        
+        return swipeNavigationController
+    }
 }
 

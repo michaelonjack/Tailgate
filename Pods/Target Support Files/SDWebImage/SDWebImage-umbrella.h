@@ -34,6 +34,7 @@
 #import "UIImageView+WebCache.h"
 #import "UIView+WebCache.h"
 #import "UIView+WebCacheOperation.h"
+#import "MKAnnotationView+WebCache.h"
 
 FOUNDATION_EXPORT double SDWebImageVersionNumber;
 FOUNDATION_EXPORT const unsigned char SDWebImageVersionString[];

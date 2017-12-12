@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // User is not logged in, go to home
         else {
-            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+            initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "InitialNavigationController") as! UINavigationController
         }
         
         self.window?.rootViewController = initialViewController

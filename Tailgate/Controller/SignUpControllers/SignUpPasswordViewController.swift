@@ -8,11 +8,13 @@
 
 import UIKit
 import Firebase
+import SwipeNavigationController
 
 class SignUpPasswordViewController: UIViewController {
     
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
+    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     var firstName: String!
     var lastName: String!
     var email: String!
@@ -21,6 +23,9 @@ class SignUpPasswordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +62,21 @@ class SignUpPasswordViewController: UIViewController {
                         
                         newUserRef.setValue(newUser.toAnyObject())
                         
-                        self.performSegue(withIdentifier: "SignUpToProfile", sender: nil)
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+                        let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
+                        let mapViewController = mainStoryboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+                        
+                        let swipeNavigationController = SwipeNavigationController(centerViewController: profileViewController)
+                        swipeNavigationController.leftViewController = tailgateViewController
+                        swipeNavigationController.rightViewController = mapViewController
+                        swipeNavigationController.shouldShowTopViewController = false
+                        swipeNavigationController.shouldShowBottomViewController = false
+                        
+                        DispatchQueue.main.async {
+                            self.present(swipeNavigationController, animated: true, completion: nil)
+                        }
                     
                     } else {
                         let errorAlert = UIAlertController(title: "Sign Up Error",
@@ -73,6 +92,20 @@ class SignUpPasswordViewController: UIViewController {
             }
             
         }
+    }
+    
+    
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.nextButtonBottomConstraint.constant == 0 {
+                self.nextButtonBottomConstraint.constant -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.nextButtonBottomConstraint.constant = 0
     }
     
     

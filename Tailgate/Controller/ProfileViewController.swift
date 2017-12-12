@@ -46,6 +46,10 @@ class ProfileViewController: UIViewController {
                 if picUrlStr != "" {
                     let picUrl = URL(string: picUrlStr)
                     self.profilePictureButton.sd_setImage(with: picUrl, for: .normal, placeholderImage: UIImage(named: "Avatar"))
+                    
+                    // round picture corners
+                    self.profilePictureButton.layer.cornerRadius = 8.0
+                    self.profilePictureButton.clipsToBounds = true
                 }
             } else {
                 print("Error -- Loading Profile Picture")

@@ -12,11 +12,15 @@ class SignUpEmailViewController: UIViewController {
     
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     var firstName: String!
     var lastName: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
         
         status.isHidden = true
     }
@@ -45,6 +49,19 @@ class SignUpEmailViewController: UIViewController {
             errorAlert.addAction(closeAction)
             self.present(errorAlert, animated: true, completion:nil)
         }
+    }
+    
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.nextButtonBottomConstraint.constant == 0 {
+                self.nextButtonBottomConstraint.constant -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.nextButtonBottomConstraint.constant = 0
     }
     
     
