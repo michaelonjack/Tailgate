@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="brP-rp-Gba">
-                                <rect key="frame" x="0.0" y="322" width="375" height="345"/>
+                                <rect key="frame" x="0.0" y="322" width="375" height="375"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EWK-on-vZg">
                                     <size key="itemSize" width="200" height="200"/>
@@ -74,14 +74,6 @@
                                     <action selector="trashButtonPressed:" destination="O2l-0b-cuo" eventType="touchUpInside" id="GYN-nM-hHN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orG-uh-ZKa">
-                                <rect key="frame" x="204" y="254" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Camera"/>
-                                <connections>
-                                    <action selector="cameraButtonPressed:" destination="O2l-0b-cuo" eventType="touchUpInside" id="era-9Y-iq4"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="1KF-Ig-f7f">
                                 <rect key="frame" x="16" y="81" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -107,21 +99,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZY-bt-Cme">
-                                <rect key="frame" x="16" y="252" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Beverage"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbL-xj-01T">
-                                <rect key="frame" x="309" y="252" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Friends2"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENO-jx-Lww">
-                                <rect key="frame" x="108" y="252" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="Food"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Private" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZiX-ey-ytX">
                                 <rect key="frame" x="152" y="184" width="207" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -129,10 +106,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orG-uh-ZKa">
+                                <rect key="frame" x="204" y="251" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="Camera"/>
+                                <connections>
+                                    <action selector="cameraButtonPressed:" destination="O2l-0b-cuo" eventType="touchUpInside" id="era-9Y-iq4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZY-bt-Cme">
+                                <rect key="frame" x="16" y="249" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="Beverage"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbL-xj-01T">
+                                <rect key="frame" x="309" y="249" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="Friends2"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENO-jx-Lww">
+                                <rect key="frame" x="108" y="249" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="Food"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="brP-rp-Gba" firstAttribute="bottom" secondItem="7dd-t0-qLm" secondAttribute="bottom" id="CwU-tI-2vE"/>
+                            <constraint firstItem="brP-rp-Gba" firstAttribute="bottom" secondItem="7dd-t0-qLm" secondAttribute="bottom" constant="30" id="CwU-tI-2vE"/>
                             <constraint firstItem="rgm-GR-msR" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.05247" id="LrM-tU-OjH"/>
                             <constraint firstItem="fHC-pn-yzm" firstAttribute="top" secondItem="7dd-t0-qLm" secondAttribute="top" constant="2" id="SWf-U4-r2b"/>
                             <constraint firstItem="rgm-GR-msR" firstAttribute="leading" secondItem="7dd-t0-qLm" secondAttribute="leading" constant="8" id="UW0-Ua-14e"/>
@@ -141,7 +141,7 @@
                             <constraint firstItem="rgm-GR-msR" firstAttribute="top" secondItem="7dd-t0-qLm" secondAttribute="top" constant="2" id="ldD-iw-yhk"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="width" secondItem="br0-jd-8t5" secondAttribute="width" id="oET-ZR-pbm"/>
                             <constraint firstItem="fHC-pn-yzm" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.05247" id="saX-nR-rDQ"/>
-                            <constraint firstItem="brP-rp-Gba" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.434783" constant="55.000005799999997" id="ums-Ej-pOr"/>
+                            <constraint firstItem="brP-rp-Gba" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.434783" constant="84.999739000000034" id="ums-Ej-pOr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7dd-t0-qLm"/>
                     </view>

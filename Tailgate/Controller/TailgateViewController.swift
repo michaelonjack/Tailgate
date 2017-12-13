@@ -22,6 +22,33 @@ class TailgateViewController: UIViewController {
     fileprivate let itemsPerRow: CGFloat = 3
     
     var imageUrls: [String] = []
+    var selectedImageIndex: IndexPath? {
+        didSet {
+            var imagesToUpdate = [IndexPath]()
+            if let selectedImageIndex = selectedImageIndex {
+                // The image at this index was either selected or unselected so it needs to be updated
+                imagesToUpdate.append(selectedImageIndex)
+            }
+            
+            if let oldValue = oldValue {
+                // If an old value existed for this variable, the image at that index needs to be updated (unselected)
+                imagesToUpdate.append(oldValue)
+            }
+            
+            // Update the indexes that need updating in the collection view
+            imageCollectionView?.performBatchUpdates({
+                self.imageCollectionView?.reloadItems(at: imagesToUpdate)
+            }) { completed in
+                // Scroll the enlarged selected image to the middle of the screen
+                if let selectedImageIndex = self.selectedImageIndex {
+                    self.imageCollectionView?.scrollToItem(
+                        at: selectedImageIndex,
+                        at: .centeredVertically,
+                        animated: true)
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +104,18 @@ class TailgateViewController: UIViewController {
 
 
 
+extension TailgateViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                                 shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        // If the tapped image is already the selected, set the largePhotoIndexPath property to nil, otherwise set it to the index path the user just tapped
+        selectedImageIndex = selectedImageIndex == indexPath ? nil : indexPath
+        return false
+    }
+}
+
+
+
+
 extension TailgateViewController: UICollectionViewDataSource {
     // There’s one search per section, so the number of sections is the count of the searches array
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -108,6 +147,13 @@ extension TailgateViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        // Check if the current cell is the selected image
+        if indexPath == selectedImageIndex {
+            let maxWidth = collectionView.bounds.width - (sectionInsets.left + sectionInsets.right)
+            return CGSize(width: maxWidth, height: maxWidth)
+        }
+        
         // Here, you work out the total amount of space taken up by padding.
         // There will be n + 1 evenly sized spaces, where n is the number of items in the row. The space size can be taken from the left section inset.
         // Subtracting this from the view’s width and dividing by the number of items in a row gives you the width for each item. You then return the size as a square
