@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/MichaelOnjack/Desktop/Programming/iOSDev/Swift/Tailgate/Tailgate/Other/DatabaseHelper.swift">
-   </FileRef>
-   <FileRef
       location = "group:Tailgate.xcodeproj">
    </FileRef>
    <FileRef

@@ -125,10 +125,10 @@ extension MapViewController: CLLocationManagerDelegate {
                 let loc5 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.00029), longitude: location.coordinate.longitude.advanced(by: 0.0002))
                 
                 mapView.addAnnotation( Tailgate(title: "My dope ass tailgate", school: "Penn State University", owner: "Michael Onjack", location: loc1) )
-                mapView.addAnnotation( Tailgate(title: "Tailgate2", school: "Penn State University", owner: "Ben Hagan", location: loc2) )
+                mapView.addAnnotation( Tailgate(title: "Tailgate2", school: "University of Michigan", owner: "Ben Hagan", location: loc2) )
                 mapView.addAnnotation( Tailgate(title: "Tailgate3", school: "Penn State University", owner: "Ben Hagan", location: loc3) )
                 mapView.addAnnotation( Tailgate(title: "Tailgate4", school: "Ohio State University", owner: "Ben Hagan", location: loc4) )
-                mapView.addAnnotation( Tailgate(title: "Muffin workout sesh", school: "Penn State University", owner: "Muffin Lawler", location: loc5) )
+                mapView.addAnnotation( Tailgate(title: "Muffin workout sesh", school: "University of Wisconsin", owner: "Muffin Lawler", location: loc5) )
             }
         }
     }
