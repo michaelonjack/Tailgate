@@ -86,11 +86,11 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func aroundMePressed(_ sender: Any) {
-        self.containerSwipeNavigationController?.showEmbeddedView(position: .right)
+        self.containerSwipeNavigationController?.showEmbeddedView(position: .left)
     }
     
     @IBAction func myTailgatePressed(_ sender: Any) {
-        self.containerSwipeNavigationController?.showEmbeddedView(position: .left)
+        self.containerSwipeNavigationController?.showEmbeddedView(position: .right)
     }
     
 }

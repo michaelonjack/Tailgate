@@ -50,8 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let mapViewController = mainStoryboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
             
             let swipeNavigationController = SwipeNavigationController(centerViewController: profileViewController)
-            swipeNavigationController.leftViewController = tailgateViewController
-            swipeNavigationController.rightViewController = mapViewController
+            swipeNavigationController.rightViewController = tailgateViewController
+            swipeNavigationController.leftViewController = mapViewController
             swipeNavigationController.shouldShowTopViewController = false
             swipeNavigationController.shouldShowBottomViewController = false
             
