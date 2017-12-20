@@ -47,10 +47,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (Auth.auth().currentUser != nil) {
             let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
             let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
+            let newTailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "NewTailgateNavigationController") as! UINavigationController
             let mapViewController = mainStoryboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
             
             let swipeNavigationController = SwipeNavigationController(centerViewController: profileViewController)
-            swipeNavigationController.rightViewController = tailgateViewController
+            swipeNavigationController.rightViewController = newTailgateViewController
             swipeNavigationController.leftViewController = mapViewController
             swipeNavigationController.shouldShowTopViewController = false
             swipeNavigationController.shouldShowBottomViewController = false

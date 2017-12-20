@@ -13,6 +13,7 @@ class CreateTailgateDateViewController: UIViewController {
     @IBOutlet weak var startDatePicker: UIDatePicker!
     
     var tailgateName: String!
+    var tailgateSchool: School!
     var isPublic: Bool!
     
     override func viewDidLoad() {
@@ -23,18 +24,18 @@ class CreateTailgateDateViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func nextPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "DateToFood", sender: nil)
     }
-    */
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let foodVC: CreateTailgateFoodViewController = segue.destination as! CreateTailgateFoodViewController
+        foodVC.tailgateName = self.tailgateName
+        foodVC.tailgateSchool = self.tailgateSchool
+        foodVC.isPublic = self.isPublic
+        foodVC.startTime = self.startDatePicker.date
+    }
 }

@@ -15,6 +15,7 @@ class CreateTailgateAccessibilityViewController: UIViewController {
     @IBOutlet weak var privacySwitch: UISwitch!
     
     var tailgateName: String!
+    var tailgateSchool: School!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,6 @@ class CreateTailgateAccessibilityViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
@@ -48,6 +48,7 @@ class CreateTailgateAccessibilityViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dateVC: CreateTailgateDateViewController = segue.destination as! CreateTailgateDateViewController
         dateVC.tailgateName = self.tailgateName
+        dateVC.tailgateSchool = self.tailgateSchool
         dateVC.isPublic = privacySwitch.isOn
     }
 

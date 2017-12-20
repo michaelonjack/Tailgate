@@ -24,7 +24,22 @@ class CreateTailgateNameViewController: UIViewController {
     }
     
     @IBAction func nextPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "NameToSchool", sender: nil)
+        
+        if tailgateName.text != "" {
+            self.performSegue(withIdentifier: "NameToSchool", sender: nil)
+        }
+        
+        else {
+            let errorAlert = UIAlertController(
+                title: "",
+                message: "Name is required",
+                preferredStyle: .alert
+            )
+            
+            let closeAction = UIAlertAction(title: "Close", style: .default)
+            errorAlert.addAction(closeAction)
+            self.present(errorAlert, animated: true, completion:nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

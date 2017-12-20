@@ -65,6 +65,12 @@ func uploadTailgatePictureForUser(userid:String, image:UIImage, completion : @es
 
 
 
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
 func getTailgateImageUrlsForUser(userid:String, completion: @escaping (_ urls: [String]) -> Void) {
     var imgUrls:[String] = []
     let imageUrlsReference = Database.database().reference(withPath: "users/" + userid + "/tailgate/imageUrls")
@@ -83,3 +89,24 @@ func getTailgateImageUrlsForUser(userid:String, completion: @escaping (_ urls: [
     })
 }
 
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+func getSchools(completion: @escaping (([School]) -> Void)) {
+    var schools:[School] = []
+    var schoolReference = Database.database().reference(withPath: "schools/")
+    
+    schoolReference.observe(.value, with: { (snapshot) in
+        for schoolSnapshot in snapshot.children {
+            let school = School(snapshot: schoolSnapshot as! DataSnapshot)
+            schools.append(school)
+        }
+        
+        completion(schools)
+    })
+}

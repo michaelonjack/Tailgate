@@ -66,11 +66,12 @@ class SignUpPasswordViewController: UIViewController {
                         
                         let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
                         let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
+                        let newTailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "NewTailgateViewController") as! NewTailgateViewController
                         let mapViewController = mainStoryboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
                         
                         let swipeNavigationController = SwipeNavigationController(centerViewController: profileViewController)
-                        swipeNavigationController.leftViewController = tailgateViewController
-                        swipeNavigationController.rightViewController = mapViewController
+                        swipeNavigationController.leftViewController = mapViewController
+                        swipeNavigationController.rightViewController = newTailgateViewController
                         swipeNavigationController.shouldShowTopViewController = false
                         swipeNavigationController.shouldShowBottomViewController = false
                         

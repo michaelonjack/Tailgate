@@ -19,8 +19,9 @@ class NewTailgateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func backButtonPressed(_ sender: UIButton) {
+    @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
         self.containerSwipeNavigationController?.showEmbeddedView(position: .center)
     }
+    
 
 }
