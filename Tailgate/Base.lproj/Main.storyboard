@@ -300,6 +300,7 @@
                     </view>
                     <connections>
                         <outlet property="schoolTable" destination="g70-vk-oY5" id="9FI-QG-iOz"/>
+                        <outlet property="searchTextField" destination="FdN-3Z-D9j" id="VBD-LY-X6B"/>
                         <segue destination="J35-X4-G5u" kind="show" identifier="SchoolToAccessibility" id="68s-50-Ujv"/>
                     </connections>
                 </viewController>
@@ -521,6 +522,7 @@
                     </view>
                     <connections>
                         <outlet property="foodTable" destination="fis-DE-tzZ" id="fiz-F1-cYO"/>
+                        <outlet property="searchTextField" destination="kA1-hA-Lge" id="8xR-VJ-T4h"/>
                         <segue destination="O88-vl-sp1" kind="show" identifier="FoodToDrink" id="wfq-Sh-Hnm"/>
                     </connections>
                 </viewController>
@@ -610,6 +612,7 @@
                     </view>
                     <connections>
                         <outlet property="drinksTable" destination="UZN-B5-CpD" id="S7i-lS-HfH"/>
+                        <outlet property="searchTextField" destination="sFD-go-bxO" id="Kjs-cr-MMn"/>
                         <segue destination="Lv0-ta-7to" kind="show" identifier="DrinkToInvites" id="XNo-a7-R0G"/>
                     </connections>
                 </viewController>
@@ -640,13 +643,30 @@
                                 <rect key="frame" x="0.0" y="163" width="375" height="409"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="LZW-RR-yxy">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableCell" rowHeight="75" id="LZW-RR-yxy" customClass="UserTableViewCell" customModule="Tailgate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LZW-RR-yxy" id="Eyk-oh-gqy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0aC-0X-dVN">
+                                                    <rect key="frame" x="15" y="7" width="60" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHd-wZ-kL8">
+                                                    <rect key="frame" x="83" y="27" width="277" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="CHd-wZ-kL8" id="DGL-h9-pnZ"/>
+                                            <outlet property="profilePicture" destination="0aC-0X-dVN" id="qF2-qh-2lZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -684,11 +704,12 @@
                     </view>
                     <connections>
                         <outlet property="usersTable" destination="nEW-ig-dcR" id="3xt-lZ-H17"/>
+                        <segue destination="O2l-0b-cuo" kind="custom" identifier="CreateToTailgate" customClass="TopDownSegue" customModule="Tailgate" customModuleProvider="target" id="0I7-na-UCc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agS-xr-ccD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8158" y="-761"/>
+            <point key="canvasLocation" x="8157.6000000000004" y="-761.46926536731644"/>
         </scene>
         <!--New Tailgate View Controller-->
         <scene sceneID="psj-lL-smu">
@@ -1381,5 +1402,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="eai-VW-VO6"/>
+        <segue reference="0I7-na-UCc"/>
     </inferredMetricsTieBreakers>
 </document>

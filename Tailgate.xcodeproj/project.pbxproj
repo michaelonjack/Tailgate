@@ -30,6 +30,7 @@
 		B13B81441FE9FB29008F3A38 /* FoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81431FE9FB29008F3A38 /* FoodTableViewCell.swift */; };
 		B13B81461FE9FB3A008F3A38 /* DrinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81451FE9FB3A008F3A38 /* DrinkTableViewCell.swift */; };
 		B13B81481FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */; };
+		B13B814A1FEA0446008F3A38 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */; };
 		B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */; };
 		B1BC52CD1FE09A0400BCBAE8 /* TailgatePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CC1FE09A0400BCBAE8 /* TailgatePhotoCell.swift */; };
 		B1BC52CF1FE0C12700BCBAE8 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */; };
@@ -72,6 +73,7 @@
 		B13B81431FE9FB29008F3A38 /* FoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTableViewCell.swift; sourceTree = "<group>"; };
 		B13B81451FE9FB3A008F3A38 /* DrinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewCell.swift; sourceTree = "<group>"; };
 		B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateInvitesViewController.swift; sourceTree = "<group>"; };
+		B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateViewController.swift; sourceTree = "<group>"; };
 		B1BC52CC1FE09A0400BCBAE8 /* TailgatePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatePhotoCell.swift; sourceTree = "<group>"; };
 		B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 		B13B813E1FE6EC91008F3A38 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
+				B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */,
 				B13B81431FE9FB29008F3A38 /* FoodTableViewCell.swift */,
 				B13B81451FE9FB3A008F3A38 /* DrinkTableViewCell.swift */,
 				B13B813F1FE6ECD4008F3A38 /* SchoolTableViewCell.swift */,
@@ -394,6 +397,7 @@
 				B13B813B1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift in Sources */,
 				B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */,
 				B1E83BE41FDD857A00185E17 /* TopDownSegue.swift in Sources */,
+				B13B814A1FEA0446008F3A38 /* UserTableViewCell.swift in Sources */,
 				B1BC52CF1FE0C12700BCBAE8 /* DatabaseHelper.swift in Sources */,
 				B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */,
 				B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */,
