@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 
+
 //////////////////////////////////////////////////////////////////////////////////////
 //
 //
@@ -41,10 +42,10 @@ func uploadProfilePictureForUser(userid:String, image:UIImage) {
 //
 //
 //
-func uploadTailgatePictureForUser(userid:String, image:UIImage, completion : @escaping (_ downloadUrl: String?) -> Void) {
+func uploadTailgatePicture(tailgate:Tailgate, userid:String, image:UIImage, completion : @escaping (_ downloadUrl: String?) -> Void) {
     let timestamp = String(UInt64((Date().timeIntervalSince1970 + 62_135_596_800) * 10_000_000))
-    let imageUrlsReference = Database.database().reference(withPath: "users/" + userid + "/tailgate/imageUrls")
-    let userStorageReference = Storage.storage().reference(withPath: "images/" + userid + "/tailgate/" + timestamp)
+    let imageUrlsReference = Database.database().reference(withPath: "tailgates/" + tailgate.id + "/imageUrls")
+    let userStorageReference = Storage.storage().reference(withPath: "images/" + userid + "/tailgate/" + tailgate.id + "/" +  timestamp)
     
     let imageMetaData = StorageMetadata()
     imageMetaData.contentType = "image/jpeg"
@@ -71,9 +72,9 @@ func uploadTailgatePictureForUser(userid:String, image:UIImage, completion : @es
 //
 //
 //
-func getTailgateImageUrlsForUser(userid:String, completion: @escaping (_ urls: [String]) -> Void) {
+func getTailgateImageUrls(tailgate:Tailgate, completion: @escaping (_ urls: [String]) -> Void) {
     var imgUrls:[String] = []
-    let imageUrlsReference = Database.database().reference(withPath: "users/" + userid + "/tailgate/imageUrls")
+    let imageUrlsReference = Database.database().reference(withPath: "tailgates/" + tailgate.id + "/imageUrls")
     
     imageUrlsReference.observeSingleEvent(of: .value, with: { (snapshot) in
         if let urlDict = snapshot.value as? [String:AnyObject] {
@@ -99,14 +100,93 @@ func getTailgateImageUrlsForUser(userid:String, completion: @escaping (_ urls: [
 //
 func getSchools(completion: @escaping (([School]) -> Void)) {
     var schools:[School] = []
-    var schoolReference = Database.database().reference(withPath: "schools/")
+    let schoolReference = Database.database().reference(withPath: "schools/")
     
-    schoolReference.observe(.value, with: { (snapshot) in
+    schoolReference.observeSingleEvent(of: .value, with: { (snapshot) in
         for schoolSnapshot in snapshot.children {
             let school = School(snapshot: schoolSnapshot as! DataSnapshot)
             schools.append(school)
         }
         
         completion(schools)
+    })
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+func getFood(completion: @escaping (([Food]) -> Void)) {
+    var foods:[Food] = []
+    let foodReference = Database.database().reference(withPath: "food/")
+    
+    foodReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        for foodSnapshot in snapshot.children {
+            let food = Food(snapshot: foodSnapshot as! DataSnapshot)
+            foods.append(food)
+        }
+        
+        completion(foods)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+func getDrinks(completion: @escaping (([Drink]) -> Void)) {
+    var drinks:[Drink] = []
+    let drinkReference = Database.database().reference(withPath: "drinks/")
+    
+    drinkReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        for drinkSnapshot in snapshot.children {
+            let drink = Drink(snapshot: drinkSnapshot as! DataSnapshot)
+            drinks.append(drink)
+        }
+        
+        completion(drinks)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+func getSchoolByName(name:String, completion: @escaping ((School) -> Void)) {
+    let schoolPath = name.replacingOccurrences(of: " ", with: "")
+    let schoolReference = Database.database().reference(withPath: "schools/" + schoolPath)
+    
+    schoolReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        let school = School(snapshot: snapshot)
+        completion(school)
+    })
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+func getUserById(userId:String, completion: @escaping ((User) -> Void)) {
+    let userReference = Database.database().reference(withPath: "users/" + userId)
+    
+    userReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        let user = User(snapshot: snapshot)
+        completion(user)
     })
 }

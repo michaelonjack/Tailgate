@@ -16,7 +16,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     fileprivate let locationManager = CLLocationManager()
     fileprivate var arViewController: ARViewController!
-    var tailgates: [Tailgate] = []
+    var tailgates: [TailgateAnnotation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +54,13 @@ extension MapViewController: MKMapViewDelegate {
                  calloutAccessoryControlTapped control: UIControl) {
         
         // you grab the Tailgate object that this tap refers to
-        let tailgate = view.annotation as! Tailgate
+        let tailgate = view.annotation as! TailgateAnnotation
         
         arViewController = ARViewController()
         // First the dataSource for the arViewController is set. The dataSource provides views for visible POIs
         arViewController.dataSource = self
         
-        arViewController.setAnnotations( [TailgateAR(location: tailgate.location, name: tailgate.title!, school: tailgate.school, owner: tailgate.owner)!] )
+        arViewController.setAnnotations( [TailgateAnnotationAR(location: tailgate.location, name: tailgate.title!, school: tailgate.school, owner: tailgate.owner)!] )
         
         // show the AR view
         self.present(arViewController, animated: true, completion: nil)
@@ -85,12 +85,12 @@ extension MapViewController: ARDataSource {
 extension MapViewController: AnnotationViewDelegate {
     func didTouch(annotationView: TailgateAnnotationARView) {
         // First you cast annotationViews annotation to a Tailgate
-        if let annotation = annotationView.annotation as? TailgateAR {
+        if let annotation = annotationView.annotation as? TailgateAnnotationAR {
             self.showInfoView(forTailgate: annotation)
         }
     }
     
-    func showInfoView(forTailgate tailgate: TailgateAR) {
+    func showInfoView(forTailgate tailgate: TailgateAnnotationAR) {
         // To show the additional info you create an alert view with the POIs name as title and an info text as message
         let alert = UIAlertController(title: tailgate.name , message: tailgate.description, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -124,11 +124,11 @@ extension MapViewController: CLLocationManagerDelegate {
                 let loc4 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.0001), longitude: location.coordinate.longitude.advanced(by: -0.0001))
                 let loc5 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.00029), longitude: location.coordinate.longitude.advanced(by: 0.0002))
                 
-                mapView.addAnnotation( Tailgate(title: "My dope ass tailgate", school: "Penn State University", owner: "Michael Onjack", location: loc1) )
-                mapView.addAnnotation( Tailgate(title: "Tailgate2", school: "University of Michigan", owner: "Ben Hagan", location: loc2) )
-                mapView.addAnnotation( Tailgate(title: "Tailgate3", school: "Penn State University", owner: "Ben Hagan", location: loc3) )
-                mapView.addAnnotation( Tailgate(title: "Tailgate4", school: "Ohio State University", owner: "Ben Hagan", location: loc4) )
-                mapView.addAnnotation( Tailgate(title: "Muffin workout sesh", school: "University of Wisconsin", owner: "Muffin Lawler", location: loc5) )
+                mapView.addAnnotation( TailgateAnnotation(title: "My dope ass tailgate", school: "Penn State University", owner: "Michael Onjack", location: loc1) )
+                mapView.addAnnotation( TailgateAnnotation(title: "Tailgate2", school: "University of Michigan", owner: "Ben Hagan", location: loc2) )
+                mapView.addAnnotation( TailgateAnnotation(title: "Tailgate3", school: "Penn State University", owner: "Ben Hagan", location: loc3) )
+                mapView.addAnnotation( TailgateAnnotation(title: "Tailgate4", school: "Ohio State University", owner: "Ben Hagan", location: loc4) )
+                mapView.addAnnotation( TailgateAnnotation(title: "Muffin workout sesh", school: "University of Wisconsin", owner: "Muffin Lawler", location: loc5) )
             }
         }
     }

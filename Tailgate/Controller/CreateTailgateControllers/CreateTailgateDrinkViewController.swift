@@ -17,10 +17,10 @@ class CreateTailgateDrinkViewController: UIViewController {
     var tailgateSchool: School!
     var isPublic: Bool!
     var startTime: Date!
-    var foods:[String]!
+    var foods:[Food]!
     
-    var drinks:[String] = ["Vlad", "Jonboy", "Vlad Ham"]
-    var selectedDrinks:[String] = []
+    var drinks:[Drink] = []
+    var selectedDrinks:[Drink] = []
     var searchText:String = "" {
         didSet {
             drinksTable.reloadData()
@@ -35,6 +35,11 @@ class CreateTailgateDrinkViewController: UIViewController {
         drinksTable.allowsMultipleSelection = true
         
         searchTextField.delegate = self
+        
+        getDrinks(completion: { (drinks) in
+            self.drinks = drinks
+            self.drinksTable.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,10 +101,10 @@ extension CreateTailgateDrinkViewController: UITableViewDataSource {
         for index in 0...self.drinks.count-1 {
             let currDrink = self.drinks[index]
             
-            if self.searchText == "" || currDrink.lowercased().range(of: self.searchText.lowercased()) != nil {
+            if self.searchText == "" || currDrink.name.lowercased().range(of: self.searchText.lowercased()) != nil {
                 // We want to skip over matches that were already added to the table
                 if matchesFound == indexPath.row {
-                    cell.drinkNameLabel.text = currDrink
+                    cell.drinkNameLabel.text = currDrink.name
                     break
                 }
                 matchesFound = matchesFound + 1
@@ -114,7 +119,7 @@ extension CreateTailgateDrinkViewController: UITableViewDataSource {
             var count = 0
             
             for drink in drinks {
-                if drink.lowercased().range(of: self.searchText.lowercased()) != nil {
+                if drink.name.lowercased().range(of: self.searchText.lowercased()) != nil {
                     count = count + 1
                 }
             }

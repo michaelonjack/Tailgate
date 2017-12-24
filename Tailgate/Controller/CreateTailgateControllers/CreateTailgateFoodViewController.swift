@@ -18,8 +18,8 @@ class CreateTailgateFoodViewController: UIViewController {
     var isPublic: Bool!
     var startTime: Date!
     
-    var foods:[String] = ["Chips", "Salsa", "Rum Ham"]
-    var selectedFoods:[String] = []
+    var foods:[Food] = []
+    var selectedFoods:[Food] = []
     var searchText:String = "" {
         didSet {
             foodTable.reloadData()
@@ -34,6 +34,11 @@ class CreateTailgateFoodViewController: UIViewController {
         foodTable.allowsMultipleSelection = true
         
         searchTextField.delegate = self
+        
+        getFood(completion: { (foods) in
+            self.foods = foods
+            self.foodTable.reloadData()
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,10 +101,10 @@ extension CreateTailgateFoodViewController: UITableViewDataSource {
         for index in 0...self.foods.count-1 {
             let currFood = self.foods[index]
             
-            if self.searchText == "" || currFood.lowercased().range(of: self.searchText.lowercased()) != nil {
+            if self.searchText == "" || currFood.name.lowercased().range(of: self.searchText.lowercased()) != nil {
                 // We want to skip over matches that were already added to the table
                 if matchesFound == indexPath.row {
-                    cell.foodNameLabel.text = currFood
+                    cell.foodNameLabel.text = currFood.name
                     break
                 }
                 matchesFound = matchesFound + 1
@@ -114,7 +119,7 @@ extension CreateTailgateFoodViewController: UITableViewDataSource {
             var count = 0
             
             for food in foods {
-                if food.lowercased().range(of: self.searchText.lowercased()) != nil {
+                if food.name.lowercased().range(of: self.searchText.lowercased()) != nil {
                     count = count + 1
                 }
             }

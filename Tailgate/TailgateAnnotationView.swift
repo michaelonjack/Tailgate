@@ -14,7 +14,7 @@ import SDWebImage
 class TailgateAnnotationView: MKAnnotationView {
     override var annotation: MKAnnotation? {
         willSet {
-            guard let tailgate = newValue as? Tailgate else {return}
+            guard let tailgate = newValue as? TailgateAnnotation else {return}
             canShowCallout = true
             calloutOffset = CGPoint(x: -5, y: 5)
             

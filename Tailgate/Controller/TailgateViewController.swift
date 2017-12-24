@@ -16,11 +16,16 @@ class TailgateViewController: UIViewController {
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var trashButton: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var ownerLabel: UILabel!
+    @IBOutlet weak var schoolLabel: UILabel!
+    @IBOutlet weak var privateLabel: UILabel!
     
     fileprivate let reuseIdentifier = "TailgateCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
     fileprivate let itemsPerRow: CGFloat = 3
     
+    var tailgate: Tailgate!
     var imageUrls: [String] = []
     var selectedImageIndex: IndexPath? {
         didSet {
@@ -55,10 +60,23 @@ class TailgateViewController: UIViewController {
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         
-        getTailgateImageUrlsForUser(userid: (Auth.auth().currentUser?.uid)!) { imgUrls in
+        nameLabel.text = tailgate.name
+        schoolLabel.text = tailgate.school.name
+        privateLabel.text = "Public"
+        
+        let ownerId = tailgate.owner
+        getUserById(userId: ownerId!, completion: { (user) in
+            DispatchQueue.main.async {
+                self.ownerLabel.text = user.name
+            }
+        })
+        
+        getTailgateImageUrls(tailgate: self.tailgate!) { imgUrls in
             self.imageUrls = imgUrls
             self.imageCollectionView.reloadData()
         }
+        
+        self.containerSwipeNavigationController?.rightViewController = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,6 +89,22 @@ class TailgateViewController: UIViewController {
     }
     
     @IBAction func trashButtonPressed(_ sender: UIButton) {
+        
+        let tailgateReference = Database.database().reference(withPath: "tailgates/" + tailgate.id)
+        let userTailgateReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)! + "/tailgate")
+        
+        // TODO: Do we want to remove the data in the tailgate table or let it persist as a viewable archive?
+        // For now we say remove it
+        tailgateReference.removeValue()
+        
+        // Remove the tailgate data from the user reference
+        userTailgateReference.removeValue()
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newTailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "NewTailgateNavigationController") as! UINavigationController
+        
+        self.containerSwipeNavigationController?.showEmbeddedView(position: .center)
+        self.containerSwipeNavigationController?.rightViewController = newTailgateViewController
     }
     
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
@@ -85,7 +119,7 @@ class TailgateViewController: UIViewController {
         let picker = YPImagePicker(configuration: ypConfig)
         picker.didSelectImage = { image in
             
-            uploadTailgatePictureForUser(userid: (Auth.auth().currentUser?.uid)!, image: image) {
+            uploadTailgatePicture(tailgate: self.tailgate!, userid: (Auth.auth().currentUser?.uid)!, image: image) {
                 downloadUrl in
                 
                 if let imageUrl = downloadUrl {

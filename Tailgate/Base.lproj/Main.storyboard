@@ -148,6 +148,10 @@
                     <connections>
                         <outlet property="backButton" destination="fHC-pn-yzm" id="lpA-R1-Hpl"/>
                         <outlet property="imageCollectionView" destination="brP-rp-Gba" id="pkF-Ki-6Xi"/>
+                        <outlet property="nameLabel" destination="xm0-zg-zBC" id="h0D-o3-dmu"/>
+                        <outlet property="ownerLabel" destination="P1F-NY-A8h" id="imh-rR-DQf"/>
+                        <outlet property="privateLabel" destination="ZiX-ey-ytX" id="FMW-YT-YMv"/>
+                        <outlet property="schoolLabel" destination="ymQ-eA-OKh" id="ujG-gn-ALB"/>
                         <outlet property="trashButton" destination="rgm-GR-msR" id="7b4-oY-S6j"/>
                     </connections>
                 </viewController>
@@ -638,6 +642,9 @@
                                 <state key="normal" title="CREATE">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="createPressed:" destination="Lv0-ta-7to" eventType="touchUpInside" id="aZf-tr-HIx"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nEW-ig-dcR">
                                 <rect key="frame" x="0.0" y="163" width="375" height="409"/>

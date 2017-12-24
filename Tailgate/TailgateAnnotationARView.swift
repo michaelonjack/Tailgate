@@ -46,7 +46,7 @@ class TailgateAnnotationARView: ARAnnotationView {
         distanceLabel?.font = UIFont.systemFont(ofSize: 12)
         self.addSubview(distanceLabel!)
         
-        if let annotation = annotation as? TailgateAR {
+        if let annotation = annotation as? TailgateAnnotationAR {
             titleLabel?.text = annotation.title
             distanceLabel?.text = String(format: "%.2f km", annotation.distanceFromUser / 1000)
         }

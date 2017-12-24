@@ -1,5 +1,5 @@
 //
-//  TailgateAR.swift
+//  TailgateAnnotationAR.swift
 //  Tailgate annotation used on the AR view with the camera
 //
 //  Created by Michael Onjack on 12/9/17.
@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import HDAugmentedReality
 
-class TailgateAR: ARAnnotation {
+class TailgateAnnotationAR: ARAnnotation {
     let name: String
     let school: String
     let owner: String

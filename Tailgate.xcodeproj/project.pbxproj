@@ -15,10 +15,10 @@
 		B10E9E751FDCB6A200DB4751 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */; };
 		B10E9E7D1FDCB76900DB4751 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */; };
 		B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */; };
-		B10E9E811FDCBA6100DB4751 /* Tailgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E801FDCBA6100DB4751 /* Tailgate.swift */; };
+		B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E801FDCBA6100DB4751 /* TailgateAnnotation.swift */; };
 		B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */; };
 		B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9EA01FDCE4D600DB4751 /* TailgateAnnotationARView.swift */; };
-		B10E9EA31FDCE6C300DB4751 /* TailgateAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9EA21FDCE6C300DB4751 /* TailgateAR.swift */; };
+		B10E9EA31FDCE6C300DB4751 /* TailgateAnnotationAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9EA21FDCE6C300DB4751 /* TailgateAnnotationAR.swift */; };
 		B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */; };
 		B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */; };
 		B13B81371FE60086008F3A38 /* CreateTailgateDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81361FE60086008F3A38 /* CreateTailgateDateViewController.swift */; };
@@ -31,6 +31,9 @@
 		B13B81461FE9FB3A008F3A38 /* DrinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81451FE9FB3A008F3A38 /* DrinkTableViewCell.swift */; };
 		B13B81481FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */; };
 		B13B814A1FEA0446008F3A38 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */; };
+		B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16BC4D11FEECA290087C2F1 /* Tailgate.swift */; };
+		B1BBF2E31FEEBC98007B1ACF /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBF2E21FEEBC98007B1ACF /* Drink.swift */; };
+		B1BBF2E51FEEBCA4007B1ACF /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBF2E41FEEBCA4007B1ACF /* Food.swift */; };
 		B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */; };
 		B1BC52CD1FE09A0400BCBAE8 /* TailgatePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CC1FE09A0400BCBAE8 /* TailgatePhotoCell.swift */; };
 		B1BC52CF1FE0C12700BCBAE8 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */; };
@@ -58,10 +61,10 @@
 		B10E9E761FDCB6A200DB4751 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		B10E9E801FDCBA6100DB4751 /* Tailgate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tailgate.swift; sourceTree = "<group>"; };
+		B10E9E801FDCBA6100DB4751 /* TailgateAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotation.swift; sourceTree = "<group>"; };
 		B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationView.swift; sourceTree = "<group>"; };
 		B10E9EA01FDCE4D600DB4751 /* TailgateAnnotationARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationARView.swift; sourceTree = "<group>"; };
-		B10E9EA21FDCE6C300DB4751 /* TailgateAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAR.swift; sourceTree = "<group>"; };
+		B10E9EA21FDCE6C300DB4751 /* TailgateAnnotationAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationAR.swift; sourceTree = "<group>"; };
 		B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateNameViewController.swift; sourceTree = "<group>"; };
 		B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateAccessibilityViewController.swift; sourceTree = "<group>"; };
 		B13B81361FE60086008F3A38 /* CreateTailgateDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateDateViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +77,9 @@
 		B13B81451FE9FB3A008F3A38 /* DrinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewCell.swift; sourceTree = "<group>"; };
 		B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateInvitesViewController.swift; sourceTree = "<group>"; };
 		B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		B16BC4D11FEECA290087C2F1 /* Tailgate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tailgate.swift; sourceTree = "<group>"; };
+		B1BBF2E21FEEBC98007B1ACF /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		B1BBF2E41FEEBCA4007B1ACF /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateViewController.swift; sourceTree = "<group>"; };
 		B1BC52CC1FE09A0400BCBAE8 /* TailgatePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatePhotoCell.swift; sourceTree = "<group>"; };
 		B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
@@ -148,8 +154,11 @@
 			children = (
 				B1E83BE51FDD890500185E17 /* User.swift */,
 				B13B81411FE6F1B6008F3A38 /* School.swift */,
-				B10E9E801FDCBA6100DB4751 /* Tailgate.swift */,
-				B10E9EA21FDCE6C300DB4751 /* TailgateAR.swift */,
+				B16BC4D11FEECA290087C2F1 /* Tailgate.swift */,
+				B10E9E801FDCBA6100DB4751 /* TailgateAnnotation.swift */,
+				B10E9EA21FDCE6C300DB4751 /* TailgateAnnotationAR.swift */,
+				B1BBF2E21FEEBC98007B1ACF /* Drink.swift */,
+				B1BBF2E41FEEBCA4007B1ACF /* Food.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -390,10 +399,11 @@
 				B1E83BEC1FDE286B00185E17 /* HomeViewController.swift in Sources */,
 				B1BC52CD1FE09A0400BCBAE8 /* TailgatePhotoCell.swift in Sources */,
 				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
-				B10E9EA31FDCE6C300DB4751 /* TailgateAR.swift in Sources */,
+				B10E9EA31FDCE6C300DB4751 /* TailgateAnnotationAR.swift in Sources */,
 				B13B81371FE60086008F3A38 /* CreateTailgateDateViewController.swift in Sources */,
 				B13B813D1FE61263008F3A38 /* CreateTailgateSchoolViewController.swift in Sources */,
 				B13B81481FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift in Sources */,
+				B1BBF2E51FEEBCA4007B1ACF /* Food.swift in Sources */,
 				B13B813B1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift in Sources */,
 				B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */,
 				B1E83BE41FDD857A00185E17 /* TopDownSegue.swift in Sources */,
@@ -406,13 +416,15 @@
 				B13B81441FE9FB29008F3A38 /* FoodTableViewCell.swift in Sources */,
 				B1E83BE61FDD890500185E17 /* User.swift in Sources */,
 				B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */,
-				B10E9E811FDCBA6100DB4751 /* Tailgate.swift in Sources */,
+				B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */,
 				B10E9E6D1FDCB6A200DB4751 /* LoginViewController.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,
 				B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */,
+				B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */,
 				B13B81391FE60829008F3A38 /* CreateTailgateFoodViewController.swift in Sources */,
 				B1E83BE01FDD795000185E17 /* SignUpPasswordViewController.swift in Sources */,
 				B1E83BD71FDCFBE200185E17 /* ProfileViewController.swift in Sources */,
+				B1BBF2E31FEEBC98007B1ACF /* Drink.swift in Sources */,
 				B10E9E6B1FDCB6A200DB4751 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
