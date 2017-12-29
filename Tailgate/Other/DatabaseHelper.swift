@@ -163,6 +163,28 @@ func getDrinks(completion: @escaping (([Drink]) -> Void)) {
 //
 //
 //
+func getUsers(completion: @escaping (([User]) -> Void)) {
+    var users:[User] = []
+    let userReference = Database.database().reference(withPath: "users/")
+    
+    userReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        for userSnapshot in snapshot.children {
+            let user = User(snapshot: userSnapshot as! DataSnapshot)
+            users.append(user)
+        }
+        
+        completion(users)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
 func getSchoolByName(name:String, completion: @escaping ((School) -> Void)) {
     let schoolPath = name.replacingOccurrences(of: " ", with: "")
     let schoolReference = Database.database().reference(withPath: "schools/" + schoolPath)

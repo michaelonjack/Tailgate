@@ -14,6 +14,7 @@ import YPImagePicker
 class TailgateViewController: UIViewController {
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var trashButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -76,12 +77,44 @@ class TailgateViewController: UIViewController {
             self.imageCollectionView.reloadData()
         }
         
-        self.containerSwipeNavigationController?.rightViewController = self
+        loadProfilePicture()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /////////////////////////////////////////////////////
+    //
+    // loadProfilePicture
+    //
+    //  Pulls the user's profile picture from the database if it exists
+    //
+    func loadProfilePicture() {
+        let tailgateOwnerId = self.tailgate.owner
+        let currentUserReference = Database.database().reference(withPath: "users/" + tailgateOwnerId!)
+        
+        // Load the stored image
+        currentUserReference.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let storedData = snapshot.value as? NSDictionary
+            
+            // Load user's profile picture from Firebase Storage if it exists (exists if the user has a profPic URL in the database)
+            if snapshot.hasChild("profilePictureUrl") {
+                let picUrlStr = storedData?["profilePictureUrl"] as? String ?? ""
+                if picUrlStr != "" {
+                    let picUrl = URL(string: picUrlStr)
+                    self.profilePictureImageView.sd_setImage(with: picUrl, placeholderImage: UIImage(named: "Avatar"))
+                    
+                    // round picture corners
+                    self.profilePictureImageView.layer.cornerRadius = 8.0
+                    self.profilePictureImageView.clipsToBounds = true
+                }
+            } else {
+                print("Error -- Loading Profile Picture")
+            }
+        })
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
