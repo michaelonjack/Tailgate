@@ -250,6 +250,11 @@ extension TailgateViewController : CLLocationManagerDelegate {
        
         mapVC.mapView.addAnnotation( TailgateAnnotation(tailgate: self.tailgate) )
         
+        // Update tailgate coordinates in database
+        let longitude = manager.location?.coordinate.longitude
+        let latitude = manager.location?.coordinate.latitude
+        Database.database().reference(withPath: "tailgates/" + tailgate.id).updateChildValues(["longitude":longitude!, "latitude":latitude!])
+        
         // Vibrate phone
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
