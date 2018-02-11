@@ -212,3 +212,37 @@ func getUserById(userId:String, completion: @escaping ((User) -> Void)) {
         completion(user)
     })
 }
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+func getDrinkById(drinkId:String, completion: @escaping ((Drink) -> Void)) {
+    let drinkReference = Database.database().reference(withPath: "drinks/" + drinkId)
+    
+    drinkReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        let drink = Drink(snapshot: snapshot)
+        completion(drink)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+//
+//
+func getFoodById(foodId:String, completion: @escaping ((Food) -> Void)) {
+    let foodReference = Database.database().reference(withPath: "food/" + foodId)
+    
+    foodReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        let food = Food(snapshot: snapshot)
+        completion(food)
+    })
+}

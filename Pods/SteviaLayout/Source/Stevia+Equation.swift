@@ -55,6 +55,14 @@ public extension UIView {
         return SteviaAttribute(view: self, attribute: .right)
     }
     
+    public var Leading: SteviaAttribute {
+        return SteviaAttribute(view: self, attribute: .leading)
+    }
+    
+    public var Trailing: SteviaAttribute {
+        return SteviaAttribute(view: self, attribute: .trailing)
+    }
+    
     public var CenterX: SteviaAttribute {
         return SteviaAttribute(view: self, attribute: .centerX)
     }
@@ -68,17 +76,76 @@ public extension UIView {
 
 @discardableResult
 public func == (left: SteviaAttribute, right: SteviaAttribute) -> NSLayoutConstraint {
-    let constant = right.constant ?? 0
-    let multiplier = right.multiplier ?? 1
-    if let spv = left.view.superview {
-        return spv.addConstraint(item: left.view,
-                                 attribute: left.attribute,
-                                 toItem: right.view,
-                                 attribute: right.attribute,
-                                 multiplier : multiplier,
-                                 constant:constant)
+    let constant = right.constant ?? left.constant ?? 0
+    let multiplier = right.multiplier ?? left.multiplier ?? 1
+
+    if left.view.superview == right.view.superview { // A and B are at the same level
+        // Old code
+        if let spv = left.view.superview {
+            return spv.addConstraint(item: left.view,
+                                     attribute: left.attribute,
+                                     toItem: right.view,
+                                     attribute: right.attribute,
+                                     multiplier: multiplier,
+                                     constant: constant)
+        }
+    } else if left.view.superview == right.view { // A is in B (first level)
+        return right.view.addConstraint(item: left.view,
+                                        attribute: left.attribute,
+                                        toItem: right.view,
+                                        attribute: right.attribute,
+                                        multiplier: multiplier,
+                                        constant: constant)
+    } else if right.view.superview == left.view { // B is in A (first level)
+        return left.view.addConstraint(item: right.view,
+                                       attribute: right.attribute,
+                                       toItem: left.view,
+                                       attribute: left.attribute,
+                                       multiplier: multiplier,
+                                       constant: constant)
+    } else if left.view.isDescendant(of: right.view) { // A is in B (LOW level)
+        return right.view.addConstraint(item: left.view,
+                                        attribute: left.attribute,
+                                        toItem: right.view,
+                                        attribute: right.attribute,
+                                        multiplier: multiplier,
+                                        constant: constant)
+    } else if right.view.isDescendant(of: left.view) { // B is in A (LOW level)
+        return left.view.addConstraint(item: left.view,
+                                       attribute: left.attribute,
+                                       toItem: right.view,
+                                       attribute: right.attribute,
+                                       multiplier: multiplier,
+                                       constant: constant)
+    } else if let commonParent = commonParent(with: left.view, and: right.view) { // Look for common ancestor
+        return commonParent.addConstraint(item: left.view,
+                                          attribute: left.attribute,
+                                          toItem: right.view,
+                                          attribute: right.attribute,
+                                          multiplier: multiplier,
+                                          constant: constant)
     }
+    
     return NSLayoutConstraint()
+}
+
+func commonParent(with viewA: UIView, and viewB: UIView) -> UIView? {
+    
+    // Both views should have a superview
+    guard viewA.superview != nil && viewB.superview != nil else {
+        return nil
+    }
+    
+    // Find the common parent
+    var spv = viewA.superview
+    while spv != nil {
+        if viewA.isDescendant(of: spv!) && viewB.isDescendant(of: spv!) {
+            return spv
+        } else {
+            spv = spv?.superview
+        }
+    }
+    return nil
 }
 
 @discardableResult
@@ -91,8 +158,8 @@ public func >= (left: SteviaAttribute, right: SteviaAttribute) -> NSLayoutConstr
                                  relatedBy: .greaterThanOrEqual,
                                  toItem: right.view,
                                  attribute: right.attribute,
-                                 multiplier : multiplier,
-                                 constant:constant)
+                                 multiplier: multiplier,
+                                 constant: constant)
     }
     return NSLayoutConstraint()
 }
@@ -107,8 +174,8 @@ public func <= (left: SteviaAttribute, right: SteviaAttribute) -> NSLayoutConstr
                                  relatedBy: .lessThanOrEqual,
                                  toItem: right.view,
                                  attribute: right.attribute,
-                                 multiplier : multiplier,
-                                 constant:constant)
+                                 multiplier: multiplier,
+                                 constant: constant)
     }
     return NSLayoutConstraint()
 }
@@ -125,7 +192,7 @@ public func - (left: SteviaAttribute, right: CGFloat) -> SteviaAttribute {
 
 @discardableResult
 public func * (left: SteviaAttribute, right: CGFloat) -> SteviaAttribute {
-    return SteviaAttribute(view: left.view, attribute: left.attribute, constant:left.constant, multiplier: right)
+    return SteviaAttribute(view: left.view, attribute: left.attribute, constant: left.constant, multiplier: right)
 }
 
 @discardableResult
@@ -154,7 +221,7 @@ public func == (left: SteviaAttribute, right: CGFloat) -> NSLayoutConstraint {
         return spv.addConstraint(item: left.view,
                                  attribute: left.attribute,
                                  toItem: toItem,
-                                 constant:constant)
+                                 constant: constant)
     }
     return NSLayoutConstraint()
 }
@@ -166,7 +233,7 @@ public func >= (left: SteviaAttribute, right: CGFloat) -> NSLayoutConstraint {
                                  attribute: left.attribute,
                                  relatedBy: .greaterThanOrEqual,
                                  toItem: spv,
-                                 constant:right)
+                                 constant: right)
     }
     return NSLayoutConstraint()
 }
@@ -178,7 +245,7 @@ public func <= (left: SteviaAttribute, right: CGFloat) -> NSLayoutConstraint {
                                  attribute: left.attribute,
                                  relatedBy: .lessThanOrEqual,
                                  toItem: spv,
-                                 constant:right)
+                                 constant: right)
     }
     return NSLayoutConstraint()
 }

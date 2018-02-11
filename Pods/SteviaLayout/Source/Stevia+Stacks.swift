@@ -33,10 +33,11 @@ public extension UIView {
      */
     @discardableResult
     public func layout(_ objects: Any...) -> [UIView] {
-        return stackV(objects)
+        return layout(objects)
     }
     
-    fileprivate func stackV(_ objects: [Any]) -> [UIView] {
+    @discardableResult
+    public func layout(_ objects: [Any]) -> [UIView] {
         var previousMargin: CGFloat? = nil
         var previousFlexibleMargin: SteviaFlexibleMargin? = nil
         for (i, o) in objects.enumerated() {
@@ -48,9 +49,9 @@ public extension UIView {
                         v.top(pm) // only if first view
                     } else {
                         if let vx = objects[i-2] as? UIView {
-                            vx.stackV(m:pm, v:v)
+                            vx.stackV(m: pm, v: v)
                         } else if let va = objects[i-2] as? [UIView] {
-                            va.first!.stackV(m:pm, v:v)
+                            va.first!.stackV(m: pm, v: v)
                         }
                     }
                     previousMargin = nil
@@ -78,9 +79,7 @@ public extension UIView {
                 } else {
                     tryStackViewVerticallyWithPreviousView(v, index: i, objects: objects)
                 }
-            case is Int: fallthrough
-            case is Double: fallthrough
-            case is CGFloat:
+            case is Int, is Double, is CGFloat:
                 let m = cgFloatMarginFromObject(o)
                 previousMargin = m // Store margin for next pass
                 if i != 0 && i == (objects.count - 1) {
@@ -103,16 +102,16 @@ public extension UIView {
                 }
             case _ as String:() //Do nothin' !
             case let a as [UIView]:
-            alignHorizontally(a)
+                align(horizontally: a)
             let v = a.first!
             if let pm = previousMargin {
                 if i == 1 {
                     v.top(pm) // only if first view
                 } else {
                     if let vx = objects[i-2] as? UIView {
-                        vx.stackV(m:pm, v:v)
+                        vx.stackV(m: pm, v: v)
                     } else if let va = objects[i-2] as? [UIView] {
-                        va.first!.stackV(m:pm, v:v)
+                        va.first!.stackV(m: pm, v: v)
                     }
                 }
                 previousMargin = nil
@@ -184,7 +183,7 @@ public extension UIView {
         let a: NSLayoutAttribute = axis == .vertical ? .top : .left
         let b: NSLayoutAttribute = axis == .vertical ? .bottom : .right
         if let spv = superview {
-            let c = constraint(item: v, attribute: a, toItem: self, attribute: b, constant:points)
+            let c = constraint(item: v, attribute: a, toItem: self, attribute: b, constant: points)
             spv.addConstraint(c)
         }
         return v

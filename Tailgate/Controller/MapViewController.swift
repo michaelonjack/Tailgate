@@ -124,11 +124,11 @@ extension MapViewController: CLLocationManagerDelegate {
                 let loc4 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.0001), longitude: location.coordinate.longitude.advanced(by: -0.0001))
                 let loc5 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.00029), longitude: location.coordinate.longitude.advanced(by: 0.0002))
                 
-                mapView.addAnnotation( TailgateAnnotation(title: "My dope ass tailgate", school: "Penn State University", owner: "Michael Onjack", location: loc1) )
-                mapView.addAnnotation( TailgateAnnotation(title: "Tailgate2", school: "University of Michigan", owner: "Ben Hagan", location: loc2) )
-                mapView.addAnnotation( TailgateAnnotation(title: "Tailgate3", school: "Penn State University", owner: "Ben Hagan", location: loc3) )
-                mapView.addAnnotation( TailgateAnnotation(title: "Tailgate4", school: "Ohio State University", owner: "Ben Hagan", location: loc4) )
-                mapView.addAnnotation( TailgateAnnotation(title: "Muffin workout sesh", school: "University of Wisconsin", owner: "Muffin Lawler", location: loc5) )
+                mapView.addAnnotation( TailgateAnnotation(id:"1", title: "My dope ass tailgate", school: "Penn State University", owner: "Michael Onjack", location: loc1) )
+                mapView.addAnnotation( TailgateAnnotation(id:"2", title: "Tailgate2", school: "University of Michigan", owner: "Ben Hagan", location: loc2) )
+                mapView.addAnnotation( TailgateAnnotation(id:"3", title: "Tailgate3", school: "Penn State University", owner: "Ben Hagan", location: loc3) )
+                mapView.addAnnotation( TailgateAnnotation(id:"4", title: "Tailgate4", school: "Ohio State University", owner: "Ben Hagan", location: loc4) )
+                mapView.addAnnotation( TailgateAnnotation(id:"5", title: "Muffin workout sesh", school: "University of Wisconsin", owner: "Muffin Lawler", location: loc5) )
             }
         }
     }

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SDWebImage
 import YPImagePicker
+import AudioToolbox
 
 class TailgateViewController: UIViewController {
 
@@ -25,6 +26,9 @@ class TailgateViewController: UIViewController {
     fileprivate let reuseIdentifier = "TailgateCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
     fileprivate let itemsPerRow: CGFloat = 3
+    
+    // LocationManager instance used to update the current user's location
+    let locationManager = CLLocationManager()
     
     var tailgate: Tailgate!
     var imageUrls: [String] = []
@@ -78,11 +82,6 @@ class TailgateViewController: UIViewController {
         }
         
         loadProfilePicture()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     /////////////////////////////////////////////////////
@@ -167,6 +166,37 @@ class TailgateViewController: UIViewController {
         present(picker, animated: true, completion: nil)
     }
     
+    
+    
+    @IBAction func locationButtonPressed(_ sender: Any) {
+        if locationServiceIsEnabled() {
+            self.locationManager.delegate = self
+            // Request location authorization for the app
+            self.locationManager.requestWhenInUseAuthorization()
+            // Request a location update
+            self.locationManager.requestLocation()
+        }
+            
+        else {
+            let locationNotEnabledAlert = UIAlertController(title: "Location Services Disabled", message: "Location Services must be enabled to check in with Thread.",preferredStyle: .alert)
+            
+            // Close action closes the pop-up alert
+            let closeAction = UIAlertAction(title: "Close", style:.default)
+            
+            locationNotEnabledAlert.addAction(closeAction)
+            
+            self.present(locationNotEnabledAlert, animated: true, completion: nil)
+        }
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let invitesVC: InvitesViewController = segue.destination as! InvitesViewController
+        
+        invitesVC.selectedInvites = self.tailgate.invites
+    }
+    
 }
 
 
@@ -179,6 +209,61 @@ extension TailgateViewController: UICollectionViewDelegate {
         return false
     }
 }
+
+
+
+
+
+
+extension TailgateViewController : CLLocationManagerDelegate {
+    
+    /////////////////////////////////////////////////////
+    //
+    //  locationServiceIsEnabled
+    //
+    //  Returns true if the user has location services enabled, false otherwise
+    //
+    func locationServiceIsEnabled() -> Bool {
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                return false
+            case .authorizedAlways, .authorizedWhenInUse:
+                return true
+            }
+        } else {
+            return false
+        }
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+
+        let location = manager.location
+        self.tailgate.location = location
+        
+        let mapVC:MapViewController =  self.containerSwipeNavigationController?.leftViewController as! MapViewController
+       
+        print("adding....")
+        mapVC.mapView.addAnnotation( TailgateAnnotation(tailgate: self.tailgate) )
+
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: \(error.localizedDescription)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
+}
+
+
+
 
 
 

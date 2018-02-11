@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import CoreLocation
 
 class Tailgate {
     let id: String!
@@ -16,9 +17,10 @@ class Tailgate {
     let school: School!
     let isPublic: Bool!
     let startTime: Date!
-    let foods:[Food]!
-    let drinks:[Drink]!
-    let invites:[User]!
+    var location: CLLocation?
+    var foods:[Food]!
+    var drinks:[Drink]!
+    var invites:[User]!
     
     init(owner:String, name:String, school:School, isPublic:Bool, startTime:Date, foods:[Food], drinks:[Drink], invites:[User]) {
         
@@ -31,6 +33,7 @@ class Tailgate {
         self.foods = foods
         self.drinks = drinks
         self.invites = invites
+        self.location = nil
     }
     
     init(snapshot:DataSnapshot) {
@@ -46,6 +49,7 @@ class Tailgate {
         self.drinks = []
         self.foods = []
         self.invites = []
+        self.location = nil
         
         let isPublic = snapshotValue["isPublic"] as? String ?? ""
         if isPublic == "true" {
@@ -53,11 +57,39 @@ class Tailgate {
         } else {
             self.isPublic = false
         }
+        
+        // Get the users for invites
+        let inviteIds = snapshotValue["invites"] as! NSDictionary
+        for (_,id) in inviteIds {
+            let id = id as? String ?? ""
+            getUserById(userId: id, completion: { (user) in
+                self.invites.append(user)
+            })
+        }
+        
+        // Get the drinks by their saved ids
+        let drinkIds = snapshotValue["drinks"] as! NSDictionary
+        for (_,id) in drinkIds {
+            let id = id as? String ?? ""
+            getDrinkById(drinkId: id, completion: { (drink) in
+                self.drinks.append(drink)
+            })
+        }
+        
+        // Get the food by their saved ids
+        let foodIds = snapshotValue["food"] as! NSDictionary
+        for (_,id) in foodIds {
+            let id = id as? String ?? ""
+            getFoodById(foodId: id, completion: { (food) in
+                self.foods.append(food)
+            })
+        }
     }
     
     func toAnyObject() -> Any {
         var foodDict: [String:String] = [:]
         var drinkDict: [String:String] = [:]
+        var inviteDict: [String:String] = [:]
         
         for food in foods {
             foodDict["id"] = food.id
@@ -65,6 +97,10 @@ class Tailgate {
         
         for drink in drinks {
             drinkDict["id"] = drink.id
+        }
+        
+        for invite in invites {
+            inviteDict["id"] = invite.uid
         }
         
         let formatter = DateFormatter()
@@ -79,7 +115,8 @@ class Tailgate {
             "isPublic": isPublic,
             "startTime": startTimeStr,
             "food": foodDict,
-            "drinks": drinkDict
+            "drinks": drinkDict,
+            "invites": inviteDict
         ]
     }
 }

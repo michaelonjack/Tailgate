@@ -8,7 +8,10 @@ It comes with adjustable square crop and filters.
 [![CI Status](http://img.shields.io/travis/ytakzk/Fusuma.svg?style=flat)](https://travis-ci.org/ytakzk/Fusuma)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![codebeat badge](https://codebeat.co/badges/6a591267-c444-4c88-a410-56270d8ed9bc)](https://codebeat.co/projects/github-com-yummypets-ypfusuma)
-[![Release version](https://img.shields.io/badge/release-2.3-blue.svg)]()
+[![GitHub tag](https://img.shields.io/github/release/Yummypets/YPImagePicker.svg)]()
+
+Give it a quick try :  
+`pod try YPImagePicker`
 
 |         | Features  |
 ----------|-----------------
@@ -34,15 +37,24 @@ Those features are available just with a few lines of code!
 YPImagePicker was built from the great Fusuma library.
 
 Here are the improvements we added :
+
+- Albums
+- Filters
+- Videos in the library
+- Both Square and non-square images
+- Permission managenent
+- Pan between tabs which feels smoother
 - Improve Overall Code Quality
 - Simplify API
-- Added Filters View ala Instagram
 - Replaces icons with lighter Text
 - Preselect Front camera (e.g for avatars)
-- Scroll between tabs which feels smoother
-- Grab videos form the library view as well
 - Replaces Delegate based with callbacks based api
 - Uses Native Navigation bar over custom View (gotta be a good UIKit citizen)
+- Faster library load
+- Hidden status bar for a more immersive XP
+- Flash Auto mode
+- Video Torch Mode
+- iPhone X support
 
 ## Installation
 
@@ -98,6 +110,9 @@ config.showsFilters = true
 config.shouldSaveNewPicturesToAlbum = true
 config.videoCompression = AVAssetExportPresetHighestQuality
 config.albumName = "MyGreatAppName"
+config.startOnScreen = .library
+config.videoRecordingTimeLimit = 10
+config.videoFromLibraryTimeLimit = 20
 
 // Build a picker with your configuration
 let picker = YPImagePicker(configuration: config)
@@ -148,4 +163,4 @@ See LICENSE for details.
 
 ## Swift Version
 Swift 3 -> version **1.2.1**  
-Swift 4 -> version **2.3.0**
+Swift 4 -> version **2.4.2**
