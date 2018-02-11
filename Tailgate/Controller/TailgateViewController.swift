@@ -132,6 +132,10 @@ class TailgateViewController: UIViewController {
         // Remove the tailgate data from the user reference
         userTailgateReference.removeValue()
         
+        // Remove the tailgate annotation from the map view if it exists
+        let mapVC:MapViewController =  self.containerSwipeNavigationController?.leftViewController as! MapViewController
+        mapVC.removeAnnotation(tailgate: self.tailgate)
+        
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newTailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "NewTailgateNavigationController") as! UINavigationController
         
@@ -239,15 +243,14 @@ extension TailgateViewController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-
         let location = manager.location
         self.tailgate.location = location
         
         let mapVC:MapViewController =  self.containerSwipeNavigationController?.leftViewController as! MapViewController
        
-        print("adding....")
         mapVC.mapView.addAnnotation( TailgateAnnotation(tailgate: self.tailgate) )
-
+        
+        // Vibrate phone
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
     

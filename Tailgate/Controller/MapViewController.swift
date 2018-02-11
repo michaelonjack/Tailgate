@@ -43,6 +43,15 @@ class MapViewController: UIViewController {
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.containerSwipeNavigationController?.showEmbeddedView(position: .center)
     }
+    
+    func removeAnnotation(tailgate:Tailgate) {
+        for annotation in self.mapView.annotations {
+            let tailgateAnnotation:TailgateAnnotation = annotation as! TailgateAnnotation
+            if tailgateAnnotation.id == tailgate.id {
+                self.mapView.removeAnnotation(tailgateAnnotation)
+            }
+        }
+    }
 }
 
 
