@@ -248,6 +248,9 @@ extension TailgateViewController : CLLocationManagerDelegate {
         
         let mapVC:MapViewController =  self.containerSwipeNavigationController?.leftViewController as! MapViewController
        
+        // Remove any existing annotations for this tailgate if they exist
+        mapVC.removeAnnotation(tailgate: self.tailgate)
+        // Add the tailgate annotation to the map
         mapVC.mapView.addAnnotation( TailgateAnnotation(tailgate: self.tailgate) )
         
         // Update tailgate coordinates in database

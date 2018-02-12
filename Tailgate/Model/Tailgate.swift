@@ -84,6 +84,14 @@ class Tailgate {
                 self.foods.append(food)
             })
         }
+        
+        // Get the location of the tailgate by creating a CLLocation from the saved coordinates
+        let latitude = snapshotValue["latitude"] as? Double
+        let longitude = snapshotValue["longitude"] as? Double
+        
+        if let lat = latitude, let long = longitude {
+            self.location = CLLocation(latitude: lat, longitude:long)
+        }
     }
     
     func toAnyObject() -> Any {

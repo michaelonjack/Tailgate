@@ -28,6 +28,7 @@ class MapViewController: UIViewController {
         mapView.register(TailgateAnnotationView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         
+        addTailgateAnnotations()
         
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
@@ -44,6 +45,30 @@ class MapViewController: UIViewController {
         self.containerSwipeNavigationController?.showEmbeddedView(position: .center)
     }
     
+    
+    
+    //////////////////////////////////////////////////////////////////////////////////////
+    //
+    // addTailgateAnnotations
+    //
+    // Adds annotations for all tailgates in the database
+    //
+    func addTailgateAnnotations() {
+        getTailgates { (tailgates) in
+            for tailgate in tailgates {
+            self.mapView.addAnnotation(TailgateAnnotation(tailgate: tailgate))
+            }
+        }
+    }
+    
+    
+    
+    //////////////////////////////////////////////////////////////////////////////////////
+    //
+    // removeAnnotation
+    //
+    // Removes the annotation for the parameter tailgate
+    //
     func removeAnnotation(tailgate:Tailgate) {
         for annotation in self.mapView.annotations {
             let tailgateAnnotation:TailgateAnnotation = annotation as! TailgateAnnotation
