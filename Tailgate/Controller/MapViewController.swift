@@ -45,6 +45,17 @@ class MapViewController: UIViewController {
         self.containerSwipeNavigationController?.showEmbeddedView(position: .center)
     }
     
+    @IBAction func reloadButtonPressed(_ sender: UIButton) {
+        
+        // Remove any existing annotations on the map before starting
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        
+        addTailgateAnnotations()
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
     
     
     //////////////////////////////////////////////////////////////////////////////////////
