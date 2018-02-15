@@ -98,17 +98,30 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
         
-        // you grab the Tailgate object that this tap refers to
-        let tailgate = view.annotation as! TailgateAnnotation
+        // Show the AR view when the right accessory view is tapped
+        if control == view.rightCalloutAccessoryView {
+            // you grab the Tailgate object that this tap refers to
+            let tailgate = view.annotation as! TailgateAnnotation
+            
+            arViewController = ARViewController()
+            // First the dataSource for the arViewController is set. The dataSource provides views for visible POIs
+            arViewController.dataSource = self
+            
+            arViewController.setAnnotations( [TailgateAnnotationAR(location: tailgate.location, name: tailgate.title!, school: tailgate.school, owner: tailgate.owner)!] )
+            
+            // show the AR view
+            self.present(arViewController, animated: true, completion: nil)
+        }
         
-        arViewController = ARViewController()
-        // First the dataSource for the arViewController is set. The dataSource provides views for visible POIs
-        arViewController.dataSource = self
-        
-        arViewController.setAnnotations( [TailgateAnnotationAR(location: tailgate.location, name: tailgate.title!, school: tailgate.school, owner: tailgate.owner)!] )
-        
-        // show the AR view
-        self.present(arViewController, animated: true, completion: nil)
+        // Show the tailgate view when the left accessory view is tapped
+        else if control == view.leftCalloutAccessoryView {
+            let tailgateAnnotation = view.annotation as! TailgateAnnotation
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
+            tailgateViewController.tailgate = tailgateAnnotation.tailgate
+            tailgateViewController.hasFullAccess = false
+            self.present(tailgateViewController, animated: true, completion: nil)
+        }
     }
 }
 
@@ -170,7 +183,7 @@ extension MapViewController: CLLocationManagerDelegate {
                 let loc5 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.00029), longitude: location.coordinate.longitude.advanced(by: 0.0002))
                 
                 mapView.addAnnotation( TailgateAnnotation(id:"1", title: "My dope ass tailgate", school: "Penn State University", owner: "Michael Onjack", location: loc1) )
-                mapView.addAnnotation( TailgateAnnotation(id:"2", title: "Tailgate2", school: "University of Michigan", owner: "Ben Hagan", location: loc2) )
+                mapView.addAnnotation( TailgateAnnotation(id:"2", title: "Tailgate2", school: "Michigan State University", owner: "Ben Hagan", location: loc2) )
                 mapView.addAnnotation( TailgateAnnotation(id:"3", title: "Tailgate3", school: "Penn State University", owner: "Ben Hagan", location: loc3) )
                 mapView.addAnnotation( TailgateAnnotation(id:"4", title: "Tailgate4", school: "Ohio State University", owner: "Ben Hagan", location: loc4) )
                 mapView.addAnnotation( TailgateAnnotation(id:"5", title: "Muffin workout sesh", school: "University of Wisconsin", owner: "Muffin Lawler", location: loc5) )

@@ -18,6 +18,8 @@ class TailgateViewController: UIViewController {
     @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var trashButton: UIButton!
+    @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var schoolLabel: UILabel!
@@ -31,6 +33,7 @@ class TailgateViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     var tailgate: Tailgate!
+    var hasFullAccess: Bool?
     var imageUrls: [String] = []
     var selectedImageIndex: IndexPath? {
         didSet {
@@ -79,6 +82,14 @@ class TailgateViewController: UIViewController {
         getTailgateImageUrls(tailgate: self.tailgate!) { imgUrls in
             self.imageUrls = imgUrls
             self.imageCollectionView.reloadData()
+        }
+        
+        if let fullAccess = hasFullAccess, fullAccess == false {
+            self.backButton.isHidden = true
+            self.trashButton.isHidden = true
+            self.locationButton.isHidden = true
+        } else {
+            self.exitButton.isHidden = true
         }
         
         loadProfilePicture()
@@ -141,6 +152,10 @@ class TailgateViewController: UIViewController {
         
         self.containerSwipeNavigationController?.showEmbeddedView(position: .center)
         self.containerSwipeNavigationController?.rightViewController = newTailgateViewController
+    }
+    
+    @IBAction func exitButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cameraButtonPressed(_ sender: UIButton) {

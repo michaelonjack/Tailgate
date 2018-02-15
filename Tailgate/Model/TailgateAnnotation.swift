@@ -19,6 +19,7 @@ class TailgateAnnotation: NSObject, MKAnnotation {
     let school: String
     var owner: String
     var annotationImageView: UIImageView?
+    var tailgate: Tailgate?
 
     init(tailgate: Tailgate) {
         self.id = tailgate.id
@@ -28,6 +29,7 @@ class TailgateAnnotation: NSObject, MKAnnotation {
         self.coordinate = location.coordinate
         self.annotationImageView = nil
         self.owner = ""
+        self.tailgate = tailgate
         
         super.init()
         

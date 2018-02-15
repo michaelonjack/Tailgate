@@ -136,25 +136,40 @@
                                     <segue destination="jYz-Re-I4F" kind="show" identifier="TailgateToInvite" id="sAv-Ih-VXR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NAe-IT-bhu">
+                                <rect key="frame" x="324" y="22" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NAe-IT-bhu" secondAttribute="height" multiplier="1:1" id="X8d-um-gfC"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Exit"/>
+                                <connections>
+                                    <action selector="exitButtonPressed:" destination="O2l-0b-cuo" eventType="touchUpInside" id="Auv-xp-C8K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="NAe-IT-bhu" firstAttribute="top" secondItem="7dd-t0-qLm" secondAttribute="top" constant="2" id="6gb-BJ-Cnw"/>
                             <constraint firstItem="fHC-pn-yzm" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.052473" id="ASE-SV-fev"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="bottom" secondItem="7dd-t0-qLm" secondAttribute="bottom" constant="30" id="CwU-tI-2vE"/>
                             <constraint firstItem="rgm-GR-msR" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.052473" id="Gs4-B3-Y1Z"/>
                             <constraint firstItem="7dd-t0-qLm" firstAttribute="trailing" secondItem="rgm-GR-msR" secondAttribute="trailing" constant="5" id="Pql-vs-TVk"/>
+                            <constraint firstItem="NAe-IT-bhu" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.0524738" id="T70-Pv-9rX"/>
                             <constraint firstItem="fHC-pn-yzm" firstAttribute="leading" secondItem="7dd-t0-qLm" secondAttribute="leading" constant="8" id="XAO-ZV-e2P"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="centerX" secondItem="7dd-t0-qLm" secondAttribute="centerX" id="Xfr-PY-nM0"/>
                             <constraint firstItem="fHC-pn-yzm" firstAttribute="top" secondItem="7dd-t0-qLm" secondAttribute="top" constant="2" id="aCT-TT-kTW"/>
                             <constraint firstItem="rgm-GR-msR" firstAttribute="top" secondItem="7dd-t0-qLm" secondAttribute="top" constant="2" id="aka-tE-mMM"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="width" secondItem="br0-jd-8t5" secondAttribute="width" id="oET-ZR-pbm"/>
+                            <constraint firstItem="7dd-t0-qLm" firstAttribute="trailing" secondItem="NAe-IT-bhu" secondAttribute="trailing" constant="16" id="rhW-pK-pwO"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.434783" constant="84.999739000000034" id="ums-Ej-pOr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7dd-t0-qLm"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="fHC-pn-yzm" id="lpA-R1-Hpl"/>
+                        <outlet property="exitButton" destination="NAe-IT-bhu" id="8AG-be-ZKZ"/>
                         <outlet property="imageCollectionView" destination="brP-rp-Gba" id="pkF-Ki-6Xi"/>
+                        <outlet property="locationButton" destination="ENO-jx-Lww" id="auE-fO-Wu5"/>
                         <outlet property="nameLabel" destination="xm0-zg-zBC" id="h0D-o3-dmu"/>
                         <outlet property="ownerLabel" destination="P1F-NY-A8h" id="imh-rR-DQf"/>
                         <outlet property="privateLabel" destination="ZiX-ey-ytX" id="FMW-YT-YMv"/>
@@ -1539,6 +1554,7 @@
         <image name="BackArrowRight" width="270" height="270"/>
         <image name="Beverage" width="128" height="128"/>
         <image name="Camera" width="128" height="128"/>
+        <image name="Exit" width="256" height="256"/>
         <image name="Friends" width="128" height="128"/>
         <image name="Friends2" width="128" height="128"/>
         <image name="Location" width="256" height="256"/>
