@@ -269,3 +269,24 @@ func getFoodById(foodId:String, completion: @escaping ((Food) -> Void)) {
         completion(food)
     })
 }
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// updateTailgateInvites
+//
+// Updates the list of invites for the given tailgate
+//
+func updateTailgateInvites(tailgate:Tailgate, invites:[User]) {
+    let tailgateReference = Database.database().reference(withPath: "tailgates/" + tailgate.id)
+    
+    var inviteDict: [String:String] = [:]
+    for invite in invites {
+        inviteDict["id"] = invite.uid
+    }
+    
+    tailgateReference.updateChildValues(["invites":inviteDict])
+}
+
+

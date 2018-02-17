@@ -216,8 +216,8 @@ class TailgateViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let invitesVC: InvitesViewController = segue.destination as! InvitesViewController
-        
-        invitesVC.selectedInvites = self.tailgate.invites
+        print(self.tailgate.invites)
+        invitesVC.tailgate = self.tailgate
     }
     
 }

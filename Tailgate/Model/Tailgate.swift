@@ -59,12 +59,13 @@ class Tailgate {
         }
         
         // Get the users for invites
-        let inviteIds = snapshotValue["invites"] as! NSDictionary
-        for (_,id) in inviteIds {
-            let id = id as? String ?? ""
-            getUserById(userId: id, completion: { (user) in
-                self.invites.append(user)
-            })
+        if let inviteIds = snapshotValue["invites"] as? NSDictionary {
+            for (_,id) in inviteIds {
+                let id = id as? String ?? ""
+                getUserById(userId: id, completion: { (user) in
+                    self.invites.append(user)
+                })
+            }
         }
         
         // Get the drinks by their saved ids

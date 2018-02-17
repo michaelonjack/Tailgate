@@ -28,7 +28,7 @@ class TailgateAnnotation: NSObject, MKAnnotation {
         self.location = tailgate.location!
         self.coordinate = location.coordinate
         self.annotationImageView = nil
-        self.owner = ""
+        self.owner = tailgate.owner
         self.tailgate = tailgate
         
         super.init()

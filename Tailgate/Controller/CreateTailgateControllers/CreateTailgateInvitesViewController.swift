@@ -96,7 +96,10 @@ extension CreateTailgateInvitesViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // Remove the friend from the invites list when deselected
+        let uninvitedFriendId = invites[indexPath.row].uid
         
+        self.selectedInvites = self.selectedInvites.filter{$0.uid != uninvitedFriendId}
     }
     
 }

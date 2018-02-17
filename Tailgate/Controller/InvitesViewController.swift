@@ -8,13 +8,15 @@
 
 import UIKit
 import Firebase
+import SwipeNavigationController
 
 class InvitesViewController: UIViewController {
     
     @IBOutlet weak var usersTable: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     
-    var invites:[User] = []
+    var tailgate: Tailgate!
+    var friends:[User] = []
     var selectedInvites:[User] = []
     var searchText:String = "" {
         didSet {
@@ -33,8 +35,10 @@ class InvitesViewController: UIViewController {
         
         searchTextField.delegate = self
         
+        self.selectedInvites = tailgate.invites
+        
         getUsers( completion: { (users) in
-            self.invites = users
+            self.friends = users
             self.usersTable.reloadData()
         })
     }
@@ -45,6 +49,15 @@ class InvitesViewController: UIViewController {
     }
     
     @IBAction func donePressed(_ sender: Any) {
+        updateTailgateInvites(tailgate: self.tailgate, invites: self.selectedInvites)
+        
+        // Update the tailgate values in the tailgate VC's variable
+        if let presenter = presentingViewController as? SwipeNavigationController {
+            if let tailgateVC = presenter.rightViewController as? TailgateViewController {
+                tailgateVC.tailgate.invites = self.selectedInvites
+            }
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -70,11 +83,14 @@ extension InvitesViewController: UITextFieldDelegate {
 extension InvitesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedInvites.append( invites[indexPath.row] )
+        self.selectedInvites.append( friends[indexPath.row] )
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // Remove the friend from the invites list when deselected
+        let uninvitedFriendId = friends[indexPath.row].uid
         
+        self.selectedInvites = self.selectedInvites.filter{$0.uid != uninvitedFriendId}
     }
     
 }
@@ -92,17 +108,16 @@ extension InvitesViewController: UITableViewDataSource {
         // Reset the cell's selection
         cell.setSelected(false, animated: false)
         
+        // Highlight the users that are already invited
         for invite in selectedInvites {
-            print(invite.email)
-            print(self.invites[indexPath.row].email)
-            if invite.uid == self.invites[indexPath.row].uid {
+            if invite.uid == self.friends[indexPath.row].uid {
                 self.usersTable.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
             }
         }
         
         var matchesFound = 0
-        for index in 0...self.invites.count-1 {
-            let currUser = self.invites[index]
+        for index in 0...self.friends.count-1 {
+            let currUser = self.friends[index]
             
             // Add the user to the table if there is no search text or if the search text matches their name
             if self.searchText == "" || currUser.name.lowercased().range(of: self.searchText.lowercased()) != nil {
@@ -131,7 +146,7 @@ extension InvitesViewController: UITableViewDataSource {
         if self.searchText != "" {
             var count = 0
             
-            for user in invites {
+            for user in friends {
                 if user.name.lowercased().range(of: self.searchText.lowercased()) != nil {
                     count = count + 1
                 }
@@ -141,7 +156,7 @@ extension InvitesViewController: UITableViewDataSource {
         }
             
         else {
-            return self.invites.count
+            return self.friends.count
         }
     }
     
