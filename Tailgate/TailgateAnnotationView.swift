@@ -27,7 +27,7 @@ class TailgateAnnotationView: MKAnnotationView {
             // Here, you create a UIButton, set its background image to the Maps icon, then set the view’s right callout accessory to this button
             let infoButton = UIButton(frame: CGRect(origin: CGPoint.zero,
                                                     size: CGSize(width: 30, height: 30)))
-            infoButton.setBackgroundImage(UIImage(named: "Info"), for: UIControlState())
+            infoButton.setBackgroundImage(UIImage(named: "Open"), for: UIControlState())
             leftCalloutAccessoryView = infoButton
             
             let detailLabel = UILabel()

@@ -65,9 +65,11 @@
                                     <action selector="backButtonPressed:" destination="O2l-0b-cuo" eventType="touchUpInside" id="7Qa-f2-a3E"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orG-uh-ZKa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orG-uh-ZKa">
                                 <rect key="frame" x="311" y="251" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="orG-uh-ZKa" secondAttribute="height" multiplier="1:1" id="cbS-bp-472"/>
+                                </constraints>
                                 <state key="normal" title="Button" image="Camera"/>
                                 <connections>
                                     <action selector="cameraButtonPressed:" destination="O2l-0b-cuo" eventType="touchUpInside" id="era-9Y-iq4"/>
@@ -98,14 +100,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZY-bt-Cme">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZY-bt-Cme">
                                 <rect key="frame" x="16" y="249" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="DZY-bt-Cme" secondAttribute="height" multiplier="1:1" id="Par-Pg-5nf"/>
+                                </constraints>
                                 <state key="normal" title="Button" image="Beverage"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENO-jx-Lww">
-                                <rect key="frame" x="108" y="249" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENO-jx-Lww">
+                                <rect key="frame" x="115" y="249" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ENO-jx-Lww" secondAttribute="height" multiplier="1:1" id="fAm-5J-Ity"/>
+                                </constraints>
                                 <state key="normal" title="Button" image="Location"/>
                                 <connections>
                                     <action selector="locationButtonPressed:" destination="O2l-0b-cuo" eventType="touchUpInside" id="YSB-Mb-4Gh"/>
@@ -128,9 +134,11 @@
                                     <action selector="trashButtonPressed:" destination="O2l-0b-cuo" eventType="touchUpInside" id="GYN-nM-hHN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbL-xj-01T">
-                                <rect key="frame" x="214" y="249" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbL-xj-01T">
+                                <rect key="frame" x="212" y="249" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WbL-xj-01T" secondAttribute="height" multiplier="1:1" id="0Hv-lY-5It"/>
+                                </constraints>
                                 <state key="normal" title="Button" image="Friends2"/>
                                 <connections>
                                     <segue destination="jYz-Re-I4F" kind="show" identifier="TailgateToInvite" id="sAv-Ih-VXR"/>
@@ -149,18 +157,30 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="DZY-bt-Cme" firstAttribute="leading" secondItem="7dd-t0-qLm" secondAttribute="leading" constant="16" id="0hA-K5-Syv"/>
                             <constraint firstItem="NAe-IT-bhu" firstAttribute="top" secondItem="7dd-t0-qLm" secondAttribute="top" constant="2" id="6gb-BJ-Cnw"/>
                             <constraint firstItem="fHC-pn-yzm" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.052473" id="ASE-SV-fev"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="bottom" secondItem="7dd-t0-qLm" secondAttribute="bottom" constant="30" id="CwU-tI-2vE"/>
+                            <constraint firstItem="orG-uh-ZKa" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.071964" id="ECb-qZ-QNk"/>
                             <constraint firstItem="rgm-GR-msR" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.052473" id="Gs4-B3-Y1Z"/>
+                            <constraint firstItem="brP-rp-Gba" firstAttribute="top" secondItem="ENO-jx-Lww" secondAttribute="bottom" constant="23" id="HkP-4g-3aD"/>
+                            <constraint firstItem="WbL-xj-01T" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.0749625" id="JGO-VS-XNU"/>
+                            <constraint firstItem="brP-rp-Gba" firstAttribute="top" secondItem="WbL-xj-01T" secondAttribute="bottom" constant="23" id="Nd9-wu-ub6"/>
                             <constraint firstItem="7dd-t0-qLm" firstAttribute="trailing" secondItem="rgm-GR-msR" secondAttribute="trailing" constant="5" id="Pql-vs-TVk"/>
                             <constraint firstItem="NAe-IT-bhu" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.0524738" id="T70-Pv-9rX"/>
+                            <constraint firstItem="ENO-jx-Lww" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.0749625" id="TI4-rk-6fw"/>
                             <constraint firstItem="fHC-pn-yzm" firstAttribute="leading" secondItem="7dd-t0-qLm" secondAttribute="leading" constant="8" id="XAO-ZV-e2P"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="centerX" secondItem="7dd-t0-qLm" secondAttribute="centerX" id="Xfr-PY-nM0"/>
+                            <constraint firstItem="ENO-jx-Lww" firstAttribute="leading" secondItem="DZY-bt-Cme" secondAttribute="trailing" constant="49" id="Ycz-tv-Uu4"/>
+                            <constraint firstItem="DZY-bt-Cme" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.0749625" id="ZGO-aF-QNw"/>
                             <constraint firstItem="fHC-pn-yzm" firstAttribute="top" secondItem="7dd-t0-qLm" secondAttribute="top" constant="2" id="aCT-TT-kTW"/>
                             <constraint firstItem="rgm-GR-msR" firstAttribute="top" secondItem="7dd-t0-qLm" secondAttribute="top" constant="2" id="aka-tE-mMM"/>
+                            <constraint firstItem="7dd-t0-qLm" firstAttribute="trailing" secondItem="orG-uh-ZKa" secondAttribute="trailing" constant="16" id="hcE-qm-h95"/>
+                            <constraint firstItem="brP-rp-Gba" firstAttribute="top" secondItem="orG-uh-ZKa" secondAttribute="bottom" constant="23" id="o4x-gr-XVq"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="width" secondItem="br0-jd-8t5" secondAttribute="width" id="oET-ZR-pbm"/>
+                            <constraint firstItem="orG-uh-ZKa" firstAttribute="leading" secondItem="WbL-xj-01T" secondAttribute="trailing" constant="49" id="pEs-Wn-GJ5"/>
                             <constraint firstItem="7dd-t0-qLm" firstAttribute="trailing" secondItem="NAe-IT-bhu" secondAttribute="trailing" constant="16" id="rhW-pK-pwO"/>
+                            <constraint firstItem="brP-rp-Gba" firstAttribute="top" secondItem="DZY-bt-Cme" secondAttribute="bottom" constant="23" id="tCi-M8-yy2"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.434783" constant="84.999739000000034" id="ums-Ej-pOr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7dd-t0-qLm"/>
@@ -169,6 +189,8 @@
                         <outlet property="backButton" destination="fHC-pn-yzm" id="lpA-R1-Hpl"/>
                         <outlet property="exitButton" destination="NAe-IT-bhu" id="8AG-be-ZKZ"/>
                         <outlet property="imageCollectionView" destination="brP-rp-Gba" id="pkF-Ki-6Xi"/>
+                        <outlet property="invitesButton" destination="WbL-xj-01T" id="erl-Hn-Biu"/>
+                        <outlet property="invitesRightConstraint" destination="pEs-Wn-GJ5" id="lGj-0e-XZ7"/>
                         <outlet property="locationButton" destination="ENO-jx-Lww" id="auE-fO-Wu5"/>
                         <outlet property="nameLabel" destination="xm0-zg-zBC" id="h0D-o3-dmu"/>
                         <outlet property="ownerLabel" destination="P1F-NY-A8h" id="imh-rR-DQf"/>
