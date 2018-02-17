@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpEmailViewController: UIViewController {
     
@@ -35,7 +36,18 @@ class SignUpEmailViewController: UIViewController {
             status.text = "Checking..."
             status.isHidden = false
             
-            self.performSegue(withIdentifier: "EmailToPassword", sender: nil)
+            Auth.auth().fetchProviders(forEmail: email.text!, completion: { (providers, error) in
+                if let providers = providers, providers.count > 0 {
+                    DispatchQueue.main.async {
+                        self.status.text = "Email already in use."
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.status.isHidden = true
+                        self.performSegue(withIdentifier: "EmailToPassword", sender: nil)
+                    }
+                }
+            })
         }
         
         else {

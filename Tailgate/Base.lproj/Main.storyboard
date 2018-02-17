@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="brP-rp-Gba">
-                                <rect key="frame" x="0.0" y="322" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="305" width="375" height="392"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EWK-on-vZg">
                                     <size key="itemSize" width="200" height="200"/>
@@ -66,7 +66,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orG-uh-ZKa">
-                                <rect key="frame" x="311" y="251" width="48" height="48"/>
+                                <rect key="frame" x="311" y="234" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="orG-uh-ZKa" secondAttribute="height" multiplier="1:1" id="cbS-bp-472"/>
                                 </constraints>
@@ -101,14 +101,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZY-bt-Cme">
-                                <rect key="frame" x="16" y="249" width="50" height="50"/>
+                                <rect key="frame" x="16" y="232" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DZY-bt-Cme" secondAttribute="height" multiplier="1:1" id="Par-Pg-5nf"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="Beverage"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENO-jx-Lww">
-                                <rect key="frame" x="115" y="249" width="50" height="50"/>
+                                <rect key="frame" x="115" y="232" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ENO-jx-Lww" secondAttribute="height" multiplier="1:1" id="fAm-5J-Ity"/>
                                 </constraints>
@@ -135,7 +135,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbL-xj-01T">
-                                <rect key="frame" x="212" y="249" width="50" height="50"/>
+                                <rect key="frame" x="212" y="232" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WbL-xj-01T" secondAttribute="height" multiplier="1:1" id="0Hv-lY-5It"/>
                                 </constraints>
@@ -181,7 +181,7 @@
                             <constraint firstItem="orG-uh-ZKa" firstAttribute="leading" secondItem="WbL-xj-01T" secondAttribute="trailing" constant="49" id="pEs-Wn-GJ5"/>
                             <constraint firstItem="7dd-t0-qLm" firstAttribute="trailing" secondItem="NAe-IT-bhu" secondAttribute="trailing" constant="16" id="rhW-pK-pwO"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="top" secondItem="DZY-bt-Cme" secondAttribute="bottom" constant="23" id="tCi-M8-yy2"/>
-                            <constraint firstItem="brP-rp-Gba" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.434783" constant="84.999739000000034" id="ums-Ej-pOr"/>
+                            <constraint firstItem="brP-rp-Gba" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.46" constant="84.999739000000034" id="ums-Ej-pOr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7dd-t0-qLm"/>
                     </view>
