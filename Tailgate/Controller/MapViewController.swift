@@ -67,7 +67,9 @@ class MapViewController: UIViewController {
     func addTailgateAnnotations() {
         getTailgates { (tailgates) in
             for tailgate in tailgates {
-            self.mapView.addAnnotation(TailgateAnnotation(tailgate: tailgate))
+                if let _ = tailgate.location {
+                    self.mapView.addAnnotation(TailgateAnnotation(tailgate: tailgate))
+                }
             }
         }
     }
@@ -182,11 +184,11 @@ extension MapViewController: CLLocationManagerDelegate {
                 let loc4 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.0001), longitude: location.coordinate.longitude.advanced(by: -0.0001))
                 let loc5 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.00029), longitude: location.coordinate.longitude.advanced(by: 0.0002))
                 
-                mapView.addAnnotation( TailgateAnnotation(id:"1", title: "My dope ass tailgate", school: "Penn State University", owner: "Michael Onjack", location: loc1) )
-                mapView.addAnnotation( TailgateAnnotation(id:"2", title: "Tailgate2", school: "Michigan State University", owner: "Ben Hagan", location: loc2) )
-                mapView.addAnnotation( TailgateAnnotation(id:"3", title: "Tailgate3", school: "Penn State University", owner: "Ben Hagan", location: loc3) )
-                mapView.addAnnotation( TailgateAnnotation(id:"4", title: "Tailgate4", school: "Ohio State University", owner: "Ben Hagan", location: loc4) )
-                mapView.addAnnotation( TailgateAnnotation(id:"5", title: "Muffin workout sesh", school: "University of Wisconsin", owner: "Muffin Lawler", location: loc5) )
+                mapView.addAnnotation( TailgateAnnotation(id:"1", title: "My dope ass tailgate", school: "University of Nebraska", flairImageUrl: "https://firebasestorage.googleapis.com/v0/b/tailgate-53761.appspot.com/o/images%2FPennStateUniversity%2Fflair%2Fflair1.png?alt=media&token=4e99e90f-998b-4efb-a4d7-817c46e923e6", owner: "Michael Onjack", location: loc1) )
+                mapView.addAnnotation( TailgateAnnotation(id:"2", title: "Tailgate2", school: "Michigan State University", flairImageUrl: "https://firebasestorage.googleapis.com/v0/b/tailgate-53761.appspot.com/o/images%2FPennStateUniversity%2Fflair%2Fflair2.png?alt=media&token=fc3f7137-af20-4799-9dcb-d600d58ce77e", owner: "Ben Hagan", location: loc2) )
+                mapView.addAnnotation( TailgateAnnotation(id:"3", title: "Tailgate3", school: "Penn State University", flairImageUrl: "https://firebasestorage.googleapis.com/v0/b/tailgate-53761.appspot.com/o/images%2FPennStateUniversity%2Fflair%2Fflair3.png?alt=media&token=86561aba-2b4c-4ac9-a23e-6a6be19c4aba", owner: "Ben Hagan", location: loc3) )
+                mapView.addAnnotation( TailgateAnnotation(id:"4", title: "Tailgate4", school: "Ohio State University", flairImageUrl: "https://firebasestorage.googleapis.com/v0/b/tailgate-53761.appspot.com/o/images%2FPennStateUniversity%2Fflair%2Fflair4.png?alt=media&token=b7bb2260-e355-4fdd-95a0-cb702be7cd57", owner: "Ben Hagan", location: loc4) )
+                mapView.addAnnotation( TailgateAnnotation(id:"5", title: "Muffin workout sesh", school: "University of Wisconsin", flairImageUrl: "https://firebasestorage.googleapis.com/v0/b/tailgate-53761.appspot.com/o/images%2FPennStateUniversity%2Fflair%2Fflair5.png?alt=media&token=62ff7e75-cc69-4b2e-a8fe-851bb7fc21a8", owner: "Muffin Lawler", location: loc5) )
             }
         }
     }

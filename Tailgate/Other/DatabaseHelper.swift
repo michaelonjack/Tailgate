@@ -95,6 +95,54 @@ func getTailgateImageUrls(tailgate:Tailgate, completion: @escaping (_ urls: [Str
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
+// getFlairImageUrls
+//
+// Returns the download urls of all flair images associated with the parameter school as a tuple
+// where tuple.0 = the url of 3x image and tuple.1 = url of 1x image
+//
+func getFlairImageUrls(school:School, completion: @escaping (_ urls: [(url3x:String, url1x:String)]) -> Void) {
+    var imgUrls: [(url3x:String, url1x:String)] = []
+    let imageUrlsReference = Database.database().reference(withPath: "schools/" + school.name.replacingOccurrences(of: " ", with: "") + "/flairImageUrls")
+    
+    imageUrlsReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        if let flair = snapshot.value as? [String:AnyObject] {
+            
+            for (name, urlPair) in flair {
+                print(name)
+                var flairPair:(url3x:String, url1x:String) = ("", "")
+                /*
+                    urlDict should look like:
+                    {
+                        1x: url1
+                        3x: url2
+                    }
+                */
+                if let urlDict = urlPair as? NSDictionary {
+                    for (key,value) in urlDict {
+                        let key = key as? String ?? ""
+                        let value = value as? String ?? ""
+                        
+                        if key == "3x" {
+                            flairPair.url3x = value
+                        } else {
+                            flairPair.url1x = value
+                        }
+                    }
+                }
+                if flairPair.0 != "" {
+                    imgUrls.append(flairPair)
+                }
+            }
+        }
+        completion(imgUrls)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
 // getTailgates
 //
 // Returns all tailgates from the database

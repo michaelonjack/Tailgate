@@ -17,6 +17,7 @@ class TailgateAnnotation: NSObject, MKAnnotation {
     let id: String 
     let title: String?
     let school: String
+    let flairImageUrl: String
     var owner: String
     var annotationImageView: UIImageView?
     var tailgate: Tailgate?
@@ -25,6 +26,7 @@ class TailgateAnnotation: NSObject, MKAnnotation {
         self.id = tailgate.id
         self.title = tailgate.name
         self.school = tailgate.school.name
+        self.flairImageUrl = tailgate.flairImageUrl
         self.location = tailgate.location!
         self.coordinate = location.coordinate
         self.annotationImageView = nil
@@ -39,10 +41,11 @@ class TailgateAnnotation: NSObject, MKAnnotation {
         
     }
     
-    init(id:String, title:String, school: String, owner: String, location: CLLocation) {
+    init(id:String, title:String, school: String, flairImageUrl: String, owner: String, location: CLLocation) {
         self.id = id
         self.title = title
         self.school = school
+        self.flairImageUrl = flairImageUrl
         self.owner = owner
         self.location = location
         self.coordinate = location.coordinate

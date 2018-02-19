@@ -38,6 +38,8 @@
 		B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */; };
 		B1BC52CD1FE09A0400BCBAE8 /* TailgatePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CC1FE09A0400BCBAE8 /* TailgatePhotoCell.swift */; };
 		B1BC52CF1FE0C12700BCBAE8 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */; };
+		B1DD1CD22039ED6600291EAE /* CreateTailgateFlairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DD1CD12039ED6600291EAE /* CreateTailgateFlairViewController.swift */; };
+		B1DD1CD42039EF7700291EAE /* FlairPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DD1CD32039EF7700291EAE /* FlairPhotoCell.swift */; };
 		B1E83BD71FDCFBE200185E17 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */; };
 		B1E83BD91FDCFC5600185E17 /* NewTailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD81FDCFC5600185E17 /* NewTailgateViewController.swift */; };
 		B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */; };
@@ -85,6 +87,8 @@
 		B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateViewController.swift; sourceTree = "<group>"; };
 		B1BC52CC1FE09A0400BCBAE8 /* TailgatePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatePhotoCell.swift; sourceTree = "<group>"; };
 		B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		B1DD1CD12039ED6600291EAE /* CreateTailgateFlairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateFlairViewController.swift; sourceTree = "<group>"; };
+		B1DD1CD32039EF7700291EAE /* FlairPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlairPhotoCell.swift; sourceTree = "<group>"; };
 		B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B1E83BD81FDCFC5600185E17 /* NewTailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTailgateViewController.swift; sourceTree = "<group>"; };
 		B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */,
 				B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */,
 				B1BC52CC1FE09A0400BCBAE8 /* TailgatePhotoCell.swift */,
+				B1DD1CD32039EF7700291EAE /* FlairPhotoCell.swift */,
 				B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */,
 				B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */,
 				B13B81311FE5F1DC008F3A38 /* CreateTailgateControllers */,
@@ -195,6 +200,7 @@
 		B13B81311FE5F1DC008F3A38 /* CreateTailgateControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B1DD1CD12039ED6600291EAE /* CreateTailgateFlairViewController.swift */,
 				B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */,
 				B13B813C1FE61263008F3A38 /* CreateTailgateSchoolViewController.swift */,
 				B13B813A1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift */,
@@ -410,6 +416,7 @@
 				B13B813B1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift in Sources */,
 				B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */,
 				B1E83BE41FDD857A00185E17 /* TopDownSegue.swift in Sources */,
+				B1DD1CD42039EF7700291EAE /* FlairPhotoCell.swift in Sources */,
 				B13B814A1FEA0446008F3A38 /* UserTableViewCell.swift in Sources */,
 				B1BC52CF1FE0C12700BCBAE8 /* DatabaseHelper.swift in Sources */,
 				B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */,
@@ -417,6 +424,7 @@
 				B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */,
 				B13B81401FE6ECD4008F3A38 /* SchoolTableViewCell.swift in Sources */,
 				B13B81421FE6F1B6008F3A38 /* School.swift in Sources */,
+				B1DD1CD22039ED6600291EAE /* CreateTailgateFlairViewController.swift in Sources */,
 				B13B81441FE9FB29008F3A38 /* FoodTableViewCell.swift in Sources */,
 				B1E83BE61FDD890500185E17 /* User.swift in Sources */,
 				B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */,

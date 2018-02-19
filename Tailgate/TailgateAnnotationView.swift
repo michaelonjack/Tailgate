@@ -42,9 +42,15 @@ class TailgateAnnotationView: MKAnnotationView {
                 let dataDict = snapshot.value as? NSDictionary
                 
                 if snapshot.hasChild("annotationImageUrl") {
+                    let flairUrlStr = tailgate.flairImageUrl
                     let picUrlStr = dataDict?["annotationImageUrl"] as? String ?? ""
                     
-                    if picUrlStr != "" {
+                    if flairUrlStr != "" {
+                        let picUrl = URL(string: flairUrlStr)
+                        self.sd_setImage(with: picUrl, completed: nil)
+                    }
+                    
+                    else if picUrlStr != "" {
                         let picUrl = URL(string: picUrlStr)
                         self.sd_setImage(with: picUrl, completed: nil)
                     }

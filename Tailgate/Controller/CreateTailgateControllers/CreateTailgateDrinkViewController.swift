@@ -47,17 +47,17 @@ class CreateTailgateDrinkViewController: UIViewController {
     }
     
     @IBAction func nextPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "DrinkToInvites", sender: nil)
+        self.performSegue(withIdentifier: "DrinkToFlair", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let invitesVC: CreateTailgateInvitesViewController = segue.destination as! CreateTailgateInvitesViewController
-        invitesVC.tailgateName = self.tailgateName
-        invitesVC.tailgateSchool = self.tailgateSchool
-        invitesVC.isPublic = self.isPublic
-        invitesVC.startTime = self.startTime
-        invitesVC.foods = self.foods
-        invitesVC.drinks = self.selectedDrinks
+        let flairVC: CreateTailgateFlairViewController = segue.destination as! CreateTailgateFlairViewController
+        flairVC.tailgateName = self.tailgateName
+        flairVC.tailgateSchool = self.tailgateSchool
+        flairVC.isPublic = self.isPublic
+        flairVC.startTime = self.startTime
+        flairVC.foods = self.foods
+        flairVC.drinks = self.selectedDrinks
     }
 }
 

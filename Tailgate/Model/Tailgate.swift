@@ -21,8 +21,9 @@ class Tailgate {
     var foods:[Food]!
     var drinks:[Drink]!
     var invites:[User]!
+    var flairImageUrl:String!
     
-    init(owner:String, name:String, school:School, isPublic:Bool, startTime:Date, foods:[Food], drinks:[Drink], invites:[User]) {
+    init(owner:String, name:String, school:School, flairImageUrl:String, isPublic:Bool, startTime:Date, foods:[Food], drinks:[Drink], invites:[User]) {
         
         self.owner = owner
         self.id = UUID().uuidString
@@ -33,6 +34,7 @@ class Tailgate {
         self.foods = foods
         self.drinks = drinks
         self.invites = invites
+        self.flairImageUrl = flairImageUrl
         self.location = nil
     }
     
@@ -44,6 +46,7 @@ class Tailgate {
         self.id = snapshot.key
         self.name = snapshotValue["name"] as? String ?? ""
         self.owner = snapshotValue["owner"] as? String ?? ""
+        self.flairImageUrl = snapshotValue["flairImageUrl"] as? String ?? ""
         self.startTime = formatter.date(from: snapshotValue["startTime"] as? String ?? "")
         self.school = School(name: snapshotValue["school"] as? String ?? "")
         self.drinks = []
@@ -69,21 +72,23 @@ class Tailgate {
         }
         
         // Get the drinks by their saved ids
-        let drinkIds = snapshotValue["drinks"] as! NSDictionary
-        for (_,id) in drinkIds {
-            let id = id as? String ?? ""
-            getDrinkById(drinkId: id, completion: { (drink) in
-                self.drinks.append(drink)
-            })
+        if let drinkIds = snapshotValue["drinks"] as? NSDictionary {
+            for (_,id) in drinkIds {
+                let id = id as? String ?? ""
+                getDrinkById(drinkId: id, completion: { (drink) in
+                    self.drinks.append(drink)
+                })
+            }
         }
         
         // Get the food by their saved ids
-        let foodIds = snapshotValue["food"] as! NSDictionary
-        for (_,id) in foodIds {
-            let id = id as? String ?? ""
-            getFoodById(foodId: id, completion: { (food) in
-                self.foods.append(food)
-            })
+        if let foodIds = snapshotValue["food"] as? NSDictionary {
+            for (_,id) in foodIds {
+                let id = id as? String ?? ""
+                getFoodById(foodId: id, completion: { (food) in
+                    self.foods.append(food)
+                })
+            }
         }
         
         // Get the location of the tailgate by creating a CLLocation from the saved coordinates
@@ -122,6 +127,7 @@ class Tailgate {
             "name": name,
             "school": school.name,
             "isPublic": isPublic,
+            "flairImageUrl": flairImageUrl,
             "startTime": startTimeStr,
             "food": foodDict,
             "drinks": drinkDict,
