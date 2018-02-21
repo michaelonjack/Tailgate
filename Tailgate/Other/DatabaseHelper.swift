@@ -108,8 +108,8 @@ func getFlairImageUrls(school:School, completion: @escaping (_ urls: [(url3x:Str
         
         if let flair = snapshot.value as? [String:AnyObject] {
             
-            for (name, urlPair) in flair {
-                print(name)
+            for (_, urlPair) in flair {
+                
                 var flairPair:(url3x:String, url1x:String) = ("", "")
                 /*
                     urlDict should look like:

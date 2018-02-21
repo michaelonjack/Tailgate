@@ -32,7 +32,6 @@ class CreateTailgateFlairViewController: UIViewController {
         flairCollectionView.dataSource = self
         
         getFlairImageUrls(school: tailgateSchool) { (imgUrls) in
-            print(imgUrls.count)
             self.flairImageUrls = imgUrls
             self.flairCollectionView.reloadData()
         }
@@ -66,6 +65,10 @@ class CreateTailgateFlairViewController: UIViewController {
 extension CreateTailgateFlairViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
+                                                      for: indexPath) as! FlairPhotoCell
+        cell.isSelected = true
+        
         self.selectedFlairUrl = self.flairImageUrls[indexPath.row].url1x
         return true
     }
