@@ -135,12 +135,12 @@
                                                                     <constraint firstItem="imE-YA-XK1" firstAttribute="height" secondItem="Rck-RG-dlG" secondAttribute="height" multiplier="0.277778" id="8hk-XD-fPZ"/>
                                                                     <constraint firstItem="imE-YA-XK1" firstAttribute="centerY" secondItem="Rck-RG-dlG" secondAttribute="centerY" id="F6J-eN-ste"/>
                                                                     <constraint firstItem="67q-KE-nFd" firstAttribute="height" secondItem="Rck-RG-dlG" secondAttribute="height" multiplier="0.777777" id="F6V-yZ-OTe"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="67q-KE-nFd" secondAttribute="bottom" constant="10.5" id="PSZ-K9-CBW"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="67q-KE-nFd" secondAttribute="bottom" priority="999" constant="10.5" identifier="profilePictureBottom" id="PSZ-K9-CBW"/>
                                                                     <constraint firstAttribute="trailing" secondItem="imE-YA-XK1" secondAttribute="trailing" constant="15" id="RLl-Ox-nLf"/>
                                                                     <constraint firstItem="SO9-aA-1ZS" firstAttribute="centerY" secondItem="Rck-RG-dlG" secondAttribute="centerY" id="TXP-bT-fB7"/>
                                                                     <constraint firstItem="SO9-aA-1ZS" firstAttribute="leading" secondItem="67q-KE-nFd" secondAttribute="trailing" constant="8" id="iIP-09-3qw"/>
                                                                     <constraint firstItem="imE-YA-XK1" firstAttribute="leading" secondItem="SO9-aA-1ZS" secondAttribute="trailing" constant="8" id="iec-bE-o5L"/>
-                                                                    <constraint firstItem="67q-KE-nFd" firstAttribute="top" secondItem="Rck-RG-dlG" secondAttribute="top" constant="9" id="isd-P8-j2H"/>
+                                                                    <constraint firstItem="67q-KE-nFd" firstAttribute="top" secondItem="Rck-RG-dlG" secondAttribute="top" priority="999" constant="9" identifier="profilePictureTop" id="isd-P8-j2H"/>
                                                                     <constraint firstItem="67q-KE-nFd" firstAttribute="centerY" secondItem="Rck-RG-dlG" secondAttribute="centerY" id="pXN-34-5FN"/>
                                                                     <constraint firstItem="67q-KE-nFd" firstAttribute="leading" secondItem="Rck-RG-dlG" secondAttribute="leading" constant="5" id="vRt-Sk-b7q"/>
                                                                 </constraints>
