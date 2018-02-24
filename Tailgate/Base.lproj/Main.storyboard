@@ -1176,9 +1176,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tut-C0-0L1">
-                                <rect key="frame" x="96" y="395" width="183" height="40"/>
+                                <rect key="frame" x="104" y="385" width="167" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <inset key="titleEdgeInsets" minX="-81" minY="0.0" maxX="20" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="140" maxY="0.0"/>
                                 <state key="normal" title="Friends" image="Friends">
                                     <color key="titleColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1188,18 +1188,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SzK-Ch-zjy">
-                                <rect key="frame" x="96" y="443" width="183" height="40"/>
+                                <rect key="frame" x="104" y="433" width="167" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <inset key="titleEdgeInsets" minX="-81" minY="0.0" maxX="15" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="140" maxY="0.0"/>
                                 <state key="normal" title="Settings" image="Settings">
                                     <color key="titleColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wr9-IB-1Bd">
-                                <rect key="frame" x="96" y="347" width="183" height="40"/>
+                                <rect key="frame" x="104" y="337" width="167" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <inset key="titleEdgeInsets" minX="-240" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="-130" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="140" maxY="0.0"/>
                                 <state key="normal" title="Invites" image="Invite">
                                     <color key="titleColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1210,25 +1210,25 @@
                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Tje-zA-GGF" firstAttribute="width" secondItem="A45-Rb-3MN" secondAttribute="width" multiplier="0.5" id="6DN-rI-6dH"/>
-                            <constraint firstItem="SzK-Ch-zjy" firstAttribute="top" secondItem="tut-C0-0L1" secondAttribute="bottom" constant="8" id="Azh-Eq-hI6"/>
+                            <constraint firstItem="SzK-Ch-zjy" firstAttribute="height" secondItem="wr9-IB-1Bd" secondAttribute="height" id="8UZ-Uz-Cil"/>
                             <constraint firstItem="Tje-zA-GGF" firstAttribute="bottom" secondItem="hsf-SM-pYR" secondAttribute="bottom" id="BFW-I2-qWG"/>
-                            <constraint firstItem="tut-C0-0L1" firstAttribute="width" secondItem="A45-Rb-3MN" secondAttribute="width" multiplier="0.488" id="Lxa-k6-LiX"/>
+                            <constraint firstItem="SzK-Ch-zjy" firstAttribute="width" secondItem="wr9-IB-1Bd" secondAttribute="width" id="DTO-kz-0Ex"/>
+                            <constraint firstItem="SzK-Ch-zjy" firstAttribute="leading" secondItem="wr9-IB-1Bd" secondAttribute="leading" id="Igv-jl-EvV"/>
+                            <constraint firstItem="wr9-IB-1Bd" firstAttribute="height" secondItem="A45-Rb-3MN" secondAttribute="height" multiplier="0.05997" id="JSR-Mp-ku2"/>
+                            <constraint firstItem="tut-C0-0L1" firstAttribute="leading" secondItem="wr9-IB-1Bd" secondAttribute="leading" id="Jo1-DV-nZ5"/>
                             <constraint firstItem="2rq-El-OuI" firstAttribute="bottom" secondItem="hsf-SM-pYR" secondAttribute="bottom" id="MK2-y0-FQe"/>
-                            <constraint firstItem="wr9-IB-1Bd" firstAttribute="height" secondItem="A45-Rb-3MN" secondAttribute="height" multiplier="0.05997" id="NsU-zs-Qr0"/>
-                            <constraint firstItem="SzK-Ch-zjy" firstAttribute="centerX" secondItem="hsf-SM-pYR" secondAttribute="centerX" id="PfP-Vu-VOD"/>
-                            <constraint firstItem="wr9-IB-1Bd" firstAttribute="centerX" secondItem="hsf-SM-pYR" secondAttribute="centerX" id="Q23-4C-nVd"/>
-                            <constraint firstItem="tut-C0-0L1" firstAttribute="height" secondItem="A45-Rb-3MN" secondAttribute="height" multiplier="0.05997" id="Sac-YB-Auu"/>
-                            <constraint firstItem="SzK-Ch-zjy" firstAttribute="height" secondItem="A45-Rb-3MN" secondAttribute="height" multiplier="0.05997" id="TzA-bk-fcg"/>
+                            <constraint firstItem="wr9-IB-1Bd" firstAttribute="centerX" secondItem="hsf-SM-pYR" secondAttribute="centerX" id="NFY-oF-bhD"/>
+                            <constraint firstItem="wr9-IB-1Bd" firstAttribute="width" secondItem="A45-Rb-3MN" secondAttribute="width" multiplier="0.445333" id="Njp-v4-vR3"/>
                             <constraint firstItem="hsf-SM-pYR" firstAttribute="trailing" secondItem="Tje-zA-GGF" secondAttribute="trailing" id="UJR-4B-3Oy"/>
-                            <constraint firstItem="wr9-IB-1Bd" firstAttribute="width" secondItem="A45-Rb-3MN" secondAttribute="width" multiplier="0.488" id="VEG-8T-xae"/>
                             <constraint firstItem="DnX-qB-j59" firstAttribute="top" secondItem="hsf-SM-pYR" secondAttribute="top" constant="59" id="Vcz-gu-RxV"/>
                             <constraint firstItem="2rq-El-OuI" firstAttribute="width" secondItem="A45-Rb-3MN" secondAttribute="width" multiplier="0.5" id="ZZu-6x-ocf"/>
-                            <constraint firstItem="SzK-Ch-zjy" firstAttribute="width" secondItem="A45-Rb-3MN" secondAttribute="width" multiplier="0.488" id="c65-8Q-5xm"/>
                             <constraint firstItem="DnX-qB-j59" firstAttribute="centerX" secondItem="hsf-SM-pYR" secondAttribute="centerX" id="cQE-Ru-qvp"/>
-                            <constraint firstItem="tut-C0-0L1" firstAttribute="top" secondItem="wr9-IB-1Bd" secondAttribute="bottom" constant="8" id="d92-eU-oI2"/>
-                            <constraint firstItem="wr9-IB-1Bd" firstAttribute="top" secondItem="DnX-qB-j59" secondAttribute="bottom" constant="18" id="gDf-d0-HKq"/>
+                            <constraint firstItem="wr9-IB-1Bd" firstAttribute="top" secondItem="DnX-qB-j59" secondAttribute="bottom" constant="8" id="dFA-vt-GAs"/>
+                            <constraint firstItem="tut-C0-0L1" firstAttribute="width" secondItem="wr9-IB-1Bd" secondAttribute="width" id="fSy-8N-tda"/>
+                            <constraint firstItem="tut-C0-0L1" firstAttribute="height" secondItem="wr9-IB-1Bd" secondAttribute="height" id="pwi-Hs-XUq"/>
                             <constraint firstItem="DnX-qB-j59" firstAttribute="height" secondItem="A45-Rb-3MN" secondAttribute="height" multiplier="0.374812" id="qR5-TK-Ep5"/>
-                            <constraint firstItem="tut-C0-0L1" firstAttribute="centerX" secondItem="hsf-SM-pYR" secondAttribute="centerX" id="sal-ZW-FJH"/>
+                            <constraint firstItem="tut-C0-0L1" firstAttribute="top" secondItem="wr9-IB-1Bd" secondAttribute="bottom" constant="8" id="ry6-mZ-FWQ"/>
+                            <constraint firstItem="SzK-Ch-zjy" firstAttribute="top" secondItem="tut-C0-0L1" secondAttribute="bottom" constant="8" id="sPg-UJ-oOw"/>
                             <constraint firstItem="2rq-El-OuI" firstAttribute="leading" secondItem="hsf-SM-pYR" secondAttribute="leading" id="wup-oz-lRK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hsf-SM-pYR"/>
@@ -1896,6 +1896,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NSk-bg-64S"/>
-        <segue reference="0I7-na-UCc"/>
+        <segue reference="u7i-bp-TO8"/>
     </inferredMetricsTieBreakers>
 </document>
