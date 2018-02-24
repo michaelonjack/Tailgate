@@ -23,7 +23,8 @@ class FriendsViewController: UIViewController {
         friendsCollectionView.delegate = self
         friendsCollectionView.dataSource = self
         
-        self.myFriendsButton.titleLabel?.textColor = .red
+        self.myFriendsButton.setTitleColor(.white, for: .normal)
+        self.findFriendsButton.setTitleColor(.lightGray, for: .normal)
         
         getUsers( completion: { (users) in
             self.allUsers = users
@@ -39,14 +40,14 @@ class FriendsViewController: UIViewController {
     }
     
     @IBAction func myFriendsButtonPressed(_ sender: Any) {
-        
-        
+        self.findFriendsButton.setTitleColor(.lightGray, for: .normal)
+        self.myFriendsButton.setTitleColor(.white, for: .normal)
         self.friendsCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
     }
     
     @IBAction func findFriendsButtonPressed(_ sender: Any) {
-        
-        
+        self.myFriendsButton.setTitleColor(.lightGray, for: .normal)
+        self.findFriendsButton.setTitleColor(.white, for: .normal)
         self.friendsCollectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .left, animated: true)
     }
     
@@ -58,6 +59,18 @@ extension FriendsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let currentIndex:Int = Int(self.friendsCollectionView.contentOffset.x / self.friendsCollectionView.frame.size.width)
+        
+        if currentIndex == 0 {
+            self.myFriendsButton.setTitleColor(.white, for: .normal)
+            self.findFriendsButton.setTitleColor(.lightGray, for: .normal)
+        } else {
+            self.myFriendsButton.setTitleColor(.lightGray, for: .normal)
+            self.findFriendsButton.setTitleColor(.white, for: .normal)
+        }
     }
 }
 
@@ -81,9 +94,9 @@ extension FriendsViewController: UICollectionViewDataSource {
         cell.users = self.allUsers
         cell.userTableView.delegate = cell
         cell.userTableView.dataSource = cell
-        cell.userTableView.allowsMultipleSelection = true
+        cell.userTableView.allowsSelection = false
         cell.userTableView.rowHeight = UITableViewAutomaticDimension
-        cell.userTableView.estimatedRowHeight = 100
+        cell.userTableView.estimatedRowHeight = 90
         cell.userTableView.reloadData()
         cell.userTableView.layer.cornerRadius = 10
         
@@ -105,5 +118,9 @@ extension FriendsViewController : UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0;
     }
 }
