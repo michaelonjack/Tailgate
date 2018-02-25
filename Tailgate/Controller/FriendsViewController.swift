@@ -25,6 +25,7 @@ class FriendsViewController: UIViewController {
         
         self.myFriendsButton.setTitleColor(.white, for: .normal)
         self.findFriendsButton.setTitleColor(.lightGray, for: .normal)
+        self.searchTextField.attributedPlaceholder = NSAttributedString(string: searchTextField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray])
         
         getUsers( completion: { (users) in
             self.allUsers = users

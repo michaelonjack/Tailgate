@@ -52,6 +52,8 @@
 		B1E83BE61FDD890500185E17 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE51FDD890500185E17 /* User.swift */; };
 		B1E83BEA1FDDBF6100185E17 /* RightLeftSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */; };
 		B1E83BEC1FDE286B00185E17 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */; };
+		B1FEC4EE2042223400FEE05F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEC4ED2042223400FEE05F /* SettingsViewController.swift */; };
+		B1FEC4F020422AE500FEE05F /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEC4EF20422AE500FEE05F /* SettingsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +106,8 @@
 		B1E83BE51FDD890500185E17 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightLeftSegue.swift; sourceTree = "<group>"; };
 		B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B1FEC4ED2042223400FEE05F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B1FEC4EF20422AE500FEE05F /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +193,7 @@
 		B10E9E9D1FDCC25400DB4751 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B1FEC4ED2042223400FEE05F /* SettingsViewController.swift */,
 				B1DD1CD7203E409B00291EAE /* FriendsViewController.swift */,
 				B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */,
 				B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */,
@@ -223,6 +228,7 @@
 		B13B813E1FE6EC91008F3A38 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
+				B1FEC4EF20422AE500FEE05F /* SettingsTableViewCell.swift */,
 				B1DD1CDC203E593B00291EAE /* FriendTableViewCell.swift */,
 				B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */,
 				B13B81431FE9FB29008F3A38 /* FoodTableViewCell.swift */,
@@ -425,6 +431,7 @@
 				B1E83BEC1FDE286B00185E17 /* HomeViewController.swift in Sources */,
 				B1BC52CD1FE09A0400BCBAE8 /* TailgatePhotoCell.swift in Sources */,
 				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
+				B1FEC4EE2042223400FEE05F /* SettingsViewController.swift in Sources */,
 				B1DD1CDD203E593B00291EAE /* FriendTableViewCell.swift in Sources */,
 				B10E9EA31FDCE6C300DB4751 /* TailgateAnnotationAR.swift in Sources */,
 				B13B81371FE60086008F3A38 /* CreateTailgateDateViewController.swift in Sources */,
@@ -449,6 +456,7 @@
 				B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */,
 				B1DD1CD8203E409B00291EAE /* FriendsViewController.swift in Sources */,
 				B1DD1CDB203E591400291EAE /* UsersCollectionViewCell.swift in Sources */,
+				B1FEC4F020422AE500FEE05F /* SettingsTableViewCell.swift in Sources */,
 				B10E9E6D1FDCB6A200DB4751 /* LoginViewController.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,
 				B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */,
