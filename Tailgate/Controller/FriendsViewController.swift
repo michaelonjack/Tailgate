@@ -98,8 +98,13 @@ extension FriendsViewController: UICollectionViewDataSource {
         cell.userTableView.allowsSelection = false
         cell.userTableView.rowHeight = UITableViewAutomaticDimension
         cell.userTableView.estimatedRowHeight = 90
-        cell.userTableView.reloadData()
         cell.userTableView.layer.cornerRadius = 10
+        if indexPath.row == 0 {
+            cell.isMyFriendsCollectionCell = true
+        } else {
+            cell.isMyFriendsCollectionCell = false
+        }
+        cell.userTableView.reloadData()
         
         return cell
     }

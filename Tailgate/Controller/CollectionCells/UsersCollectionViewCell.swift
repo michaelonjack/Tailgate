@@ -12,6 +12,7 @@ class UsersCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var userTableView: UITableView!
     
+    var isMyFriendsCollectionCell = false
     var users:[User] = []
 }
 
@@ -41,6 +42,14 @@ extension UsersCollectionViewCell: UITableViewDataSource {
         cell.profilePicture.image = UIImage(named: "Avatar")
         // Reset the cell's selection
         cell.setSelected(false, animated: false)
+        // The cell's button should initially be the remove icon (an X) only if we're on the Find Friends collection cell
+        if self.isMyFriendsCollectionCell {
+            cell.isRemoveIcon = true
+            cell.actionButton.setImage(UIImage(named: "Exit2"), for: .normal)
+        } else {
+            cell.isRemoveIcon = false
+            cell.actionButton.setImage(UIImage(named: "Add2"), for: .normal)
+        }
         
         let currUser = self.users[indexPath.row]
         cell.nameLabel.text = currUser.name
