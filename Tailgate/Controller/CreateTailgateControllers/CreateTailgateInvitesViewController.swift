@@ -41,7 +41,7 @@ class CreateTailgateInvitesViewController: UIViewController {
         
         searchTextField.delegate = self
 
-        getUsers( completion: { (users) in
+        getFriends( completion: { (users) in
             self.invites = users
             self.usersTable.reloadData()
         })

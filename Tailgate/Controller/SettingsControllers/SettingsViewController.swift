@@ -78,6 +78,13 @@ class SettingsViewController: UIViewController {
             let birthdayString = self.rowData[0][3].1
             birthdayController.initialDateString = birthdayString
             birthdayController.presentingController = self
+            
+        case "SettingsToName":
+            let nameController: SettingsNameViewController = segue.destination as! SettingsNameViewController
+            
+            nameController.firstName = self.rowData[0][0].1
+            nameController.lastName = self.rowData[0][1].1
+            nameController.presentingController = self
         default:
             var _ = 0
         }
@@ -108,6 +115,9 @@ extension SettingsViewController: UITableViewDelegate {
         
         case "Birthday":
             self.performSegue(withIdentifier: "SettingsToBirthday", sender: nil)
+            
+        case "First Name", "Last Name":
+            self.performSegue(withIdentifier: "SettingsToName", sender: nil)
         default:
             var _ = 0
         }
