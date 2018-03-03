@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "exit@1x.png",
+      "filename" : "exitnav@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "exit-1.png",
+      "filename" : "exitnav@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "exit-2.png",
+      "filename" : "exitnav@3x.png",
       "scale" : "3x"
     }
   ],

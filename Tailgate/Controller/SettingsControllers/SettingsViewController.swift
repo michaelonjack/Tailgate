@@ -28,6 +28,7 @@ class SettingsViewController: UIViewController {
         self.settingsTable.rowHeight = UITableViewAutomaticDimension
         self.settingsTable.estimatedRowHeight = 44.0
         
+        initNavBar()
         loadData()
     }
 
@@ -35,7 +36,7 @@ class SettingsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func exitPressed(_ sender: Any) {
+    @objc func exitPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -55,6 +56,18 @@ class SettingsViewController: UIViewController {
         })
     }
 
+    func initNavBar() {
+        // Change font and color of nav header
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22.0), NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        // Add the exit button
+        let exitButton = UIButton(type: UIButtonType.custom)
+        exitButton.setBackgroundImage(UIImage(named: "ExitNav"), for: .normal)
+        exitButton.addTarget(self, action: #selector(exitPressed(_:)), for: .touchUpInside)
+        exitButton.widthAnchor.constraint(equalToConstant: 27.0).isActive = true
+        exitButton.heightAnchor.constraint(equalToConstant: 27.0).isActive = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: exitButton)
+    }
 }
 
 
@@ -70,6 +83,8 @@ extension SettingsViewController: UITableViewDelegate {
             } catch {
                 print("Sign out failure")
             }
+        case "Change Password":
+            self.performSegue(withIdentifier: "SettingsToChangePassword", sender: nil)
             
         default:
             var _ = 0
