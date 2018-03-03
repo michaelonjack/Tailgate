@@ -15,17 +15,21 @@ class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var actionButton: UIButton!
     
     var isRemoveIcon: Bool = false
+    var userId: String = ""
     
     @IBAction func actionButtonPressed(_ sender: UIButton) {
+        
+        if self.isRemoveIcon {
+            removeFriend(friendId: self.userId)
+        } else {
+            addFriend(friendId: self.userId)
+        }
+        
         UIView.animate(withDuration: 0.5) {
             if self.isRemoveIcon {
-                // Swift won't rotate +180 degree so first rotate 180 then an additional 45
                 self.actionButton.transform = self.actionButton.transform.rotated(by: (3.0 * CGFloat.pi) / 4.0)
-                //self.actionButton.transform = self.actionButton.transform.rotated(by: CGFloat.pi / 4.0)
             } else {
-                // Swift won't rotate +180 degree so first rotate 180 then an additional 45
                 self.actionButton.transform = self.actionButton.transform.rotated(by: -(3.0 * CGFloat.pi) / 4.0)
-                //self.actionButton.transform = self.actionButton.transform.rotated(by: -CGFloat.pi)
             }
             
             self.isRemoveIcon = !self.isRemoveIcon

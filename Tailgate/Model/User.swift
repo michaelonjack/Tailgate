@@ -63,3 +63,18 @@ class User {
         ]
     }
 }
+
+
+extension User: Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.uid == rhs.uid
+    }
+}
+
+
+extension User: Hashable {
+    var hashValue: Int {
+        return self.uid.hashValue
+    }
+}
+

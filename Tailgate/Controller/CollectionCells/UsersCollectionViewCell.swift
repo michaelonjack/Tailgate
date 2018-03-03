@@ -53,6 +53,7 @@ extension UsersCollectionViewCell: UITableViewDataSource {
         
         let currUser = self.users[indexPath.row]
         cell.nameLabel.text = currUser.name
+        cell.userId = currUser.uid
         if let profilePicUrl = currUser.profilePictureUrl {
             if profilePicUrl != "" {
                 let pictureUrl = URL(string: profilePicUrl)

@@ -252,6 +252,37 @@ func getUsers(completion: @escaping (([User]) -> Void)) {
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
+// getFriends
+//
+// Returns the current users friends
+//
+func getFriends(completion: @escaping (([User]) -> Void)) {
+    var friends:[User] = []
+    let allUsersReference = Database.database().reference(withPath: "users/")
+    let friendsReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)! + "/friends")
+    
+    friendsReference.observeSingleEvent(of: .value, with: { (friendsSnapshot) in
+        allUsersReference.observeSingleEvent(of: .value, with: { (allUsersSnapshot) in
+            for friendsSnapshotChild in friendsSnapshot.children {
+                let friendSnapshot = friendsSnapshotChild as! DataSnapshot
+                let friendId = friendSnapshot.key
+                
+                // Be sure the user still exists in the database
+                if allUsersSnapshot.hasChild(friendId) {
+                    let friend = User(snapshot: allUsersSnapshot.childSnapshot(forPath: friendId))
+                    friends.append(friend)
+                }
+            }
+            
+            completion(friends)
+        })
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
 // getSchoolByName
 //
 // Returns the school with the parameter name
@@ -336,5 +367,34 @@ func updateTailgateInvites(tailgate:Tailgate, invites:[User]) {
     
     tailgateReference.updateChildValues(["invites":inviteDict])
 }
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// addFriend
+//
+// Adds a user to the current user's friend list
+//
+func addFriend(friendId:String) {
+    let currentUserReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
+    currentUserReference.updateChildValues(["friends":[friendId:true]])
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// removeFriend
+//
+// Removes a user from the current user's friend list
+//
+func removeFriend(friendId:String) {
+    let currentUserReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
+    currentUserReference.child("friends").child(friendId).removeValue()
+}
+
+
+
 
 

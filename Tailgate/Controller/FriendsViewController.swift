@@ -15,8 +15,30 @@ class FriendsViewController: UIViewController {
     @IBOutlet weak var findFriendsButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
     
-    var myFriends:[User] = []
-    var allUsers:[User] = []
+    var readyToFilter: Bool = false
+    var allUsers:[User] = [] {
+        didSet {
+            if readyToFilter == true {
+                self.notMyFriends = getDifference(array1: allUsers, array2: myFriends)
+            } else {
+                readyToFilter = true
+            }
+        }
+    }
+    var myFriends:[User] = [] {
+        didSet {
+            if readyToFilter == true {
+                self.notMyFriends = getDifference(array1: allUsers, array2: myFriends)
+            } else {
+                readyToFilter = true
+            }
+        }
+    }
+    var notMyFriends:[User] = [] {
+        didSet {
+            self.friendsCollectionView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +51,10 @@ class FriendsViewController: UIViewController {
         
         getUsers( completion: { (users) in
             self.allUsers = users
+        })
+        
+        getFriends( completion:  { (friends) in
+            self.myFriends = friends
         })
     }
 
@@ -52,6 +78,15 @@ class FriendsViewController: UIViewController {
         self.friendsCollectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .left, animated: true)
     }
     
+    func getDifference(array1:[User], array2:[User]) -> [User] {
+        let set1 = Set<User>(array1)
+        let set2 = Set<User>(array2)
+        
+        // Get all users in set1 that are not in set2
+        let diff = set1.subtracting(set2)
+        
+        return Array(diff)
+    }
 }
 
 
@@ -92,7 +127,7 @@ extension FriendsViewController: UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UsersCell", for: indexPath) as! UsersCollectionViewCell
         
-        cell.users = self.allUsers
+        
         cell.userTableView.delegate = cell
         cell.userTableView.dataSource = cell
         cell.userTableView.allowsSelection = false
@@ -100,8 +135,10 @@ extension FriendsViewController: UICollectionViewDataSource {
         cell.userTableView.estimatedRowHeight = 90
         cell.userTableView.layer.cornerRadius = 10
         if indexPath.row == 0 {
+            cell.users = self.myFriends
             cell.isMyFriendsCollectionCell = true
         } else {
+            cell.users = self.notMyFriends
             cell.isMyFriendsCollectionCell = false
         }
         cell.userTableView.reloadData()
