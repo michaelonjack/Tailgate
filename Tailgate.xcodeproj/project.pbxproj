@@ -34,6 +34,7 @@
 		B154B1F4201D7BFE005DDC8A /* InvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */; };
 		B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16BC4D11FEECA290087C2F1 /* Tailgate.swift */; };
 		B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */; };
+		B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */; };
 		B1BBF2E31FEEBC98007B1ACF /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBF2E21FEEBC98007B1ACF /* Drink.swift */; };
 		B1BBF2E51FEEBCA4007B1ACF /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBF2E41FEEBCA4007B1ACF /* Food.swift */; };
 		B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */; };
@@ -89,6 +90,7 @@
 		B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesViewController.swift; sourceTree = "<group>"; };
 		B16BC4D11FEECA290087C2F1 /* Tailgate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tailgate.swift; sourceTree = "<group>"; };
 		B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
+		B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayViewController.swift; sourceTree = "<group>"; };
 		B1BBF2E21FEEBC98007B1ACF /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		B1BBF2E41FEEBCA4007B1ACF /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 		B1817833204A4B350029CF27 /* SettingsControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */,
 				B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */,
 				B1FEC4ED2042223400FEE05F /* SettingsViewController.swift */,
 			);
@@ -441,6 +444,7 @@
 				B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */,
 				B1E83BEA1FDDBF6100185E17 /* RightLeftSegue.swift in Sources */,
 				B1E83BEC1FDE286B00185E17 /* HomeViewController.swift in Sources */,
+				B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */,
 				B1BC52CD1FE09A0400BCBAE8 /* TailgatePhotoCell.swift in Sources */,
 				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
 				B1FEC4EE2042223400FEE05F /* SettingsViewController.swift in Sources */,

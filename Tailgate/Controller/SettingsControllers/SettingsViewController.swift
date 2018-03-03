@@ -49,6 +49,7 @@ class SettingsViewController: UIViewController {
             self.rowData[0][0].1 = userData?["firstName"] as? String ?? ""
             self.rowData[0][1].1 = userData?["lastName"] as? String ?? ""
             self.rowData[0][2].1 = userData?["email"] as? String ?? ""
+            self.rowData[0][3].1 = userData?["birthday"] as? String ?? ""
             
             DispatchQueue.main.async {
                 self.settingsTable.reloadData()
@@ -68,6 +69,19 @@ class SettingsViewController: UIViewController {
         exitButton.heightAnchor.constraint(equalToConstant: 27.0).isActive = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: exitButton)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case "SettingsToBirthday":
+            let birthdayController: SettingsBirthdayViewController = segue.destination as! SettingsBirthdayViewController
+            
+            let birthdayString = self.rowData[0][3].1
+            birthdayController.initialDateString = birthdayString
+            birthdayController.presentingController = self
+        default:
+            var _ = 0
+        }
+    }
 }
 
 
@@ -80,12 +94,20 @@ extension SettingsViewController: UITableViewDelegate {
         case "Logout":
             do {
                 try Auth.auth().signOut()
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {break}
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "InitialNavigationController") as! UINavigationController
+                appDelegate.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                appDelegate.window?.rootViewController = initialViewController
             } catch {
                 print("Sign out failure")
             }
+        
         case "Change Password":
             self.performSegue(withIdentifier: "SettingsToChangePassword", sender: nil)
-            
+        
+        case "Birthday":
+            self.performSegue(withIdentifier: "SettingsToBirthday", sender: nil)
         default:
             var _ = 0
         }

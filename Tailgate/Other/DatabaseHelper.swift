@@ -378,7 +378,7 @@ func updateTailgateInvites(tailgate:Tailgate, invites:[User]) {
 //
 func addFriend(friendId:String) {
     let currentUserReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
-    currentUserReference.updateChildValues(["friends":[friendId:true]])
+    currentUserReference.child("friends").updateChildValues([friendId:true])
 }
 
 
@@ -394,6 +394,18 @@ func removeFriend(friendId:String) {
     currentUserReference.child("friends").child(friendId).removeValue()
 }
 
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// updateValueForCurrentUser
+//
+// Updates a field for the current user
+//
+func updateValueForCurrentUser(key:String, value:Any) {
+    let currentUserReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
+    currentUserReference.updateChildValues([key:value])
+}
 
 
 
