@@ -22,10 +22,22 @@ class CreateTailgateInvitesViewController: UIViewController {
     var drinks:[Drink]!
     var flairUrl:String!
     
-    var invites:[User] = []
-    var selectedInvites:[User] = []
+    var friends:[User] = []
+    var searchResults:[User] = []
+    var selectedFriends:[User] = []
     var searchText:String = "" {
         didSet {
+            if searchText == "" {
+                searchResults = friends
+            } else {
+                searchResults = []
+                for friend in friends {
+                    if friend.name.lowercased().range(of: self.searchText.lowercased()) != nil {
+                        searchResults.append(friend)
+                    }
+                }
+            }
+            
             usersTable.reloadData()
         }
     }
@@ -42,7 +54,8 @@ class CreateTailgateInvitesViewController: UIViewController {
         searchTextField.delegate = self
 
         getFriends( completion: { (users) in
-            self.invites = users
+            self.friends = users
+            self.searchResults = users
             self.usersTable.reloadData()
         })
     }
@@ -54,7 +67,7 @@ class CreateTailgateInvitesViewController: UIViewController {
     
     @IBAction func createPressed(_ sender: Any) {
         
-        let newTailgate = Tailgate(owner: (Auth.auth().currentUser?.uid)!, name: tailgateName, school: tailgateSchool, flairImageUrl: flairUrl, isPublic: isPublic, startTime: startTime, foods: foods, drinks: drinks, invites: selectedInvites)
+        let newTailgate = Tailgate(owner: (Auth.auth().currentUser?.uid)!, name: tailgateName, school: tailgateSchool, flairImageUrl: flairUrl, isPublic: isPublic, startTime: startTime, foods: foods, drinks: drinks, invites: selectedFriends)
         
         let tailgateReference = Database.database().reference(withPath: "tailgates/" + newTailgate.id)
         tailgateReference.setValue(newTailgate.toAnyObject())
@@ -93,14 +106,14 @@ extension CreateTailgateInvitesViewController: UITextFieldDelegate {
 extension CreateTailgateInvitesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedInvites.append( invites[indexPath.row] )
+        self.selectedFriends.append( searchResults[indexPath.row] )
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        // Remove the friend from the invites list when deselected
-        let uninvitedFriendId = invites[indexPath.row].uid
+        // Remove the friend from the friends list when deselected
+        let uninvitedFriendId = searchResults[indexPath.row].uid
         
-        self.selectedInvites = self.selectedInvites.filter{$0.uid != uninvitedFriendId}
+        self.selectedFriends = self.selectedFriends.filter{$0.uid != uninvitedFriendId}
     }
     
 }
@@ -116,26 +129,15 @@ extension CreateTailgateInvitesViewController: UITableViewDataSource {
         // Reset the recycled cell's profile picture
         cell.profilePicture.image = UIImage(named: "Avatar")
         
-        var matchesFound = 0
-        for index in 0...self.invites.count-1 {
-            let currUser = self.invites[index]
-            
-            if self.searchText == "" || currUser.name.lowercased().range(of: self.searchText.lowercased()) != nil {
-                // We want to skip over matches that were already added to the table
-                if matchesFound == indexPath.row {
-                    cell.nameLabel.text = currUser.name
-                    
-                    if let profilePicUrl = currUser.profilePictureUrl {
-                        if profilePicUrl != "" {
-                            let pictureUrl = URL(string: profilePicUrl)
-                            cell.profilePicture.sd_setImage(with: pictureUrl, completed: nil)
-                            cell.profilePicture.layer.cornerRadius = 0.5 * cell.profilePicture.layer.bounds.width
-                            cell.profilePicture.clipsToBounds = true
-                        }
-                    }
-                    break
-                }
-                matchesFound = matchesFound + 1
+        let currUser = self.searchResults[indexPath.row]
+        cell.nameLabel.text = currUser.name
+        
+        if let profilePicUrl = currUser.profilePictureUrl {
+            if profilePicUrl != "" {
+                let pictureUrl = URL(string: profilePicUrl)
+                cell.profilePicture.sd_setImage(with: pictureUrl, completed: nil)
+                cell.profilePicture.layer.cornerRadius = 0.5 * cell.profilePicture.layer.bounds.width
+                cell.profilePicture.clipsToBounds = true
             }
         }
         
@@ -143,21 +145,7 @@ extension CreateTailgateInvitesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.searchText != "" {
-            var count = 0
-            
-            for user in invites {
-                if user.name.lowercased().range(of: self.searchText.lowercased()) != nil {
-                    count = count + 1
-                }
-            }
-            
-            return count
-        }
-            
-        else {
-            return self.invites.count
-        }
+        return self.searchResults.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAM-Kd-Hws" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-422" y="-3505"/>
+            <point key="canvasLocation" x="-650" y="-2820"/>
         </scene>
         <!--Email-->
         <scene sceneID="VMd-Ub-2p2">
@@ -157,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xa-k5-dHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320.8" y="-4594.452773613194"/>
+            <point key="canvasLocation" x="-1071" y="-3860"/>
         </scene>
         <!--Birthday-->
         <scene sceneID="wO3-2X-Men">
@@ -225,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qld-Ty-uoG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1321" y="-3896"/>
+            <point key="canvasLocation" x="-359" y="-3860"/>
         </scene>
         <!--Change Password-->
         <scene sceneID="jZ6-Aa-5rR">
@@ -317,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NxO-js-dTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1321" y="-3158"/>
+            <point key="canvasLocation" x="348" y="-3860"/>
         </scene>
         <!--Name-->
         <scene sceneID="Q7J-6a-kO9">
@@ -380,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KB-Kr-Omy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1321" y="-2439"/>
+            <point key="canvasLocation" x="-1753" y="-3860"/>
         </scene>
         <!--Friends View Controller-->
         <scene sceneID="tag-1S-mup">
@@ -589,7 +589,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rp1-hF-JDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="687.20000000000005" y="-1701.4992503748126"/>
+            <point key="canvasLocation" x="562" y="-2067"/>
         </scene>
         <!--Tailgate View Controller-->
         <scene sceneID="TP4-cY-nva">
@@ -780,7 +780,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xib-Ku-Kqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1584.8" y="-1464.0179910044978"/>
+            <point key="canvasLocation" x="2985" y="-1526"/>
         </scene>
         <!--Create Tailgate Name View Controller-->
         <scene sceneID="Yu0-SK-G1p">
@@ -1617,7 +1617,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQE-Fv-T5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40.799999999999997" y="-980.05997001499259"/>
+            <point key="canvasLocation" x="41" y="-1148"/>
         </scene>
         <!--MapViewController-->
         <scene sceneID="XVz-pa-hWx">
@@ -1682,10 +1682,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tailgate App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58l-8W-kGY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tailgator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58l-8W-kGY">
                                 <rect key="frame" x="51" y="64" width="272" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="43"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1717,6 +1717,10 @@
                                     <segue destination="zHo-CR-N45" kind="show" id="PNK-5z-MCE"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="YQq-Lp-eG1">
+                                <rect key="frame" x="67" y="156" width="240" height="207"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1733,7 +1737,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="41" y="34"/>
+            <point key="canvasLocation" x="40.799999999999997" y="33.733133433283363"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="49Y-eG-O25">
@@ -2248,7 +2252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iGV-o4-Vcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2524" y="-1701.4992503748126"/>
+            <point key="canvasLocation" x="3806" y="-2278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Xy-n9-1z1">
@@ -2266,7 +2270,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9DG-qt-hX1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-420.80000000000001" y="-1701.9490254872564"/>
+            <point key="canvasLocation" x="-650" y="-2066"/>
         </scene>
     </scenes>
     <resources>
@@ -2280,6 +2284,7 @@
         <image name="Exit2" width="256" height="256"/>
         <image name="Friends" width="128" height="128"/>
         <image name="Friends2" width="128" height="128"/>
+        <image name="Icon" width="256" height="256"/>
         <image name="Invite" width="256" height="256"/>
         <image name="Location" width="256" height="256"/>
         <image name="Reload" width="256" height="256"/>
@@ -2290,6 +2295,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NSk-bg-64S"/>
-        <segue reference="u7i-bp-TO8"/>
+        <segue reference="0I7-na-UCc"/>
     </inferredMetricsTieBreakers>
 </document>

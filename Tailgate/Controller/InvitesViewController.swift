@@ -17,9 +17,21 @@ class InvitesViewController: UIViewController {
     
     var tailgate: Tailgate!
     var friends:[User] = []
+    var searchResults:[User] = []
     var selectedInvites:[User] = []
     var searchText:String = "" {
         didSet {
+            if searchText == "" {
+                searchResults = friends
+            } else {
+                searchResults = []
+                for friend in friends {
+                    if friend.name.lowercased().range(of: self.searchText.lowercased()) != nil {
+                        searchResults.append(friend)
+                    }
+                }
+            }
+            
             usersTable.reloadData()
         }
     }
@@ -37,8 +49,9 @@ class InvitesViewController: UIViewController {
         
         self.selectedInvites = tailgate.invites
         
-        getUsers( completion: { (users) in
+        getFriends( completion: { (users) in
             self.friends = users
+            self.searchResults = users
             self.usersTable.reloadData()
         })
     }
@@ -83,12 +96,12 @@ extension InvitesViewController: UITextFieldDelegate {
 extension InvitesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedInvites.append( friends[indexPath.row] )
+        self.selectedInvites.append( searchResults[indexPath.row] )
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         // Remove the friend from the invites list when deselected
-        let uninvitedFriendId = friends[indexPath.row].uid
+        let uninvitedFriendId = searchResults[indexPath.row].uid
         
         self.selectedInvites = self.selectedInvites.filter{$0.uid != uninvitedFriendId}
     }
@@ -101,6 +114,8 @@ extension InvitesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableCell", for: indexPath) as! UserTableViewCell
         
+        let currUser = self.searchResults[indexPath.row]
+        
         // Reset the recycled cell's label
         cell.nameLabel.text = ""
         // Reset the recycled cell's profile picture
@@ -110,32 +125,19 @@ extension InvitesViewController: UITableViewDataSource {
         
         // Highlight the users that are already invited
         for invite in selectedInvites {
-            if invite.uid == self.friends[indexPath.row].uid {
+            if invite.uid == self.searchResults[indexPath.row].uid {
                 self.usersTable.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
             }
         }
         
-        var matchesFound = 0
-        for index in 0...self.friends.count-1 {
-            let currUser = self.friends[index]
-            
-            // Add the user to the table if there is no search text or if the search text matches their name
-            if self.searchText == "" || currUser.name.lowercased().range(of: self.searchText.lowercased()) != nil {
-                // We want to skip over matches that were already added to the table
-                if matchesFound == indexPath.row {
-                    cell.nameLabel.text = currUser.name
-                    
-                    if let profilePicUrl = currUser.profilePictureUrl {
-                        if profilePicUrl != "" {
-                            let pictureUrl = URL(string: profilePicUrl)
-                            cell.profilePicture.sd_setImage(with: pictureUrl, completed: nil)
-                            cell.profilePicture.layer.cornerRadius = 0.5 * cell.profilePicture.layer.bounds.width
-                            cell.profilePicture.clipsToBounds = true
-                        }
-                    }
-                    break
-                }
-                matchesFound = matchesFound + 1
+        cell.nameLabel.text = currUser.name
+        
+        if let profilePicUrl = currUser.profilePictureUrl {
+            if profilePicUrl != "" {
+                let pictureUrl = URL(string: profilePicUrl)
+                cell.profilePicture.sd_setImage(with: pictureUrl, completed: nil)
+                cell.profilePicture.layer.cornerRadius = 0.5 * cell.profilePicture.layer.bounds.width
+                cell.profilePicture.clipsToBounds = true
             }
         }
         
@@ -143,21 +145,7 @@ extension InvitesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.searchText != "" {
-            var count = 0
-            
-            for user in friends {
-                if user.name.lowercased().range(of: self.searchText.lowercased()) != nil {
-                    count = count + 1
-                }
-            }
-            
-            return count
-        }
-            
-        else {
-            return self.friends.count
-        }
+        return self.searchResults.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

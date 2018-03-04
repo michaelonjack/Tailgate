@@ -15,9 +15,21 @@ class CreateTailgateSchoolViewController: UIViewController {
     
     var tailgateName: String!
     var schools: [School] = []
+    var searchResults: [School] = []
     var selectedSchool: School!
     var searchText:String = "" {
         didSet {
+            if searchText == "" {
+                searchResults = schools
+            } else {
+                searchResults = []
+                for school in schools {
+                    if school.name.lowercased().range(of: self.searchText.lowercased()) != nil {
+                        searchResults.append(school)
+                    }
+                }
+            }
+            
             schoolTable.reloadData()
         }
     }
@@ -31,6 +43,7 @@ class CreateTailgateSchoolViewController: UIViewController {
         
         getSchools(completion: { (schools) in
             self.schools = schools
+            self.searchResults = schools
             self.schoolTable.reloadData()
         })
     }
@@ -85,7 +98,7 @@ extension CreateTailgateSchoolViewController: UITextFieldDelegate {
 extension CreateTailgateSchoolViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedSchool = schools[indexPath.row]
+        self.selectedSchool = searchResults[indexPath.row]
     }
     
 }
@@ -96,42 +109,18 @@ extension CreateTailgateSchoolViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SchoolTableCell", for: indexPath) as! SchoolTableViewCell
         
+        let currSchool = self.searchResults[indexPath.row]
+        
         // Reset the recycled cell's label
         cell.schoolNameLabel.text = ""
         
-        var matchesFound = 0
-        for index in 0...self.schools.count-1 {
-            let currSchool = self.schools[index]
-            if currSchool.name.lowercased().range(of: self.searchText.lowercased()) != nil || self.searchText == "" {
-                // We want to skip over matches that were already added to the table
-                if matchesFound == indexPath.row {
-                    cell.schoolNameLabel.text = currSchool.name
-                    break
-                }
-                matchesFound = matchesFound + 1
-            }
-        }
+        cell.schoolNameLabel.text = currSchool.name
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if self.searchText != "" {
-            var count = 0
-            
-            for school in schools {
-                if school.name.lowercased().range(of: self.searchText.lowercased()) != nil {
-                    count = count + 1
-                }
-            }
-            
-            return count
-        }
-        
-        else {
-            return self.schools.count
-        }
+        return self.searchResults.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

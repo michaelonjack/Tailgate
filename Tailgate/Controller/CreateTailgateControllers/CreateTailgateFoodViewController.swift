@@ -19,9 +19,21 @@ class CreateTailgateFoodViewController: UIViewController {
     var startTime: Date!
     
     var foods:[Food] = []
+    var searchResults:[Food] = []
     var selectedFoods:[Food] = []
     var searchText:String = "" {
         didSet {
+            if searchText == "" {
+                searchResults = foods
+            } else {
+                searchResults = []
+                for food in foods {
+                    if food.name.lowercased().range(of: self.searchText.lowercased()) != nil {
+                        searchResults.append(food)
+                    }
+                }
+            }
+            
             foodTable.reloadData()
         }
     }
@@ -37,6 +49,7 @@ class CreateTailgateFoodViewController: UIViewController {
         
         getFood(completion: { (foods) in
             self.foods = foods
+            self.searchResults = foods
             self.foodTable.reloadData()
         })
     }
@@ -79,11 +92,14 @@ extension CreateTailgateFoodViewController: UITextFieldDelegate {
 extension CreateTailgateFoodViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedFoods.append( foods[indexPath.row] )
+        self.selectedFoods.append( searchResults[indexPath.row] )
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // Remove the friend from the friends list when deselected
+        let unselectedFoodId = searchResults[indexPath.row].id
         
+        self.selectedFoods = self.selectedFoods.filter{$0.id != unselectedFoodId}
     }
     
 }
@@ -94,42 +110,18 @@ extension CreateTailgateFoodViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodTableCell", for: indexPath) as! FoodTableViewCell
         
+        let currFood = self.searchResults[indexPath.row]
+        
         // Reset the recycled cell's label
         cell.foodNameLabel.text = ""
         
-        var matchesFound = 0
-        for index in 0...self.foods.count-1 {
-            let currFood = self.foods[index]
-            
-            if self.searchText == "" || currFood.name.lowercased().range(of: self.searchText.lowercased()) != nil {
-                // We want to skip over matches that were already added to the table
-                if matchesFound == indexPath.row {
-                    cell.foodNameLabel.text = currFood.name
-                    break
-                }
-                matchesFound = matchesFound + 1
-            }
-        }
+        cell.foodNameLabel.text = currFood.name
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.searchText != "" {
-            var count = 0
-            
-            for food in foods {
-                if food.name.lowercased().range(of: self.searchText.lowercased()) != nil {
-                    count = count + 1
-                }
-            }
-            
-            return count
-        }
-            
-        else {
-            return self.foods.count
-        }
+        return self.searchResults.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
