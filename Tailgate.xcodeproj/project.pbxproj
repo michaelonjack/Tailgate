@@ -41,6 +41,7 @@
 		B1BC52CD1FE09A0400BCBAE8 /* TailgatePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CC1FE09A0400BCBAE8 /* TailgatePhotoCell.swift */; };
 		B1BC52CF1FE0C12700BCBAE8 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */; };
 		B1CAD9A2204B5F7400934F57 /* SettingsNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CAD9A1204B5F7400934F57 /* SettingsNameViewController.swift */; };
+		B1CAD9A4204B6CDE00934F57 /* SettingsEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CAD9A3204B6CDE00934F57 /* SettingsEmailViewController.swift */; };
 		B1DD1CD22039ED6600291EAE /* CreateTailgateFlairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DD1CD12039ED6600291EAE /* CreateTailgateFlairViewController.swift */; };
 		B1DD1CD42039EF7700291EAE /* FlairPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DD1CD32039EF7700291EAE /* FlairPhotoCell.swift */; };
 		B1DD1CD8203E409B00291EAE /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DD1CD7203E409B00291EAE /* FriendsViewController.swift */; };
@@ -98,6 +99,7 @@
 		B1BC52CC1FE09A0400BCBAE8 /* TailgatePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatePhotoCell.swift; sourceTree = "<group>"; };
 		B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		B1CAD9A1204B5F7400934F57 /* SettingsNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNameViewController.swift; sourceTree = "<group>"; };
+		B1CAD9A3204B6CDE00934F57 /* SettingsEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEmailViewController.swift; sourceTree = "<group>"; };
 		B1DD1CD12039ED6600291EAE /* CreateTailgateFlairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateFlairViewController.swift; sourceTree = "<group>"; };
 		B1DD1CD32039EF7700291EAE /* FlairPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlairPhotoCell.swift; sourceTree = "<group>"; };
 		B1DD1CD7203E409B00291EAE /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		B1817833204A4B350029CF27 /* SettingsControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B1CAD9A3204B6CDE00934F57 /* SettingsEmailViewController.swift */,
 				B1FEC4ED2042223400FEE05F /* SettingsViewController.swift */,
 				B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */,
 				B1CAD9A1204B5F7400934F57 /* SettingsNameViewController.swift */,
@@ -449,6 +452,7 @@
 				B1E83BEC1FDE286B00185E17 /* HomeViewController.swift in Sources */,
 				B1CAD9A2204B5F7400934F57 /* SettingsNameViewController.swift in Sources */,
 				B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */,
+				B1CAD9A4204B6CDE00934F57 /* SettingsEmailViewController.swift in Sources */,
 				B1BC52CD1FE09A0400BCBAE8 /* TailgatePhotoCell.swift in Sources */,
 				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
 				B1FEC4EE2042223400FEE05F /* SettingsViewController.swift in Sources */,

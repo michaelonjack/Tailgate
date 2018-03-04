@@ -85,6 +85,13 @@ class SettingsViewController: UIViewController {
             nameController.firstName = self.rowData[0][0].1
             nameController.lastName = self.rowData[0][1].1
             nameController.presentingController = self
+            
+        case "SettingsToEmail":
+            let emailController: SettingsEmailViewController = segue.destination as! SettingsEmailViewController
+            
+            emailController.email = self.rowData[0][2].1
+            emailController.presentingController = self
+            
         default:
             var _ = 0
         }
@@ -118,6 +125,10 @@ extension SettingsViewController: UITableViewDelegate {
             
         case "First Name", "Last Name":
             self.performSegue(withIdentifier: "SettingsToName", sender: nil)
+        
+        case "Email":
+            self.performSegue(withIdentifier: "SettingsToEmail", sender: nil)
+        
         default:
             var _ = 0
         }
