@@ -35,6 +35,10 @@
 		B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16BC4D11FEECA290087C2F1 /* Tailgate.swift */; };
 		B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */; };
 		B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */; };
+		B1A18FD22054CD3800D9C12A /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */; };
+		B1A18FD42054CD6600D9C12A /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */; };
+		B1A18FD62054D61000D9C12A /* GamedayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD52054D61000D9C12A /* GamedayViewController.swift */; };
+		B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD72054DFEB00D9C12A /* Game.swift */; };
 		B1BBF2E31FEEBC98007B1ACF /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBF2E21FEEBC98007B1ACF /* Drink.swift */; };
 		B1BBF2E51FEEBCA4007B1ACF /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBF2E41FEEBCA4007B1ACF /* Food.swift */; };
 		B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */; };
@@ -93,6 +97,10 @@
 		B16BC4D11FEECA290087C2F1 /* Tailgate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tailgate.swift; sourceTree = "<group>"; };
 		B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayViewController.swift; sourceTree = "<group>"; };
+		B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
+		B1A18FD52054D61000D9C12A /* GamedayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedayViewController.swift; sourceTree = "<group>"; };
+		B1A18FD72054DFEB00D9C12A /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B1BBF2E21FEEBC98007B1ACF /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		B1BBF2E41FEEBCA4007B1ACF /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +184,7 @@
 		B10E9E9B1FDCC20200DB4751 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B1A18FD72054DFEB00D9C12A /* Game.swift */,
 				B1E83BE51FDD890500185E17 /* User.swift */,
 				B13B81411FE6F1B6008F3A38 /* School.swift */,
 				B16BC4D11FEECA290087C2F1 /* Tailgate.swift */,
@@ -201,6 +210,7 @@
 		B10E9E9D1FDCC25400DB4751 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B1A18FD52054D61000D9C12A /* GamedayViewController.swift */,
 				B1DD1CD7203E409B00291EAE /* FriendsViewController.swift */,
 				B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */,
 				B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */,
@@ -236,6 +246,7 @@
 		B13B813E1FE6EC91008F3A38 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
+				B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */,
 				B1FEC4EF20422AE500FEE05F /* SettingsTableViewCell.swift */,
 				B1DD1CDC203E593B00291EAE /* FriendTableViewCell.swift */,
 				B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */,
@@ -261,6 +272,7 @@
 		B1DD1CD9203E505F00291EAE /* CollectionCells */ = {
 			isa = PBXGroup;
 			children = (
+				B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */,
 				B1DD1CDA203E591400291EAE /* UsersCollectionViewCell.swift */,
 				B1DD1CD32039EF7700291EAE /* FlairPhotoCell.swift */,
 				B1BC52CC1FE09A0400BCBAE8 /* TailgatePhotoCell.swift */,
@@ -444,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1A18FD62054D61000D9C12A /* GamedayViewController.swift in Sources */,
 				B1E83BD91FDCFC5600185E17 /* NewTailgateViewController.swift in Sources */,
 				B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */,
 				B13B81461FE9FB3A008F3A38 /* DrinkTableViewCell.swift in Sources */,
@@ -464,6 +477,7 @@
 				B1BBF2E51FEEBCA4007B1ACF /* Food.swift in Sources */,
 				B13B813B1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift in Sources */,
 				B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */,
+				B1A18FD42054CD6600D9C12A /* ScheduleCollectionViewCell.swift in Sources */,
 				B1E83BE41FDD857A00185E17 /* TopDownSegue.swift in Sources */,
 				B1DD1CD42039EF7700291EAE /* FlairPhotoCell.swift in Sources */,
 				B13B814A1FEA0446008F3A38 /* UserTableViewCell.swift in Sources */,
@@ -481,7 +495,9 @@
 				B1DD1CD8203E409B00291EAE /* FriendsViewController.swift in Sources */,
 				B1DD1CDB203E591400291EAE /* UsersCollectionViewCell.swift in Sources */,
 				B1FEC4F020422AE500FEE05F /* SettingsTableViewCell.swift in Sources */,
+				B1A18FD22054CD3800D9C12A /* ScheduleTableViewCell.swift in Sources */,
 				B10E9E6D1FDCB6A200DB4751 /* LoginViewController.swift in Sources */,
+				B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,
 				B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */,
 				B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */,

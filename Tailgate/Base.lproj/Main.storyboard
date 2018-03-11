@@ -589,7 +589,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rp1-hF-JDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="562" y="-2067"/>
+            <point key="canvasLocation" x="1414" y="-1970"/>
         </scene>
         <!--Tailgate View Controller-->
         <scene sceneID="TP4-cY-nva">
@@ -1613,11 +1613,12 @@
                         <segue destination="GTv-zW-I56" kind="custom" identifier="ProfileToMap" customClass="RightLeftSegue" customModule="Tailgate" customModuleProvider="target" id="EXY-XP-nn9"/>
                         <segue destination="kfJ-As-ks6" kind="show" identifier="ProfileToNewTailgate" id="COJ-oW-hyk"/>
                         <segue destination="O2l-0b-cuo" kind="show" identifier="ProfileToTailgate" id="u7i-bp-TO8"/>
+                        <segue destination="q8A-dR-wm9" kind="show" identifier="ProfileToGameday" id="NX1-lT-HTG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQE-Fv-T5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="41" y="-1148"/>
+            <point key="canvasLocation" x="40.799999999999997" y="-1148.2758620689656"/>
         </scene>
         <!--MapViewController-->
         <scene sceneID="XVz-pa-hWx">
@@ -2252,7 +2253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iGV-o4-Vcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3806" y="-2278"/>
+            <point key="canvasLocation" x="4144.8000000000002" y="-2278.1109445277361"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Xy-n9-1z1">
@@ -2271,6 +2272,144 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9DG-qt-hX1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-650" y="-2066"/>
+        </scene>
+        <!--Gameday-->
+        <scene sceneID="CCD-be-EJq">
+            <objects>
+                <viewController id="qtJ-rt-WxS" customClass="GamedayViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="obc-k1-Dgp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvg-7H-Cge">
+                                <rect key="frame" x="187" y="597" width="187.5" height="70"/>
+                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nvg-7H-Cge" secondAttribute="height" multiplier="187:70" id="DZ6-BG-rXc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Add Flair">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kfl-Jy-phF">
+                                <rect key="frame" x="0.0" y="597" width="187.5" height="70"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Kfl-Jy-phF" secondAttribute="height" multiplier="187:70" id="7Yt-L0-2tP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Gameday Signs">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f6Q-sv-Dgp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="525"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2TV-oZ-DPD">
+                                    <size key="itemSize" width="375" height="525"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScheduleCell" id="rmZ-Tm-l6q" customClass="ScheduleCollectionViewCell" customModule="Tailgate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0SE-q6-D5D" userLabel="Schedule Table View">
+                                                    <rect key="frame" x="7" y="0.0" width="361" height="525"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <prototypes>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleTableCell" id="QLT-rf-nSC" customClass="ScheduleTableViewCell" customModule="Tailgate" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="28" width="361" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QLT-rf-nSC" id="BDU-X9-BeQ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="361" height="43.5"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fK-hF-D50">
+                                                                        <rect key="frame" x="302" y="12" width="44" height="21"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzl-hk-n8S">
+                                                                        <rect key="frame" x="15" y="12" width="50" height="21"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="detailLabel" destination="0fK-hF-D50" id="yVv-cG-dlu"/>
+                                                                <outlet property="teamsLabel" destination="bzl-hk-n8S" id="6fx-0Q-Pda"/>
+                                                            </connections>
+                                                        </tableViewCell>
+                                                    </prototypes>
+                                                </tableView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="0SE-q6-D5D" firstAttribute="centerY" secondItem="rmZ-Tm-l6q" secondAttribute="centerY" id="L3g-Wi-tzf"/>
+                                            <constraint firstAttribute="trailing" secondItem="0SE-q6-D5D" secondAttribute="trailing" constant="7" id="QPp-4j-2mm"/>
+                                            <constraint firstItem="0SE-q6-D5D" firstAttribute="leading" secondItem="rmZ-Tm-l6q" secondAttribute="leading" constant="7" id="eak-9H-9fs"/>
+                                            <constraint firstItem="0SE-q6-D5D" firstAttribute="height" secondItem="rmZ-Tm-l6q" secondAttribute="height" id="prA-xN-MHl"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="scheduleTableVIew" destination="0SE-q6-D5D" id="AuF-R9-3Iw"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nvg-7H-Cge" firstAttribute="bottom" secondItem="iw3-Ml-ZJm" secondAttribute="bottom" id="4iZ-IY-iqd"/>
+                            <constraint firstItem="Kfl-Jy-phF" firstAttribute="width" secondItem="iw3-Ml-ZJm" secondAttribute="width" multiplier="0.5" id="8VM-3D-xWY"/>
+                            <constraint firstItem="f6Q-sv-Dgp" firstAttribute="centerX" secondItem="obc-k1-Dgp" secondAttribute="centerX" id="DPZ-Me-EHu"/>
+                            <constraint firstItem="Kfl-Jy-phF" firstAttribute="leading" secondItem="iw3-Ml-ZJm" secondAttribute="leading" id="LuD-eL-rmt"/>
+                            <constraint firstItem="f6Q-sv-Dgp" firstAttribute="top" secondItem="iw3-Ml-ZJm" secondAttribute="top" id="RrO-A7-Kmi"/>
+                            <constraint firstItem="f6Q-sv-Dgp" firstAttribute="height" secondItem="iw3-Ml-ZJm" secondAttribute="height" multiplier="0.870647" id="W2X-cO-B4P"/>
+                            <constraint firstItem="nvg-7H-Cge" firstAttribute="width" secondItem="iw3-Ml-ZJm" secondAttribute="width" multiplier="0.5" id="eST-qy-wQ0"/>
+                            <constraint firstItem="Kfl-Jy-phF" firstAttribute="bottom" secondItem="iw3-Ml-ZJm" secondAttribute="bottom" id="enB-aK-ufV"/>
+                            <constraint firstItem="iw3-Ml-ZJm" firstAttribute="trailing" secondItem="nvg-7H-Cge" secondAttribute="trailing" id="f7e-Jn-qR7"/>
+                            <constraint firstItem="f6Q-sv-Dgp" firstAttribute="width" secondItem="iw3-Ml-ZJm" secondAttribute="width" id="n4f-cP-Enb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iw3-Ml-ZJm"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Gameday" id="ghv-X2-RMM"/>
+                    <connections>
+                        <outlet property="schedulesCollectionView" destination="f6Q-sv-Dgp" id="44n-kR-M7U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rUN-RA-BdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1413.5999999999999" y="-2821.4392803598203"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LuO-al-Z6t">
+            <objects>
+                <navigationController storyboardIdentifier="ScheduleNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="q8A-dR-wm9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="e2T-Qt-GWg">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qtJ-rt-WxS" kind="relationship" relationship="rootViewController" id="uq9-zQ-2tf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MM9-r9-qNZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="575" y="-2821"/>
         </scene>
     </scenes>
     <resources>
@@ -2295,6 +2434,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NSk-bg-64S"/>
-        <segue reference="0I7-na-UCc"/>
+        <segue reference="u7i-bp-TO8"/>
     </inferredMetricsTieBreakers>
 </document>
