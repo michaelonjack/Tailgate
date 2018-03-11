@@ -36,6 +36,7 @@ func uploadProfilePictureForUser(userid:String, image:UIImage) {
 }
 
 
+
 //////////////////////////////////////////////////////////////////////////////////////
 //
 // uploadTailgatePicture
@@ -65,6 +66,26 @@ func uploadTailgatePicture(tailgate:Tailgate, userid:String, image:UIImage, comp
     }
 }
 
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// moveNode
+//
+//
+//
+func moveNode(fromPath:String, toPath:String) {
+    let fromReference = Database.database().reference(withPath: fromPath)
+    let toReference = Database.database().reference(withPath: toPath)
+    
+    fromReference.observeSingleEvent(of: .value) { (snapshot) in
+        if let value = snapshot.value {
+            toReference.setValue(value)
+            //fromReference.removeValue()
+        }
+        
+    }
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -223,6 +244,29 @@ func getDrinks(completion: @escaping (([Drink]) -> Void)) {
         }
         
         completion(drinks)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// getCurrentGames
+//
+// Returns all games for this week
+//
+func getCurrentGamesForConference(conferenceName:String, completion: @escaping (([Game]) -> Void)) {
+    var games:[Game] = []
+    let currentGamesReference = Database.database().reference(withPath: "games/week1/" + conferenceName)
+    currentGamesReference.keepSynced(true)
+    
+    currentGamesReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        for gamesSnapshot in snapshot.children {
+            let game = Game(snapshot: gamesSnapshot as! DataSnapshot)
+            games.append(game)
+        }
+        
+        completion(games)
     })
 }
 

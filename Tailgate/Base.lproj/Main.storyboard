@@ -2331,22 +2331,32 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="43.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fK-hF-D50">
-                                                                        <rect key="frame" x="302" y="12" width="44" height="21"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fK-hF-D50">
+                                                                        <rect key="frame" x="285" y="11" width="69" height="22"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                         <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzl-hk-n8S">
-                                                                        <rect key="frame" x="15" y="12" width="50" height="21"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teams" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzl-hk-n8S">
+                                                                        <rect key="frame" x="7" y="11" width="270" height="22"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                         <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
+                                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="0fK-hF-D50" secondAttribute="bottom" constant="10.5" id="4zT-Lx-BQt"/>
+                                                                    <constraint firstItem="bzl-hk-n8S" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" multiplier="0.747922" id="7fY-Ys-vXs"/>
+                                                                    <constraint firstItem="bzl-hk-n8S" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="11" id="Cuo-fs-dlH"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="0fK-hF-D50" secondAttribute="trailing" constant="7" id="Dbb-2I-BoK"/>
+                                                                    <constraint firstItem="0fK-hF-D50" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="11" id="d9E-IE-6Kg"/>
+                                                                    <constraint firstItem="0fK-hF-D50" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" multiplier="0.191136" id="kzx-xQ-Vd6"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="bzl-hk-n8S" secondAttribute="bottom" constant="10.5" id="oWk-bi-pOr"/>
+                                                                    <constraint firstItem="bzl-hk-n8S" firstAttribute="leading" secondItem="BDU-X9-BeQ" secondAttribute="leading" constant="7" id="t7J-5F-iwc"/>
+                                                                </constraints>
                                                             </tableViewCellContentView>
+                                                            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <connections>
                                                                 <outlet property="detailLabel" destination="0fK-hF-D50" id="yVv-cG-dlu"/>
                                                                 <outlet property="teamsLabel" destination="bzl-hk-n8S" id="6fx-0Q-Pda"/>
@@ -2356,6 +2366,7 @@
                                                 </tableView>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="0SE-q6-D5D" firstAttribute="centerY" secondItem="rmZ-Tm-l6q" secondAttribute="centerY" id="L3g-Wi-tzf"/>
                                             <constraint firstAttribute="trailing" secondItem="0SE-q6-D5D" secondAttribute="trailing" constant="7" id="QPp-4j-2mm"/>
@@ -2363,7 +2374,7 @@
                                             <constraint firstItem="0SE-q6-D5D" firstAttribute="height" secondItem="rmZ-Tm-l6q" secondAttribute="height" id="prA-xN-MHl"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="scheduleTableVIew" destination="0SE-q6-D5D" id="AuF-R9-3Iw"/>
+                                            <outlet property="scheduleTableView" destination="0SE-q6-D5D" id="Kvp-Zk-nmp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

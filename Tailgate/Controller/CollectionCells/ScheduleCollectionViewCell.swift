@@ -10,9 +10,10 @@ import UIKit
 
 class ScheduleCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var scheduleTableVIew: UITableView!
+    @IBOutlet weak var scheduleTableView: UITableView!
     
-    let sectionTitles = ["BIG 10 SCHEDULE"]
+    let refreshControl = UIRefreshControl()
+    var conferenceName = ""
     var games:[Game] = []
 }
 
@@ -26,6 +27,30 @@ extension ScheduleCollectionViewCell: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
+    }
+    
+    func addRefreshControl() {
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            self.scheduleTableView.refreshControl = self.refreshControl
+        } else {
+            self.scheduleTableView.addSubview(self.refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshScheduleTable(_:)), for: .valueChanged)
+    }
+    
+    
+    @objc private func refreshScheduleTable(_ sender: Any) {
+        let conferenceKey = self.conferenceName.lowercased().replacingOccurrences(of: " ", with: "")
+        print(conferenceKey)
+        getCurrentGamesForConference(conferenceName: conferenceKey, completion: { (games) in
+            self.games = games
+            self.scheduleTableView.reloadData()
+            DispatchQueue.main.async {
+                self.refreshControl.endRefreshing()
+            }
+        })
     }
     
 }
@@ -43,7 +68,12 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         cell.setSelected(false, animated: false)
         
         let currGame = self.games[indexPath.row]
-        cell.teamsLabel.text = currGame.awayTeam + " vs. " + currGame.homeTeam
+        cell.teamsLabel.text = currGame.awayTeam + " at " + currGame.homeTeam
+        if currGame.score == "" {
+            cell.detailLabel.text = currGame.startTimeStr
+        } else {
+            cell.detailLabel.text = currGame.score
+        }
         
         return cell
     }
@@ -53,10 +83,10 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sectionTitles.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sectionTitles[section]
+        return self.conferenceName + " SCHEDULE"
     }
 }

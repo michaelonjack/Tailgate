@@ -12,7 +12,12 @@ class GamedayViewController: UIViewController {
 
     @IBOutlet weak var schedulesCollectionView: UICollectionView!
     
-    var games:[Game] = []
+    var conferences = ["BIG 10", "SEC"]
+    var games:[String:[Game]] = [:]
+    var collectionViewCurrentIndex:Int {
+        return Int(self.schedulesCollectionView.contentOffset.x / self.schedulesCollectionView.frame.size.width)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         schedulesCollectionView.delegate = self
@@ -23,6 +28,14 @@ class GamedayViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22.0), NSAttributedStringKey.foregroundColor: UIColor.darkGray]
         
         // Get current games
+        for conference in conferences {
+            let conferenceKey = conference.lowercased().replacingOccurrences(of: " ", with: "")
+            
+            getCurrentGamesForConference(conferenceName: conferenceKey, completion: { (games) in
+                self.games[conferenceKey] = games
+                self.schedulesCollectionView.reloadItems(at: [IndexPath(item: self.games.count-1, section: 0)])
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +54,7 @@ extension GamedayViewController: UICollectionViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let currentIndex:Int = Int(self.schedulesCollectionView.contentOffset.x / self.schedulesCollectionView.frame.size.width)
+        
     }
 }
 
@@ -55,21 +68,27 @@ extension GamedayViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleCell", for: indexPath) as! ScheduleCollectionViewCell
         
-        cell.scheduleTableVIew.delegate = cell
-        cell.scheduleTableVIew.dataSource = cell
-        cell.scheduleTableVIew.allowsSelection = false
-        cell.scheduleTableVIew.rowHeight = UITableViewAutomaticDimension
-        cell.scheduleTableVIew.estimatedRowHeight = 50
-        cell.scheduleTableVIew.layer.cornerRadius = 10
-        cell.games = self.games
-        cell.scheduleTableVIew.reloadData()
+        let conferenceName = self.conferences[indexPath.row]
+        let conferenceKey = conferenceName.lowercased().replacingOccurrences(of: " ", with: "")
+        
+        
+        cell.addRefreshControl()
+        cell.scheduleTableView.delegate = cell
+        cell.scheduleTableView.dataSource = cell
+        cell.scheduleTableView.allowsSelection = false
+        cell.scheduleTableView.rowHeight = UITableViewAutomaticDimension
+        cell.scheduleTableView.estimatedRowHeight = 50
+        cell.scheduleTableView.layer.cornerRadius = 10
+        cell.games = self.games[conferenceKey] ?? []
+        cell.conferenceName = conferenceName
+        cell.scheduleTableView.reloadData()
         
         return cell
     }
