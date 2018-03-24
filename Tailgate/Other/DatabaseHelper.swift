@@ -97,9 +97,38 @@ func moveNode(fromPath:String, toPath:String) {
 func getTailgateImageUrls(tailgate:Tailgate, completion: @escaping (_ urls: [String]) -> Void) {
     var imgUrls:[String] = []
     let imageUrlsReference = Database.database().reference(withPath: "tailgates/" + tailgate.id + "/imageUrls")
+    imageUrlsReference.keepSynced(true)
     
     imageUrlsReference.observeSingleEvent(of: .value, with: { (snapshot) in
         if let urlDict = snapshot.value as? [String:AnyObject] {
+            for (_, url) in urlDict {
+                let imgUrl = url as? String ?? ""
+                if imgUrl != "" {
+                    imgUrls.append(imgUrl)
+                }
+            }
+        }
+        
+        completion(imgUrls)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// getGamedaySignImageUrls
+//
+// Returns the download urls of all gameday sign images
+//
+func getGamedaySignImageUrls(completion: @escaping (_ urls: [String]) -> Void) {
+    var imgUrls:[String] = []
+    let imageUrlsReference = Database.database().reference(withPath: "gameday/week1/imageUrls")
+    imageUrlsReference.keepSynced(true)
+    
+    imageUrlsReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        if let urlDict = snapshot.value as? [String:AnyObject] {
+            
             for (_, url) in urlDict {
                 let imgUrl = url as? String ?? ""
                 if imgUrl != "" {

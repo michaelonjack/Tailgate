@@ -299,12 +299,10 @@ extension TailgateViewController : CLLocationManagerDelegate {
 
 
 extension TailgateViewController: UICollectionViewDataSource {
-    // There’s one search per section, so the number of sections is the count of the searches array
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    // The number of items in a section is the count of the searchResults array from the relevant FlickrSearch object.
     func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         return self.imageUrls.count

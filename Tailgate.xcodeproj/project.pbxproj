@@ -19,6 +19,8 @@
 		B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */; };
 		B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9EA01FDCE4D600DB4751 /* TailgateAnnotationARView.swift */; };
 		B10E9EA31FDCE6C300DB4751 /* TailgateAnnotationAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9EA21FDCE6C300DB4751 /* TailgateAnnotationAR.swift */; };
+		B11FAF752065D75D00238981 /* GamedaySignsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */; };
+		B11FAF772065D96200238981 /* GamedaySignCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11FAF762065D96200238981 /* GamedaySignCollectionViewCell.swift */; };
 		B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */; };
 		B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */; };
 		B13B81371FE60086008F3A38 /* CreateTailgateDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81361FE60086008F3A38 /* CreateTailgateDateViewController.swift */; };
@@ -81,6 +83,8 @@
 		B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationView.swift; sourceTree = "<group>"; };
 		B10E9EA01FDCE4D600DB4751 /* TailgateAnnotationARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationARView.swift; sourceTree = "<group>"; };
 		B10E9EA21FDCE6C300DB4751 /* TailgateAnnotationAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationAR.swift; sourceTree = "<group>"; };
+		B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedaySignsViewController.swift; sourceTree = "<group>"; };
+		B11FAF762065D96200238981 /* GamedaySignCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedaySignCollectionViewCell.swift; sourceTree = "<group>"; };
 		B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateNameViewController.swift; sourceTree = "<group>"; };
 		B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateAccessibilityViewController.swift; sourceTree = "<group>"; };
 		B13B81361FE60086008F3A38 /* CreateTailgateDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateDateViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				B1A18FD52054D61000D9C12A /* GamedayViewController.swift */,
+				B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */,
 				B1DD1CD7203E409B00291EAE /* FriendsViewController.swift */,
 				B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */,
 				B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */,
@@ -276,6 +281,7 @@
 				B1DD1CDA203E591400291EAE /* UsersCollectionViewCell.swift */,
 				B1DD1CD32039EF7700291EAE /* FlairPhotoCell.swift */,
 				B1BC52CC1FE09A0400BCBAE8 /* TailgatePhotoCell.swift */,
+				B11FAF762065D96200238981 /* GamedaySignCollectionViewCell.swift */,
 			);
 			path = CollectionCells;
 			sourceTree = "<group>";
@@ -466,6 +472,7 @@
 				B1CAD9A2204B5F7400934F57 /* SettingsNameViewController.swift in Sources */,
 				B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */,
 				B1CAD9A4204B6CDE00934F57 /* SettingsEmailViewController.swift in Sources */,
+				B11FAF772065D96200238981 /* GamedaySignCollectionViewCell.swift in Sources */,
 				B1BC52CD1FE09A0400BCBAE8 /* TailgatePhotoCell.swift in Sources */,
 				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
 				B1FEC4EE2042223400FEE05F /* SettingsViewController.swift in Sources */,
@@ -488,6 +495,7 @@
 				B13B81401FE6ECD4008F3A38 /* SchoolTableViewCell.swift in Sources */,
 				B13B81421FE6F1B6008F3A38 /* School.swift in Sources */,
 				B1DD1CD22039ED6600291EAE /* CreateTailgateFlairViewController.swift in Sources */,
+				B11FAF752065D75D00238981 /* GamedaySignsViewController.swift in Sources */,
 				B13B81441FE9FB29008F3A38 /* FoodTableViewCell.swift in Sources */,
 				B1E83BE61FDD890500185E17 /* User.swift in Sources */,
 				B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */,
