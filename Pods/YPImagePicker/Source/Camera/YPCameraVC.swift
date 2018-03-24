@@ -10,27 +10,26 @@ import UIKit
 import AVFoundation
 import Photos
 
-public class YPCameraVC: UIViewController, UIGestureRecognizerDelegate {
+public class YPCameraVC: UIViewController, UIGestureRecognizerDelegate, PermissionCheckable {
     
     public var didCapturePhoto: ((UIImage) -> Void)?
-    private let sessionQueue = DispatchQueue(label: "YPCameraVCSerialQueue")
+    private let sessionQueue = DispatchQueue(label: "YPCameraVCSerialQueue", qos: .background)
     let session = AVCaptureSession()
     var device: AVCaptureDevice? {
         return videoInput?.device
     }
     var videoInput: AVCaptureDeviceInput!
     let imageOutput = AVCaptureStillImageOutput()
-    let focusView = UIView(frame: CGRect(x: 0, y: 0, width: 90, height: 90))
     var v = YPCameraView()
     var isPreviewSetup = false
     
     override public func loadView() { view = v }
     
-    private let configuration: YPImagePickerConfiguration!
+    let configuration: YPImagePickerConfiguration!
     public required init(configuration: YPImagePickerConfiguration) {
         self.configuration = configuration
         super.init(nibName: nil, bundle: nil)
-        title = ypLocalized("YPImagePickerPhoto")
+        title = configuration.wordings.cameraTitle
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -48,23 +47,36 @@ public class YPCameraVC: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isPreviewSetup {
+            startCamera()
+        }
+    }
+    
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        refreshFlashButton()
+    }
+    
+    func tryToSetupPreview() {
         if !isPreviewSetup {
             setupPreview()
             isPreviewSetup = true
         }
-        refreshFlashButton()
     }
     
     func setupPreview() {
         let videoLayer = AVCaptureVideoPreviewLayer(session: session)
-        videoLayer.frame = v.previewViewContainer.bounds
-        videoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        v.previewViewContainer.layer.addSublayer(videoLayer)
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(focusTapped(_:)))
-        tapRecognizer.delegate = self
-        v.previewViewContainer.addGestureRecognizer(tapRecognizer)
+        
+        DispatchQueue.main.async {
+            videoLayer.frame = self.v.previewViewContainer.bounds
+            videoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            self.v.previewViewContainer.layer.addSublayer(videoLayer)
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.focusTapped(_:)))
+            tapRecognizer.delegate = self
+            self.v.previewViewContainer.addGestureRecognizer(tapRecognizer)
+        }
     }
     
     private func setupCaptureSession() {
@@ -98,10 +110,10 @@ public class YPCameraVC: UIViewController, UIGestureRecognizerDelegate {
         let viewsize = v.previewViewContainer.bounds.size
         let newPoint = CGPoint(x: point.x/viewsize.width, y: point.y/viewsize.height)
         setFocusPointOnDevice(device: device!, point: newPoint)
-        focusView.center = point
-        configureFocusView(focusView)
-        v.addSubview(focusView)
-        animateFocusView(focusView)
+        v.focusView.center = point
+        configureFocusView(v.focusView)
+        v.addSubview(v.focusView)
+        animateFocusView(v.focusView)
     }
     
     public func tryToStartCamera() {
@@ -121,6 +133,7 @@ public class YPCameraVC: UIViewController, UIGestureRecognizerDelegate {
                     self.session.stopRunning()
                 case .authorized:
                     self.session.startRunning()
+                    self.tryToSetupPreview()
                 }
             }
         }
@@ -202,7 +215,8 @@ public class YPCameraVC: UIViewController, UIGestureRecognizerDelegate {
                     }
                     
                     DispatchQueue.main.async {
-                        self.didCapturePhoto?(image)
+                        let noOrietationImage = image.resetOrientation()
+                        self.didCapturePhoto?(noOrietationImage)
                     }
                 }
             }
@@ -264,65 +278,6 @@ public class YPCameraVC: UIViewController, UIGestureRecognizerDelegate {
         case .on: return flashOnImage!
         case .off: return flashOffImage!
         case .auto: return flashAutoImage!
-        }
-    }
-}
-
-class YPPermissionDeniedPopup {
-    
-    static func popup(cancelBlock: @escaping () -> Void) -> UIAlertController {
-        let alert = UIAlertController(title: ypLocalized("YPImagePickerPermissionDeniedPopupTitle"),
-                                      message: ypLocalized("YPImagePickerPermissionDeniedPopupMessage"),
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: ypLocalized("YPImagePickerPermissionDeniedPopupCancel"),
-                                      style: UIAlertActionStyle.cancel,
-                                      handler: { _ in
-                                        cancelBlock()
-        }))
-        alert.addAction(UIAlertAction(title: ypLocalized("YPImagePickerPermissionDeniedPopupGrantPermission"),
-                                      style: .default,
-                                      handler: { _ in
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!)
-            } else {
-                UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
-            }
-        }))
-        return alert
-    }
-}
-
-extension YPCameraVC: PermissionCheckable {
-    
-    func checkPermission() {
-        checkPermissionToAccessVideo { _ in }
-    }
-    
-    func doAfterPermissionCheck(block:@escaping () -> Void) {
-        checkPermissionToAccessVideo { hasPermission in
-            if hasPermission {
-                block()
-            }
-        }
-    }
-    
-    // Async beacause will prompt permission if .notDetermined
-    // and ask custom popup if denied.
-    func checkPermissionToAccessVideo(block: @escaping (Bool) -> Void) {
-        switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
-        case .authorized:
-            block(true)
-        case .restricted, .denied:
-            let alert = YPPermissionDeniedPopup.popup(cancelBlock: {
-                block(false)
-            })
-            present(alert, animated: true, completion: nil)
-        case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video, completionHandler: { granted in
-                DispatchQueue.main.async {
-                    block(granted)
-                }
-            })
         }
     }
 }

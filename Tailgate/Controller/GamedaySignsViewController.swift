@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SDWebImage
+import YPImagePicker
 
 class GamedaySignsViewController: UIViewController {
 
@@ -61,6 +63,26 @@ class GamedaySignsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    @IBAction func submitSignPressed(_ sender: Any) {
+        var ypConfig = YPImagePickerConfiguration()
+        ypConfig.onlySquareImagesFromCamera = true
+        ypConfig.onlySquareImagesFromLibrary = true
+        ypConfig.showsFilters = true
+        ypConfig.showsVideoInLibrary = false
+        ypConfig.usesFrontCamera = false
+        ypConfig.shouldSaveNewPicturesToAlbum = false
+        
+        let picker = YPImagePicker(configuration: ypConfig)
+        picker.didSelectImage = { image in
+            
+            uploadGameDaySign(image: image, completion: { (downloadUrl) in
+                // Nothing for now!
+            })
+            
+            picker.dismiss(animated: true, completion: nil)
+        }
+        present(picker, animated: true, completion: nil)
+    }
 }
 
 

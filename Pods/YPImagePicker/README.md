@@ -3,33 +3,18 @@
 YPImagePicker is an instagram-like photo/video picker for iOS written in pure Swift.
 It comes with adjustable square crop and filters.
 
-[![Version](https://img.shields.io/cocoapods/v/Fusuma.svg?style=flat)](http://cocoapods.org/pods/Fusuma)
-[![Platform](https://img.shields.io/cocoapods/p/Fusuma.svg?style=flat)](http://cocoapods.org/pods/Fusuma)
-[![CI Status](http://img.shields.io/travis/ytakzk/Fusuma.svg?style=flat)](https://travis-ci.org/ytakzk/Fusuma)
+[![Version](https://img.shields.io/cocoapods/v/YPImagePicker.svg?style=flat)](http://cocoapods.org/pods/YPImagePicker)
+[![Platform](https://img.shields.io/cocoapods/p/YPImagePicker.svg?style=flat)](http://cocoapods.org/pods/YPImagePicker)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![codebeat badge](https://codebeat.co/badges/6a591267-c444-4c88-a410-56270d8ed9bc)](https://codebeat.co/projects/github-com-yummypets-ypfusuma)
+[![codebeat badge](https://codebeat.co/badges/9710a89d-b1e2-4e55-a4a2-3ae1f98f4c53)](https://codebeat.co/projects/github-com-yummypets-ypimagepicker-master)
 [![GitHub tag](https://img.shields.io/github/release/Yummypets/YPImagePicker.svg)]()
 
-Give it a quick try :  
-`pod try YPImagePicker`
+Give it a quick try :
+`pod repo update` then `pod try YPImagePicker`
 
-|         | Features  |
-----------|-----------------
-🌅        | Library
-📷        | Photo
-🎥        | Video
-✂️        | Crop
-⚡️        | Flash
-🖼        | Filters
+🌅 Library - 📷 Photo - 🎥 Video - ✂️ Crop - ⚡️ Flash - 🖼 Filters
 
-
-## Preview
-
-<img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/library.PNG" width="340px">
-<img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/photo.PNG" width="340px">
-<img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/video.PNG" width="340px">
-<img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/filters.PNG" width="340px">
-
+<img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/library.PNG" width="200px" > <img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/photo.PNG" width="200px" > <img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/video.PNG" width="200px" > <img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/filters.PNG" width="200px" >
 
 Those features are available just with a few lines of code!
 
@@ -62,6 +47,8 @@ Drop in the Classes folder to your Xcode project.
 You can also use CocoaPods or Carthage.
 
 #### Using [CocoaPods](http://cocoapods.org/)
+
+First be sure to run `pod repo update` to get the latest version available.
 
 Add `pod 'YPImagePicker'` to your `Podfile` and run `pod install`. Also add `use_frameworks!` to the `Podfile`.
 
@@ -104,15 +91,18 @@ var config = YPImagePickerConfiguration()
 config.onlySquareImagesFromLibrary = false
 config.onlySquareImagesFromCamera = true
 config.libraryTargetImageSize = .original
-config.showsVideo = true
 config.usesFrontCamera = true
 config.showsFilters = true
 config.shouldSaveNewPicturesToAlbum = true
 config.videoCompression = AVAssetExportPresetHighestQuality
 config.albumName = "MyGreatAppName"
+config.screens = [.library, .photo, .video]
 config.startOnScreen = .library
 config.videoRecordingTimeLimit = 10
 config.videoFromLibraryTimeLimit = 20
+config.showsCrop = .rectangle(ratio: (16/9))
+config.wordings.libraryTitle = "Gallery"
+config.hidesStatusBar = false
 
 // Build a picker with your configuration
 let picker = YPImagePicker(configuration: config)
@@ -150,6 +140,22 @@ picker.didSelectVideo = { videoData, videoThumbnailImage in
 present(picker, animated: true, completion: nil)
 ```
 
+## Languages
+Supported languages out of the box:
+- English
+- Spanish
+- French
+- Russian
+- Dutch
+
+If your language is not supported, you can still customize the wordings via the `configuration.wordings` api:
+
+```swift
+config.wordings.libraryTitle = "Gallery"
+config.wordings.cameraTitle = "Camera"
+config.wordings.next = "OK"
+```
+Better yet you can submit an issue or pull request with your `Localizable.strings` file to add a new language !
 
 ## Original Project & Author
 
@@ -159,8 +165,9 @@ Original Fusuma author is [ytakz](http://ytakzk.me)
 
 ## License
 YPImagePicker is released under the MIT license.  
-See LICENSE for details.
+See [LICENSE](LICENSE) for details.
 
 ## Swift Version
-Swift 3 -> version **1.2.1**  
-Swift 4 -> version **2.4.2**
+
+- Swift 3 -> version [**1.2.1**](https://github.com/Yummypets/YPImagePicker/releases/tag/1.2.1)
+- Swift 4 -> version [**2.7.3**](https://github.com/Yummypets/YPImagePicker/releases/tag/2.7.3)

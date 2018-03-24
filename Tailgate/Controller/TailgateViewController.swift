@@ -167,7 +167,7 @@ class TailgateViewController: UIViewController {
         ypConfig.onlySquareImagesFromCamera = true
         ypConfig.onlySquareImagesFromLibrary = true
         ypConfig.showsFilters = true
-        ypConfig.showsVideo = false
+        ypConfig.showsVideoInLibrary = false
         ypConfig.usesFrontCamera = false
         ypConfig.shouldSaveNewPicturesToAlbum = false
         

@@ -70,6 +70,36 @@ func uploadTailgatePicture(tailgate:Tailgate, userid:String, image:UIImage, comp
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
+// uploadGameDaySign
+//
+// Uploads the parameter UIImage to the gameday storage 
+// Returns a completion block that gives the images download url
+//
+func uploadGameDaySign(image:UIImage, completion : @escaping (_ downloadUrl: String?) -> Void) {
+    let timestamp = String(UInt64((Date().timeIntervalSince1970 + 62_135_596_800) * 10_000_000))
+    let gamedayStorageReference = Storage.storage().reference(withPath: "images/Gameday/week1/submitted/" +  timestamp + ".jpg")
+    
+    let imageMetaData = StorageMetadata()
+    imageMetaData.contentType = "image/jpeg"
+    
+    var imageData = Data()
+    imageData = UIImageJPEGRepresentation(image, 1.0)!
+    
+    gamedayStorageReference.putData(imageData, metadata: imageMetaData) { (metaData, error) in
+        if error == nil {
+            // Add the image's url to the Firebase database
+            let downloadUrl = metaData?.downloadURL()?.absoluteString
+            //imageUrlsReference.updateChildValues([timestamp: downloadUrl!])
+            
+            completion(downloadUrl)
+        }
+    }
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
 // moveNode
 //
 //
