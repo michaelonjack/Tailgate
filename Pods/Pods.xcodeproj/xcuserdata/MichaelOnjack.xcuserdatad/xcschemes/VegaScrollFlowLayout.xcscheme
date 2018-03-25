@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AF99E969C34974FCAC5AE136C165F9E0"
-               BuildableName = "Stevia.framework"
-               BlueprintName = "SteviaLayout"
+               BlueprintIdentifier = "89C34372449DCBB9599B1394FE615E91"
+               BuildableName = "VegaScrollFlowLayout.framework"
+               BlueprintName = "VegaScrollFlowLayout"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AF99E969C34974FCAC5AE136C165F9E0"
-            BuildableName = "Stevia.framework"
-            BlueprintName = "SteviaLayout"
+            BlueprintIdentifier = "89C34372449DCBB9599B1394FE615E91"
+            BuildableName = "VegaScrollFlowLayout.framework"
+            BlueprintName = "VegaScrollFlowLayout"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

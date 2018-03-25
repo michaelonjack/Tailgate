@@ -16,5 +16,6 @@ target 'Tailgate' do
   pod 'SDWebImage/MapKit'
   pod 'IQKeyboardManagerSwift'
   pod 'SwipeNavigationController'
+  pod 'VegaScrollFlowLayout'
 
 end

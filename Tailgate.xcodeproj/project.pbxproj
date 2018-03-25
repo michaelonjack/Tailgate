@@ -33,6 +33,7 @@
 		B13B81461FE9FB3A008F3A38 /* DrinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81451FE9FB3A008F3A38 /* DrinkTableViewCell.swift */; };
 		B13B81481FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */; };
 		B13B814A1FEA0446008F3A38 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */; };
+		B1485629206752C1006A5456 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1485628206752C1006A5456 /* FeedCollectionViewCell.swift */; };
 		B154B1F4201D7BFE005DDC8A /* InvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */; };
 		B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16BC4D11FEECA290087C2F1 /* Tailgate.swift */; };
 		B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */; };
@@ -97,6 +98,7 @@
 		B13B81451FE9FB3A008F3A38 /* DrinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewCell.swift; sourceTree = "<group>"; };
 		B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateInvitesViewController.swift; sourceTree = "<group>"; };
 		B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		B1485628206752C1006A5456 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesViewController.swift; sourceTree = "<group>"; };
 		B16BC4D11FEECA290087C2F1 /* Tailgate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tailgate.swift; sourceTree = "<group>"; };
 		B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 		B1DD1CD9203E505F00291EAE /* CollectionCells */ = {
 			isa = PBXGroup;
 			children = (
+				B1485628206752C1006A5456 /* FeedCollectionViewCell.swift */,
 				B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */,
 				B1DD1CDA203E591400291EAE /* UsersCollectionViewCell.swift */,
 				B1DD1CD32039EF7700291EAE /* FlairPhotoCell.swift */,
@@ -433,6 +436,7 @@
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeNavigationController/SwipeNavigationController.framework",
+				"${BUILT_PRODUCTS_DIR}/VegaScrollFlowLayout/VegaScrollFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -446,6 +450,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeNavigationController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VegaScrollFlowLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -463,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1A18FD62054D61000D9C12A /* GamedayViewController.swift in Sources */,
+				B1485629206752C1006A5456 /* FeedCollectionViewCell.swift in Sources */,
 				B1E83BD91FDCFC5600185E17 /* NewTailgateViewController.swift in Sources */,
 				B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */,
 				B13B81461FE9FB3A008F3A38 /* DrinkTableViewCell.swift in Sources */,
