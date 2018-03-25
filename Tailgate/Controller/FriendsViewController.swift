@@ -36,13 +36,36 @@ class FriendsViewController: UIViewController {
     }
     var notMyFriends:[User] = [] {
         didSet {
+            self.searchResults = notMyFriends
             self.friendsCollectionView.reloadData()
+        }
+    }
+    var searchResults:[User] = []
+    var searchText:String = "" {
+        didSet {
+            if searchText == "" {
+                searchResults = notMyFriends
+            } else {
+                searchResults = []
+                for user in notMyFriends {
+                    if user.name.lowercased().range(of: self.searchText.lowercased()) != nil {
+                        searchResults.append(user)
+                    }
+                }
+            }
+            
+            if let usersCollectionCell = self.friendsCollectionView.cellForItem(at: IndexPath(item: 1, section: 0)) as? UsersCollectionViewCell {
+                usersCollectionCell.users = self.searchResults
+                usersCollectionCell.userTableView.reloadData()
+            }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
+        searchTextField.delegate = self
         
         friendsCollectionView.delegate = self
         friendsCollectionView.dataSource = self
@@ -99,12 +122,26 @@ class FriendsViewController: UIViewController {
 
 
 
+extension FriendsViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let updatedValue = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+        
+        self.searchText = updatedValue
+        return true
+    }
+    
+}
+
+
+
 extension FriendsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+    // Highlight the header of the currently in view collection cell
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentIndex:Int = Int(self.friendsCollectionView.contentOffset.x / self.friendsCollectionView.frame.size.width)
         
@@ -146,7 +183,7 @@ extension FriendsViewController: UICollectionViewDataSource {
             cell.users = self.myFriends
             cell.isMyFriendsCollectionCell = true
         } else {
-            cell.users = self.notMyFriends
+            cell.users = self.searchResults
             cell.isMyFriendsCollectionCell = false
         }
         cell.userTableView.reloadData()

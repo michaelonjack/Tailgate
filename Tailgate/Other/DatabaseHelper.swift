@@ -245,6 +245,30 @@ func getTailgates(completion: @escaping (([Tailgate]) -> Void)) {
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
+// getPublicTailgates
+//
+// Returns all public tailgates from the database
+//
+func getPublicTailgates(completion: @escaping (([Tailgate]) -> Void)) {
+    var tailgates:[Tailgate] = []
+    let tailgateReference = Database.database().reference(withPath: "tailgates/")
+    
+    tailgateReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        for tailgateSnapshot in snapshot.children {
+            let tailgate = Tailgate(snapshot: tailgateSnapshot as! DataSnapshot)
+            if tailgate.isPublic == true {
+                tailgates.append(tailgate)
+            }
+        }
+        
+        completion(tailgates)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
 // getSchools
 //
 // Returns all schools from the database
