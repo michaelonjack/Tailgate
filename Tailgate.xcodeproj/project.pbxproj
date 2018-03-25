@@ -34,6 +34,7 @@
 		B13B81481FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */; };
 		B13B814A1FEA0446008F3A38 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */; };
 		B1485629206752C1006A5456 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1485628206752C1006A5456 /* FeedCollectionViewCell.swift */; };
+		B148562B20681CB0006A5456 /* InterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B148562A20681CB0006A5456 /* InterfaceHelper.swift */; };
 		B154B1F4201D7BFE005DDC8A /* InvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */; };
 		B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16BC4D11FEECA290087C2F1 /* Tailgate.swift */; };
 		B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */; };
@@ -99,6 +100,7 @@
 		B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateInvitesViewController.swift; sourceTree = "<group>"; };
 		B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		B1485628206752C1006A5456 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		B148562A20681CB0006A5456 /* InterfaceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceHelper.swift; sourceTree = "<group>"; };
 		B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesViewController.swift; sourceTree = "<group>"; };
 		B16BC4D11FEECA290087C2F1 /* Tailgate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tailgate.swift; sourceTree = "<group>"; };
 		B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */,
 				B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */,
+				B148562A20681CB0006A5456 /* InterfaceHelper.swift */,
 				B1E83BE31FDD857A00185E17 /* TopDownSegue.swift */,
 				B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */,
 			);
@@ -514,6 +517,7 @@
 				B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,
 				B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */,
+				B148562B20681CB0006A5456 /* InterfaceHelper.swift in Sources */,
 				B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */,
 				B13B81391FE60829008F3A38 /* CreateTailgateFoodViewController.swift in Sources */,
 				B1E83BE01FDD795000185E17 /* SignUpPasswordViewController.swift in Sources */,

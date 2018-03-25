@@ -36,6 +36,7 @@ class CreateTailgateSchoolViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         schoolTable.delegate = self
         schoolTable.dataSource = self
         searchTextField.delegate = self

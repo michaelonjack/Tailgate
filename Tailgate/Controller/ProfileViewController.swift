@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController {
         let vegaLayout = VegaScrollFlowLayout()
         self.invitesCollectionView.collectionViewLayout = vegaLayout
         vegaLayout.minimumLineSpacing = 15
-        vegaLayout.itemSize = CGSize(width: self.invitesCollectionView.frame.width - 16, height: 100)
+        vegaLayout.itemSize = CGSize(width: self.invitesCollectionView.frame.width - 16, height: 90)
         vegaLayout.sectionInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         vegaLayout.springHardness = 60
        
@@ -152,6 +152,16 @@ extension ProfileViewController: UICollectionViewDataSource {
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
         
         return cell
+    }
+}
+
+
+
+extension ProfileViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.size.width-16, height: 90.0)
     }
 }
 

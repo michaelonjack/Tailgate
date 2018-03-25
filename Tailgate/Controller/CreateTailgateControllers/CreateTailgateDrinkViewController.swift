@@ -41,6 +41,7 @@ class CreateTailgateDrinkViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
 
         drinksTable.delegate = self
         drinksTable.dataSource = self

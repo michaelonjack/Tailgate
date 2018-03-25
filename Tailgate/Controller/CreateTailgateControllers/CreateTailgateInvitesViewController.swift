@@ -44,6 +44,7 @@ class CreateTailgateInvitesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         
         usersTable.delegate = self
         usersTable.dataSource = self

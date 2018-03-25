@@ -42,6 +42,8 @@ class FriendsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        
         friendsCollectionView.delegate = self
         friendsCollectionView.dataSource = self
         
@@ -73,6 +75,12 @@ class FriendsViewController: UIViewController {
     }
     
     @IBAction func findFriendsButtonPressed(_ sender: Any) {
+        self.myFriendsButton.setTitleColor(.lightGray, for: .normal)
+        self.findFriendsButton.setTitleColor(.white, for: .normal)
+        self.friendsCollectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .left, animated: true)
+    }
+    
+    @IBAction func searchFieldEditingDidBegin(_ sender: Any) {
         self.myFriendsButton.setTitleColor(.lightGray, for: .normal)
         self.findFriendsButton.setTitleColor(.white, for: .normal)
         self.friendsCollectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .left, animated: true)

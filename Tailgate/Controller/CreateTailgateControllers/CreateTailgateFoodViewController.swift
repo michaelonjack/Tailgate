@@ -40,6 +40,7 @@ class CreateTailgateFoodViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
 
         foodTable.delegate = self
         foodTable.dataSource = self
