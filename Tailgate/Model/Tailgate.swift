@@ -54,8 +54,8 @@ class Tailgate {
         self.invites = []
         self.location = nil
         
-        let isPublic = snapshotValue["isPublic"] as? String ?? ""
-        if isPublic == "true" {
+        let isPublic = snapshotValue["isPublic"] as? Int ?? 0
+        if isPublic == 1 {
             self.isPublic = true
         } else {
             self.isPublic = false
@@ -133,5 +133,20 @@ class Tailgate {
             "drinks": drinkDict,
             "invites": inviteDict
         ]
+    }
+}
+
+
+
+extension Tailgate: Equatable {
+    static func == (lhs: Tailgate, rhs: Tailgate) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
+
+extension Tailgate: Hashable {
+    var hashValue: Int {
+        return self.id.hashValue
     }
 }

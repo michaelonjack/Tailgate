@@ -65,7 +65,7 @@ class MapViewController: UIViewController {
     // Adds annotations for all tailgates in the database
     //
     func addTailgateAnnotations() {
-        getTailgates { (tailgates) in
+        getTailgatesToDisplay { (tailgates) in
             for tailgate in tailgates {
                 if let _ = tailgate.location {
                     self.mapView.addAnnotation(TailgateAnnotation(tailgate: tailgate))

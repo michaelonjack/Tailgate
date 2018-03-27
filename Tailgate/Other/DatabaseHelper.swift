@@ -256,6 +256,7 @@ func getPublicTailgates(completion: @escaping (([Tailgate]) -> Void)) {
     tailgateReference.observeSingleEvent(of: .value, with: { (snapshot) in
         for tailgateSnapshot in snapshot.children {
             let tailgate = Tailgate(snapshot: tailgateSnapshot as! DataSnapshot)
+            
             if tailgate.isPublic == true {
                 tailgates.append(tailgate)
             }
@@ -263,6 +264,54 @@ func getPublicTailgates(completion: @escaping (([Tailgate]) -> Void)) {
         
         completion(tailgates)
     })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// getInvitedTailgates
+//
+// Returns all tailgates the current user is invited to
+//
+func getInvitedTailgates(completion: @escaping (([Tailgate]) -> Void)) {
+    var tailgates:[Tailgate] = []
+    let currentUserReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
+    let tailgateReference = Database.database().reference(withPath: "tailgates/")
+    
+    currentUserReference.child("invites").observeSingleEvent(of: .value, with: { (invitesSnapshot) in
+        for inviteSnapshot in invitesSnapshot.children {
+            let inviteSnapshot = inviteSnapshot as! DataSnapshot
+            tailgateReference.child(inviteSnapshot.key).observeSingleEvent(of: .value, with: { (tailgateSnapshot) in
+                let tailgate = Tailgate(snapshot: tailgateSnapshot)
+                tailgates.append(tailgate)
+            })
+        }
+        
+        completion(tailgates)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// getTailgatesToDisplay
+//
+// Returns all tailgates that should be displayed on the map for the current user
+//
+func getTailgatesToDisplay(completion: @escaping (([Tailgate]) -> Void)) {
+    var tailgates:[Tailgate] = []
+    
+    getPublicTailgates { (publicTailgates) in
+        getInvitedTailgates(completion: { (invitedTailgates) in
+            let publicSet = Set<Tailgate>(publicTailgates)
+            let invitedSet = Set<Tailgate>(invitedTailgates)
+            
+            tailgates = Array(publicSet.union(invitedSet))
+            completion(tailgates)
+        })
+    }
 }
 
 
@@ -439,6 +488,23 @@ func getUserById(userId:String, completion: @escaping ((User) -> Void)) {
     userReference.observeSingleEvent(of: .value, with: { (snapshot) in
         let user = User(snapshot: snapshot)
         completion(user)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// getTailgateById
+//
+// Returns the tailgate with the parameter id
+//
+func getTailgateById(tailgateId:String, completion: @escaping ((Tailgate) -> Void)) {
+    let tailgateReference = Database.database().reference(withPath: "tailgates/" + tailgateId)
+    
+    tailgateReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        let tailgate = Tailgate(snapshot: snapshot)
+        completion(tailgate)
     })
 }
 

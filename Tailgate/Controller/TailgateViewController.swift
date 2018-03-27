@@ -270,7 +270,9 @@ extension TailgateViewController : CLLocationManagerDelegate {
         // Remove any existing annotations for this tailgate if they exist
         mapVC.removeAnnotation(tailgate: self.tailgate)
         // Add the tailgate annotation to the map
-        mapVC.mapView.addAnnotation( TailgateAnnotation(tailgate: self.tailgate) )
+        if self.tailgate.isPublic == true {
+            mapVC.mapView.addAnnotation( TailgateAnnotation(tailgate: self.tailgate) )
+        }
         
         // Update tailgate coordinates in database
         let longitude = manager.location?.coordinate.longitude

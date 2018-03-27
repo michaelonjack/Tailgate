@@ -63,7 +63,6 @@ class CreateTailgateInvitesViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func createPressed(_ sender: Any) {
@@ -75,6 +74,12 @@ class CreateTailgateInvitesViewController: UIViewController {
         
         let userTailgateReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)! + "/tailgate")
         userTailgateReference.setValue(newTailgate.id)
+        
+        // Add the tailgate to each invited firends invites list
+        for friend in selectedFriends {
+            let friendReference = Database.database().reference(withPath: "users/" + friend.uid)
+            friendReference.child("invites").updateChildValues([newTailgate.id:true])
+        }
         
         // Create a new controller to hold the new tailgate data
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
