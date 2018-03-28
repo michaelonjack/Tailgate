@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Determine which tailgate controller the user should see when they swipe right
             let userReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
+            userReference.keepSynced(true)
             userReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 // If the user already has a tailgate, show them the controller for an existing one

@@ -67,7 +67,7 @@ class CreateTailgateInvitesViewController: UIViewController {
     
     @IBAction func createPressed(_ sender: Any) {
         
-        let newTailgate = Tailgate(owner: (Auth.auth().currentUser?.uid)!, name: tailgateName, school: tailgateSchool, flairImageUrl: flairUrl, isPublic: isPublic, startTime: startTime, foods: foods, drinks: drinks, invites: selectedFriends)
+        let newTailgate = Tailgate(ownerId: (Auth.auth().currentUser?.uid)!, name: tailgateName, school: tailgateSchool, flairImageUrl: flairUrl, isPublic: isPublic, startTime: startTime, foods: foods, drinks: drinks, invites: selectedFriends)
         
         let tailgateReference = Database.database().reference(withPath: "tailgates/" + newTailgate.id)
         tailgateReference.setValue(newTailgate.toAnyObject())

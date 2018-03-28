@@ -30,14 +30,10 @@ class TailgateAnnotation: NSObject, MKAnnotation {
         self.location = tailgate.location!
         self.coordinate = location.coordinate
         self.annotationImageView = nil
-        self.owner = tailgate.owner
+        self.owner = tailgate.owner?.name ?? ""
         self.tailgate = tailgate
         
         super.init()
-        
-        getUserById(userId: tailgate.owner, completion: { (user) in
-            self.owner = user.name
-        })
         
     }
     

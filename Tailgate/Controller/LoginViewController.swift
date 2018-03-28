@@ -137,6 +137,7 @@ class LoginViewController: UIViewController {
                 let snapshotValue = snapshot.value as! [String: AnyObject]
                 let tailgateId = snapshotValue["tailgate"] as? String ?? ""
                 let tailgateReference = Database.database().reference(withPath: "tailgates/" + tailgateId)
+                tailgateReference.keepSynced(true)
                 
                 tailgateReference.observeSingleEvent(of: .value, with: { (snapshot) in
                     let userTailgate = Tailgate(snapshot: snapshot)

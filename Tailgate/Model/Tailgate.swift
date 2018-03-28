@@ -12,20 +12,21 @@ import CoreLocation
 
 class Tailgate {
     let id: String!
-    let owner: String!
+    let ownerId: String!
     let name: String!
     let school: School!
     let isPublic: Bool!
     let startTime: Date!
+    var owner: User?
     var location: CLLocation?
     var foods:[Food]!
     var drinks:[Drink]!
     var invites:[User]!
     var flairImageUrl:String!
     
-    init(owner:String, name:String, school:School, flairImageUrl:String, isPublic:Bool, startTime:Date, foods:[Food], drinks:[Drink], invites:[User]) {
+    init(ownerId:String, name:String, school:School, flairImageUrl:String, isPublic:Bool, startTime:Date, foods:[Food], drinks:[Drink], invites:[User]) {
         
-        self.owner = owner
+        self.ownerId = ownerId
         self.id = UUID().uuidString
         self.name = name
         self.school = school
@@ -36,6 +37,10 @@ class Tailgate {
         self.invites = invites
         self.flairImageUrl = flairImageUrl
         self.location = nil
+        
+        getUserById(userId: self.ownerId) { (owner) in
+            self.owner = owner
+        }
     }
     
     init(snapshot:DataSnapshot) {
@@ -45,7 +50,7 @@ class Tailgate {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         self.id = snapshot.key
         self.name = snapshotValue["name"] as? String ?? ""
-        self.owner = snapshotValue["owner"] as? String ?? ""
+        self.ownerId = snapshotValue["owner"] as? String ?? ""
         self.flairImageUrl = snapshotValue["flairImageUrl"] as? String ?? ""
         self.startTime = formatter.date(from: snapshotValue["startTime"] as? String ?? "")
         self.school = School(name: snapshotValue["school"] as? String ?? "")
@@ -98,6 +103,11 @@ class Tailgate {
         if let lat = latitude, let long = longitude {
             self.location = CLLocation(latitude: lat, longitude:long)
         }
+        
+        // Get the user with the stored id
+        getUserById(userId: self.ownerId) { (owner) in
+            self.owner = owner
+        }
     }
     
     func toAnyObject() -> Any {
@@ -123,7 +133,7 @@ class Tailgate {
         let startTimeStr = formatter.string(from: startTime)
         
         return [
-            "owner": owner,
+            "owner": ownerId,
             "name": name,
             "school": school.name,
             "isPublic": isPublic,

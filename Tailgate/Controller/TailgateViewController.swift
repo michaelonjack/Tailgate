@@ -74,7 +74,7 @@ class TailgateViewController: UIViewController {
         schoolLabel.text = tailgate.school.name
         privateLabel.text = "Public"
         
-        let ownerId = tailgate.owner
+        let ownerId = tailgate.ownerId
         getUserById(userId: ownerId!, completion: { (user) in
             DispatchQueue.main.async {
                 self.ownerLabel.text = user.name
@@ -106,7 +106,7 @@ class TailgateViewController: UIViewController {
     //  Pulls the user's profile picture from the database if it exists
     //
     func loadProfilePicture() {
-        let tailgateOwnerId = self.tailgate.owner
+        let tailgateOwnerId = self.tailgate.ownerId
         let currentUserReference = Database.database().reference(withPath: "users/" + tailgateOwnerId!)
         
         // Load the stored image
