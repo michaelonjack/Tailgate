@@ -46,6 +46,14 @@ class Game {
         self.score = score
     }
     
+    init(homeTeam:String, awayTeam:String, startTime:Date) {
+        self.id = UUID().uuidString
+        self.homeTeam = homeTeam
+        self.awayTeam = awayTeam
+        self.startTime = startTime
+        self.score = ""
+    }
+    
     init(snapshot: DataSnapshot) {
         
         let snapshotValue = snapshot.value as! [String: AnyObject]
@@ -65,5 +73,13 @@ class Game {
         } else {
             self.startTime = nil
         }
+    }
+    
+    func toAnyObject() -> Any {
+        return [
+            "awayTeam": awayTeam,
+            "homeTeam": homeTeam,
+            "startTime": startTimeStr
+        ]
     }
 }

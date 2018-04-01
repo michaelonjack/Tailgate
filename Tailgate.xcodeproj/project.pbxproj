@@ -43,6 +43,9 @@
 		B1A18FD42054CD6600D9C12A /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */; };
 		B1A18FD62054D61000D9C12A /* GamedayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD52054D61000D9C12A /* GamedayViewController.swift */; };
 		B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD72054DFEB00D9C12A /* Game.swift */; };
+		B1AC0321207114AA00CB3661 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AC0320207114AA00CB3661 /* test.swift */; };
+		B1AC0323207116FE00CB3661 /* cfb_json.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1AC0322207116FE00CB3661 /* cfb_json.txt */; };
+		B1AC03252071329000CB3661 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AC03242071329000CB3661 /* Configuration.swift */; };
 		B1BBF2E31FEEBC98007B1ACF /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBF2E21FEEBC98007B1ACF /* Drink.swift */; };
 		B1BBF2E51FEEBCA4007B1ACF /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBF2E41FEEBCA4007B1ACF /* Food.swift */; };
 		B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */; };
@@ -109,6 +112,9 @@
 		B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1A18FD52054D61000D9C12A /* GamedayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedayViewController.swift; sourceTree = "<group>"; };
 		B1A18FD72054DFEB00D9C12A /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		B1AC0320207114AA00CB3661 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		B1AC0322207116FE00CB3661 /* cfb_json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cfb_json.txt; sourceTree = "<group>"; };
+		B1AC03242071329000CB3661 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		B1BBF2E21FEEBC98007B1ACF /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		B1BBF2E41FEEBCA4007B1ACF /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 		B10E9E691FDCB6A200DB4751 /* Tailgate */ = {
 			isa = PBXGroup;
 			children = (
+				B1AC0322207116FE00CB3661 /* cfb_json.txt */,
 				B10E9E9B1FDCC20200DB4751 /* Model */,
 				B10E9E9D1FDCC25400DB4751 /* Controller */,
 				B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */,
@@ -192,12 +199,13 @@
 		B10E9E9B1FDCC20200DB4751 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B1A18FD72054DFEB00D9C12A /* Game.swift */,
+				B1AC03242071329000CB3661 /* Configuration.swift */,
 				B1E83BE51FDD890500185E17 /* User.swift */,
 				B13B81411FE6F1B6008F3A38 /* School.swift */,
 				B16BC4D11FEECA290087C2F1 /* Tailgate.swift */,
 				B10E9E801FDCBA6100DB4751 /* TailgateAnnotation.swift */,
 				B10E9EA21FDCE6C300DB4751 /* TailgateAnnotationAR.swift */,
+				B1A18FD72054DFEB00D9C12A /* Game.swift */,
 				B1BBF2E21FEEBC98007B1ACF /* Drink.swift */,
 				B1BBF2E41FEEBCA4007B1ACF /* Food.swift */,
 			);
@@ -212,6 +220,7 @@
 				B148562A20681CB0006A5456 /* InterfaceHelper.swift */,
 				B1E83BE31FDD857A00185E17 /* TopDownSegue.swift */,
 				B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */,
+				B1AC0320207114AA00CB3661 /* test.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -382,6 +391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1AC0323207116FE00CB3661 /* cfb_json.txt in Resources */,
 				B10E9E751FDCB6A200DB4751 /* LaunchScreen.storyboard in Resources */,
 				B10E9E7D1FDCB76900DB4751 /* GoogleService-Info.plist in Resources */,
 				B10E9E721FDCB6A200DB4751 /* Assets.xcassets in Resources */,
@@ -500,6 +510,7 @@
 				B1BC52CF1FE0C12700BCBAE8 /* DatabaseHelper.swift in Sources */,
 				B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */,
 				B154B1F4201D7BFE005DDC8A /* InvitesViewController.swift in Sources */,
+				B1AC03252071329000CB3661 /* Configuration.swift in Sources */,
 				B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */,
 				B13B81401FE6ECD4008F3A38 /* SchoolTableViewCell.swift in Sources */,
 				B13B81421FE6F1B6008F3A38 /* School.swift in Sources */,
@@ -513,6 +524,7 @@
 				B1DD1CDB203E591400291EAE /* UsersCollectionViewCell.swift in Sources */,
 				B1FEC4F020422AE500FEE05F /* SettingsTableViewCell.swift in Sources */,
 				B1A18FD22054CD3800D9C12A /* ScheduleTableViewCell.swift in Sources */,
+				B1AC0321207114AA00CB3661 /* test.swift in Sources */,
 				B10E9E6D1FDCB6A200DB4751 /* LoginViewController.swift in Sources */,
 				B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,

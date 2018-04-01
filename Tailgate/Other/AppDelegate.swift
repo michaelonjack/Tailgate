@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         // Allow Firebase database to work offline
         Database.database().isPersistenceEnabled = true
+        
+        // Global vars are lazy loaded by default so load the configuration now
+        let _ = configuration
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
