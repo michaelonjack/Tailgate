@@ -50,21 +50,12 @@ class SettingsEmailViewController: UIViewController {
                     }
                 }
             } else {
-                let errorAlert = self.createAlert(title: "Update Failed", message: (error?.localizedDescription)!)
+                let errorAlert = createAlert(title: "Update Failed", message: (error?.localizedDescription)!)
                 self.present(errorAlert, animated: true, completion:nil)
                 DispatchQueue.main.async {
                     self.statusLabel.isHidden = true
                 }
             }
         })
-    }
-    
-    func createAlert(title: String, message: String) -> UIAlertController {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let closeAction = UIAlertAction(title: "Close", style: .default)
-        alert.addAction(closeAction)
-        
-        return alert
     }
 }

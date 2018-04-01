@@ -35,7 +35,7 @@ class TailgateViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     var tailgate: Tailgate!
-    var hasFullAccess: Bool?
+    var hasFullAccess: Bool! = true
     var imageUrls: [String] = []
     var selectedImageIndex: IndexPath? {
         didSet {
@@ -86,7 +86,7 @@ class TailgateViewController: UIViewController {
             self.imageCollectionView.reloadData()
         }
         
-        if let fullAccess = hasFullAccess, fullAccess == false {
+        if hasFullAccess == false {
             self.backButton.isHidden = true
             self.trashButton.isHidden = true
             self.locationButton.isHidden = true
@@ -163,30 +163,39 @@ class TailgateViewController: UIViewController {
     }
     
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
-        var ypConfig = YPImagePickerConfiguration()
-        ypConfig.onlySquareImagesFromCamera = true
-        ypConfig.onlySquareImagesFromLibrary = true
-        ypConfig.showsFilters = true
-        ypConfig.showsVideoInLibrary = false
-        ypConfig.usesFrontCamera = false
-        ypConfig.shouldSaveNewPicturesToAlbum = false
+        // Only allow the current user to add images to the tailgate if they have
+        // full access for they've been invited
+        if hasFullAccess == true || self.tailgate.isUserInvited(userId: (Auth.auth().currentUser?.uid)!) {
+            var ypConfig = YPImagePickerConfiguration()
+            ypConfig.onlySquareImagesFromCamera = true
+            ypConfig.onlySquareImagesFromLibrary = true
+            ypConfig.showsFilters = true
+            ypConfig.showsVideoInLibrary = false
+            ypConfig.usesFrontCamera = false
+            ypConfig.shouldSaveNewPicturesToAlbum = false
         
-        let picker = YPImagePicker(configuration: ypConfig)
-        picker.didSelectImage = { image in
-            
-            uploadTailgatePicture(tailgate: self.tailgate!, userid: (Auth.auth().currentUser?.uid)!, image: image) {
-                downloadUrl in
+            let picker = YPImagePicker(configuration: ypConfig)
+            picker.didSelectImage = { image in
                 
-                if let imageUrl = downloadUrl {
+                uploadTailgatePicture(tailgate: self.tailgate!, userid: (Auth.auth().currentUser?.uid)!, image: image) {
+                    downloadUrl in
                     
-                    self.imageUrls.append(imageUrl)
-                    self.imageCollectionView.reloadData()
+                    if let imageUrl = downloadUrl {
+                        
+                        self.imageUrls.append(imageUrl)
+                        self.imageCollectionView.reloadData()
+                    }
                 }
+                
+                picker.dismiss(animated: true, completion: nil)
             }
-            
-            picker.dismiss(animated: true, completion: nil)
+            present(picker, animated: true, completion: nil)
         }
-        present(picker, animated: true, completion: nil)
+        
+        else {
+            let errorAlert = createAlert(title: "Upload Not Permitted", message: "Only invited users can upload pictures to a tailgate.")
+            self.present(errorAlert, animated: true, completion:nil)
+        }
     }
     
     

@@ -144,6 +144,16 @@ class Tailgate {
             "invites": inviteDict
         ]
     }
+    
+    func isUserInvited(userId:String) -> Bool {
+        for invite in self.invites {
+            if userId == invite.uid {
+                return true
+            }
+        }
+        
+        return false
+    }
 }
 
 

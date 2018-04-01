@@ -44,16 +44,16 @@ class SettingsChangePasswordViewController: UIViewController {
                             if error == nil {
                                 // Update keychain eventually
                             } else {
-                                let errorAlert = self.createAlert(title: "Cannot Change Password", message: (error?.localizedDescription)!)
+                                let errorAlert = createAlert(title: "Cannot Change Password", message: (error?.localizedDescription)!)
                                 self.present(errorAlert, animated: true, completion: nil)
                             }
                         })
                     } else {
-                        let incorrectPassAlert = self.createAlert(title: "Password Mismatch", message: "Your new password does not match the confirm password.")
+                        let incorrectPassAlert = createAlert(title: "Password Mismatch", message: "Your new password does not match the confirm password.")
                         self.present(incorrectPassAlert, animated: true, completion: nil)
                     }
                 } else {
-                    let incorrectPassAlert = self.createAlert(title: "Incorrect Password", message: "The current password you entered is incorrect.")
+                    let incorrectPassAlert = createAlert(title: "Incorrect Password", message: "The current password you entered is incorrect.")
                     self.present(incorrectPassAlert, animated: true, completion: nil)
                 }
             })
@@ -71,14 +71,14 @@ class SettingsChangePasswordViewController: UIViewController {
                     
                     // If no error, send a reset password email
                     if error == nil {
-                        let resetPassAlert = self.createAlert(title: "Reset Email Sent", message: "An email to reset your password has been sent to " + userEmail)
+                        let resetPassAlert = createAlert(title: "Reset Email Sent", message: "An email to reset your password has been sent to " + userEmail)
                         
                         self.present(resetPassAlert, animated: true, completion:nil)
                     }
                         
                     // If an error is encountered, show error description in alert
                     else {
-                        let errorAlert = self.createAlert(title: "Error Sending Reset Email", message: (error?.localizedDescription)!)
+                        let errorAlert = createAlert(title: "Error Sending Reset Email", message: (error?.localizedDescription)!)
                         
                         self.present(errorAlert, animated: true, completion:nil)
                     }
@@ -87,31 +87,6 @@ class SettingsChangePasswordViewController: UIViewController {
             
         })
     }
-    
-    
-    func createAlert(title: String, message: String) -> UIAlertController {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let closeAction = UIAlertAction(title: "Close", style: .default)
-        alert.addAction(closeAction)
-        
-        return alert
-    }
 }
 
-class PaddedTextField: UITextField {
-    
-    let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10);
-    
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, padding)
-    }
-    
-    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, padding)
-    }
-    
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, padding)
-    }
-}
+
