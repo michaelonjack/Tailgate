@@ -2190,8 +2190,8 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="alF-nH-td9">
-                                <rect key="frame" x="0.0" y="119" width="375" height="409"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="453"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTableCell" rowHeight="100" id="Cr0-0h-pQW" customClass="UserTableViewCell" customModule="Tailgate" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
@@ -2253,7 +2253,7 @@
                             <constraint firstItem="B5B-jM-Rg5" firstAttribute="width" secondItem="XP5-qa-0u4" secondAttribute="width" multiplier="0.709333" id="R9e-6F-UwV"/>
                             <constraint firstItem="alF-nH-td9" firstAttribute="width" secondItem="XP5-qa-0u4" secondAttribute="width" id="fBo-jy-hjd"/>
                             <constraint firstItem="dDo-Zd-Oyz" firstAttribute="width" secondItem="XP5-qa-0u4" secondAttribute="width" multiplier="0.5333" id="g5Y-LN-bvq"/>
-                            <constraint firstItem="alF-nH-td9" firstAttribute="height" secondItem="XP5-qa-0u4" secondAttribute="height" multiplier="0.613193" id="hKm-g4-oke"/>
+                            <constraint firstItem="alF-nH-td9" firstAttribute="height" secondItem="XP5-qa-0u4" secondAttribute="height" multiplier="0.679" id="hKm-g4-oke"/>
                             <constraint firstItem="dDo-Zd-Oyz" firstAttribute="top" secondItem="B5B-jM-Rg5" secondAttribute="bottom" constant="8" id="pbB-oJ-hAM"/>
                             <constraint firstItem="B5B-jM-Rg5" firstAttribute="top" secondItem="UQl-Nj-9Wd" secondAttribute="top" constant="13" id="sT2-k9-Uxg"/>
                             <constraint firstItem="alF-nH-td9" firstAttribute="top" secondItem="dDo-Zd-Oyz" secondAttribute="bottom" constant="8" id="udZ-B6-dhz"/>
@@ -2543,6 +2543,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="eai-VW-VO6"/>
-        <segue reference="u7i-bp-TO8"/>
+        <segue reference="0I7-na-UCc"/>
     </inferredMetricsTieBreakers>
 </document>

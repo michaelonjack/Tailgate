@@ -60,6 +60,7 @@ class InvitesViewController: UIViewController {
         usersTable.allowsMultipleSelection = isOwner == true
         usersTable.rowHeight = UITableViewAutomaticDimension
         usersTable.estimatedRowHeight = 100
+        usersTable.backgroundView = EmptyBackgroundView(scrollView: self.usersTable, image: UIImage(named: "Search2")!, title: "No Results Found", message: "Try entering a new search term.")
         
         searchTextField.delegate = self
         
@@ -170,6 +171,14 @@ extension InvitesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.searchResults.count > 0 {
+            usersTable.backgroundView?.isHidden = true
+            usersTable.separatorStyle = .singleLine
+        } else {
+            usersTable.backgroundView?.isHidden = false
+            usersTable.separatorStyle = .none
+        }
+        
         return self.searchResults.count
     }
     

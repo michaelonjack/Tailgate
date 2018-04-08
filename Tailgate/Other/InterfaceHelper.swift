@@ -64,6 +64,8 @@ class EmptyBackgroundView: UIView {
         self.titleLabel.textAlignment = .center
         self.titleLabel.textColor = .black
         self.titleLabel.numberOfLines = 0
+        self.titleLabel.adjustsFontSizeToFitWidth = true
+        self.titleLabel.minimumScaleFactor = 0.2
         self.titleLabel.font = UIFont.systemFont(ofSize: 23.0, weight: .light)
         
         self.messageLabel = UILabel(frame: CGRect.zero)
@@ -71,6 +73,8 @@ class EmptyBackgroundView: UIView {
         self.messageLabel.textAlignment = .center
         self.messageLabel.textColor = .lightGray
         self.messageLabel.numberOfLines = 0
+        self.messageLabel.adjustsFontSizeToFitWidth = true
+        self.messageLabel.minimumScaleFactor = 0.2
         self.messageLabel.font = UIFont.systemFont(ofSize: 18.0, weight: .light)
         
         addSubview(self.imageView)
@@ -95,8 +99,7 @@ class EmptyBackgroundView: UIView {
             self.centerYAnchor.constraint(equalTo: self.owner.centerYAnchor).isActive = true
             
             self.imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-            self.imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -90).isActive = true
-            //self.imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: self.frame.height / 15).isActive = true
+            self.imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: (-0.212431 * self.frame.height)).isActive = true
             self.imageView.widthAnchor.constraint(equalToConstant: self.frame.height / 2.5).isActive = true
             self.imageView.heightAnchor.constraint(equalToConstant: self.frame.height / 2.5).isActive = true
             
