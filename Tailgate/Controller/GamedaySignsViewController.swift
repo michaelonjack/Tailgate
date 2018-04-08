@@ -51,6 +51,7 @@ class GamedaySignsViewController: UIViewController {
         super.viewDidLoad()
         signCollectionView.delegate = self
         signCollectionView.dataSource = self
+        signCollectionView.backgroundView = EmptyBackgroundView(scrollView: self.signCollectionView, image: UIImage(named: "Football")!, title: "Gameday Signs", message: "Gameday signs uploaded by users will show here")
         
         // Get sign image urls
         getGamedaySignImageUrls { (imgUrls) in
@@ -105,6 +106,12 @@ extension GamedaySignsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
+        if self.imageUrls.count > 0 {
+            collectionView.backgroundView?.isHidden = true
+        } else {
+            collectionView.backgroundView?.isHidden = false
+        }
+        
         return self.imageUrls.count
     }
     

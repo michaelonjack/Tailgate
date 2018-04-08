@@ -80,7 +80,7 @@ func uploadTailgatePicture(tailgate:Tailgate, userid:String, image:UIImage, comp
 //
 func uploadGameDaySign(image:UIImage, completion : @escaping (_ downloadUrl: String?) -> Void) {
     let timestamp = String(UInt64((Date().timeIntervalSince1970 + 62_135_596_800) * 10_000_000))
-    let gamedayStorageReference = Storage.storage().reference(withPath: "images/Gameday/" + configuration.week! + "/submitted/" +  timestamp + ".jpg")
+    let gamedayStorageReference = Storage.storage().reference(withPath: "images/Gameday/" + configuration.week + "/submitted/" +  timestamp + ".jpg")
     
     let imageMetaData = StorageMetadata()
     imageMetaData.contentType = "image/jpeg"
@@ -157,7 +157,7 @@ func getTailgateImageUrls(tailgate:Tailgate, completion: @escaping (_ urls: [Str
 //
 func getGamedaySignImageUrls(completion: @escaping (_ urls: [String]) -> Void) {
     var imgUrls:[String] = []
-    let imageUrlsReference = Database.database().reference(withPath: "gameday/" + configuration.week! + "/imageUrls")
+    let imageUrlsReference = Database.database().reference(withPath: "gameday/" + configuration.week + "/imageUrls")
     imageUrlsReference.keepSynced(true)
     
     imageUrlsReference.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -393,7 +393,7 @@ func getDrinks(completion: @escaping (([Drink]) -> Void)) {
 //
 func getCurrentGamesForConference(conferenceName:String, completion: @escaping (([Game]) -> Void)) {
     var games:[Game] = []
-    let currentGamesReference = Database.database().reference(withPath: "games/" + configuration.week! + "/" + conferenceName)
+    let currentGamesReference = Database.database().reference(withPath: "games/" + configuration.week + "/" + conferenceName)
     currentGamesReference.keepSynced(true)
     
     currentGamesReference.observeSingleEvent(of: .value, with: { (snapshot) in

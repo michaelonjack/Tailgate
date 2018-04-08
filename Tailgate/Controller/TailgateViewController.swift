@@ -69,6 +69,7 @@ class TailgateViewController: UIViewController {
         super.viewDidLoad()
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
+        imageCollectionView.backgroundView = EmptyBackgroundView(scrollView: self.imageCollectionView, image: UIImage(named: "Football")!, title: "Tailgate Photos", message: "Photos uploaded by you or your invites will show here")
         
         nameLabel.text = tailgate.name
         schoolLabel.text = tailgate.school.name
@@ -316,6 +317,12 @@ extension TailgateViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
+        if self.imageUrls.count > 0 {
+            collectionView.backgroundView?.isHidden = true
+        } else {
+            collectionView.backgroundView?.isHidden = false
+        }
+        
         return self.imageUrls.count
     }
     

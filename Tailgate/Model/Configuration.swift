@@ -16,7 +16,7 @@ class Configuration {
         return configuration
     }()
     
-    var week:String?
+    var week:String = "week1"
     
     private init() {
         let configurationReference = Database.database().reference(withPath: "configuration")
