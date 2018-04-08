@@ -68,7 +68,10 @@ class MapViewController: UIViewController {
         getTailgatesToDisplay { (tailgates) in
             for tailgate in tailgates {
                 if let _ = tailgate.location {
-                    self.mapView.addAnnotation(TailgateAnnotation(tailgate: tailgate))
+                    getUserById(userId: tailgate.ownerId, completion: { (owner) in
+                        tailgate.owner = owner
+                        self.mapView.addAnnotation(TailgateAnnotation(tailgate: tailgate))
+                    })
                 }
             }
         }
