@@ -19,15 +19,28 @@ class InvitesViewController: UIViewController {
     var friends:[User] = []
     var searchResults:[User] = []
     var selectedInvites:[User] = []
+    var isOwner:Bool!
     var searchText:String = "" {
         didSet {
             if searchText == "" {
-                searchResults = friends
+                if self.isOwner == true {
+                    searchResults = friends
+                } else {
+                    searchResults = self.tailgate.invites
+                }
             } else {
                 searchResults = []
-                for friend in friends {
-                    if friend.name.lowercased().range(of: self.searchText.lowercased()) != nil {
-                        searchResults.append(friend)
+                if self.isOwner == true {
+                    for friend in friends {
+                        if friend.name.lowercased().range(of: self.searchText.lowercased()) != nil {
+                            searchResults.append(friend)
+                        }
+                    }
+                } else {
+                    for invite in self.tailgate.invites {
+                        if invite.name.lowercased().range(of: self.searchText.lowercased()) != nil {
+                            searchResults.append(invite)
+                        }
                     }
                 }
             }
@@ -39,9 +52,12 @@ class InvitesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.isOwner = self.tailgate.ownerId == Auth.auth().currentUser?.uid
+        
         usersTable.delegate = self
         usersTable.dataSource = self
-        usersTable.allowsMultipleSelection = true
+        usersTable.allowsSelection = isOwner == true
+        usersTable.allowsMultipleSelection = isOwner == true
         usersTable.rowHeight = UITableViewAutomaticDimension
         usersTable.estimatedRowHeight = 100
         
@@ -51,7 +67,11 @@ class InvitesViewController: UIViewController {
         
         getFriends( completion: { (users) in
             self.friends = users
-            self.searchResults = users
+            if self.isOwner == true {
+                self.searchResults = users
+            } else {
+                self.searchResults = self.tailgate.invites
+            }
             self.usersTable.reloadData()
         })
     }
@@ -96,14 +116,19 @@ extension InvitesViewController: UITextFieldDelegate {
 extension InvitesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedInvites.append( searchResults[indexPath.row] )
+        // Only allow the owner to add invites
+        if self.isOwner == true {
+            self.selectedInvites.append( searchResults[indexPath.row] )
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         // Remove the friend from the invites list when deselected
-        let uninvitedFriendId = searchResults[indexPath.row].uid
-        
-        self.selectedInvites = self.selectedInvites.filter{$0.uid != uninvitedFriendId}
+        if self.isOwner == true {
+            let uninvitedFriendId = searchResults[indexPath.row].uid
+            
+            self.selectedInvites = self.selectedInvites.filter{$0.uid != uninvitedFriendId}
+        }
     }
     
 }
@@ -150,6 +175,10 @@ extension InvitesViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return self.isOwner == true
     }
 }
 
