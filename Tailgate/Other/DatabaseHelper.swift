@@ -284,15 +284,19 @@ func getInvitedTailgates(completion: @escaping (([Tailgate]) -> Void)) {
     let tailgateReference = Database.database().reference(withPath: "tailgates/")
     
     currentUserReference.child("invites").observeSingleEvent(of: .value, with: { (invitesSnapshot) in
+        let numOfInvites = invitesSnapshot.childrenCount
+        
         for inviteSnapshot in invitesSnapshot.children {
             let inviteSnapshot = inviteSnapshot as! DataSnapshot
             tailgateReference.child(inviteSnapshot.key).observeSingleEvent(of: .value, with: { (tailgateSnapshot) in
                 let tailgate = Tailgate(snapshot: tailgateSnapshot)
                 tailgates.append(tailgate)
+                
+                if tailgates.count == numOfInvites {
+                    completion(tailgates)
+                }
             })
         }
-        
-        completion(tailgates)
     })
 }
 

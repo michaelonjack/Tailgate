@@ -20,6 +20,8 @@ class ProfileViewController: UIViewController {
     let currentUserRef = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
     let currentUserStorageRef = Storage.storage().reference(withPath: "images/" + (Auth.auth().currentUser?.uid)!)
     
+    var feedItems:[Tailgate] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +33,12 @@ class ProfileViewController: UIViewController {
         vegaLayout.itemSize = CGSize(width: self.invitesCollectionView.frame.width - 16, height: 90)
         vegaLayout.sectionInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         vegaLayout.springHardness = 60
+        
+        // Get all public tailgates and tailgates the current user is invited to
+        getTailgatesToDisplay { (tailgates) in
+            self.feedItems = tailgates
+            self.invitesCollectionView.reloadData()
+        }
        
         loadProfilePicture()
     }
@@ -127,17 +135,27 @@ extension ProfileViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return self.feedItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // The cell coming back is now a FlickrPhotoCell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCell",
-                                                      for: indexPath) as! FeedCollectionViewCell
-        cell.titleLabel.text = "Testinggggg"
-        cell.detailLabel.text = "blah blah blah blah"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCell", for: indexPath) as! FeedCollectionViewCell
+        
+        let currentFeedItem = self.feedItems[indexPath.row]
+        
+        cell.titleLabel.text = currentFeedItem.name
         cell.imageView.layer.cornerRadius = 0.5 * cell.imageView.layer.bounds.width
         cell.imageView.clipsToBounds = true
+        
+        getUserById(userId: currentFeedItem.ownerId) { (user) in
+            DispatchQueue.main.async {
+                cell.detailLabel.text = user.name
+                if let profilePicUrl = user.profilePictureUrl {
+                    cell.imageView.sd_setImage(with: URL(string: profilePicUrl), completed: nil)
+                }
+            }
+        }
         
         cell.contentView.layer.cornerRadius = 8.0
         cell.contentView.layer.borderWidth = 1.0
