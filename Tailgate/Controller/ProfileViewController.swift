@@ -122,7 +122,17 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return false
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedFeedItem = self.feedItems[indexPath.row]
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
+        tailgateViewController.tailgate = selectedFeedItem
+        tailgateViewController.hasFullAccess = false
+        self.present(tailgateViewController, animated: true, completion: nil)
     }
 }
 
