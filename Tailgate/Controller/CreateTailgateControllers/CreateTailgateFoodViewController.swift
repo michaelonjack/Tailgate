@@ -45,6 +45,7 @@ class CreateTailgateFoodViewController: UIViewController {
         foodTable.delegate = self
         foodTable.dataSource = self
         foodTable.allowsMultipleSelection = true
+        foodTable.backgroundView = EmptyBackgroundView(scrollView: self.foodTable, image: UIImage(named: "Food2")!, title: "No Food :(", message: "Tailgate with no food...hard pass..")
         
         searchTextField.delegate = self
         
@@ -122,6 +123,14 @@ extension CreateTailgateFoodViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.searchResults.count > 0 {
+            foodTable.backgroundView?.isHidden = true
+            foodTable.separatorStyle = .singleLine
+        } else {
+            foodTable.backgroundView?.isHidden = false
+            foodTable.separatorStyle = .none
+        }
+        
         return self.searchResults.count
     }
     

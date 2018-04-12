@@ -285,6 +285,9 @@ func getInvitedTailgates(completion: @escaping (([Tailgate]) -> Void)) {
     
     currentUserReference.child("invites").observeSingleEvent(of: .value, with: { (invitesSnapshot) in
         let numOfInvites = invitesSnapshot.childrenCount
+        if numOfInvites == 0 {
+            completion(tailgates)
+        }
         
         for inviteSnapshot in invitesSnapshot.children {
             let inviteSnapshot = inviteSnapshot as! DataSnapshot

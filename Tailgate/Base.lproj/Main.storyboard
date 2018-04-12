@@ -1826,7 +1826,7 @@
                                     <action selector="forgotPasswordPressed:" destination="zHo-CR-N45" eventType="touchUpInside" id="feA-mn-CfL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STATUS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVO-Kx-GhU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STATUS" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVO-Kx-GhU">
                                 <rect key="frame" x="77" y="310" width="222" height="11"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2542,7 +2542,7 @@
         <image name="Trash" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eai-VW-VO6"/>
+        <segue reference="NSk-bg-64S"/>
         <segue reference="u7i-bp-TO8"/>
     </inferredMetricsTieBreakers>
 </document>

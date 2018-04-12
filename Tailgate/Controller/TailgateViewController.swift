@@ -141,6 +141,12 @@ class TailgateViewController: UIViewController {
         let tailgateReference = Database.database().reference(withPath: "tailgates/" + tailgate.id)
         let userTailgateReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)! + "/tailgate")
         
+        // Remove the invite from each invited user's invite list
+        for invite in tailgate.invites {
+            let userInviteReference = Database.database().reference(withPath: "users/" + invite.uid + "/invites/" + tailgate.id)
+            userInviteReference.removeValue()
+        }
+        
         // TODO: Do we want to remove the data in the tailgate table or let it persist as a viewable archive?
         // For now we say remove it
         tailgateReference.removeValue()
@@ -226,7 +232,6 @@ class TailgateViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let invitesVC: InvitesViewController = segue.destination as! InvitesViewController
-        print(self.tailgate.invites)
         invitesVC.tailgate = self.tailgate
     }
     
