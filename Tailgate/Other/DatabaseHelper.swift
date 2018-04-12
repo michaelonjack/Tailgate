@@ -31,9 +31,14 @@ func uploadProfilePictureForUser(userid:String, image:UIImage) {
     userStorageReference.putData(imageData, metadata: imageMetaData) { (metaData, error) in
         if error == nil {
             // Add the image's url to the Firebase database
-            let downloadUrl = metaData?.downloadURL()?.absoluteString
-            userReference.updateChildValues(["profilePictureUrl": downloadUrl!])
-            
+            userStorageReference.downloadURL(completion: { (url, error) in
+                if error == nil {
+                    let downloadUrl = url?.absoluteString
+                    userReference.updateChildValues(["profilePictureUrl": downloadUrl!])
+                } else {
+                    print(error as? String ?? "")
+                }
+            })
         }
     }
 }
@@ -61,10 +66,15 @@ func uploadTailgatePicture(tailgate:Tailgate, userid:String, image:UIImage, comp
     userStorageReference.putData(imageData, metadata: imageMetaData) { (metaData, error) in
         if error == nil {
             // Add the image's url to the Firebase database
-            let downloadUrl = metaData?.downloadURL()?.absoluteString
-            imageUrlsReference.updateChildValues([timestamp: downloadUrl!])
-            
-            completion(downloadUrl)
+            userStorageReference.downloadURL(completion: { (url, error) in
+                if error == nil {
+                    let downloadUrl = url?.absoluteString
+                    imageUrlsReference.updateChildValues([timestamp: downloadUrl!])
+                    completion(downloadUrl)
+                } else {
+                    print(error as? String ?? "")
+                }
+            })
         }
     }
 }
@@ -91,10 +101,14 @@ func uploadGameDaySign(image:UIImage, completion : @escaping (_ downloadUrl: Str
     gamedayStorageReference.putData(imageData, metadata: imageMetaData) { (metaData, error) in
         if error == nil {
             // Add the image's url to the Firebase database
-            let downloadUrl = metaData?.downloadURL()?.absoluteString
-            //imageUrlsReference.updateChildValues([timestamp: downloadUrl!])
-            
-            completion(downloadUrl)
+            gamedayStorageReference.downloadURL(completion: { (url, error) in
+                if error == nil {
+                    let downloadUrl = url?.absoluteString
+                    completion(downloadUrl)
+                } else {
+                    print(error as? String ?? "")
+                }
+            })
         }
     }
 }

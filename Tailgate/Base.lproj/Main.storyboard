@@ -1566,20 +1566,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LNa-JJ-ASB">
-                                                    <rect key="frame" x="20" y="16" width="58.5" height="58.5"/>
+                                                    <rect key="frame" x="20" y="9.5" width="71" height="71.5"/>
                                                     <color key="backgroundColor" red="1" green="0.52120530610000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="LNa-JJ-ASB" secondAttribute="height" multiplier="1:1" id="9Ig-bV-FIb"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFP-Cw-C0c">
-                                                    <rect key="frame" x="92.5" y="40" width="34.5" height="16"/>
+                                                    <rect key="frame" x="105" y="40" width="34.5" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9T-7l-axx">
-                                                    <rect key="frame" x="92.5" y="16" width="34" height="21"/>
+                                                    <rect key="frame" x="105" y="9.5" width="34" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1591,7 +1591,7 @@
                                             <constraint firstItem="LNa-JJ-ASB" firstAttribute="centerY" secondItem="nN7-AM-3w6" secondAttribute="centerY" id="BKW-3m-xLE"/>
                                             <constraint firstItem="x9T-7l-axx" firstAttribute="leading" secondItem="LNa-JJ-ASB" secondAttribute="trailing" constant="14" id="GB9-Xa-y1t"/>
                                             <constraint firstItem="x9T-7l-axx" firstAttribute="top" secondItem="LNa-JJ-ASB" secondAttribute="top" id="QE1-DR-8Or"/>
-                                            <constraint firstItem="LNa-JJ-ASB" firstAttribute="height" secondItem="nN7-AM-3w6" secondAttribute="height" multiplier="0.65" id="dLd-Vw-S4Q"/>
+                                            <constraint firstItem="LNa-JJ-ASB" firstAttribute="height" secondItem="nN7-AM-3w6" secondAttribute="height" multiplier="0.79" id="dLd-Vw-S4Q"/>
                                             <constraint firstItem="RFP-Cw-C0c" firstAttribute="centerY" secondItem="nN7-AM-3w6" secondAttribute="centerY" constant="3" id="dwU-5j-mXL"/>
                                             <constraint firstItem="RFP-Cw-C0c" firstAttribute="leading" secondItem="x9T-7l-axx" secondAttribute="leading" id="epv-Av-bY4"/>
                                             <constraint firstItem="LNa-JJ-ASB" firstAttribute="leading" secondItem="nN7-AM-3w6" secondAttribute="leadingMargin" constant="12" id="u6t-Ul-6i8"/>
