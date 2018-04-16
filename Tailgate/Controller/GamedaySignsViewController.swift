@@ -118,7 +118,7 @@ extension GamedaySignsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // The cell coming back is now a FlickrPhotoCell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
-                                                      for: indexPath) as! GamedaySignCollectionViewCell
+                                                      for: indexPath) as! ImageCollectionViewCell
         cell.imageView.sd_setImage(with: URL(string: self.imageUrls[indexPath.row]), completed: nil)
         
         return cell

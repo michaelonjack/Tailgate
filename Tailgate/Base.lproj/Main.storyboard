@@ -92,6 +92,7 @@
                         <segue destination="g4T-DN-Wq0" kind="show" identifier="SettingsToBirthday" id="lMz-4L-ZQZ"/>
                         <segue destination="1kc-eR-vAL" kind="show" identifier="SettingsToName" id="USR-Wr-cbr"/>
                         <segue destination="MF1-ny-eNR" kind="show" identifier="SettingsToEmail" id="VD4-ee-Pr2"/>
+                        <segue destination="hBi-gD-CH2" kind="show" identifier="SettingsToSchool" id="YuV-s6-rKX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAM-Kd-Hws" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -318,6 +319,95 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NxO-js-dTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="348" y="-3860"/>
+        </scene>
+        <!--School-->
+        <scene sceneID="9Js-YN-rmx">
+            <objects>
+                <viewController id="hBi-gD-CH2" customClass="SettingsSchoolViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NJY-aT-ucr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLC-Is-Nwx">
+                                <rect key="frame" x="0.0" y="572" width="375" height="95"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cLC-Is-Nwx" secondAttribute="height" multiplier="75:19" id="gBJ-9l-vnq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="UPDATE">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateButtonPressed:" destination="hBi-gD-CH2" eventType="touchUpInside" id="W7h-kQ-Kw8"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qwn-n8-G0T">
+                                <rect key="frame" x="0.0" y="132" width="375" height="440"/>
+                                <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Vo-cD-zVM">
+                                    <size key="itemSize" width="200" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SchoolCell" id="CHw-V3-5JP" customClass="HighlightableImageCollectionViewCell" customModule="Tailgate" customModuleProvider="target">
+                                        <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mnb-uP-Gld">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="mnb-uP-Gld" firstAttribute="centerX" secondItem="CHw-V3-5JP" secondAttribute="centerX" id="3UG-YK-U1u"/>
+                                            <constraint firstItem="mnb-uP-Gld" firstAttribute="width" secondItem="CHw-V3-5JP" secondAttribute="width" id="AEB-Af-Ggk"/>
+                                            <constraint firstItem="mnb-uP-Gld" firstAttribute="height" secondItem="CHw-V3-5JP" secondAttribute="height" id="FIM-OV-IeS"/>
+                                            <constraint firstItem="mnb-uP-Gld" firstAttribute="centerY" secondItem="CHw-V3-5JP" secondAttribute="centerY" id="bDc-cw-MHi"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="mnb-uP-Gld" id="fkt-uT-JnV"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4o-YB-LA8">
+                                <rect key="frame" x="16" y="82" width="343" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qwn-n8-G0T" firstAttribute="width" secondItem="NJY-aT-ucr" secondAttribute="width" id="2QV-Rm-yRj"/>
+                            <constraint firstItem="qwn-n8-G0T" firstAttribute="centerX" secondItem="Yg3-fa-b4C" secondAttribute="centerX" id="Cnu-dn-F23"/>
+                            <constraint firstItem="S4o-YB-LA8" firstAttribute="width" secondItem="NJY-aT-ucr" secondAttribute="width" multiplier="0.914667" id="DYR-uL-SC7"/>
+                            <constraint firstItem="qwn-n8-G0T" firstAttribute="height" secondItem="Yg3-fa-b4C" secondAttribute="height" multiplier="0.73" id="G6M-rS-ZLe"/>
+                            <constraint firstItem="cLC-Is-Nwx" firstAttribute="top" secondItem="qwn-n8-G0T" secondAttribute="bottom" id="O2u-gO-Fkc"/>
+                            <constraint firstItem="qwn-n8-G0T" firstAttribute="top" secondItem="S4o-YB-LA8" secondAttribute="bottom" constant="26" id="dDN-yp-ca1"/>
+                            <constraint firstItem="cLC-Is-Nwx" firstAttribute="centerX" secondItem="Yg3-fa-b4C" secondAttribute="centerX" id="fdA-ni-elc"/>
+                            <constraint firstItem="S4o-YB-LA8" firstAttribute="centerX" secondItem="Yg3-fa-b4C" secondAttribute="centerX" id="rux-PC-OHh"/>
+                            <constraint firstItem="cLC-Is-Nwx" firstAttribute="width" secondItem="NJY-aT-ucr" secondAttribute="width" id="sCH-wW-nbW"/>
+                            <constraint firstItem="cLC-Is-Nwx" firstAttribute="bottom" secondItem="Yg3-fa-b4C" secondAttribute="bottom" id="x5q-Yx-XMv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Yg3-fa-b4C"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="School" id="XU6-PB-HhS"/>
+                    <connections>
+                        <outlet property="schoolNameLabel" destination="S4o-YB-LA8" id="UQj-94-DFq"/>
+                        <outlet property="schoolsCollectionView" destination="qwn-n8-G0T" id="Y6c-of-HwN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2kp-p4-Eky" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2496.8000000000002" y="-3861.3193403298355"/>
         </scene>
         <!--Name-->
         <scene sceneID="Q7J-6a-kO9">
@@ -612,7 +702,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TailgateCell" id="upz-3z-kic" customClass="TailgatePhotoCell" customModule="Tailgate" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TailgateCell" id="upz-3z-kic" customClass="ImageCollectionViewCell" customModule="Tailgate" customModuleProvider="target">
                                         <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1388,7 +1478,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlairCell" id="0WG-l8-Ynf" customClass="FlairPhotoCell" customModule="Tailgate" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlairCell" id="0WG-l8-Ynf" customClass="HighlightableImageCollectionViewCell" customModule="Tailgate" customModuleProvider="target">
                                         <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -2456,7 +2546,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SignCell" id="nRM-Tz-ny3" customClass="GamedaySignCollectionViewCell" customModule="Tailgate" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SignCell" id="nRM-Tz-ny3" customClass="ImageCollectionViewCell" customModule="Tailgate" customModuleProvider="target">
                                         <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

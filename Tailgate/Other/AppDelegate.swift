@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //let BarButtonItemAppearance = UIBarButtonItem.appearance()
         //BarButtonItemAppearance.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear], for: .normal)
         
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         
         // Determine which view controller should be initially shown
         self.window = UIWindow(frame: UIScreen.main.bounds)

@@ -1,60 +1,57 @@
 //
-//  CreateTailgateFlairViewController.swift
+//  SettingsSchoolViewController.swift
 //  Tailgate
 //
-//  Created by Michael Onjack on 2/18/18.
+//  Created by Michael Onjack on 4/15/18.
 //  Copyright © 2018 Michael Onjack. All rights reserved.
 //
 
 import UIKit
 
-class CreateTailgateFlairViewController: UIViewController {
+class SettingsSchoolViewController: UIViewController {
 
-    @IBOutlet weak var flairCollectionView: UICollectionView!
+    @IBOutlet weak var schoolNameLabel: UILabel!
+    @IBOutlet weak var schoolsCollectionView: UICollectionView!
     
-    var tailgateName: String!
-    var tailgateSchool: School!
-    var isPublic: Bool!
-    var startTime: Date!
-    var foods:[Food]!
-    var drinks:[Drink]!
-    var selectedFlairUrl:String = ""
-    var flairImageUrls: [(url3x:String, url1x:String)] = []
+    var schools:[School] = []
+    var presentingController: UIViewController?
+    var schoolName:String?
+    var selectedSchool:School?
     
-    fileprivate let reuseIdentifier = "FlairCell"
+    fileprivate let reuseIdentifier = "SchoolCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
     fileprivate let itemsPerRow: CGFloat = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        flairCollectionView.delegate = self
-        flairCollectionView.dataSource = self
+        schoolsCollectionView.delegate = self
+        schoolsCollectionView.dataSource = self
         
-        getFlairImageUrls(school: tailgateSchool) { (imgUrls) in
-            self.flairImageUrls = imgUrls
-            self.flairCollectionView.reloadData()
+        schoolNameLabel.text = schoolName
+        
+        getSchools { (schools) in
+            self.schools = schools
+            self.schoolsCollectionView.reloadData()
         }
+        
+        // Change font and color of nav header
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22.0), NSAttributedStringKey.foregroundColor: UIColor.white]
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    @IBAction func nextPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "FlairToInvites", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let invitesVC: CreateTailgateInvitesViewController = segue.destination as! CreateTailgateInvitesViewController
+    @IBAction func updateButtonPressed(_ sender: Any) {
+        updateValueForCurrentUser(key: "school", value: self.schoolNameLabel.text ?? "")
         
-        invitesVC.tailgateName = self.tailgateName
-        invitesVC.tailgateSchool = self.tailgateSchool
-        invitesVC.isPublic = self.isPublic
-        invitesVC.startTime = self.startTime
-        invitesVC.foods = self.foods
-        invitesVC.drinks = self.drinks
-        invitesVC.flairUrl = self.selectedFlairUrl
+        // Update the Settings table
+        if let presentingController = self.presentingController as? SettingsViewController {
+            presentingController.loadData()
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
@@ -62,14 +59,15 @@ class CreateTailgateFlairViewController: UIViewController {
 
 
 
-extension CreateTailgateFlairViewController: UICollectionViewDelegate {
+extension SettingsSchoolViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         shouldSelectItemAt indexPath: IndexPath) -> Bool {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! HighlightableImageCollectionViewCell
         cell.isSelected = true
         
-        self.selectedFlairUrl = self.flairImageUrls[indexPath.row].url1x
+        self.selectedSchool = self.schools[indexPath.row]
+        self.schoolNameLabel.text = self.schools[indexPath.row].name
         return true
     }
 }
@@ -77,20 +75,29 @@ extension CreateTailgateFlairViewController: UICollectionViewDelegate {
 
 
 
-extension CreateTailgateFlairViewController: UICollectionViewDataSource {
+extension SettingsSchoolViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.flairImageUrls.count
+        return self.schools.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // The cell coming back is now a FlickrPhotoCell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
                                                       for: indexPath) as! HighlightableImageCollectionViewCell
-        cell.imageView.sd_setImage(with: URL(string: self.flairImageUrls[indexPath.row].url3x), completed: nil)
+        
+        cell.borderColor = UIColor(red:0.98, green:0.50, blue:0.45, alpha:1.0)
+        
+        let currentSchool = self.schools[indexPath.row]
+        getFlairImageUrls(school: currentSchool) { (imageUrls) in
+            if imageUrls.count > 0 {
+                let imageUrl = imageUrls[0].url3x
+                cell.imageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
+            }
+        }
         
         return cell
     }
@@ -98,7 +105,7 @@ extension CreateTailgateFlairViewController: UICollectionViewDataSource {
 
 
 
-extension CreateTailgateFlairViewController : UICollectionViewDelegateFlowLayout {
+extension SettingsSchoolViewController : UICollectionViewDelegateFlowLayout {
     // responsible for telling the layout the size of a given cell
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -131,4 +138,3 @@ extension CreateTailgateFlairViewController : UICollectionViewDelegateFlowLayout
         return 1.0;
     }
 }
-

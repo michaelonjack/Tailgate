@@ -15,7 +15,7 @@ class SettingsViewController: UIViewController {
     
     let sectionTitles = ["ACCOUNT", "ACCOUNT ACTIONS", "INFORMATION"]
     var rowData = [
-        [("First Name", ""), ("Last Name", ""), ("Email", ""), ("Birthday", "")],
+        [("First Name", ""), ("Last Name", ""), ("Email", ""), ("Birthday", ""), ("School", "")],
         [("Logout", ""), ("Change Password", "")],
         [("Contact", "")]
     ]
@@ -50,6 +50,7 @@ class SettingsViewController: UIViewController {
             self.rowData[0][1].1 = userData?["lastName"] as? String ?? ""
             self.rowData[0][2].1 = userData?["email"] as? String ?? ""
             self.rowData[0][3].1 = userData?["birthday"] as? String ?? ""
+            self.rowData[0][4].1 = userData?["school"] as? String ?? ""
             
             DispatchQueue.main.async {
                 self.settingsTable.reloadData()
@@ -92,6 +93,12 @@ class SettingsViewController: UIViewController {
             emailController.email = self.rowData[0][2].1
             emailController.presentingController = self
             
+        case "SettingsToSchool":
+            let schoolController: SettingsSchoolViewController = segue.destination as! SettingsSchoolViewController
+            
+            schoolController.schoolName = self.rowData[0][4].1
+            schoolController.presentingController = self
+            
         default:
             var _ = 0
         }
@@ -128,6 +135,9 @@ extension SettingsViewController: UITableViewDelegate {
         
         case "Email":
             self.performSegue(withIdentifier: "SettingsToEmail", sender: nil)
+            
+        case "School":
+            self.performSegue(withIdentifier: "SettingsToSchool", sender: nil)
         
         default:
             var _ = 0

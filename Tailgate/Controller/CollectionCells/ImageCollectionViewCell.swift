@@ -1,5 +1,5 @@
 //
-//  TailgatePhotoCell.swift
+//  ImageCollectionViewCell.swift
 //  Tailgate
 //
 //  Created by Michael Onjack on 12/12/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TailgatePhotoCell: UICollectionViewCell {
+class ImageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     
