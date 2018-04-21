@@ -53,10 +53,13 @@ func doStuff() {
                 //dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
                 let date = dateFormatter.date(from:day)!
                 
+                /*
                 if (big10schools.contains(homeTeam) || big10schools.contains(awayTeam)) && weekNum > 1 {
                     let g = Game(homeTeam: homeTeam, awayTeam: awayTeam, startTime: date)
                     //gameReference.child(g.id).setValue(g.toAnyObject())
                 }
+ */
+                print(homeTeam + " vs " + awayTeam )
             }
         } else {
             print("bad json")

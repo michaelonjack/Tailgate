@@ -34,6 +34,12 @@ extension UIViewController {
 
 
 
+extension UIColor {
+    static let lavender = UIColor(red:0.72, green:0.56, blue:0.90, alpha:1.0)
+}
+
+
+
 class EmptyBackgroundView: UIView {
     private var owner: UIScrollView!
     private var imageView: UIImageView!

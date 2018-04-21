@@ -22,3 +22,11 @@ class School {
         self.name = snapshotValue["name"] as! String
     }
 }
+
+
+
+extension School: Equatable {
+    static func == (lhs: School, rhs: School) -> Bool {
+        return lhs.name == rhs.name
+    }
+}

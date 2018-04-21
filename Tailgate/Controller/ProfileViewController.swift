@@ -157,6 +157,13 @@ extension ProfileViewController: UICollectionViewDataSource {
         cell.titleLabel.text = currentFeedItem.name
         cell.imageView.layer.cornerRadius = 0.5 * cell.imageView.layer.bounds.width
         cell.imageView.clipsToBounds = true
+        cell.activityTypeIndicator.layer.cornerRadius = 0.5 * cell.activityTypeIndicator.layer.bounds.width
+        
+        if currentFeedItem.isPublic {
+            cell.activityTypeIndicator.backgroundColor = .lavender
+        } else {
+            cell.activityTypeIndicator.backgroundColor = .red
+        }
         
         getUserById(userId: currentFeedItem.ownerId) { (user) in
             DispatchQueue.main.async {
