@@ -184,15 +184,20 @@ class TailgateViewController: UIViewController {
             let picker = YPImagePicker(configuration: ypConfig)
             picker.didSelectImage = { image in
                 
-                uploadTailgatePicture(tailgate: self.tailgate!, userid: (Auth.auth().currentUser?.uid)!, image: image) {
-                    downloadUrl in
-                    
+                let timestamp:String = getTimestampString()
+                let tailgateOwnerId:String = self.tailgate.ownerId
+                let tailgateId:String = self.tailgate.id
+                let uploadPath:String = "images/" + tailgateOwnerId + "/tailgate/" + tailgateId + "/" +  timestamp
+                uploadImageToStorage(image: image, uploadPath: uploadPath, completion: { (downloadUrl) in
                     if let imageUrl = downloadUrl {
+                        
+                        let imageUrlsReference = Database.database().reference(withPath: "tailgates/" + self.tailgate.id + "/imageUrls")
+                        imageUrlsReference.updateChildValues([timestamp: downloadUrl!])
                         
                         self.imageUrls.append(imageUrl)
                         self.imageCollectionView.reloadData()
                     }
-                }
+                })
                 
                 picker.dismiss(animated: true, completion: nil)
             }

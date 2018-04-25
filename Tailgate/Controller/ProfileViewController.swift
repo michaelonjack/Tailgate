@@ -95,7 +95,10 @@ class ProfileViewController: UIViewController {
                 self.profilePictureButton.setImage(image, for: .normal)
                 self.profilePictureButton.imageView?.contentMode = .scaleAspectFill
                 
-                uploadProfilePictureForUser(userid: (Auth.auth().currentUser?.uid)!, image: image)
+                let uploadPath = "images/" + getCurrentUserId() + "/ProfilePicture"
+                uploadImageToStorage(image: image, uploadPath: uploadPath, completion: { (downloadUrl) in
+                    updateValueForCurrentUser(key: "profilePictureUrl", value: downloadUrl!)
+                })
                 
                 picker.dismiss(animated: true, completion: nil)
             }
@@ -167,7 +170,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         
         getUserById(userId: currentFeedItem.ownerId) { (user) in
             DispatchQueue.main.async {
-                cell.detailLabel.text = user.name
+                cell.detailLabel.text = user.name + " - " + currentFeedItem.school.name
                 if let profilePicUrl = user.profilePictureUrl {
                     cell.imageView.sd_setImage(with: URL(string: profilePicUrl), completed: nil)
                 }

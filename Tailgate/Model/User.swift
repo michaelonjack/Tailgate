@@ -26,6 +26,8 @@ class User {
     let lastName: String
     let email: String
     var profilePictureUrl:String?
+    var schoolName:String?
+    var school:School?
     var name:String {
         return firstName + " " + lastName
     }
@@ -52,6 +54,13 @@ class User {
         lastName = snapshotValue["lastName"] as! String
         email = snapshotValue["email"] as! String
         profilePictureUrl = snapshotValue["profilePictureUrl"] as? String
+        schoolName = snapshotValue["school"] as? String
+        
+        if let sName = schoolName {
+            getSchoolByName(name: sName) { (school) in
+                self.school = school
+            }
+        }
     }
     
     

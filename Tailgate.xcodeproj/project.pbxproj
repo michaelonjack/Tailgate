@@ -58,6 +58,8 @@
 		B1DD1CDB203E591400291EAE /* UsersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DD1CDA203E591400291EAE /* UsersCollectionViewCell.swift */; };
 		B1DD1CDD203E593B00291EAE /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DD1CDC203E593B00291EAE /* FriendTableViewCell.swift */; };
 		B1E227302084024A00672F53 /* SettingsSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2272F2084024A00672F53 /* SettingsSchoolViewController.swift */; };
+		B1E22732208B66BB00672F53 /* FlairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E22731208B66BB00672F53 /* FlairViewController.swift */; };
+		B1E22734208B6E5500672F53 /* RivalFlairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E22733208B6E5500672F53 /* RivalFlairViewController.swift */; };
 		B1E83BD71FDCFBE200185E17 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */; };
 		B1E83BD91FDCFC5600185E17 /* NewTailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD81FDCFC5600185E17 /* NewTailgateViewController.swift */; };
 		B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */; };
@@ -127,6 +129,8 @@
 		B1DD1CDA203E591400291EAE /* UsersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1DD1CDC203E593B00291EAE /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		B1E2272F2084024A00672F53 /* SettingsSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSchoolViewController.swift; sourceTree = "<group>"; };
+		B1E22731208B66BB00672F53 /* FlairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlairViewController.swift; sourceTree = "<group>"; };
+		B1E22733208B6E5500672F53 /* RivalFlairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RivalFlairViewController.swift; sourceTree = "<group>"; };
 		B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B1E83BD81FDCFC5600185E17 /* NewTailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTailgateViewController.swift; sourceTree = "<group>"; };
 		B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 		B10E9E9D1FDCC25400DB4751 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B1E22731208B66BB00672F53 /* FlairViewController.swift */,
+				B1E22733208B6E5500672F53 /* RivalFlairViewController.swift */,
 				B1A18FD52054D61000D9C12A /* GamedayViewController.swift */,
 				B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */,
 				B1DD1CD7203E409B00291EAE /* FriendsViewController.swift */,
@@ -507,6 +513,7 @@
 				B1DD1CD42039EF7700291EAE /* HighlightableImageCollectionViewCell.swift in Sources */,
 				B13B814A1FEA0446008F3A38 /* UserTableViewCell.swift in Sources */,
 				B1BC52CF1FE0C12700BCBAE8 /* DatabaseHelper.swift in Sources */,
+				B1E22732208B66BB00672F53 /* FlairViewController.swift in Sources */,
 				B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */,
 				B154B1F4201D7BFE005DDC8A /* InvitesViewController.swift in Sources */,
 				B1AC03252071329000CB3661 /* Configuration.swift in Sources */,
@@ -523,6 +530,7 @@
 				B1DD1CDB203E591400291EAE /* UsersCollectionViewCell.swift in Sources */,
 				B1FEC4F020422AE500FEE05F /* SettingsTableViewCell.swift in Sources */,
 				B1A18FD22054CD3800D9C12A /* ScheduleTableViewCell.swift in Sources */,
+				B1E22734208B6E5500672F53 /* RivalFlairViewController.swift in Sources */,
 				B1AC0321207114AA00CB3661 /* test.swift in Sources */,
 				B10E9E6D1FDCB6A200DB4751 /* LoginViewController.swift in Sources */,
 				B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */,

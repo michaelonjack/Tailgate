@@ -13,7 +13,7 @@ class RivalFlairViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // "images/" + schoolName.replacingOccurrences(of: " ", with: "") + "/submittedFlair/rival/" + imageName + ".jpg"
     }
 
     override func didReceiveMemoryWarning() {

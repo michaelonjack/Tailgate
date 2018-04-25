@@ -2531,43 +2531,75 @@
         <!--Flair-->
         <scene sceneID="bhP-JC-UD5">
             <objects>
-                <viewController id="WwX-ha-j3m" sceneMemberID="viewController">
+                <viewController id="WwX-ha-j3m" customClass="FlairViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G30-dd-1CZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdI-B2-4DM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FlairExample" translatesAutoresizingMaskIntoConstraints="NO" id="91x-je-Rwf">
+                                <rect key="frame" x="23.5" y="125" width="327" height="392"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="91x-je-Rwf" secondAttribute="height" multiplier="316:379" id="l5j-xo-5fx"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdI-B2-4DM">
                                 <rect key="frame" x="0.0" y="602" width="375" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button">
+                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gdI-B2-4DM" secondAttribute="height" multiplier="75:13" id="MVZ-KQ-Lip"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="ADD FLAIR">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="addFlairButton:" destination="WwX-ha-j3m" eventType="touchUpInside" id="pt7-Lz-eJq"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEt-EY-oan">
-                                <rect key="frame" x="0.0" y="541" width="375" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEt-EY-oan">
+                                <rect key="frame" x="0.0" y="537" width="375" height="65"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EEt-EY-oan" secondAttribute="height" multiplier="75:13" id="9fB-z7-752"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="ADD RIVAL FLAIR">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="wIo-xg-iJj" kind="show" id="4GY-39-BUA"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Flair are the images that represent your schools tailgates on the map" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs7-uK-JJ3">
-                                <rect key="frame" x="40" y="64" width="296" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs7-uK-JJ3">
+                                <rect key="frame" x="16" y="64" width="343" height="63"/>
+                                <string key="text">Flair are the images that represent your schools' tailgates on the map. Add new flair that other users can select when creating their tailgate.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FlairExample" translatesAutoresizingMaskIntoConstraints="NO" id="91x-je-Rwf">
-                                <rect key="frame" x="29" y="135" width="316" height="379"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gdI-B2-4DM" firstAttribute="bottom" secondItem="t7Y-8a-mV4" secondAttribute="bottom" id="0Y9-jt-TeC"/>
+                            <constraint firstItem="91x-je-Rwf" firstAttribute="height" secondItem="t7Y-8a-mV4" secondAttribute="height" multiplier="0.65" id="5kd-iu-0d9"/>
+                            <constraint firstItem="gdI-B2-4DM" firstAttribute="top" secondItem="EEt-EY-oan" secondAttribute="bottom" id="FR4-fR-tbc"/>
+                            <constraint firstItem="zs7-uK-JJ3" firstAttribute="height" secondItem="t7Y-8a-mV4" secondAttribute="height" multiplier="0.104477" id="HtY-6g-al8"/>
+                            <constraint firstItem="gdI-B2-4DM" firstAttribute="width" secondItem="G30-dd-1CZ" secondAttribute="width" id="PDt-wf-qoV"/>
+                            <constraint firstItem="EEt-EY-oan" firstAttribute="top" secondItem="91x-je-Rwf" secondAttribute="bottom" constant="20" id="RQD-A2-w1Y"/>
+                            <constraint firstItem="EEt-EY-oan" firstAttribute="width" secondItem="G30-dd-1CZ" secondAttribute="width" id="TND-mi-mQR"/>
+                            <constraint firstItem="zs7-uK-JJ3" firstAttribute="width" secondItem="G30-dd-1CZ" secondAttribute="width" multiplier="0.914666" id="ZVa-mn-eSR"/>
+                            <constraint firstItem="gdI-B2-4DM" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="eEC-wf-g6p"/>
+                            <constraint firstItem="zs7-uK-JJ3" firstAttribute="top" secondItem="t7Y-8a-mV4" secondAttribute="top" id="g7w-I6-Hfw"/>
+                            <constraint firstItem="EEt-EY-oan" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="iDT-8b-1sT"/>
+                            <constraint firstItem="zs7-uK-JJ3" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="sQA-jp-J7v"/>
+                            <constraint firstItem="91x-je-Rwf" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="ujP-tg-qxu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="t7Y-8a-mV4"/>
                     </view>
                     <navigationItem key="navigationItem" title="Flair" id="lAF-OZ-M78"/>
+                    <connections>
+                        <outlet property="flairExampleImageView" destination="91x-je-Rwf" id="ija-R1-V3k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCi-qK-PGW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2652,6 +2684,39 @@
             </objects>
             <point key="canvasLocation" x="2298" y="-3264"/>
         </scene>
+        <!--Rival Flair-->
+        <scene sceneID="M7q-ni-zhC">
+            <objects>
+                <viewController id="wIo-xg-iJj" customClass="RivalFlairViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z3U-Ct-ypc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAz-ht-37J">
+                                <rect key="frame" x="0.0" y="602" width="375" height="65"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cAz-ht-37J" secondAttribute="height" multiplier="75:13" id="bi7-ug-t8A"/>
+                                </constraints>
+                                <state key="normal" title="SUBMIT RIVAL FLAIR">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cAz-ht-37J" firstAttribute="width" secondItem="Z3U-Ct-ypc" secondAttribute="width" id="F3A-r6-PH1"/>
+                            <constraint firstItem="cAz-ht-37J" firstAttribute="bottom" secondItem="Mgw-h2-0mw" secondAttribute="bottom" id="ubB-iw-mJC"/>
+                            <constraint firstItem="cAz-ht-37J" firstAttribute="centerX" secondItem="Mgw-h2-0mw" secondAttribute="centerX" id="v1H-61-Pih"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mgw-h2-0mw"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Rival Flair" id="sEy-sz-FOm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xiD-oU-0SH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3062" y="-2570"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="LuO-al-Z6t">
             <objects>
@@ -2680,7 +2745,7 @@
         <image name="Camera" width="128" height="128"/>
         <image name="Exit" width="256" height="256"/>
         <image name="Exit2" width="256" height="256"/>
-        <image name="FlairExample" width="314" height="369"/>
+        <image name="FlairExample" width="445" height="529"/>
         <image name="Friends" width="128" height="128"/>
         <image name="Friends2" width="128" height="128"/>
         <image name="Icon" width="256" height="256"/>

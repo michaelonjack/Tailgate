@@ -12,15 +12,15 @@ import Firebase
 let configuration = Configuration.shared()
 
 
+
 //////////////////////////////////////////////////////////////////////////////////////
 //
-// uploadProfilePictureForUser
+// uploadImageToStorage
 //
-// Uploads the parameter UIImage to the user's storage (specified by the userid parameter)
+// Uploads a UIImage to firebase storage
 //
-func uploadProfilePictureForUser(userid:String, image:UIImage) {
-    let userReference = Database.database().reference(withPath: "users/" + userid)
-    let userStorageReference = Storage.storage().reference(withPath: "images/" + userid + "/ProfilePicture")
+func uploadImageToStorage(image:UIImage, uploadPath:String, completion : @escaping (_ downloadUrl: String?) -> Void) {
+    let storageReference = Storage.storage().reference(withPath: uploadPath)
     
     let imageMetaData = StorageMetadata()
     imageMetaData.contentType = "image/jpeg"
@@ -28,80 +28,10 @@ func uploadProfilePictureForUser(userid:String, image:UIImage) {
     var imageData = Data()
     imageData = UIImageJPEGRepresentation(image, 1.0)!
     
-    userStorageReference.putData(imageData, metadata: imageMetaData) { (metaData, error) in
+    storageReference.putData(imageData, metadata: imageMetaData) { (metaData, error) in
         if error == nil {
             // Add the image's url to the Firebase database
-            userStorageReference.downloadURL(completion: { (url, error) in
-                if error == nil {
-                    let downloadUrl = url?.absoluteString
-                    userReference.updateChildValues(["profilePictureUrl": downloadUrl!])
-                } else {
-                    print(error as? String ?? "")
-                }
-            })
-        }
-    }
-}
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////
-//
-// uploadTailgatePicture
-//
-// Uploads the parameter UIImage to the tailgate storage for the user specified by the userid parameter
-// Returns a completion block that gives the images download url
-//
-func uploadTailgatePicture(tailgate:Tailgate, userid:String, image:UIImage, completion : @escaping (_ downloadUrl: String?) -> Void) {
-    let timestamp = String(UInt64((Date().timeIntervalSince1970 + 62_135_596_800) * 10_000_000))
-    let imageUrlsReference = Database.database().reference(withPath: "tailgates/" + tailgate.id + "/imageUrls")
-    let userStorageReference = Storage.storage().reference(withPath: "images/" + userid + "/tailgate/" + tailgate.id + "/" +  timestamp)
-    
-    let imageMetaData = StorageMetadata()
-    imageMetaData.contentType = "image/jpeg"
-    
-    var imageData = Data()
-    imageData = UIImageJPEGRepresentation(image, 1.0)!
-    
-    userStorageReference.putData(imageData, metadata: imageMetaData) { (metaData, error) in
-        if error == nil {
-            // Add the image's url to the Firebase database
-            userStorageReference.downloadURL(completion: { (url, error) in
-                if error == nil {
-                    let downloadUrl = url?.absoluteString
-                    imageUrlsReference.updateChildValues([timestamp: downloadUrl!])
-                    completion(downloadUrl)
-                } else {
-                    print(error as? String ?? "")
-                }
-            })
-        }
-    }
-}
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////
-//
-// uploadGameDaySign
-//
-// Uploads the parameter UIImage to the gameday storage 
-// Returns a completion block that gives the images download url
-//
-func uploadGameDaySign(image:UIImage, completion : @escaping (_ downloadUrl: String?) -> Void) {
-    let timestamp = String(UInt64((Date().timeIntervalSince1970 + 62_135_596_800) * 10_000_000))
-    let gamedayStorageReference = Storage.storage().reference(withPath: "images/Gameday/" + configuration.week + "/submitted/" +  timestamp + ".jpg")
-    
-    let imageMetaData = StorageMetadata()
-    imageMetaData.contentType = "image/jpeg"
-    
-    var imageData = Data()
-    imageData = UIImageJPEGRepresentation(image, 1.0)!
-    
-    gamedayStorageReference.putData(imageData, metadata: imageMetaData) { (metaData, error) in
-        if error == nil {
-            // Add the image's url to the Firebase database
-            gamedayStorageReference.downloadURL(completion: { (url, error) in
+            storageReference.downloadURL(completion: { (url, error) in
                 if error == nil {
                     let downloadUrl = url?.absoluteString
                     completion(downloadUrl)
@@ -520,6 +450,22 @@ func getUserById(userId:String, completion: @escaping ((User) -> Void)) {
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
+// getUserById
+//
+// Returns with user with the parameter id
+//
+func getCurrentUser(completion: @escaping ((User) -> Void)) {
+    let currentUserId = Auth.auth().currentUser?.uid
+    
+    getUserById(userId: currentUserId!) { (currentUser) in
+        completion(currentUser)
+    }
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
 // getTailgateById
 //
 // Returns the tailgate with the parameter id
@@ -623,6 +569,30 @@ func removeFriend(friendId:String) {
 func updateValueForCurrentUser(key:String, value:Any) {
     let currentUserReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
     currentUserReference.updateChildValues([key:value])
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// getTimestampString
+//
+// Returns the current timestamp as a string
+//
+func getTimestampString() -> String {
+    return String(UInt64((Date().timeIntervalSince1970 + 62_135_596_800) * 10_000_000))
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// getCurrentUserId
+//
+// Returns the current user's id
+//
+func getCurrentUserId() -> String {
+    return (Auth.auth().currentUser?.uid)!
 }
 
 

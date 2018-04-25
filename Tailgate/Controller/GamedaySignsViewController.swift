@@ -76,7 +76,8 @@ class GamedaySignsViewController: UIViewController {
         let picker = YPImagePicker(configuration: ypConfig)
         picker.didSelectImage = { image in
             
-            uploadGameDaySign(image: image, completion: { (downloadUrl) in
+            let uploadPath = "images/Gameday/" + configuration.week + "/submitted/" +  getTimestampString() + ".jpg"
+            uploadImageToStorage(image: image, uploadPath: uploadPath, completion: { (downloadUrl) in
                 // Nothing for now!
             })
             
