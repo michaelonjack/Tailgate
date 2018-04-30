@@ -15,7 +15,7 @@ class Game {
     let awayTeam:String
     let score:String
     let startTime:Date?
-    var startTimeStr:String {
+    var startTimeDisplayStr:String {
         let dateFormatter = DateFormatter()
         let calendar = Calendar.current
         
@@ -35,6 +35,15 @@ class Game {
             }
         } else {
             return "TBD"
+        }
+    }
+    var startTimeDatabaseStr:String {
+        if let startTime = self.startTime {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm"
+            return formatter.string(from: startTime)
+        } else {
+            return ""
         }
     }
     
@@ -63,15 +72,13 @@ class Game {
         self.score = snapshotValue["score"] as? String ?? ""
         
         let startTimeStr = snapshotValue["startTime"] as? String ?? ""
-        let dateFormatter = DateFormatter()
-        if startTimeStr.contains(":") {
-            dateFormatter.dateFormat = "EEEE, MMM d, h:mm a"
-            self.startTime = dateFormatter.date(from: startTimeStr)
-        } else if startTimeStr.contains(",") {
-            dateFormatter.dateFormat = "EEEE, MMM d"
-            self.startTime = dateFormatter.date(from: startTimeStr)
-        } else {
+        
+        if startTimeStr == "" {
             self.startTime = nil
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            self.startTime = dateFormatter.date(from: startTimeStr)
         }
     }
     
@@ -79,7 +86,7 @@ class Game {
         return [
             "awayTeam": awayTeam,
             "homeTeam": homeTeam,
-            "startTime": startTimeStr
+            "startTime": startTimeDatabaseStr
         ]
     }
 }

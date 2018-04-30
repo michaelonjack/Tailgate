@@ -12,7 +12,7 @@ class GamedayViewController: UIViewController {
 
     @IBOutlet weak var schedulesCollectionView: UICollectionView!
     
-    var conferences = ["BIG 10", "SEC"]
+    var conferences = ["BIG 10", "BIG 12", "ACC", "PAC-12", "SEC"]
     var games:[String:[Game]] = [:]
     var collectionViewCurrentIndex:Int {
         return Int(self.schedulesCollectionView.contentOffset.x / self.schedulesCollectionView.frame.size.width)
@@ -68,7 +68,7 @@ extension GamedayViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return self.conferences.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

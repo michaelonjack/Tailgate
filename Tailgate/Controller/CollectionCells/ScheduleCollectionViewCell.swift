@@ -70,7 +70,7 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         let currGame = self.games[indexPath.row]
         cell.teamsLabel.text = currGame.awayTeam + " at " + currGame.homeTeam
         if currGame.score == "" {
-            cell.detailLabel.text = currGame.startTimeStr
+            cell.detailLabel.text = currGame.startTimeDisplayStr
         } else {
             cell.detailLabel.text = currGame.score
         }

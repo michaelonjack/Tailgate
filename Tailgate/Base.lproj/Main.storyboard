@@ -1663,7 +1663,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFP-Cw-C0c">
-                                                    <rect key="frame" x="105" y="40" width="34.5" height="16"/>
+                                                    <rect key="frame" x="105" y="40" width="236" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1690,6 +1690,7 @@
                                             <constraint firstItem="tp0-eJ-D9m" firstAttribute="centerY" secondItem="nN7-AM-3w6" secondAttribute="centerY" id="Do2-5L-vtd"/>
                                             <constraint firstItem="x9T-7l-axx" firstAttribute="leading" secondItem="LNa-JJ-ASB" secondAttribute="trailing" constant="14" id="GB9-Xa-y1t"/>
                                             <constraint firstItem="x9T-7l-axx" firstAttribute="top" secondItem="LNa-JJ-ASB" secondAttribute="top" id="QE1-DR-8Or"/>
+                                            <constraint firstItem="RFP-Cw-C0c" firstAttribute="width" secondItem="nN7-AM-3w6" secondAttribute="width" multiplier="0.629333" id="UGS-SO-kvW"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="tp0-eJ-D9m" secondAttribute="trailing" constant="5" id="ZZs-Mg-lVn"/>
                                             <constraint firstItem="LNa-JJ-ASB" firstAttribute="height" secondItem="nN7-AM-3w6" secondAttribute="height" multiplier="0.79" id="dLd-Vw-S4Q"/>
                                             <constraint firstItem="RFP-Cw-C0c" firstAttribute="centerY" secondItem="nN7-AM-3w6" secondAttribute="centerY" constant="3" id="dwU-5j-mXL"/>

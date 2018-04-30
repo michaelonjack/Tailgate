@@ -349,10 +349,12 @@ func getCurrentGamesForConference(conferenceName:String, completion: @escaping (
     
     currentGamesReference.observeSingleEvent(of: .value, with: { (snapshot) in
         for gamesSnapshot in snapshot.children {
+            
             let game = Game(snapshot: gamesSnapshot as! DataSnapshot)
             games.append(game)
         }
         
+        games = games.sorted(by: { $0.startTime! < $1.startTime! })
         completion(games)
     })
 }

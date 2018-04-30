@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        doStuff()
         self.invitesCollectionView.delegate = self
         self.invitesCollectionView.dataSource = self
         let vegaLayout = VegaScrollFlowLayout()

@@ -35,6 +35,68 @@ func doStuff() {
         "Indiana Hoosiers"
     ]
     
+    let big12schools:[String] = [
+        "Baylor Bears",
+        "Iowa State Cyclones",
+        "Kansas Jayhawks",
+        "Kansas State Wildcats",
+        "Oklahoma Sooners",
+        "Oklahoma State Cowboys",
+        "TCU Horned Frogs",
+        "Texas Longhorns",
+        "Texas Tech Red Raiders",
+        "West Virginia Mountaineers"
+    ]
+    
+    let secschools:[String] = [
+        "Alabama Crimson Tide",
+        "Arkansas Razorbacks",
+        "Auburn Tigers",
+        "Florida Gators",
+        "Georgia Bulldogs",
+        "Kentucky Wildcats",
+        "LSU Tigers",
+        "Mississippi State Bulldogs",
+        "Missouri Tigers",
+        "Ole Miss Rebels",
+        "South Carolina Gamecocks",
+        "Tennessee Volunteers",
+        "Texas A&M Aggies",
+        "Vanderbilt Commodores"
+    ]
+    
+    let accschools:[String] = [
+        "Boston College Eagles",
+        "Clemson Tigers",
+        "Duke Blue Devils",
+        "Florida State Seminoles",
+        "Georgia Tech Yellow Jackets",
+        "Louisville Cardinals",
+        "Miami Hurricanes",
+        "NC State Wolfpack",
+        "North Carolina Tar Heels",
+        "Pittsburgh Panthers",
+        "Syracuse Orange",
+        "Virginia Cavaliers",
+        "Virginia Tech Hokies",
+        "Wake Forest Demon Deacons"
+    ]
+    
+    let pac12schools:[String] = [
+        "Arizona Wildcats",
+        "Arizona State Sun Devils",
+        "California Golden Bears",
+        "Colorado Buffaloes",
+        "Oregon Ducks",
+        "Oregon State Beavers",
+        "Stanford Cardinal",
+        "UCLA Bruins",
+        "USC Trojans",
+        "Utah Utes",
+        "Washington Huskies",
+        "Washington State Cougars"
+    ]
+    
     let data = content!.data(using: .utf8)!
     do {
         if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? [Dictionary<String,Any>]
@@ -46,20 +108,20 @@ func doStuff() {
                 let weekNum = dict["Week"] as! Int
                 let week = "week" + String(dict["Week"] as! Int)
                 
-                let gameReference = Database.database().reference(withPath: "games/" + week + "/big10")
+                let gameReference = Database.database().reference(withPath: "games/" + week + "/pac-12")
                 
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-                //dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
                 let date = dateFormatter.date(from:day)!
                 
-                /*
-                if (big10schools.contains(homeTeam) || big10schools.contains(awayTeam)) && weekNum > 1 {
+                if (pac12schools.contains(homeTeam) || pac12schools.contains(awayTeam)) {
                     let g = Game(homeTeam: homeTeam, awayTeam: awayTeam, startTime: date)
-                    //gameReference.child(g.id).setValue(g.toAnyObject())
+                    gameReference.child(g.id).setValue(g.toAnyObject())
+                    //print(g.startTimeStr.replacingOccurrences(of: ", TBD", with: ""))
+                    //print(homeTeam + " vs " + awayTeam )
                 }
- */
-                print(homeTeam + " vs " + awayTeam )
+ 
             }
         } else {
             print("bad json")
