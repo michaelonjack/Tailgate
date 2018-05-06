@@ -5,10 +5,11 @@
 //  Created by Michael Onjack on 12/17/17.
 //  Copyright © 2017 Michael Onjack. All rights reserved.
 //
+
 import Foundation
 import Firebase
 
-class School {
+class Team {
     let name:String
     let teamName:String
     var logoUrl:String?
@@ -29,8 +30,8 @@ class School {
 
 
 
-extension School: Equatable {
-    static func == (lhs: School, rhs: School) -> Bool {
+extension Team: Equatable {
+    static func == (lhs: Team, rhs: Team) -> Bool {
         return lhs.name == rhs.name
     }
 }

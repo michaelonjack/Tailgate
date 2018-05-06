@@ -262,8 +262,11 @@ func getTailgatesToDisplay(completion: @escaping (([Tailgate]) -> Void)) {
         getInvitedTailgates(completion: { (invitedTailgates) in
             let publicSet = Set<Tailgate>(publicTailgates)
             let invitedSet = Set<Tailgate>(invitedTailgates)
+            let deadline = Calendar.current.date(byAdding: .day, value: -5, to: Date())!
             
             tailgates = Array(publicSet.union(invitedSet))
+            // Only show tailgates scheduled to start in the future or have started in the past 5 days
+            tailgates = tailgates.filter { $0.startTime > deadline }
             completion(tailgates)
         })
     }
