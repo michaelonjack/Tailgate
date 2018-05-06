@@ -82,9 +82,9 @@ extension GamedayViewController: UICollectionViewDataSource {
         cell.addRefreshControl()
         cell.scheduleTableView.delegate = cell
         cell.scheduleTableView.dataSource = cell
-        cell.scheduleTableView.allowsSelection = false
+        cell.scheduleTableView.allowsSelection = true
         cell.scheduleTableView.rowHeight = UITableViewAutomaticDimension
-        cell.scheduleTableView.estimatedRowHeight = 50
+        cell.scheduleTableView.estimatedRowHeight = 44
         cell.scheduleTableView.layer.cornerRadius = 10
         cell.games = self.games[conferenceKey] ?? []
         cell.conferenceName = conferenceName

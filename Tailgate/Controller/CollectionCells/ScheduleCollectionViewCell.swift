@@ -22,11 +22,32 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
 extension ScheduleCollectionViewCell: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! ScheduleTableViewCell
         
+        if cell.isExpanded {
+            cell.isExpanded = false
+        } else {
+            cell.isExpanded = true
+        }
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? ScheduleTableViewCell {
+            if cell.isExpanded {
+                return cell.expandedHeight
+            } else {
+                return cell.minimizedHeight
+            }
+        }
+        return 44.0
     }
     
     func addRefreshControl() {
@@ -62,17 +83,41 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableCell", for: indexPath) as! ScheduleTableViewCell
         
         // Reset the recycled cell's labels
+        cell.isExpanded = false
         cell.teamsLabel.text = ""
         cell.detailLabel.text = ""
+        cell.awayTeamLabel.text = ""
+        cell.homeTeamLabel.text = ""
         // Reset the cell's selection
         cell.setSelected(false, animated: false)
+        // Reset the recycled cell's logos
+        cell.homeTeamLogo.image = UIImage(named: "HomeTeamDefault")
+        cell.awayTeamLogo.image = UIImage(named: "AwayTeamDefault")
         
         let currGame = self.games[indexPath.row]
         cell.teamsLabel.text = currGame.awayTeam + " at " + currGame.homeTeam
+        cell.awayTeamLabel.text = currGame.awayTeam
+        cell.homeTeamLabel.text = currGame.homeTeam
         if currGame.score == "" {
             cell.detailLabel.text = currGame.startTimeDisplayStr
         } else {
             cell.detailLabel.text = currGame.score
+        }
+        
+        // Set away team logo
+        getSchoolByTeamName(teamName: currGame.awayTeam) { (school) in
+            if let school = school, let logoUrlStr = school.logoUrl {
+                let logoUrl = URL(string: logoUrlStr)
+                cell.awayTeamLogo.sd_setImage(with: logoUrl, completed: nil)
+            }
+        }
+        
+        // Set home team logo
+        getSchoolByTeamName(teamName: currGame.homeTeam) { (school) in
+            if let school = school, let logoUrlStr = school.logoUrl {
+                let logoUrl = URL(string: logoUrlStr)
+                cell.homeTeamLogo.sd_setImage(with: logoUrl, completed: nil)
+            }
         }
         
         return cell

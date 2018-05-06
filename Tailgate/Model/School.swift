@@ -11,15 +11,20 @@ import Firebase
 
 class School {
     let name:String
+    let teamName:String
+    var logoUrl:String?
     
     init(name:String) {
         self.name = name
+        self.teamName = name
     }
     
     init(snapshot: DataSnapshot) {
         
         let snapshotValue = snapshot.value as! [String: AnyObject]
         self.name = snapshotValue["name"] as! String
+        self.teamName = snapshotValue["teamName"] as! String
+        self.logoUrl = snapshotValue["logoUrl"] as? String
     }
 }
 

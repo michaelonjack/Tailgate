@@ -432,6 +432,29 @@ func getSchoolByName(name:String, completion: @escaping ((School) -> Void)) {
 
 
 
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// getSchoolByTeamName
+//
+// Returns the school with the parameter name
+//
+func getSchoolByTeamName(teamName:String, completion: @escaping ((School?) -> Void)) {
+    let schoolReference = Database.database().reference(withPath: "schools/")
+    
+    schoolReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        for schoolSnapshot in snapshot.children {
+            let school = School(snapshot: schoolSnapshot as! DataSnapshot)
+            if school.teamName == teamName {
+                completion(school)
+            }
+        }
+        
+        completion(nil)
+    })
+}
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 //

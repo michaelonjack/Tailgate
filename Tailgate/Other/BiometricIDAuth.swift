@@ -11,7 +11,7 @@ import LocalAuthentication
 
 class BiometricIDAuth {
     let context = LAContext()
-    var loginReason = "Logging in with Touch ID"
+    var loginReason = "Please authenticate to continue."
     
     func getSupportedBiometricType() -> LABiometryType {
         let _ = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)

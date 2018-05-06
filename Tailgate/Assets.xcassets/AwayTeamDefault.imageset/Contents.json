@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "FaceIcon.png",
+      "filename" : "awayTeam.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "FaceIcon@2x.png",
+      "filename" : "awayTeam-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "FaceIcon@3x.png",
+      "filename" : "awayTeam-2.png",
       "scale" : "3x"
     }
   ],
