@@ -4,14 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>For taking pictures</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>For recording videos</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Needed for AR</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Needed for AR</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,6 +20,16 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Needed for AR</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Face ID will be used to log you into the app.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location will be used to find the tailgates around you.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>For recording videos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For taking pictures</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

@@ -43,7 +43,7 @@ extension ScheduleCollectionViewCell: UITableViewDelegate {
     
     @objc private func refreshScheduleTable(_ sender: Any) {
         let conferenceKey = self.conferenceName.lowercased().replacingOccurrences(of: " ", with: "")
-        print(conferenceKey)
+        
         getCurrentGamesForConference(conferenceName: conferenceKey, completion: { (games) in
             self.games = games
             self.scheduleTableView.reloadData()

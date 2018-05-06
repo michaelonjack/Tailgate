@@ -16,6 +16,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginEmail: UITextField!
     @IBOutlet weak var loginPassword: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var touchIdButton: UIButton!
+    
+    let biometricAuth = BiometricIDAuth()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +27,18 @@ class LoginViewController: UIViewController {
         self.statusLabel.isHidden = true
         self.forgotPasswordButton.isHidden = true
         
+        if let storedEmail = UserDefaults.standard.value(forKey: "email") as? String {
+            loginEmail.text = storedEmail
+        }
+        
+        // If the user's email/pass is saved in the keychain, request their biometric info for login
+        if biometricAuth.canEvaluatePolicy() && UserDefaults.standard.bool(forKey: "hasLoginKey") {
+            requestBiometricLogin()
+        }
+        
         // If a user is already logged in, skip login view and continue to their profile
         Auth.auth().addStateDidChangeListener() { auth, user in
-            if user != nil { //}&& (user?.isEmailVerified)! {
+            if user != nil {
                 let swipeNavigationController = self.createSwipeController()
                 
                 DispatchQueue.main.async {
@@ -57,6 +69,8 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) {user,  error in
             if let _ = Auth.auth().currentUser {
                 
+                updateKeychainCredentials(email:email, password:password)
+                
                 let swipeNavigationController = self.createSwipeController()
                 
                 DispatchQueue.main.async {
@@ -83,7 +97,7 @@ class LoginViewController: UIViewController {
     //
     // forgotPasswordPressed
     //
-    //
+    // Sends the user an email to reset their password
     //
     @IBAction func forgotPasswordPressed(_ sender: Any) {
         
@@ -109,6 +123,57 @@ class LoginViewController: UIViewController {
             self.statusLabel.textColor = .red
             self.statusLabel.text = "Fill in the email field to reset your password"
             self.statusLabel.isHidden = false
+        }
+    }
+    
+    
+    
+    /////////////////////////////////////////////////////
+    //
+    // requestBiometricLogin
+    //
+    // Authenticates the user using a biometric login and credentials saved in the keychain
+    //
+    func requestBiometricLogin() {
+        biometricAuth.authenticateUser { (error) in
+            if let errorMessage = error {
+                if errorMessage != "Authentication canceled." {
+                    let errorAlert = createAlert(title: "Authentication Failed", message: errorMessage)
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
+            }
+                
+            else {
+                do {
+                    let email:String = UserDefaults.standard.value(forKey: "email") as? String ?? ""
+                    let passwordItem = KeychainPasswordItem(service: KeychainConfiguration.serviceName, account: email, accessGroup: KeychainConfiguration.accessGroup)
+                    let password:String = try passwordItem.readPassword()
+                    
+                    Auth.auth().signIn(withEmail: email, password: password) {user,  error in
+                        if let _ = Auth.auth().currentUser {
+                            
+                            let swipeNavigationController = self.createSwipeController()
+                            
+                            DispatchQueue.main.async {
+                                self.present(swipeNavigationController, animated: true, completion: nil)
+                            }
+                        }
+                            
+                            // Login failed -- show error message
+                        else {
+                            // Show the Forgot Password button
+                            DispatchQueue.main.async {
+                                self.statusLabel.textColor = .red
+                                self.statusLabel.text = error?.localizedDescription
+                                self.statusLabel.isHidden = false
+                                self.forgotPasswordButton.isHidden = false
+                            }
+                        }
+                    }
+                } catch {
+                    fatalError("Error reading password from keychain - \(error)")
+                }
+            }
         }
     }
     

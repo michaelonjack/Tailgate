@@ -15,6 +15,7 @@ class SignUpPasswordViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
+    var passwordItems: [KeychainPasswordItem] = []
     var firstName: String!
     var lastName: String!
     var email: String!
@@ -53,6 +54,8 @@ class SignUpPasswordViewController: UIViewController {
                 Auth.auth().createUser(withEmail: email, password: pass) { user, error in
                     
                     if error == nil {
+                        
+                        updateKeychainCredentials(email: self.email, password: pass)
                         
                         let newUser = User(
                             user: user!,

@@ -117,7 +117,7 @@ func doStuff() {
                 
                 if (pac12schools.contains(homeTeam) || pac12schools.contains(awayTeam)) {
                     let g = Game(homeTeam: homeTeam, awayTeam: awayTeam, startTime: date)
-                    gameReference.child(g.id).setValue(g.toAnyObject())
+                    //gameReference.child(g.id).setValue(g.toAnyObject())
                     //print(g.startTimeStr.replacingOccurrences(of: ", TBD", with: ""))
                     //print(homeTeam + " vs " + awayTeam )
                 }
