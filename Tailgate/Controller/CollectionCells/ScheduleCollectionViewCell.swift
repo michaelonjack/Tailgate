@@ -47,7 +47,7 @@ extension ScheduleCollectionViewCell: UITableViewDelegate {
                 return cell.minimizedHeight
             }
         }
-        return 44.0
+        return 50
     }
     
     func addRefreshControl() {

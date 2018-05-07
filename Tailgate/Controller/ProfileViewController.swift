@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController {
         
         self.invitesCollectionView.delegate = self
         self.invitesCollectionView.dataSource = self
+        self.invitesCollectionView.backgroundView = EmptyBackgroundView(scrollView: self.invitesCollectionView, image: UIImage(named: "Notification")!, title: "No New Notifications", message: "Tailgates you're invited to and other alerts will show here")
         let vegaLayout = VegaScrollFlowLayout()
         self.invitesCollectionView.collectionViewLayout = vegaLayout
         vegaLayout.minimumLineSpacing = 15
@@ -148,6 +149,12 @@ extension ProfileViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
+        if self.feedItems.count > 0 {
+            collectionView.backgroundView?.isHidden = true
+        } else {
+            collectionView.backgroundView?.isHidden = false
+        }
+        
         return self.feedItems.count
     }
     
