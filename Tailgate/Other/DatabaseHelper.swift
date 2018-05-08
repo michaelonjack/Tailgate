@@ -287,7 +287,10 @@ func getSchools(completion: @escaping (([School]) -> Void)) {
     schoolReference.observeSingleEvent(of: .value, with: { (snapshot) in
         for schoolSnapshot in snapshot.children {
             let school = School(snapshot: schoolSnapshot as! DataSnapshot)
-            schools.append(school)
+            
+            if school.isHidden == false {
+                schools.append(school)
+            }
         }
         
         completion(schools)

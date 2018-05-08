@@ -187,7 +187,7 @@ class TailgateViewController: UIViewController {
                 let timestamp:String = getTimestampString()
                 let tailgateOwnerId:String = self.tailgate.ownerId
                 let tailgateId:String = self.tailgate.id
-                let uploadPath:String = "images/" + tailgateOwnerId + "/tailgate/" + tailgateId + "/" +  timestamp
+                let uploadPath:String = "images/users/" + tailgateOwnerId + "/tailgate/" + tailgateId + "/" +  timestamp
                 uploadImageToStorage(image: image, uploadPath: uploadPath, completion: { (downloadUrl) in
                     if let imageUrl = downloadUrl {
                         

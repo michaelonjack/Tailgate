@@ -2535,13 +2535,13 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AwayTeam" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlQ-rb-YjK">
-                                                                        <rect key="frame" x="15" y="132.5" width="120" height="14.5"/>
+                                                                        <rect key="frame" x="15" y="129" width="120" height="14.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                         <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HomeTeam" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogD-vu-NAu">
-                                                                        <rect key="frame" x="226" y="132.5" width="120" height="14.5"/>
+                                                                        <rect key="frame" x="226" y="129" width="120" height="14.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                         <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -2569,12 +2569,13 @@
                                                                     <constraint firstAttribute="trailing" secondItem="0fK-hF-D50" secondAttribute="trailing" constant="7" id="Dbb-2I-BoK"/>
                                                                     <constraint firstItem="XBI-m3-gdz" firstAttribute="centerX" secondItem="BDU-X9-BeQ" secondAttribute="centerX" id="Fcf-aL-Zn1"/>
                                                                     <constraint firstItem="Z6j-aQ-hQR" firstAttribute="top" secondItem="bzl-hk-n8S" secondAttribute="bottom" constant="12.5" id="Gpg-PX-bA9"/>
+                                                                    <constraint firstItem="ogD-vu-NAu" firstAttribute="centerY" secondItem="zlQ-rb-YjK" secondAttribute="centerY" id="Ns2-s1-Ak5"/>
                                                                     <constraint firstItem="Z6j-aQ-hQR" firstAttribute="leading" secondItem="BDU-X9-BeQ" secondAttribute="leading" constant="35" id="Oqg-BB-LrV"/>
-                                                                    <constraint firstItem="ogD-vu-NAu" firstAttribute="top" secondItem="UJk-FZ-2y3" secondAttribute="bottom" constant="14.5" id="RNr-1N-Xa0"/>
+                                                                    <constraint firstItem="ogD-vu-NAu" firstAttribute="top" secondItem="UJk-FZ-2y3" secondAttribute="bottom" constant="11" id="RNr-1N-Xa0"/>
                                                                     <constraint firstItem="0fK-hF-D50" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="11" id="d9E-IE-6Kg"/>
                                                                     <constraint firstAttribute="trailing" secondItem="UJk-FZ-2y3" secondAttribute="trailing" constant="35" id="jPx-cS-C7b"/>
                                                                     <constraint firstItem="0fK-hF-D50" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" multiplier="0.191136" id="kzx-xQ-Vd6"/>
-                                                                    <constraint firstItem="zlQ-rb-YjK" firstAttribute="top" secondItem="Z6j-aQ-hQR" secondAttribute="bottom" constant="14.5" id="oxp-iT-Vdv"/>
+                                                                    <constraint firstItem="zlQ-rb-YjK" firstAttribute="top" secondItem="Z6j-aQ-hQR" secondAttribute="bottom" constant="11" id="oxp-iT-Vdv"/>
                                                                     <constraint firstItem="XBI-m3-gdz" firstAttribute="top" secondItem="bzl-hk-n8S" secondAttribute="bottom" constant="39.5" id="pu3-Fq-wC4"/>
                                                                     <constraint firstItem="bzl-hk-n8S" firstAttribute="leading" secondItem="BDU-X9-BeQ" secondAttribute="leading" constant="7" id="t7J-5F-iwc"/>
                                                                     <constraint firstItem="0fK-hF-D50" firstAttribute="centerY" secondItem="bzl-hk-n8S" secondAttribute="centerY" id="wz4-jl-geR"/>

@@ -20,7 +20,7 @@ class ScheduleTableViewCell: UITableViewCell {
     
     var isExpanded:Bool = false
     var expandedHeight:CGFloat {
-        return 11 + max(teamsLabel.bounds.size.height, detailLabel.bounds.size.height) + 12.5 + awayTeamLogo.bounds.size.height + 14.5 + max(awayTeamLabel.bounds.size.height, homeTeamLabel.bounds.size.height) + 12.5
+        return 11 + max(teamsLabel.bounds.size.height, detailLabel.bounds.size.height) + 12.5 + awayTeamLogo.bounds.size.height + 11 + max(awayTeamLabel.bounds.size.height, homeTeamLabel.bounds.size.height) + 12.5
     }
     var minimizedHeight:CGFloat {
         return (11*2) + max(teamsLabel.bounds.size.height, detailLabel.bounds.size.height)

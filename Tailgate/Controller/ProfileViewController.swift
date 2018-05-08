@@ -17,8 +17,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profilePictureButton: UIButton!
     @IBOutlet weak var invitesCollectionView: UICollectionView!
     
-    let currentUserRef = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
-    let currentUserStorageRef = Storage.storage().reference(withPath: "images/" + (Auth.auth().currentUser?.uid)!)
+    let currentUserRef = Database.database().reference(withPath: "users/" + getCurrentUserId())
     
     var feedItems:[Tailgate] = []
     
@@ -96,7 +95,7 @@ class ProfileViewController: UIViewController {
                 self.profilePictureButton.setImage(image, for: .normal)
                 self.profilePictureButton.imageView?.contentMode = .scaleAspectFill
                 
-                let uploadPath = "images/" + getCurrentUserId() + "/ProfilePicture"
+                let uploadPath = "images/users/" + getCurrentUserId() + "/ProfilePicture"
                 uploadImageToStorage(image: image, uploadPath: uploadPath, completion: { (downloadUrl) in
                     updateValueForCurrentUser(key: "profilePictureUrl", value: downloadUrl!)
                 })
