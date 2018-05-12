@@ -12,7 +12,6 @@ import Firebase
 let configuration = Configuration.shared()
 
 
-
 //////////////////////////////////////////////////////////////////////////////////////
 //
 // uploadImageToStorage
@@ -265,6 +264,7 @@ func getTailgatesToDisplay(completion: @escaping (([Tailgate]) -> Void)) {
             let deadline = Calendar.current.date(byAdding: .day, value: -5, to: Date())!
             
             tailgates = Array(publicSet.union(invitedSet))
+            
             // Only show tailgates scheduled to start in the future or have started in the past 5 days
             tailgates = tailgates.filter { $0.startTime > deadline }
             completion(tailgates)
@@ -296,6 +296,33 @@ func getSchools(completion: @escaping (([School]) -> Void)) {
         completion(schools)
     })
 }
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// refreshSchoolCache
+//
+// Returns a dict of dict[TEAM NAME] = School
+//
+func refreshSchoolCache(completion: @escaping (([String:School]) -> Void)) {
+    var schoolDict:[String:School] = [:]
+    let schoolReference = Database.database().reference(withPath: "schools/")
+    schoolReference.keepSynced(true)
+    
+    schoolReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        for schoolSnapshot in snapshot.children {
+            let school = School(snapshot: schoolSnapshot as! DataSnapshot)
+            
+            schoolDict[school.name] = school
+            schoolDict[school.teamName] = school
+        }
+        
+        Configuration.shared().schoolCache = schoolDict
+        completion(schoolDict)
+    })
+}
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////

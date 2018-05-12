@@ -67,10 +67,13 @@ extension ScheduleCollectionViewCell: UITableViewDelegate {
         
         getCurrentGamesForConference(conferenceName: conferenceKey, completion: { (games) in
             self.games = games
-            self.scheduleTableView.reloadData()
-            DispatchQueue.main.async {
-                self.refreshControl.endRefreshing()
-            }
+            
+            refreshSchoolCache(completion: { (schoolDict) in
+                DispatchQueue.main.async {
+                    self.scheduleTableView.reloadData()
+                    self.refreshControl.endRefreshing()
+                }
+            })
         })
     }
     
@@ -104,19 +107,37 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
             cell.detailLabel.text = currGame.score
         }
         
-        // Set away team logo
-        getSchoolByTeamName(teamName: currGame.awayTeam) { (school) in
-            if let school = school, let logoUrlStr = school.logoUrl {
+        if !configuration.schoolCache.isEmpty {
+            print("Cached")
+            // Set away team logo
+            if let school = configuration.schoolCache[currGame.awayTeam], let logoUrlStr = school.logoUrl {
                 let logoUrl = URL(string: logoUrlStr)
                 cell.awayTeamLogo.sd_setImage(with: logoUrl, completed: nil)
             }
-        }
-        
-        // Set home team logo
-        getSchoolByTeamName(teamName: currGame.homeTeam) { (school) in
-            if let school = school, let logoUrlStr = school.logoUrl {
+            
+            // Set home team logo
+            if let school = configuration.schoolCache[currGame.homeTeam], let logoUrlStr = school.logoUrl {
                 let logoUrl = URL(string: logoUrlStr)
                 cell.homeTeamLogo.sd_setImage(with: logoUrl, completed: nil)
+            }
+        }
+        
+        else {
+            print("Not cached")
+            // Set away team logo
+            getSchoolByTeamName(teamName: currGame.awayTeam) { (school) in
+                if let school = school, let logoUrlStr = school.logoUrl {
+                    let logoUrl = URL(string: logoUrlStr)
+                    cell.awayTeamLogo.sd_setImage(with: logoUrl, completed: nil)
+                }
+            }
+            
+            // Set home team logo
+            getSchoolByTeamName(teamName: currGame.homeTeam) { (school) in
+                if let school = school, let logoUrlStr = school.logoUrl {
+                    let logoUrl = URL(string: logoUrlStr)
+                    cell.homeTeamLogo.sd_setImage(with: logoUrl, completed: nil)
+                }
             }
         }
         

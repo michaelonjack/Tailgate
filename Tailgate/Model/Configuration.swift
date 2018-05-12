@@ -9,16 +9,14 @@
 import Foundation
 import Firebase
 
-class Configuration {
-    private static var sharedConfiguration:Configuration = {
-        let configuration = Configuration()
-        
-        return configuration
-    }()
+final class Configuration {
+    private static let sharedConfiguration:Configuration = Configuration()
     
     var week:String = "week1"
+    var schoolCache: [String:School] = [:]
     
     private init() {
+        // Set the current week
         let configurationReference = Database.database().reference(withPath: "configuration")
         configurationReference.keepSynced(true)
         
@@ -26,9 +24,11 @@ class Configuration {
             if let configDict = snapshot.value as? [String:AnyObject] {
                 let weekNum = configDict["week"] as! Int
                 self.week = "week" + String(weekNum)
-            } else {
-                self.week = ""
             }
+        }
+        
+        refreshSchoolCache { (schoolDict) in
+            // Nothing needed, cache already refreshed
         }
     }
     
