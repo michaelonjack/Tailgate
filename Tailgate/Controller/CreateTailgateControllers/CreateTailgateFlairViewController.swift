@@ -16,8 +16,7 @@ class CreateTailgateFlairViewController: UIViewController {
     var tailgateSchool: School!
     var isPublic: Bool!
     var startTime: Date!
-    var foods:[Food]!
-    var drinks:[Drink]!
+    var supplies:[Supply]!
     var selectedFlairUrl:String = ""
     var flairImageUrls: [(url3x:String, url1x:String)] = []
     
@@ -52,8 +51,7 @@ class CreateTailgateFlairViewController: UIViewController {
         invitesVC.tailgateSchool = self.tailgateSchool
         invitesVC.isPublic = self.isPublic
         invitesVC.startTime = self.startTime
-        invitesVC.foods = self.foods
-        invitesVC.drinks = self.drinks
+        invitesVC.supplies = self.supplies
         invitesVC.flairUrl = self.selectedFlairUrl
     }
 }

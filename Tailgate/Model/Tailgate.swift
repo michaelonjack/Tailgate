@@ -19,12 +19,11 @@ class Tailgate {
     let startTime: Date!
     var owner: User?
     var location: CLLocation?
-    var foods:[Food]!
-    var drinks:[Drink]!
+    var supplies:[Supply]!
     var invites:[User]!
     var flairImageUrl:String!
     
-    init(ownerId:String, name:String, school:School, flairImageUrl:String, isPublic:Bool, startTime:Date, foods:[Food], drinks:[Drink], invites:[User]) {
+    init(ownerId:String, name:String, school:School, flairImageUrl:String, isPublic:Bool, startTime:Date, supplies:[Supply], invites:[User]) {
         
         self.ownerId = ownerId
         self.id = UUID().uuidString
@@ -32,8 +31,7 @@ class Tailgate {
         self.school = school
         self.isPublic = isPublic
         self.startTime = startTime
-        self.foods = foods
-        self.drinks = drinks
+        self.supplies = supplies
         self.invites = invites
         self.flairImageUrl = flairImageUrl
         self.location = nil
@@ -54,8 +52,7 @@ class Tailgate {
         self.flairImageUrl = snapshotValue["flairImageUrl"] as? String ?? ""
         self.startTime = formatter.date(from: snapshotValue["startTime"] as? String ?? "")
         self.school = School(name: snapshotValue["school"] as? String ?? "")
-        self.drinks = []
-        self.foods = []
+        self.supplies = []
         self.invites = []
         self.location = nil
         
@@ -76,23 +73,16 @@ class Tailgate {
             }
         }
         
-        // Get the drinks by their saved ids
-        if let drinkIds = snapshotValue["drinks"] as? NSDictionary {
-            for (_,id) in drinkIds {
-                let id = id as? String ?? ""
-                getDrinkById(drinkId: id, completion: { (drink) in
-                    self.drinks.append(drink)
-                })
-            }
-        }
-        
-        // Get the food by their saved ids
-        if let foodIds = snapshotValue["food"] as? NSDictionary {
-            for (_,id) in foodIds {
-                let id = id as? String ?? ""
-                getFoodById(foodId: id, completion: { (food) in
-                    self.foods.append(food)
-                })
+        if let supplies = snapshotValue["supplies"] as? NSDictionary {
+            for (supplyId, supplyData) in supplies {
+                if let supplyData = supplyData as? NSDictionary {
+                    let supplyId:String = supplyId as? String ?? ""
+                    let supplyName:String = supplyData["name"] as? String ?? ""
+                    let supplier:String = supplyData["supplier"] as? String ?? ""
+                    
+                    let s = Supply(id: supplyId, name: supplyName, supplier: supplier)
+                    self.supplies.append(s)
+                }
             }
         }
         
@@ -111,16 +101,11 @@ class Tailgate {
     }
     
     func toAnyObject() -> Any {
-        var foodDict: [String:String] = [:]
-        var drinkDict: [String:String] = [:]
+        var suppliesDict: [String:Any] = [:]
         var inviteDict: [String:String] = [:]
         
-        for food in foods {
-            foodDict["id"] = food.id
-        }
-        
-        for drink in drinks {
-            drinkDict["id"] = drink.id
+        for supply in supplies {
+            suppliesDict[supply.id] = supply.toAnyObject()
         }
         
         for invite in invites {
@@ -139,8 +124,7 @@ class Tailgate {
             "isPublic": isPublic,
             "flairImageUrl": flairImageUrl,
             "startTime": startTimeStr,
-            "food": foodDict,
-            "drinks": drinkDict,
+            "supplies": suppliesDict,
             "invites": inviteDict
         ]
     }
@@ -153,6 +137,10 @@ class Tailgate {
         }
         
         return false
+    }
+    
+    func isOwner(userId:String) -> Bool {
+        return userId == self.ownerId
     }
 }
 

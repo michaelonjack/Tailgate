@@ -23,7 +23,7 @@
 		B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */; };
 		B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */; };
 		B13B81371FE60086008F3A38 /* CreateTailgateDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81361FE60086008F3A38 /* CreateTailgateDateViewController.swift */; };
-		B13B81391FE60829008F3A38 /* CreateTailgateFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81381FE60829008F3A38 /* CreateTailgateFoodViewController.swift */; };
+		B13B81391FE60829008F3A38 /* CreateTailgateSuppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81381FE60829008F3A38 /* CreateTailgateSuppliesViewController.swift */; };
 		B13B813B1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B813A1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift */; };
 		B13B813D1FE61263008F3A38 /* CreateTailgateSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B813C1FE61263008F3A38 /* CreateTailgateSchoolViewController.swift */; };
 		B13B81401FE6ECD4008F3A38 /* SchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B813F1FE6ECD4008F3A38 /* SchoolTableViewCell.swift */; };
@@ -62,6 +62,9 @@
 		B1E22734208B6E5500672F53 /* RivalFlairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E22733208B6E5500672F53 /* RivalFlairViewController.swift */; };
 		B1E22736209E0C1B00672F53 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E22735209E0C1B00672F53 /* KeychainPasswordItem.swift */; };
 		B1E22738209E1B9600672F53 /* BiometricIDAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E22737209E1B9600672F53 /* BiometricIDAuth.swift */; };
+		B1E2273A20A66D5B00672F53 /* Supply.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2273920A66D5B00672F53 /* Supply.swift */; };
+		B1E2273C20A6709100672F53 /* SupplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2273B20A6709100672F53 /* SupplyTableViewCell.swift */; };
+		B1E2273E20A694F300672F53 /* SuppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2273D20A694F300672F53 /* SuppliesViewController.swift */; };
 		B1E83BD71FDCFBE200185E17 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */; };
 		B1E83BD91FDCFC5600185E17 /* NewTailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD81FDCFC5600185E17 /* NewTailgateViewController.swift */; };
 		B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */; };
@@ -96,7 +99,7 @@
 		B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateNameViewController.swift; sourceTree = "<group>"; };
 		B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateAccessibilityViewController.swift; sourceTree = "<group>"; };
 		B13B81361FE60086008F3A38 /* CreateTailgateDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateDateViewController.swift; sourceTree = "<group>"; };
-		B13B81381FE60829008F3A38 /* CreateTailgateFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateFoodViewController.swift; sourceTree = "<group>"; };
+		B13B81381FE60829008F3A38 /* CreateTailgateSuppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateSuppliesViewController.swift; sourceTree = "<group>"; };
 		B13B813A1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateDrinkViewController.swift; sourceTree = "<group>"; };
 		B13B813C1FE61263008F3A38 /* CreateTailgateSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateSchoolViewController.swift; sourceTree = "<group>"; };
 		B13B813F1FE6ECD4008F3A38 /* SchoolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolTableViewCell.swift; sourceTree = "<group>"; };
@@ -135,6 +138,9 @@
 		B1E22733208B6E5500672F53 /* RivalFlairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RivalFlairViewController.swift; sourceTree = "<group>"; };
 		B1E22735209E0C1B00672F53 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		B1E22737209E1B9600672F53 /* BiometricIDAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricIDAuth.swift; sourceTree = "<group>"; };
+		B1E2273920A66D5B00672F53 /* Supply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supply.swift; sourceTree = "<group>"; };
+		B1E2273B20A6709100672F53 /* SupplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplyTableViewCell.swift; sourceTree = "<group>"; };
+		B1E2273D20A694F300672F53 /* SuppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliesViewController.swift; sourceTree = "<group>"; };
 		B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B1E83BD81FDCFC5600185E17 /* NewTailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTailgateViewController.swift; sourceTree = "<group>"; };
 		B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +221,7 @@
 				B10E9EA21FDCE6C300DB4751 /* TailgateAnnotationAR.swift */,
 				B1A18FD72054DFEB00D9C12A /* Game.swift */,
 				B1BBF2E21FEEBC98007B1ACF /* Drink.swift */,
+				B1E2273920A66D5B00672F53 /* Supply.swift */,
 				B1BBF2E41FEEBCA4007B1ACF /* Food.swift */,
 			);
 			path = Model;
@@ -244,6 +251,7 @@
 				B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */,
 				B1DD1CD7203E409B00291EAE /* FriendsViewController.swift */,
 				B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */,
+				B1E2273D20A694F300672F53 /* SuppliesViewController.swift */,
 				B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */,
 				B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */,
 				B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */,
@@ -265,7 +273,7 @@
 				B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */,
 				B13B813C1FE61263008F3A38 /* CreateTailgateSchoolViewController.swift */,
 				B13B813A1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift */,
-				B13B81381FE60829008F3A38 /* CreateTailgateFoodViewController.swift */,
+				B13B81381FE60829008F3A38 /* CreateTailgateSuppliesViewController.swift */,
 				B13B81361FE60086008F3A38 /* CreateTailgateDateViewController.swift */,
 				B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */,
 				B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */,
@@ -282,6 +290,7 @@
 				B1DD1CDC203E593B00291EAE /* FriendTableViewCell.swift */,
 				B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */,
 				B13B81431FE9FB29008F3A38 /* FoodTableViewCell.swift */,
+				B1E2273B20A6709100672F53 /* SupplyTableViewCell.swift */,
 				B13B81451FE9FB3A008F3A38 /* DrinkTableViewCell.swift */,
 				B13B813F1FE6ECD4008F3A38 /* SchoolTableViewCell.swift */,
 			);
@@ -494,6 +503,7 @@
 			files = (
 				B1A18FD62054D61000D9C12A /* GamedayViewController.swift in Sources */,
 				B1485629206752C1006A5456 /* FeedCollectionViewCell.swift in Sources */,
+				B1E2273A20A66D5B00672F53 /* Supply.swift in Sources */,
 				B1E83BD91FDCFC5600185E17 /* NewTailgateViewController.swift in Sources */,
 				B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */,
 				B13B81461FE9FB3A008F3A38 /* DrinkTableViewCell.swift in Sources */,
@@ -509,6 +519,7 @@
 				B1DD1CDD203E593B00291EAE /* FriendTableViewCell.swift in Sources */,
 				B10E9EA31FDCE6C300DB4751 /* TailgateAnnotationAR.swift in Sources */,
 				B13B81371FE60086008F3A38 /* CreateTailgateDateViewController.swift in Sources */,
+				B1E2273E20A694F300672F53 /* SuppliesViewController.swift in Sources */,
 				B13B813D1FE61263008F3A38 /* CreateTailgateSchoolViewController.swift in Sources */,
 				B13B81481FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift in Sources */,
 				B1BBF2E51FEEBCA4007B1ACF /* Food.swift in Sources */,
@@ -533,6 +544,7 @@
 				B1E22738209E1B9600672F53 /* BiometricIDAuth.swift in Sources */,
 				B1E83BE61FDD890500185E17 /* User.swift in Sources */,
 				B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */,
+				B1E2273C20A6709100672F53 /* SupplyTableViewCell.swift in Sources */,
 				B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */,
 				B1DD1CD8203E409B00291EAE /* FriendsViewController.swift in Sources */,
 				B1DD1CDB203E591400291EAE /* UsersCollectionViewCell.swift in Sources */,
@@ -546,7 +558,7 @@
 				B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */,
 				B148562B20681CB0006A5456 /* InterfaceHelper.swift in Sources */,
 				B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */,
-				B13B81391FE60829008F3A38 /* CreateTailgateFoodViewController.swift in Sources */,
+				B13B81391FE60829008F3A38 /* CreateTailgateSuppliesViewController.swift in Sources */,
 				B1E227302084024A00672F53 /* SettingsSchoolViewController.swift in Sources */,
 				B1E83BE01FDD795000185E17 /* SignUpPasswordViewController.swift in Sources */,
 				B1E83BD71FDCFBE200185E17 /* ProfileViewController.swift in Sources */,

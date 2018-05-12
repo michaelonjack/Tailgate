@@ -70,8 +70,8 @@ class CreateTailgateDrinkViewController: UIViewController {
         flairVC.tailgateSchool = self.tailgateSchool
         flairVC.isPublic = self.isPublic
         flairVC.startTime = self.startTime
-        flairVC.foods = self.foods
-        flairVC.drinks = self.selectedDrinks
+        //flairVC.foods = self.foods
+        //flairVC.drinks = self.selectedDrinks
     }
 }
 

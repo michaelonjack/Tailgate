@@ -172,7 +172,7 @@ class TailgateViewController: UIViewController {
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
         // Only allow the current user to add images to the tailgate if they have
         // full access for they've been invited
-        if hasFullAccess == true || self.tailgate.isUserInvited(userId: (Auth.auth().currentUser?.uid)!) {
+        if hasFullAccess == true || self.tailgate.isUserInvited(userId: getCurrentUserId()) {
             var ypConfig = YPImagePickerConfiguration()
             ypConfig.onlySquareImagesFromCamera = true
             ypConfig.onlySquareImagesFromLibrary = true
@@ -236,8 +236,16 @@ class TailgateViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let invitesVC: InvitesViewController = segue.destination as! InvitesViewController
-        invitesVC.tailgate = self.tailgate
+        
+        if segue.identifier! == "TailgateToInvite" {
+            let invitesVC: InvitesViewController = segue.destination as! InvitesViewController
+            invitesVC.tailgate = self.tailgate
+        }
+        
+        else if segue.identifier! == "TailgateToSupplies" {
+            let suppliesVC: SuppliesViewController = segue.destination as! SuppliesViewController
+            suppliesVC.tailgate = self.tailgate
+        }
     }
     
 }

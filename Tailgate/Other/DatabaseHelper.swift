@@ -199,6 +199,7 @@ func getTailgates(completion: @escaping (([Tailgate]) -> Void)) {
 func getPublicTailgates(completion: @escaping (([Tailgate]) -> Void)) {
     var tailgates:[Tailgate] = []
     let tailgateReference = Database.database().reference(withPath: "tailgates/")
+    tailgateReference.keepSynced(true)
     
     tailgateReference.observeSingleEvent(of: .value, with: { (snapshot) in
         for tailgateSnapshot in snapshot.children {
@@ -225,6 +226,7 @@ func getInvitedTailgates(completion: @escaping (([Tailgate]) -> Void)) {
     var tailgates:[Tailgate] = []
     let currentUserReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
     let tailgateReference = Database.database().reference(withPath: "tailgates/")
+    tailgateReference.keepSynced(true)
     
     currentUserReference.child("invites").observeSingleEvent(of: .value, with: { (invitesSnapshot) in
         let numOfInvites = invitesSnapshot.childrenCount
@@ -588,6 +590,25 @@ func updateTailgateInvites(tailgate:Tailgate, invites:[User]) {
     }
     
     tailgateReference.updateChildValues(["invites":inviteDict])
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// updateTailgateSupplies
+//
+// Updates the list of supplies for the given tailgate
+//
+func updateTailgateSupplies(tailgate:Tailgate, supplies:[Supply]) {
+    let tailgateReference = Database.database().reference(withPath: "tailgates/" + tailgate.id)
+    
+    var suppliesDict: [String:Any] = [:]
+    for supply in supplies {
+        suppliesDict[supply.id] = supply.toAnyObject()
+    }
+    
+    tailgateReference.updateChildValues(["supplies":suppliesDict])
 }
 
 

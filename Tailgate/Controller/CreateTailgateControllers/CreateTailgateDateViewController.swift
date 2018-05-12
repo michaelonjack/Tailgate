@@ -28,14 +28,14 @@ class CreateTailgateDateViewController: UIViewController {
     
     
     @IBAction func nextPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "DateToFood", sender: nil)
+        self.performSegue(withIdentifier: "DateToSupplies", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let foodVC: CreateTailgateFoodViewController = segue.destination as! CreateTailgateFoodViewController
-        foodVC.tailgateName = self.tailgateName
-        foodVC.tailgateSchool = self.tailgateSchool
-        foodVC.isPublic = self.isPublic
-        foodVC.startTime = self.startDatePicker.date
+        let suppliesVC: CreateTailgateSuppliesViewController = segue.destination as! CreateTailgateSuppliesViewController
+        suppliesVC.tailgateName = self.tailgateName
+        suppliesVC.tailgateSchool = self.tailgateSchool
+        suppliesVC.isPublic = self.isPublic
+        suppliesVC.startTime = self.startDatePicker.date
     }
 }
