@@ -7,6 +7,9 @@
 
 import Foundation
 import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 
 let configuration = Configuration.shared()
@@ -532,6 +535,7 @@ func getCurrentUser(completion: @escaping ((User) -> Void)) {
 //
 func getTailgateById(tailgateId:String, completion: @escaping ((Tailgate) -> Void)) {
     let tailgateReference = Database.database().reference(withPath: "tailgates/" + tailgateId)
+    tailgateReference.keepSynced(true)
     
     tailgateReference.observeSingleEvent(of: .value, with: { (snapshot) in
         let tailgate = Tailgate(snapshot: snapshot)

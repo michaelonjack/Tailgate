@@ -18,7 +18,8 @@
 //  }
 
 import Foundation
-import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class User {
     let uid: String
@@ -39,7 +40,7 @@ class User {
         self.email = email
     }
     
-    init(user: Firebase.User, firstName: String, lastName: String) {
+    init(user: FirebaseAuth.User, firstName: String, lastName: String) {
         self.uid = user.uid
         self.email = user.email!
         self.firstName = firstName

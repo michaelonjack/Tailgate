@@ -107,8 +107,8 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
             cell.detailLabel.text = currGame.score
         }
         
+        // Cached
         if !configuration.schoolCache.isEmpty {
-            print("Cached")
             // Set away team logo
             if let school = configuration.schoolCache[currGame.awayTeam], let logoUrlStr = school.logoUrl {
                 let logoUrl = URL(string: logoUrlStr)
@@ -122,8 +122,8 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
             }
         }
         
+        // Not cached
         else {
-            print("Not cached")
             // Set away team logo
             getSchoolByTeamName(teamName: currGame.awayTeam) { (school) in
                 if let school = school, let logoUrlStr = school.logoUrl {

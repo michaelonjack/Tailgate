@@ -6,7 +6,7 @@
 //  Copyright © 2017 Michael Onjack. All rights reserved.
 //
 import Foundation
-import Firebase
+import FirebaseDatabase
 
 class School {
     let name:String

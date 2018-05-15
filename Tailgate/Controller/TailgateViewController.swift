@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 import SDWebImage
 import YPImagePicker
 import AudioToolbox

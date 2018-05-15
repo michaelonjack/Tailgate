@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
 import YPImagePicker
 import SDWebImage
 import VegaScrollFlowLayout

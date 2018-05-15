@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 import SwipeNavigationController
 
 class SignUpPasswordViewController: UIViewController {
@@ -51,11 +52,13 @@ class SignUpPasswordViewController: UIViewController {
             
             else {
                 // Create a user using the user's provided email and password
-                Auth.auth().createUser(withEmail: email, password: pass) { user, error in
+                Auth.auth().createUser(withEmail: email, password: pass) { authResult, error in
                     
                     if error == nil {
                         
                         updateKeychainCredentials(email: self.email, password: pass)
+                        
+                        let user = authResult?.user
                         
                         let newUser = User(
                             user: user!,

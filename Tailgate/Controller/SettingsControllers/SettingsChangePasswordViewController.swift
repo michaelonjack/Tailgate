@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class SettingsChangePasswordViewController: UIViewController {
 
@@ -36,7 +37,7 @@ class SettingsChangePasswordViewController: UIViewController {
         getUserById(userId: (firUser!.uid)) { (currentUser) in
             let credential = EmailAuthProvider.credential(withEmail: currentUser.email, password: currentPassword)
             
-            firUser?.reauthenticate(with: credential, completion: { (error) in
+            firUser?.reauthenticateAndRetrieveData(with: credential, completion: { (result, error) in
                 // User entered the correct password
                 if error == nil {
                     if newPassword == confirmNewPassword {
