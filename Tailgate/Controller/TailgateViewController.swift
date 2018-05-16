@@ -12,6 +12,7 @@ import FirebaseDatabase
 import SDWebImage
 import YPImagePicker
 import AudioToolbox
+import NotificationBannerSwift
 
 class TailgateViewController: UIViewController {
 
@@ -35,6 +36,7 @@ class TailgateViewController: UIViewController {
     // LocationManager instance used to update the current user's location
     let locationManager = CLLocationManager()
     
+    var locationBanner:StatusBarNotificationBanner = StatusBarNotificationBanner(attributedTitle: NSAttributedString(string: "Updating location..."), style: .warning)
     var tailgate: Tailgate!
     var hasFullAccess: Bool! = true
     var imageUrls: [String] = []
@@ -215,6 +217,9 @@ class TailgateViewController: UIViewController {
     
     @IBAction func locationButtonPressed(_ sender: Any) {
         if locationServiceIsEnabled() {
+            // Create the banner showing the user their location is being retrieved
+            self.locationBanner.show()
+                
             self.locationManager.delegate = self
             // Request location authorization for the app
             self.locationManager.requestWhenInUseAuthorization()
@@ -307,6 +312,11 @@ extension TailgateViewController : CLLocationManagerDelegate {
         let longitude = manager.location?.coordinate.longitude
         let latitude = manager.location?.coordinate.latitude
         Database.database().reference(withPath: "tailgates/" + tailgate.id).updateChildValues(["longitude":longitude!, "latitude":latitude!])
+        
+        self.locationBanner.dismiss()
+        
+        let successBanner = NotificationBanner(attributedTitle: NSAttributedString(string: "Location Updated"), attributedSubtitle: NSAttributedString(string: "Your tailgate will now show on the map!"), style: .success)
+        successBanner.show()
         
         // Vibrate phone
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))

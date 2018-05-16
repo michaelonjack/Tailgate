@@ -8,6 +8,7 @@
 
 import UIKit
 import YPImagePicker
+import NotificationBannerSwift
 
 class FlairViewController: UIViewController {
     
@@ -47,6 +48,8 @@ class FlairViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         picker.dismiss(animated: true, completion: nil)
+                        let successBanner = NotificationBanner(attributedTitle: NSAttributedString(string: "Flair Submitted"), attributedSubtitle: NSAttributedString(string: "Check back to see if your flair gets selected!"), style: .success)
+                        successBanner.show()
                     }
                 }
                 

@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import YPImagePicker
+import NotificationBannerSwift
 
 class GamedaySignsViewController: UIViewController {
 
@@ -81,7 +82,11 @@ class GamedaySignsViewController: UIViewController {
                 // Nothing for now!
             })
             
-            picker.dismiss(animated: true, completion: nil)
+            DispatchQueue.main.async {
+                picker.dismiss(animated: true, completion: nil)
+                let successBanner = NotificationBanner(attributedTitle: NSAttributedString(string: "Sign Submitted"), attributedSubtitle: NSAttributedString(string: "Check back to see if your sign gets posted!"), style: .success)
+                successBanner.show()
+            }
         }
         present(picker, animated: true, completion: nil)
     }
