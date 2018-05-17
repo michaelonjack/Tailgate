@@ -2621,7 +2621,7 @@
                                     <segue destination="wIo-xg-iJj" kind="show" id="4GY-39-BUA"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs7-uK-JJ3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs7-uK-JJ3">
                                 <rect key="frame" x="16" y="64" width="343" height="63"/>
                                 <string key="text">Flair are the images that represent your schools' tailgates on the map. Add new flair that other users can select when creating their tailgate.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -2749,16 +2749,38 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cAz-ht-37J" secondAttribute="height" multiplier="75:13" id="bi7-ug-t8A"/>
                                 </constraints>
-                                <state key="normal" title="SUBMIT RIVAL FLAIR">
+                                <state key="normal" title="PICK RIVAL">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="cPd-Wb-eYo" kind="show" id="Ap7-k3-adz"/>
+                                </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RivalFlairExample" translatesAutoresizingMaskIntoConstraints="NO" id="EGB-NP-Rnt">
+                                <rect key="frame" x="24.5" y="125" width="326" height="392"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EGB-NP-Rnt" secondAttribute="height" multiplier="316:379" id="kKV-Yu-cba"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every few weeks we'll force your rivals to use the flair that you submitted for them. Make it hurt. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hm5-lY-xOK">
+                                <rect key="frame" x="16" y="64" width="343" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Hm5-lY-xOK" firstAttribute="centerX" secondItem="Mgw-h2-0mw" secondAttribute="centerX" id="9YO-vt-18m"/>
+                            <constraint firstItem="Hm5-lY-xOK" firstAttribute="height" secondItem="Mgw-h2-0mw" secondAttribute="height" multiplier="0.09121" id="CJ2-hG-e2b"/>
                             <constraint firstItem="cAz-ht-37J" firstAttribute="width" secondItem="Z3U-Ct-ypc" secondAttribute="width" id="F3A-r6-PH1"/>
+                            <constraint firstItem="Hm5-lY-xOK" firstAttribute="width" secondItem="Z3U-Ct-ypc" secondAttribute="width" multiplier="0.914666" id="IiZ-0v-lTW"/>
+                            <constraint firstItem="EGB-NP-Rnt" firstAttribute="height" secondItem="Mgw-h2-0mw" secondAttribute="height" multiplier="0.65" id="Uzs-m3-WJs"/>
+                            <constraint firstItem="EGB-NP-Rnt" firstAttribute="top" secondItem="Hm5-lY-xOK" secondAttribute="bottom" constant="6" id="p2d-jR-Q3d"/>
+                            <constraint firstItem="EGB-NP-Rnt" firstAttribute="centerX" secondItem="Mgw-h2-0mw" secondAttribute="centerX" id="u2k-oa-8QP"/>
                             <constraint firstItem="cAz-ht-37J" firstAttribute="bottom" secondItem="Mgw-h2-0mw" secondAttribute="bottom" id="ubB-iw-mJC"/>
                             <constraint firstItem="cAz-ht-37J" firstAttribute="centerX" secondItem="Mgw-h2-0mw" secondAttribute="centerX" id="v1H-61-Pih"/>
+                            <constraint firstItem="Hm5-lY-xOK" firstAttribute="top" secondItem="Mgw-h2-0mw" secondAttribute="top" id="w0u-kK-hJX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mgw-h2-0mw"/>
                     </view>
@@ -2766,7 +2788,100 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xiD-oU-0SH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3062" y="-2570"/>
+            <point key="canvasLocation" x="3061.5999999999999" y="-2570.4647676161921"/>
+        </scene>
+        <!--Rival Flair Submit View Controller-->
+        <scene sceneID="c9U-nm-0Ix">
+            <objects>
+                <viewController id="cPd-Wb-eYo" customClass="RivalFlairSubmitViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ir9-VB-l87">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oau-hf-Z0S">
+                                <rect key="frame" x="0.0" y="602" width="375" height="65"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Oau-hf-Z0S" secondAttribute="height" multiplier="75:13" id="Rtk-rW-y1W"/>
+                                </constraints>
+                                <state key="normal" title="SUBMIT RIVAL FLAIR">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitRivalFlairButtonPressed:" destination="cPd-Wb-eYo" eventType="touchUpInside" id="MuY-0k-tKM"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k6Q-eG-Mj3">
+                                <rect key="frame" x="0.0" y="155" width="375" height="447"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SchoolTableCell" id="T6L-Sl-QuG" customClass="SchoolTableViewCell" customModule="Tailgate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T6L-Sl-QuG" id="OhQ-y3-TCm">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EL2-bT-Psq">
+                                                    <rect key="frame" x="15" y="11" width="345" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="EL2-bT-Psq" secondAttribute="bottom" constant="11.5" id="Xbu-iR-SQw"/>
+                                                <constraint firstItem="EL2-bT-Psq" firstAttribute="top" secondItem="OhQ-y3-TCm" secondAttribute="top" constant="11" id="d5w-HK-5Nw"/>
+                                                <constraint firstItem="EL2-bT-Psq" firstAttribute="centerX" secondItem="OhQ-y3-TCm" secondAttribute="centerX" id="euX-cY-z3E"/>
+                                                <constraint firstItem="EL2-bT-Psq" firstAttribute="width" secondItem="OhQ-y3-TCm" secondAttribute="width" multiplier="0.92" id="tRG-RM-MjT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="schoolNameLabel" destination="EL2-bT-Psq" id="2Aw-CC-x4p"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a rival." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Knn-km-11b">
+                                <rect key="frame" x="25" y="64" width="324" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hzd-xy-F6i">
+                                <rect key="frame" x="87" y="112" width="200" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="k6Q-eG-Mj3" firstAttribute="height" secondItem="Ir9-VB-l87" secondAttribute="height" multiplier="0.67" id="7RK-8f-u22"/>
+                            <constraint firstItem="Hzd-xy-F6i" firstAttribute="top" secondItem="Knn-km-11b" secondAttribute="bottom" constant="8" id="8UW-eU-SRv"/>
+                            <constraint firstItem="Hzd-xy-F6i" firstAttribute="centerX" secondItem="gsa-hA-GkH" secondAttribute="centerX" id="AaC-9u-bQ4"/>
+                            <constraint firstItem="Oau-hf-Z0S" firstAttribute="centerX" secondItem="gsa-hA-GkH" secondAttribute="centerX" id="F8d-BW-OxH"/>
+                            <constraint firstItem="Knn-km-11b" firstAttribute="centerX" secondItem="gsa-hA-GkH" secondAttribute="centerX" id="NDc-MB-ld8"/>
+                            <constraint firstItem="k6Q-eG-Mj3" firstAttribute="width" secondItem="Ir9-VB-l87" secondAttribute="width" id="QAL-sq-H9g"/>
+                            <constraint firstItem="Oau-hf-Z0S" firstAttribute="width" secondItem="Ir9-VB-l87" secondAttribute="width" id="RVQ-l1-qLe"/>
+                            <constraint firstItem="k6Q-eG-Mj3" firstAttribute="centerX" secondItem="gsa-hA-GkH" secondAttribute="centerX" id="VMm-df-YT8"/>
+                            <constraint firstItem="Knn-km-11b" firstAttribute="width" secondItem="Ir9-VB-l87" secondAttribute="width" multiplier="0.864" id="afV-GQ-GSF"/>
+                            <constraint firstItem="Oau-hf-Z0S" firstAttribute="top" secondItem="k6Q-eG-Mj3" secondAttribute="bottom" id="f8R-gu-Wpg"/>
+                            <constraint firstItem="Oau-hf-Z0S" firstAttribute="bottom" secondItem="gsa-hA-GkH" secondAttribute="bottom" id="l7X-kc-Xww"/>
+                            <constraint firstItem="Knn-km-11b" firstAttribute="height" secondItem="Ir9-VB-l87" secondAttribute="height" multiplier="0.05997" id="ojh-DK-T1k"/>
+                            <constraint firstItem="Knn-km-11b" firstAttribute="top" secondItem="gsa-hA-GkH" secondAttribute="top" id="res-qI-toU"/>
+                            <constraint firstItem="Hzd-xy-F6i" firstAttribute="width" secondItem="Ir9-VB-l87" secondAttribute="width" multiplier="0.53333" id="sSx-f6-bvs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gsa-hA-GkH"/>
+                    </view>
+                    <connections>
+                        <outlet property="schoolTable" destination="k6Q-eG-Mj3" id="gCk-vJ-5ql"/>
+                        <outlet property="searchTextField" destination="Hzd-xy-F6i" id="9ss-NG-kW7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vax-uU-YZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3797.5999999999999" y="-2570.4647676161921"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LuO-al-Z6t">
@@ -2921,6 +3036,7 @@
         <image name="Icon" width="256" height="256"/>
         <image name="Location" width="256" height="256"/>
         <image name="Reload" width="256" height="256"/>
+        <image name="RivalFlairExample" width="445" height="529"/>
         <image name="Search" width="256" height="256"/>
         <image name="Settings" width="128" height="128"/>
         <image name="SettingsArrow" width="270" height="270"/>

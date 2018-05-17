@@ -92,12 +92,7 @@ extension SettingsSchoolViewController: UICollectionViewDataSource {
         cell.borderColor = UIColor(red:0.98, green:0.50, blue:0.45, alpha:1.0)
         
         let currentSchool = self.schools[indexPath.row]
-        getFlairImageUrls(school: currentSchool) { (imageUrls) in
-            if imageUrls.count > 0 {
-                let imageUrl = imageUrls[0].url3x
-                cell.imageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
-            }
-        }
+        cell.imageView.sd_setImage(with: URL(string: currentSchool.logoUrl!), completed: nil)
         
         return cell
     }
