@@ -144,28 +144,41 @@ class TailgateViewController: UIViewController {
         let tailgateReference = Database.database().reference(withPath: "tailgates/" + tailgate.id)
         let userTailgateReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)! + "/tailgate")
         
-        // Remove the invite from each invited user's invite list
-        for invite in tailgate.invites {
-            let userInviteReference = Database.database().reference(withPath: "users/" + invite.uid + "/invites/" + tailgate.id)
-            userInviteReference.removeValue()
+        let deleteConfirmationAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this tailgate?", preferredStyle: .alert)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            // Remove the invite from each invited user's invite list
+            for invite in self.tailgate.invites {
+                let userInviteReference = Database.database().reference(withPath: "users/" + invite.uid + "/invites/" + self.tailgate.id)
+                userInviteReference.removeValue()
+            }
+            
+            // TODO: Do we want to remove the data in the tailgate table or let it persist as a viewable archive?
+            // For now we say remove it
+            tailgateReference.removeValue()
+            
+            // Remove the tailgate data from the user reference
+            userTailgateReference.removeValue()
+            
+            // Remove the tailgate annotation from the map view if it exists
+            let mapVC:MapViewController =  self.containerSwipeNavigationController?.leftViewController as! MapViewController
+            mapVC.removeAnnotation(tailgate: self.tailgate)
+            
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newTailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "NewTailgateNavigationController") as! UINavigationController
+            
+            self.containerSwipeNavigationController?.showEmbeddedView(position: .center)
+            self.containerSwipeNavigationController?.rightViewController = newTailgateViewController
         }
+        deleteConfirmationAlert.addAction(deleteAction)
         
-        // TODO: Do we want to remove the data in the tailgate table or let it persist as a viewable archive?
-        // For now we say remove it
-        tailgateReference.removeValue()
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            // canceled
+        }
+        deleteConfirmationAlert.addAction(cancelAction)
         
-        // Remove the tailgate data from the user reference
-        userTailgateReference.removeValue()
+        self.present(deleteConfirmationAlert, animated: true, completion: nil)
         
-        // Remove the tailgate annotation from the map view if it exists
-        let mapVC:MapViewController =  self.containerSwipeNavigationController?.leftViewController as! MapViewController
-        mapVC.removeAnnotation(tailgate: self.tailgate)
-        
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newTailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "NewTailgateNavigationController") as! UINavigationController
-        
-        self.containerSwipeNavigationController?.showEmbeddedView(position: .center)
-        self.containerSwipeNavigationController?.rightViewController = newTailgateViewController
     }
     
     @IBAction func exitButtonPressed(_ sender: UIButton) {
@@ -228,7 +241,7 @@ class TailgateViewController: UIViewController {
         }
             
         else {
-            let locationNotEnabledAlert = UIAlertController(title: "Location Services Disabled", message: "Location Services must be enabled to check in with Thread.",preferredStyle: .alert)
+            let locationNotEnabledAlert = UIAlertController(title: "Location Services Disabled", message: "Location Services must be enabled to check in your tailgate.",preferredStyle: .alert)
             
             // Close action closes the pop-up alert
             let closeAction = UIAlertAction(title: "Close", style:.default)
