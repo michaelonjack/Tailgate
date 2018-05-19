@@ -20,7 +20,24 @@ class Tailgate {
     var owner: User?
     var location: CLLocation?
     var supplies:[Supply]!
-    var invites:[User]!
+    var invites:[User]! {
+        didSet {
+            // Each time the invites list is updated we need to be sure to update the invites list of any removed invites
+            if let oldInvitesList = oldValue {
+                let set1 = Set<User>(oldInvitesList)
+                let set2 = Set<User>(invites)
+                
+                // Get all users in set1 that are not in set2
+                let diff = set1.subtracting(set2)
+                
+                let removedInvites:[User] =  Array(diff)
+                for removedInvite in removedInvites {
+                    let userInviteReference = Database.database().reference(withPath: "users/" + removedInvite.uid + "/invites/" + self.id)
+                    userInviteReference.removeValue()
+                }
+            }
+        }
+    }
     var flairImageUrl:String!
     
     init(ownerId:String, name:String, school:School, flairImageUrl:String, isPublic:Bool, startTime:Date, supplies:[Supply], invites:[User]) {

@@ -85,6 +85,12 @@ class InvitesViewController: UIViewController {
     @IBAction func donePressed(_ sender: Any) {
         updateTailgateInvites(tailgate: self.tailgate, invites: self.selectedInvites)
         
+        // Add the tailgate to each invited firends invites list
+        for invite in self.selectedInvites {
+            let inviteReference = Database.database().reference(withPath: "users/" + invite.uid)
+            inviteReference.child("invites").updateChildValues([self.tailgate.id:true])
+        }
+        
         // Update the tailgate values in the tailgate VC's variable
         if let presenter = presentingViewController as? SwipeNavigationController {
             if let tailgateVC = presenter.rightViewController as? TailgateViewController {

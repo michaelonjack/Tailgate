@@ -590,7 +590,7 @@ func updateTailgateInvites(tailgate:Tailgate, invites:[User]) {
     
     var inviteDict: [String:String] = [:]
     for invite in invites {
-        inviteDict["id"] = invite.uid
+        inviteDict[UUID().uuidString] = invite.uid
     }
     
     tailgateReference.updateChildValues(["invites":inviteDict])
