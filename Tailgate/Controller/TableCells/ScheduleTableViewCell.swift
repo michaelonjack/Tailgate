@@ -17,6 +17,8 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var homeTeamLogo: UIImageView!
     @IBOutlet weak var awayTeamLabel: UILabel!
     @IBOutlet weak var homeTeamLabel: UILabel!
+    @IBOutlet weak var awayTeamLogoLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var homeTeamLogoTrailingConstraint: NSLayoutConstraint!
     
     var isExpanded:Bool = false
     var expandedHeight:CGFloat {

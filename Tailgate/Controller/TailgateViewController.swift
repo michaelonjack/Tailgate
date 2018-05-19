@@ -28,6 +28,8 @@ class TailgateViewController: UIViewController {
     @IBOutlet weak var schoolLabel: UILabel!
     @IBOutlet weak var privateLabel: UILabel!
     @IBOutlet weak var invitesRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var profilePictureTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonsViewBottomConstraint: NSLayoutConstraint!
     
     fileprivate let reuseIdentifier = "TailgateCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
@@ -99,6 +101,9 @@ class TailgateViewController: UIViewController {
         } else {
             self.exitButton.isHidden = true
         }
+        
+        self.profilePictureTopConstraint.updateVerticalConstantForViewHeight(view: self.view)
+        self.buttonsViewBottomConstraint.updateVerticalConstantForViewHeight(view: self.view)
         
         loadProfilePicture()
     }

@@ -17,6 +17,13 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profilePictureButton: UIButton!
     @IBOutlet weak var invitesCollectionView: UICollectionView!
     
+    @IBOutlet weak var settingsButtonLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var settingsButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var profilePictureTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var friendsButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var friendsButtonTrailingConstraint: NSLayoutConstraint!
+    
+    
     let currentUserRef = Database.database().reference(withPath: "users/" + getCurrentUserId())
     
     var feedItems:[Tailgate] = []
@@ -41,6 +48,13 @@ class ProfileViewController: UIViewController {
         }
        
         loadProfilePicture()
+        
+        // Update constraints
+        self.settingsButtonLeadingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
+        self.friendsButtonTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
+        self.settingsButtonTopConstraint.updateVerticalConstantForViewHeight(view: self.view)
+        self.profilePictureTopConstraint.updateVerticalConstantForViewHeight(view: self.view)
+        self.friendsButtonTopConstraint.updateVerticalConstantForViewHeight(view: self.view)
     }
 
     override func didReceiveMemoryWarning() {
@@ -158,12 +172,19 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // The cell coming back is now a FlickrPhotoCell
+       
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCell", for: indexPath) as! FeedCollectionViewCell
         
         let currentFeedItem = self.feedItems[indexPath.row]
+       
+        // Update constraints
+        cell.imageViewTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
+        cell.imageViewLeadingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
+        cell.detailLabelTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
+        cell.indicatorTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
         
         cell.titleLabel.text = currentFeedItem.name
+        
         cell.imageView.layer.cornerRadius = 0.5 * cell.imageView.layer.bounds.width
         cell.imageView.clipsToBounds = true
         cell.activityTypeIndicator.layer.cornerRadius = 0.5 * cell.activityTypeIndicator.layer.bounds.width

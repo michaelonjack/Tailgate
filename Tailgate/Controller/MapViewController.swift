@@ -180,20 +180,6 @@ extension MapViewController: CLLocationManagerDelegate {
                 let span = MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta:0.004)
                 let region = MKCoordinateRegion(center: location.coordinate, span: span)
                 mapView.region = region
-                
-                let loc1 = CLLocation(latitude: location.coordinate.latitude.advanced(by: 0.002), longitude: location.coordinate.longitude.advanced(by: 0.001))
-                let loc2 = CLLocation(latitude: location.coordinate.latitude.advanced(by: 0.0026), longitude: location.coordinate.longitude.advanced(by: -0.00016))
-                let loc3 = CLLocation(latitude: location.coordinate.latitude.advanced(by: 0.0005), longitude: location.coordinate.longitude.advanced(by: 0.0005))
-                let loc4 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.0004), longitude: location.coordinate.longitude.advanced(by: -0.0005))
-                let loc5 = CLLocation(latitude: location.coordinate.latitude.advanced(by: -0.00029), longitude: location.coordinate.longitude.advanced(by: 0.0002))
-                let loc6 = CLLocation(latitude: location.coordinate.latitude.advanced(by: 0.0008), longitude: location.coordinate.longitude.advanced(by: -0.001))
-                
-                mapView.addAnnotation( TailgateAnnotation(id:"1", title: "My dope ass tailgate", school: "Penn State University", flairImageUrl: "https://firebasestorage.googleapis.com/v0/b/tailgate-53761.appspot.com/o/images%2FPennStateUniversity%2Fflair%2Fflair1.png?alt=media&token=4e99e90f-998b-4efb-a4d7-817c46e923e6", owner: "Michael Onjack", location: loc1) )
-                mapView.addAnnotation( TailgateAnnotation(id:"2", title: "Tailgate2", school: "Penn State University", flairImageUrl: "https://firebasestorage.googleapis.com/v0/b/tailgate-53761.appspot.com/o/images%2FPennStateUniversity%2Fflair%2Fflair2.png?alt=media&token=fc3f7137-af20-4799-9dcb-d600d58ce77e", owner: "Ben Hagan", location: loc2) )
-                mapView.addAnnotation( TailgateAnnotation(id:"3", title: "Dopest tailgate", school: "Penn State University", flairImageUrl: "https://firebasestorage.googleapis.com/v0/b/tailgate-53761.appspot.com/o/images%2FPennStateUniversity%2Fflair%2Fflair3.png?alt=media&token=1ec173e2-2edb-406c-9d24-91c1396eb441", owner: "Ben Hagan", location: loc3) )
-                mapView.addAnnotation( TailgateAnnotation(id:"4", title: "Tailgate4", school: "Penn State University", flairImageUrl: "https://firebasestorage.googleapis.com/v0/b/tailgate-53761.appspot.com/o/images%2FPennStateUniversity%2Fflair%2Fflair6.png?alt=media&token=6a5e7a90-525d-415c-a50c-df1013a471ea", owner: "Ben Hagan", location: loc4) )
-                mapView.addAnnotation( TailgateAnnotation(id:"5", title: "Tailgate4", school: "Penn State University", flairImageUrl: "https://firebasestorage.googleapis.com/v0/b/tailgate-53761.appspot.com/o/images%2FPennStateUniversity%2Fflair%2Fflair5.png?alt=media&token=62ff7e75-cc69-4b2e-a8fe-851bb7fc21a8", owner: "Ben Hagan", location: loc5) )
-                mapView.addAnnotation( TailgateAnnotation(id:"6", title: "Tailgate5", school: "Penn State University", flairImageUrl: "https://firebasestorage.googleapis.com/v0/b/tailgate-53761.appspot.com/o/images%2FPennStateUniversity%2Fflair%2Fflair8.png?alt=media&token=a89160a2-41e3-4048-8894-8fe936a20034", owner: "Ben Hagan", location: loc6) )
             }
         }
     }

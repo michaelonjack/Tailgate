@@ -96,6 +96,9 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         // Reset the recycled cell's logos
         cell.homeTeamLogo.image = UIImage(named: "HomeTeamDefault")
         cell.awayTeamLogo.image = UIImage(named: "AwayTeamDefault")
+        // Update constraints
+        cell.awayTeamLogoLeadingConstraint.updateHorizontalConstantForViewWidth(view: self.superview!)
+        cell.homeTeamLogoTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.superview!)
         
         let currGame = self.games[indexPath.row]
         cell.teamsLabel.text = currGame.awayTeam + " at " + currGame.homeTeam

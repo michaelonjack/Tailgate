@@ -40,6 +40,20 @@ extension UIColor {
 
 
 
+extension NSLayoutConstraint {
+    func updateVerticalConstantForViewHeight(view:UIView) {
+        let heightMultiplier = view.bounds.height / 667
+        self.constant = self.constant * heightMultiplier
+    }
+    
+    func updateHorizontalConstantForViewWidth(view:UIView) {
+        let widthMultiplier = view.bounds.width / 375
+        self.constant = self.constant * widthMultiplier
+    }
+}
+
+
+
 class EmptyBackgroundView: UIView {
     private var owner: UIScrollView!
     private var imageView: UIImageView!

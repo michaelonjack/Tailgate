@@ -14,5 +14,9 @@ class FeedCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var activityTypeIndicator: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var imageViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var indicatorTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var detailLabelTrailingConstraint: NSLayoutConstraint!
     
 }
