@@ -1,5 +1,5 @@
 //
-//  GamedayViewController.swift
+//  GamedayScheduleViewController.swift
 //  Tailgate
 //
 //  Created by Michael Onjack on 3/10/18.
@@ -8,9 +8,12 @@
 
 import UIKit
 
-class GamedayViewController: UIViewController {
+class GamedayScheduleViewController: UIViewController {
 
     @IBOutlet weak var schedulesCollectionView: UICollectionView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleLableTopConstraint: NSLayoutConstraint!
     
     var conferences = ["BIG 10", "BIG 12", "ACC", "PAC-12", "SEC"]
     var games:[String:[Game]] = [:]
@@ -47,7 +50,7 @@ class GamedayViewController: UIViewController {
 
 
 
-extension GamedayViewController: UICollectionViewDelegate {
+extension GamedayScheduleViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
@@ -60,7 +63,7 @@ extension GamedayViewController: UICollectionViewDelegate {
 
 
 
-extension GamedayViewController: UICollectionViewDataSource {
+extension GamedayScheduleViewController: UICollectionViewDataSource {
     // There’s one search per section, so the number of sections is the count of the searches array
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -78,7 +81,6 @@ extension GamedayViewController: UICollectionViewDataSource {
         let conferenceName = self.conferences[indexPath.row]
         let conferenceKey = conferenceName.lowercased().replacingOccurrences(of: " ", with: "")
         
-        
         cell.addRefreshControl()
         cell.scheduleTableView.delegate = cell
         cell.scheduleTableView.dataSource = cell
@@ -95,12 +97,23 @@ extension GamedayViewController: UICollectionViewDataSource {
 }
 
 
-extension GamedayViewController : UICollectionViewDelegateFlowLayout {
+extension GamedayScheduleViewController : UICollectionViewDelegateFlowLayout {
     // responsible for telling the layout the size of a given cell
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
+        // Calculate the cell height because collectionView.bounds.size.height isn't reliable when the view first loads
+        var collectionViewHeight = UIScreen.main.bounds.size.height - self.titleLabel.bounds.maxY - self.titleLabel.bounds.height -  self.collectionViewTopConstraint.constant - self.titleLableTopConstraint.constant
+        
+        if #available(iOS 11, *) {
+            if let window = UIApplication.shared.keyWindow {
+                let safeAreaTop = window.safeAreaInsets.top
+                let safeAreaBottom = window.safeAreaInsets.bottom
+                collectionViewHeight = collectionViewHeight - safeAreaTop - safeAreaBottom
+            }
+        }
+        
+        return CGSize(width: collectionView.bounds.size.width, height: collectionViewHeight)
     }
     
     //  returns the spacing between the cells, headers, and footers. A constant is used to store the value

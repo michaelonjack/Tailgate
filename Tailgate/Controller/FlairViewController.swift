@@ -16,6 +16,9 @@ class FlairViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Change font and color of nav header
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20.0), NSAttributedStringKey.foregroundColor: UIColor.steel]
 
         // round picture corners
         self.flairExampleImageView.layer.cornerRadius = 8.0

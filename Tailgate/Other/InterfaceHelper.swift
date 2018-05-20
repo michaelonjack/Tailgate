@@ -36,6 +36,7 @@ extension UIViewController {
 
 extension UIColor {
     static let lavender = UIColor(red:0.72, green:0.56, blue:0.90, alpha:1.0)
+    static let steel = UIColor(red:0.475635, green:0.475647, blue:0.47564, alpha:1.0)
 }
 
 

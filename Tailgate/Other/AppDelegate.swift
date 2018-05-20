@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
             let newTailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "NewTailgateNavigationController") as! UINavigationController
             let mapViewController = mainStoryboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-            let gamedayViewController = mainStoryboard.instantiateViewController(withIdentifier: "ScheduleNavigationController") as! UINavigationController
+            let gamedayViewController = mainStoryboard.instantiateViewController(withIdentifier: "GamedayContainerViewController") as! GamedayContainerViewController
             
             let swipeNavigationController = SwipeNavigationController(centerViewController: profileViewController)
             swipeNavigationController.leftViewController = mapViewController

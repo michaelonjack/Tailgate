@@ -36,12 +36,15 @@
 		B148562B20681CB0006A5456 /* InterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B148562A20681CB0006A5456 /* InterfaceHelper.swift */; };
 		B154B1F4201D7BFE005DDC8A /* InvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */; };
 		B1625EF820AD0DDE00CCFFBA /* RivalFlairSubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1625EF720AD0DDE00CCFFBA /* RivalFlairSubmitViewController.swift */; };
+		B166002020B074500055103C /* GamedayPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166001F20B074500055103C /* GamedayPageViewController.swift */; };
+		B166002420B0A1BD0055103C /* GamedayContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166002320B0A1BD0055103C /* GamedayContainerViewController.swift */; };
+		B166002620B0AE600055103C /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166002520B0AE600055103C /* LabelCollectionViewCell.swift */; };
 		B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16BC4D11FEECA290087C2F1 /* Tailgate.swift */; };
 		B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */; };
 		B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */; };
 		B1A18FD22054CD3800D9C12A /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */; };
 		B1A18FD42054CD6600D9C12A /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */; };
-		B1A18FD62054D61000D9C12A /* GamedayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD52054D61000D9C12A /* GamedayViewController.swift */; };
+		B1A18FD62054D61000D9C12A /* GamedayScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD52054D61000D9C12A /* GamedayScheduleViewController.swift */; };
 		B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD72054DFEB00D9C12A /* Game.swift */; };
 		B1AC0323207116FE00CB3661 /* cfb_json.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1AC0322207116FE00CB3661 /* cfb_json.txt */; };
 		B1AC03252071329000CB3661 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AC03242071329000CB3661 /* Configuration.swift */; };
@@ -112,12 +115,15 @@
 		B148562A20681CB0006A5456 /* InterfaceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceHelper.swift; sourceTree = "<group>"; };
 		B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesViewController.swift; sourceTree = "<group>"; };
 		B1625EF720AD0DDE00CCFFBA /* RivalFlairSubmitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RivalFlairSubmitViewController.swift; sourceTree = "<group>"; };
+		B166001F20B074500055103C /* GamedayPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedayPageViewController.swift; sourceTree = "<group>"; };
+		B166002320B0A1BD0055103C /* GamedayContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedayContainerViewController.swift; sourceTree = "<group>"; };
+		B166002520B0AE600055103C /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		B16BC4D11FEECA290087C2F1 /* Tailgate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tailgate.swift; sourceTree = "<group>"; };
 		B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayViewController.swift; sourceTree = "<group>"; };
 		B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
-		B1A18FD52054D61000D9C12A /* GamedayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedayViewController.swift; sourceTree = "<group>"; };
+		B1A18FD52054D61000D9C12A /* GamedayScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedayScheduleViewController.swift; sourceTree = "<group>"; };
 		B1A18FD72054DFEB00D9C12A /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B1AC0322207116FE00CB3661 /* cfb_json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cfb_json.txt; sourceTree = "<group>"; };
 		B1AC03242071329000CB3661 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -247,7 +253,9 @@
 				B1E22731208B66BB00672F53 /* FlairViewController.swift */,
 				B1E22733208B6E5500672F53 /* RivalFlairViewController.swift */,
 				B1625EF720AD0DDE00CCFFBA /* RivalFlairSubmitViewController.swift */,
-				B1A18FD52054D61000D9C12A /* GamedayViewController.swift */,
+				B166002320B0A1BD0055103C /* GamedayContainerViewController.swift */,
+				B166001F20B074500055103C /* GamedayPageViewController.swift */,
+				B1A18FD52054D61000D9C12A /* GamedayScheduleViewController.swift */,
 				B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */,
 				B1DD1CD7203E409B00291EAE /* FriendsViewController.swift */,
 				B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */,
@@ -317,6 +325,7 @@
 				B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */,
 				B1DD1CDA203E591400291EAE /* UsersCollectionViewCell.swift */,
 				B1DD1CD32039EF7700291EAE /* HighlightableImageCollectionViewCell.swift */,
+				B166002520B0AE600055103C /* LabelCollectionViewCell.swift */,
 				B1BC52CC1FE09A0400BCBAE8 /* ImageCollectionViewCell.swift */,
 			);
 			path = CollectionCells;
@@ -491,7 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1A18FD62054D61000D9C12A /* GamedayViewController.swift in Sources */,
+				B1A18FD62054D61000D9C12A /* GamedayScheduleViewController.swift in Sources */,
 				B1485629206752C1006A5456 /* FeedCollectionViewCell.swift in Sources */,
 				B1E2273A20A66D5B00672F53 /* Supply.swift in Sources */,
 				B1E83BD91FDCFC5600185E17 /* NewTailgateViewController.swift in Sources */,
@@ -501,6 +510,7 @@
 				B1E83BEA1FDDBF6100185E17 /* RightLeftSegue.swift in Sources */,
 				B1E83BEC1FDE286B00185E17 /* HomeViewController.swift in Sources */,
 				B1CAD9A2204B5F7400934F57 /* SettingsNameViewController.swift in Sources */,
+				B166002620B0AE600055103C /* LabelCollectionViewCell.swift in Sources */,
 				B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */,
 				B1CAD9A4204B6CDE00934F57 /* SettingsEmailViewController.swift in Sources */,
 				B1BC52CD1FE09A0400BCBAE8 /* ImageCollectionViewCell.swift in Sources */,
@@ -537,12 +547,14 @@
 				B1E2273C20A6709100672F53 /* SupplyTableViewCell.swift in Sources */,
 				B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */,
 				B1DD1CD8203E409B00291EAE /* FriendsViewController.swift in Sources */,
+				B166002020B074500055103C /* GamedayPageViewController.swift in Sources */,
 				B1DD1CDB203E591400291EAE /* UsersCollectionViewCell.swift in Sources */,
 				B1FEC4F020422AE500FEE05F /* SettingsTableViewCell.swift in Sources */,
 				B1A18FD22054CD3800D9C12A /* ScheduleTableViewCell.swift in Sources */,
 				B1E22734208B6E5500672F53 /* RivalFlairViewController.swift in Sources */,
 				B10E9E6D1FDCB6A200DB4751 /* LoginViewController.swift in Sources */,
 				B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */,
+				B166002420B0A1BD0055103C /* GamedayContainerViewController.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,
 				B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */,
 				B148562B20681CB0006A5456 /* InterfaceHelper.swift in Sources */,

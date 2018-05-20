@@ -57,7 +57,6 @@ class SettingsChangePasswordViewController: UIViewController {
                     }
                 } else {
                     let incorrectPassAlert = createAlert(title: "Incorrect Password", message: "The current password you entered is incorrect.")
-                    print(error?.localizedDescription)
                     self.present(incorrectPassAlert, animated: true, completion: nil)
                 }
             })
