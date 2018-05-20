@@ -2712,6 +2712,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FlairExample" translatesAutoresizingMaskIntoConstraints="NO" id="91x-je-Rwf">
                                 <rect key="frame" x="0.0" y="64" width="375" height="428"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="cnM-6J-lRJ">
+                                <rect key="frame" x="37" y="148" width="300" height="180"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">Flair are the images that represent your schools' tailgates on the map. Add new flair that other users can select when creating their tailgate.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -2723,10 +2731,14 @@
                             <constraint firstItem="gdI-B2-4DM" firstAttribute="width" secondItem="G30-dd-1CZ" secondAttribute="width" id="PDt-wf-qoV"/>
                             <constraint firstItem="Fgn-zv-RJh" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="R7d-vB-pTY"/>
                             <constraint firstItem="EEt-EY-oan" firstAttribute="width" secondItem="G30-dd-1CZ" secondAttribute="width" id="TND-mi-mQR"/>
+                            <constraint firstItem="cnM-6J-lRJ" firstAttribute="width" secondItem="t7Y-8a-mV4" secondAttribute="width" multiplier="0.8" id="XHg-ei-XFk"/>
                             <constraint firstItem="Fgn-zv-RJh" firstAttribute="bottom" secondItem="t7Y-8a-mV4" secondAttribute="bottom" id="Zzj-V2-M1M"/>
+                            <constraint firstItem="cnM-6J-lRJ" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="c1d-PM-Qd5"/>
                             <constraint firstItem="gdI-B2-4DM" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="eEC-wf-g6p"/>
+                            <constraint firstItem="cnM-6J-lRJ" firstAttribute="height" secondItem="t7Y-8a-mV4" secondAttribute="height" multiplier="0.298507" id="eLz-FH-sBb"/>
                             <constraint firstItem="91x-je-Rwf" firstAttribute="width" secondItem="t7Y-8a-mV4" secondAttribute="width" id="fh7-cA-DFc"/>
                             <constraint firstItem="EEt-EY-oan" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="iDT-8b-1sT"/>
+                            <constraint firstItem="t7Y-8a-mV4" firstAttribute="top" secondItem="cnM-6J-lRJ" secondAttribute="bottom" constant="-264" id="o5M-nv-otx"/>
                             <constraint firstItem="Fgn-zv-RJh" firstAttribute="height" secondItem="t7Y-8a-mV4" secondAttribute="height" multiplier="0.0746269" id="ujH-SM-If3"/>
                             <constraint firstItem="91x-je-Rwf" firstAttribute="top" secondItem="t7Y-8a-mV4" secondAttribute="top" id="vqT-W9-cuu"/>
                         </constraints>
@@ -2865,6 +2877,13 @@
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every few weeks we'll force your rivals to use the flair that you've submitted. Make it hurt." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="4iK-Hy-PHk">
+                                <rect key="frame" x="37" y="160" width="300" height="132"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -2873,10 +2892,14 @@
                             <constraint firstItem="cAz-ht-37J" firstAttribute="top" secondItem="EGB-NP-Rnt" secondAttribute="bottom" id="Eey-ir-p3o"/>
                             <constraint firstItem="cAz-ht-37J" firstAttribute="width" secondItem="Z3U-Ct-ypc" secondAttribute="width" id="F3A-r6-PH1"/>
                             <constraint firstItem="EGB-NP-Rnt" firstAttribute="centerX" secondItem="Mgw-h2-0mw" secondAttribute="centerX" id="GJI-B5-fR8"/>
+                            <constraint firstItem="4iK-Hy-PHk" firstAttribute="height" secondItem="Mgw-h2-0mw" secondAttribute="height" multiplier="0.218756" id="Gee-rA-Frf"/>
                             <constraint firstItem="1uN-Ik-Wr9" firstAttribute="height" secondItem="Mgw-h2-0mw" secondAttribute="height" multiplier="0.0746269" id="Kym-wz-RAl"/>
+                            <constraint firstItem="4iK-Hy-PHk" firstAttribute="centerX" secondItem="Mgw-h2-0mw" secondAttribute="centerX" id="O2H-cL-ja9"/>
                             <constraint firstItem="EGB-NP-Rnt" firstAttribute="top" secondItem="Mgw-h2-0mw" secondAttribute="top" id="Yew-e7-Iy8"/>
                             <constraint firstItem="EGB-NP-Rnt" firstAttribute="width" secondItem="Mgw-h2-0mw" secondAttribute="width" id="eRu-hb-tFD"/>
                             <constraint firstItem="1uN-Ik-Wr9" firstAttribute="bottom" secondItem="Mgw-h2-0mw" secondAttribute="bottom" id="fJM-M1-059"/>
+                            <constraint firstItem="4iK-Hy-PHk" firstAttribute="width" secondItem="Mgw-h2-0mw" secondAttribute="width" multiplier="0.8" id="jLE-NH-yNb"/>
+                            <constraint firstItem="Mgw-h2-0mw" firstAttribute="top" secondItem="4iK-Hy-PHk" secondAttribute="bottom" constant="-228" id="ueH-uz-AMs"/>
                             <constraint firstItem="cAz-ht-37J" firstAttribute="centerX" secondItem="Mgw-h2-0mw" secondAttribute="centerX" id="v1H-61-Pih"/>
                             <constraint firstItem="1uN-Ik-Wr9" firstAttribute="top" secondItem="cAz-ht-37J" secondAttribute="bottom" id="vXb-W6-mvM"/>
                         </constraints>
@@ -3143,7 +3166,7 @@
         <image name="Camera" width="128" height="128"/>
         <image name="Exit" width="256" height="256"/>
         <image name="Exit2" width="256" height="256"/>
-        <image name="FlairExample" width="445" height="529"/>
+        <image name="FlairExample" width="562" height="642"/>
         <image name="Friends" width="128" height="128"/>
         <image name="Friends2" width="128" height="128"/>
         <image name="HomeTeamDefault" width="270" height="270"/>
