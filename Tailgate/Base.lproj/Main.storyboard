@@ -1865,9 +1865,9 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="YQq-Lp-eG1">
-                                <rect key="frame" x="67" y="156" width="240" height="207"/>
+                                <rect key="frame" x="76" y="156" width="222" height="211"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="YQq-Lp-eG1" secondAttribute="height" multiplier="80:69" id="BXX-v1-e5S"/>
+                                    <constraint firstAttribute="width" secondItem="YQq-Lp-eG1" secondAttribute="height" multiplier="80:76" id="BXX-v1-e5S"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -1880,7 +1880,7 @@
                             <constraint firstItem="58l-8W-kGY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Per-Mm-mTS"/>
                             <constraint firstItem="6eI-Dj-oOI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="TAi-fO-3wN"/>
                             <constraint firstItem="YQq-Lp-eG1" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="TvU-cY-Nmp"/>
-                            <constraint firstItem="YQq-Lp-eG1" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.310345" id="VBA-Lu-brQ"/>
+                            <constraint firstItem="YQq-Lp-eG1" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.35" id="VBA-Lu-brQ"/>
                             <constraint firstItem="6eI-Dj-oOI" firstAttribute="top" secondItem="l1v-Li-eAq" secondAttribute="bottom" constant="-1" id="akO-YX-iXg"/>
                             <constraint firstItem="YQq-Lp-eG1" firstAttribute="top" secondItem="58l-8W-kGY" secondAttribute="bottom" constant="8" id="cmu-1r-BRW"/>
                             <constraint firstItem="6eI-Dj-oOI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jpV-5x-3cI"/>
