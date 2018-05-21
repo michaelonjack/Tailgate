@@ -78,7 +78,11 @@ class TailgateViewController: UIViewController {
         
         nameLabel.text = tailgate.name
         schoolLabel.text = tailgate.school.name
-        privateLabel.text = "Public"
+        if tailgate.isPublic {
+            privateLabel.text = "Public"
+        } else {
+            privateLabel.text = "Private"
+        }
         
         let ownerId = tailgate.ownerId
         getUserById(userId: ownerId!, completion: { (user) in

@@ -190,9 +190,9 @@ extension ProfileViewController: UICollectionViewDataSource {
         cell.activityTypeIndicator.layer.cornerRadius = 0.5 * cell.activityTypeIndicator.layer.bounds.width
         
         if currentFeedItem.isPublic {
-            cell.activityTypeIndicator.backgroundColor = .lavender
+            cell.activityTypeIndicator.backgroundColor = .salmon
         } else {
-            cell.activityTypeIndicator.backgroundColor = .red
+            cell.activityTypeIndicator.backgroundColor = .cantaloupe
         }
         
         getUserById(userId: currentFeedItem.ownerId) { (user) in
