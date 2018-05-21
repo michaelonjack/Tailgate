@@ -12,6 +12,7 @@ class GamedayScheduleViewController: UIViewController {
 
     @IBOutlet weak var schedulesCollectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var navigationView: UIView!
     @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLableTopConstraint: NSLayoutConstraint!
     
@@ -103,7 +104,7 @@ extension GamedayScheduleViewController : UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         // Calculate the cell height because collectionView.bounds.size.height isn't reliable when the view first loads
-        var collectionViewHeight = UIScreen.main.bounds.size.height - self.titleLabel.bounds.maxY - self.titleLabel.bounds.height -  self.collectionViewTopConstraint.constant - self.titleLableTopConstraint.constant
+        var collectionViewHeight = UIScreen.main.bounds.size.height - self.titleLabel.bounds.maxY - self.titleLabel.bounds.height - self.navigationView.bounds.height - self.collectionViewTopConstraint.constant - self.titleLableTopConstraint.constant
         
         if #available(iOS 11, *) {
             if let window = UIApplication.shared.keyWindow {
