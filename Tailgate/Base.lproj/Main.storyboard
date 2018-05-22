@@ -2032,13 +2032,13 @@
                                 <rect key="frame" x="76.5" y="188" width="222" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="given-name"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="given-name"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gSk-6w-RTd">
                                 <rect key="frame" x="76.5" y="272" width="222" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="family-name"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="family-name"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FIRST NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HON-UW-3Gx">
                                 <rect key="frame" x="76.5" y="170" width="50" height="10"/>
@@ -2261,12 +2261,108 @@
                         <outlet property="confirmPassword" destination="IQA-bS-Nv3" id="rYe-yv-bMR"/>
                         <outlet property="nextButtonBottomConstraint" destination="bY7-9p-HXg" id="OfX-82-VvC"/>
                         <outlet property="password" destination="iU2-Z4-fp7" id="9QB-tr-Qze"/>
-                        <segue destination="x2u-Jm-Rys" kind="custom" identifier="SignUpToProfile" customClass="TopDownSegue" customModule="Tailgate" customModuleProvider="target" id="eai-VW-VO6"/>
+                        <segue destination="bX5-DL-BXr" kind="show" identifier="PasswordToAgreement" id="E6Z-OY-Zkq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFS-hY-oY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3017" y="802"/>
+        </scene>
+        <!--Sign Up Agreement View Controller-->
+        <scene sceneID="pTx-6w-yVh">
+            <objects>
+                <viewController id="bX5-DL-BXr" customClass="SignUpAgreementViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AJ0-qr-F0S">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8b-m8-jQj">
+                                <rect key="frame" x="0.0" y="572" width="375" height="95"/>
+                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="o8b-m8-jQj" secondAttribute="height" multiplier="75:19" id="hwi-d0-FN3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="AGREE">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="agreePressed:" destination="bX5-DL-BXr" eventType="touchUpInside" id="G1l-eF-nPJ"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIF-fX-qfc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="508"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6u9-6R-GqI">
+                                        <rect key="frame" x="15" y="0.0" width="345" height="757.5"/>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <mutableString key="content">Terms of Service
+
+Last updated: May 22, 2018
+
+By using Tailgator or any of its associated services, you agree to the Terms of Service. Of course, if you don’t agree with them, then don’t use Tailgator.
+
+
+Who Can Use Tailgator
+By using this application you state that:
+a) You are not a person who is barred from receiving the Services under the laws of the United States or any other applicable jurisdiction—meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition.
+b) You will comply with these Terms and all applicable local, state, national, and international laws, rules, and regulations.
+
+
+Content
+Much of the content on Tailgator is produced by users and other third parties. Whether that content is posted publicly or sent privately, the content is the sole responsibility of the person or organization that submitted it. Although Tailgator reserves the right to review or remove all content that appears on the application, we do not necessarily review all of it. So we cannot—and do not—take responsibility for any content that others provide through the application.
+
+We want to make clear that we do not want the application put to bad uses. But because we do not review all content, we cannot guarantee that content on the application will always conform to our preferred guidelines.
+
+
+Respecting Other People’s Rights
+Tailgator respects the rights of others. And so should you. You therefore may not use the application, or enable anyone else to use the application, in a manner that:
+a) violates or infringes someone else’s rights of publicity, privacy, copyright, trademark, or other intellectual-property right.
+b) bullies, harasses, or intimidates.
+c) defames.
+d) spams or solicits our users.
+
+Violating these conditions may result in the suspension of your account upon review.</mutableString>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <mutableString key="userLabel">Terms of Service  Last updated: May 22, 2018  By using Tailgator or any of our other products or services that link to these Terms of Service, you agree to the Terms of Service. Of course, if you don’t agree with them, then don’t use Tailgator.   Who Can Use Tailgator By using this application you state that: a) You are not a person who is barred from receiving the Services under the laws of the United States or any other applicable jurisdiction—meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition. b) You will comply with these Terms and all applicable local, state, national, and international laws, rules, and regulations.   Content Much of the content on Tailgator is produced by users and other third parties. Whether that content is posted publicly or sent privately, the content is the sole responsibility of the person or organization that submitted it. Although Tailgator reserves the right to review or remove all content that appears on the application, we do not necessarily review all of it. So we cannot—and do not—take responsibility for any content that others provide through the application.  We want to make clear that we do not want the application put to bad uses. But because we do not review all content, we cannot guarantee that content on the application will always conform to our preferred guidelines.   Respecting Other People’s Rights Tailgator respects the rights of others. And so should you. You therefore may not use the application, or enable anyone else to use the application, in a manner that: a) violates or infringes someone else’s rights of publicity, privacy, copyright, trademark, or other intellectual-property right. b) bullies, harasses, or intimidates. c) defames. d) spams or solicits our users.  Violating these conditions may result in the suspension of your account upon review.</mutableString>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="6u9-6R-GqI" secondAttribute="bottom" constant="100" id="7FZ-YR-pe0"/>
+                                    <constraint firstAttribute="trailing" secondItem="6u9-6R-GqI" secondAttribute="trailing" constant="15" id="Irk-WG-aUw"/>
+                                    <constraint firstItem="6u9-6R-GqI" firstAttribute="leading" secondItem="JIF-fX-qfc" secondAttribute="leading" constant="15" id="dtP-QE-p6T"/>
+                                    <constraint firstItem="6u9-6R-GqI" firstAttribute="top" secondItem="JIF-fX-qfc" secondAttribute="top" id="tMp-GE-tq5"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JIF-fX-qfc" firstAttribute="width" secondItem="AJ0-qr-F0S" secondAttribute="width" id="9Fg-0S-nDV"/>
+                            <constraint firstItem="JIF-fX-qfc" firstAttribute="top" secondItem="z7T-c3-LGs" secondAttribute="top" id="Bu1-Bg-sOT"/>
+                            <constraint firstItem="o8b-m8-jQj" firstAttribute="width" secondItem="AJ0-qr-F0S" secondAttribute="width" id="CCi-OY-LZW"/>
+                            <constraint firstItem="6u9-6R-GqI" firstAttribute="width" secondItem="z7T-c3-LGs" secondAttribute="width" multiplier="0.92" id="RQg-3x-jal"/>
+                            <constraint firstItem="o8b-m8-jQj" firstAttribute="top" secondItem="JIF-fX-qfc" secondAttribute="bottom" id="Yue-x4-Wdb"/>
+                            <constraint firstItem="JIF-fX-qfc" firstAttribute="centerX" secondItem="z7T-c3-LGs" secondAttribute="centerX" id="dkE-9X-ITs"/>
+                            <constraint firstItem="o8b-m8-jQj" firstAttribute="bottom" secondItem="z7T-c3-LGs" secondAttribute="bottom" id="fJw-F8-TWz"/>
+                            <constraint firstItem="o8b-m8-jQj" firstAttribute="centerX" secondItem="z7T-c3-LGs" secondAttribute="centerX" id="wQu-Nb-xR0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="z7T-c3-LGs"/>
+                    </view>
+                    <connections>
+                        <outlet property="termsLabel" destination="6u9-6R-GqI" id="IWA-l8-jyd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mT1-JA-KkF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3945" y="802"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ne6-jm-jV0">
@@ -3189,7 +3285,6 @@
         <image name="Trash" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eai-VW-VO6"/>
         <segue reference="u7i-bp-TO8"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -51,74 +51,8 @@ class SignUpPasswordViewController: UIViewController {
             }
             
             else {
-                // Create a user using the user's provided email and password
-                Auth.auth().createUser(withEmail: email, password: pass) { authResult, error in
-                    
-                    if error == nil {
-                        
-                        updateKeychainCredentials(email: self.email, password: pass)
-                        
-                        let user = authResult?.user
-                        
-                        let newUser = User(
-                            user: user!,
-                            firstName: self.firstName,
-                            lastName: self.lastName
-                        )
-                        let newUserRef = self.usersDatabase.child((user?.uid)!)
-                        
-                        newUserRef.setValue(newUser.toAnyObject())
-                        
-                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        
-                        let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-                        let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
-                        let newTailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "NewTailgateNavigationController") as! UINavigationController
-                        let mapViewController = mainStoryboard.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-                        let gamedayViewController = mainStoryboard.instantiateViewController(withIdentifier: "GamedayContainerViewController") as! GamedayContainerViewController
-                        
-                        let swipeNavigationController = SwipeNavigationController(centerViewController: profileViewController)
-                        swipeNavigationController.leftViewController = mapViewController
-                        swipeNavigationController.topViewController = gamedayViewController
-                        swipeNavigationController.shouldShowTopViewController = true
-                        swipeNavigationController.shouldShowBottomViewController = false
-                        
-                        // Determine which tailgate controller the user should see when they swipe right
-                        let userReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
-                        userReference.observeSingleEvent(of: .value, with: { (snapshot) in
-                            // If the user already has a tailgate, show them the controller for an existing one
-                            if snapshot.hasChild("tailgate") {
-                                let snapshotValue = snapshot.value as! [String: AnyObject]
-                                let tailgateId = snapshotValue["tailgate"] as? String ?? ""
-                                let tailgateReference = Database.database().reference(withPath: "tailgates/" + tailgateId)
-                                
-                                tailgateReference.observeSingleEvent(of: .value, with: { (snapshot) in
-                                    let userTailgate = Tailgate(snapshot: snapshot)
-                                    tailgateViewController.tailgate = userTailgate
-                                    swipeNavigationController.rightViewController = tailgateViewController
-                                })
-                            }
-                                
-                                // Else show them the controller to create a new one
-                            else {
-                                swipeNavigationController.rightViewController = newTailgateViewController
-                            }
-                        })
-                        
-                        DispatchQueue.main.async {
-                            self.present(swipeNavigationController, animated: true, completion: nil)
-                        }
-                    
-                    } else {
-                        let errorAlert = UIAlertController(title: "Sign Up Error",
-                                                           message: error?.localizedDescription,
-                                                           preferredStyle: .alert)
-                        
-                        let closeAction = UIAlertAction(title: "Close", style: .default)
-                        errorAlert.addAction(closeAction)
-                        self.present(errorAlert, animated: true, completion:nil)
-                    }
-                    
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "PasswordToAgreement", sender: nil)
                 }
             }
             
@@ -152,4 +86,12 @@ class SignUpPasswordViewController: UIViewController {
     }
     
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let agreementVC: SignUpAgreementViewController = segue.destination as! SignUpAgreementViewController
+        agreementVC.firstName = self.firstName
+        agreementVC.lastName = self.lastName
+        agreementVC.email = self.email
+        agreementVC.password = self.password.text!
+    }
 }
