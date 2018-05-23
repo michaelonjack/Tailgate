@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import NotificationBannerSwift
 
 class SettingsChangePasswordViewController: UIViewController {
 
@@ -42,10 +43,18 @@ class SettingsChangePasswordViewController: UIViewController {
             firUser?.reauthenticateAndRetrieveData(with: credential, completion: { (result, error) in
                 // User entered the correct password
                 if error == nil {
+                    // New password and confirmation password match
                     if newPassword == confirmNewPassword {
                         firUser?.updatePassword(to: newPassword, completion: { (error) in
                             if error == nil {
-                                // Update keychain eventually
+                                // Password successfully changed, update the keychain
+                                updateKeychainCredentials(email: currentUser.email, password: newPassword)
+                                
+                                // Show success notification banner
+                                DispatchQueue.main.async {
+                                    let successBanner = NotificationBanner(attributedTitle: NSAttributedString(string: "Password Updated"), attributedSubtitle: NSAttributedString(string: "Your password has been successfully updated!"), style: .success)
+                                    successBanner.show()
+                                }
                             } else {
                                 let errorAlert = createAlert(title: "Cannot Change Password", message: (error?.localizedDescription)!)
                                 self.present(errorAlert, animated: true, completion: nil)

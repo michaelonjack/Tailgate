@@ -336,10 +336,10 @@
 		B1E83BDC1FDD712C00185E17 /* SignUpControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */,
 				B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */,
 				B1E83BDD1FDD74B400185E17 /* SignUpEmailViewController.swift */,
 				B1E83BDF1FDD795000185E17 /* SignUpPasswordViewController.swift */,
+				B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */,
 			);
 			path = SignUpControllers;
 			sourceTree = "<group>";
