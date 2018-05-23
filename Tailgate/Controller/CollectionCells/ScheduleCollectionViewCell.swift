@@ -47,8 +47,14 @@ extension ScheduleCollectionViewCell: UITableViewDelegate {
                 return cell.minimizedHeight
             }
         }
-        return 50
+        
+        else {
+            // Size of the detail label plus the size of its top and bottom contraints
+            return 11 + 12.5 + self.games[indexPath.row].startTimeDisplayStr.height(withConstrainedWidth: tableView.bounds.width * 0.191136, font: UIFont.systemFont(ofSize: 12.0))
+        }
     }
+    
+    
     
     func addRefreshControl() {
         // Add Refresh Control to Table View
