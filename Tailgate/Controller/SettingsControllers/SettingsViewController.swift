@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController {
     var rowData = [
         [("First Name", ""), ("Last Name", ""), ("Email", ""), ("Birthday", ""), ("School", "")],
         [("Logout", ""), ("Change Password", "")],
-        [("Contact", "")]
+        [("Terms of Service", ""), ("Contact", "")]
     ]
     
     override func viewDidLoad() {
@@ -139,6 +139,9 @@ extension SettingsViewController: UITableViewDelegate {
             
         case "School":
             self.performSegue(withIdentifier: "SettingsToSchool", sender: nil)
+            
+        case "Terms of Service":
+            self.performSegue(withIdentifier: "SettingsToTerms", sender: nil)
         
         default:
             var _ = 0

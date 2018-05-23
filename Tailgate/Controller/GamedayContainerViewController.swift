@@ -85,7 +85,7 @@ extension GamedayContainerViewController: UICollectionViewDelegate {
         let cell = collectionView.cellForItem(at: indexPath) as! LabelCollectionViewCell
         
         // Change the label color to show the cell was deselected
-        cell.label.textColor = .lightGray
+        cell.label.textColor = .nickel
     }
     
     func selectNavigationCell(indexPath: IndexPath) {
@@ -100,7 +100,7 @@ extension GamedayContainerViewController: UICollectionViewDelegate {
             
             else {
                 self.navigationCollectionView.deselectItem(at: indexPath, animated: true)
-                cell.label.textColor = .darkGray
+                cell.label.textColor = .nickel
             }
         }
     }

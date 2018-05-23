@@ -43,6 +43,7 @@
 		B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */; };
 		B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */; };
 		B19BFD5620B4BBF1009D6AD2 /* SignUpAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */; };
+		B19BFD5820B4FC57009D6AD2 /* SettingsTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFD5720B4FC57009D6AD2 /* SettingsTermsViewController.swift */; };
 		B1A18FD22054CD3800D9C12A /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */; };
 		B1A18FD42054CD6600D9C12A /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */; };
 		B1A18FD62054D61000D9C12A /* GamedayScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD52054D61000D9C12A /* GamedayScheduleViewController.swift */; };
@@ -123,6 +124,7 @@
 		B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayViewController.swift; sourceTree = "<group>"; };
 		B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreementViewController.swift; sourceTree = "<group>"; };
+		B19BFD5720B4FC57009D6AD2 /* SettingsTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTermsViewController.swift; sourceTree = "<group>"; };
 		B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1A18FD52054D61000D9C12A /* GamedayScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedayScheduleViewController.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */,
 				B1CAD9A1204B5F7400934F57 /* SettingsNameViewController.swift */,
 				B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */,
+				B19BFD5720B4FC57009D6AD2 /* SettingsTermsViewController.swift */,
 			);
 			path = SettingsControllers;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				B1BBF2E51FEEBCA4007B1ACF /* Food.swift in Sources */,
 				B19BFD5620B4BBF1009D6AD2 /* SignUpAgreementViewController.swift in Sources */,
 				B13B813B1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift in Sources */,
+				B19BFD5820B4FC57009D6AD2 /* SettingsTermsViewController.swift in Sources */,
 				B1E22736209E0C1B00672F53 /* KeychainPasswordItem.swift in Sources */,
 				B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */,
 				B1A18FD42054CD6600D9C12A /* ScheduleCollectionViewCell.swift in Sources */,

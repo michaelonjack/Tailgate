@@ -104,13 +104,12 @@ extension GamedayScheduleViewController : UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         // Calculate the cell height because collectionView.bounds.size.height isn't reliable when the view first loads
-        var collectionViewHeight = UIScreen.main.bounds.size.height - self.titleLabel.bounds.maxY - self.titleLabel.bounds.height - self.navigationView.bounds.height - self.collectionViewTopConstraint.constant - self.titleLableTopConstraint.constant
+        var collectionViewHeight = UIScreen.main.bounds.size.height - UIApplication.shared.statusBarFrame.height - self.titleLableTopConstraint.constant - self.titleLabel.bounds.height - self.navigationView.bounds.height - self.collectionViewTopConstraint.constant
         
         if #available(iOS 11, *) {
             if let window = UIApplication.shared.keyWindow {
-                let safeAreaTop = window.safeAreaInsets.top
                 let safeAreaBottom = window.safeAreaInsets.bottom
-                collectionViewHeight = collectionViewHeight - safeAreaTop - safeAreaBottom
+                collectionViewHeight = collectionViewHeight - safeAreaBottom
             }
         }
         
