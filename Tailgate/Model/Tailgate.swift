@@ -39,6 +39,11 @@ class Tailgate {
         }
     }
     var flairImageUrl:String!
+    var startTimeStr:String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, h:mm a"
+        return formatter.string(from: self.startTime)
+    }
     
     init(ownerId:String, name:String, school:School, flairImageUrl:String, isPublic:Bool, startTime:Date, supplies:[Supply], invites:[User]) {
         

@@ -889,7 +889,7 @@
                                 <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="ZiX-ey-ytX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start TIme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="ZiX-ey-ytX">
                                 <rect key="frame" x="152" y="164" width="207" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -947,10 +947,10 @@
                         <outlet property="locationButton" destination="ENO-jx-Lww" id="auE-fO-Wu5"/>
                         <outlet property="nameLabel" destination="xm0-zg-zBC" id="h0D-o3-dmu"/>
                         <outlet property="ownerLabel" destination="P1F-NY-A8h" id="imh-rR-DQf"/>
-                        <outlet property="privateLabel" destination="ZiX-ey-ytX" id="FMW-YT-YMv"/>
                         <outlet property="profilePictureImageView" destination="1KF-Ig-f7f" id="voG-HW-2Sn"/>
                         <outlet property="profilePictureTopConstraint" destination="OMq-NT-aG5" id="3DB-83-faf"/>
                         <outlet property="schoolLabel" destination="ymQ-eA-OKh" id="ujG-gn-ALB"/>
+                        <outlet property="startTimeLabel" destination="ZiX-ey-ytX" id="9mV-QB-5DC"/>
                         <outlet property="trashButton" destination="rgm-GR-msR" id="7b4-oY-S6j"/>
                     </connections>
                 </viewController>

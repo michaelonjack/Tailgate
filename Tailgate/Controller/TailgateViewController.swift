@@ -26,7 +26,7 @@ class TailgateViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var schoolLabel: UILabel!
-    @IBOutlet weak var privateLabel: UILabel!
+    @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var invitesRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var profilePictureTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonsViewBottomConstraint: NSLayoutConstraint!
@@ -78,11 +78,7 @@ class TailgateViewController: UIViewController {
         
         nameLabel.text = tailgate.name
         schoolLabel.text = tailgate.school.name
-        if tailgate.isPublic {
-            privateLabel.text = "Public"
-        } else {
-            privateLabel.text = "Private"
-        }
+        startTimeLabel.text = tailgate.startTimeStr
         
         let ownerId = tailgate.ownerId
         getUserById(userId: ownerId!, completion: { (user) in
