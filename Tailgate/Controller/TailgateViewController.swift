@@ -22,6 +22,7 @@ class TailgateViewController: UIViewController {
     @IBOutlet weak var trashButton: UIButton!
     @IBOutlet weak var invitesButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet weak var optionsButton: DropDownButton!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
@@ -97,9 +98,11 @@ class TailgateViewController: UIViewController {
             self.trashButton.isHidden = true
             self.locationButton.isHidden = true
             self.invitesRightConstraint.isActive = false
+            self.optionsButton.dropDownView.dropDownOptions = ["Report Content", "Block User"]
             self.invitesButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         } else {
             self.exitButton.isHidden = true
+            self.optionsButton.isHidden = true
         }
         
         self.profilePictureTopConstraint.updateVerticalConstantForViewHeight(view: self.view)

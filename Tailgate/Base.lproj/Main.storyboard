@@ -895,6 +895,13 @@
                                 <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALn-U1-A9X" customClass="DropDownButton" customModule="Tailgate" customModuleProvider="target">
+                                <rect key="frame" x="8" y="22" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ALn-U1-A9X" secondAttribute="height" multiplier="1:1" id="prc-Do-Ymk"/>
+                                </constraints>
+                                <state key="normal" image="More"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -902,6 +909,7 @@
                             <constraint firstItem="xm0-zg-zBC" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.037481" id="6XO-c9-GSH"/>
                             <constraint firstItem="NAe-IT-bhu" firstAttribute="top" secondItem="7dd-t0-qLm" secondAttribute="top" constant="2" id="6gb-BJ-Cnw"/>
                             <constraint firstItem="ZiX-ey-ytX" firstAttribute="width" secondItem="xm0-zg-zBC" secondAttribute="width" id="713-NK-3Hf"/>
+                            <constraint firstItem="ALn-U1-A9X" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.052473" id="948-KP-vox"/>
                             <constraint firstItem="fHC-pn-yzm" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.052473" id="ASE-SV-fev"/>
                             <constraint firstItem="P1F-NY-A8h" firstAttribute="height" secondItem="xm0-zg-zBC" secondAttribute="height" id="BSM-QY-jde"/>
                             <constraint firstItem="P1F-NY-A8h" firstAttribute="width" secondItem="xm0-zg-zBC" secondAttribute="width" id="CIM-mw-h47"/>
@@ -911,6 +919,7 @@
                             <constraint firstItem="rgm-GR-msR" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.052473" id="Gs4-B3-Y1Z"/>
                             <constraint firstItem="j73-xB-qHv" firstAttribute="width" secondItem="br0-jd-8t5" secondAttribute="width" id="Hez-og-GQL"/>
                             <constraint firstItem="ymQ-eA-OKh" firstAttribute="height" secondItem="xm0-zg-zBC" secondAttribute="height" id="JUV-hB-BJQ"/>
+                            <constraint firstItem="ALn-U1-A9X" firstAttribute="leading" secondItem="7dd-t0-qLm" secondAttribute="leading" constant="8" id="MFE-yW-Mry"/>
                             <constraint firstItem="1KF-Ig-f7f" firstAttribute="top" secondItem="fHC-pn-yzm" secondAttribute="bottom" constant="8" id="OMq-NT-aG5"/>
                             <constraint firstItem="P1F-NY-A8h" firstAttribute="top" secondItem="xm0-zg-zBC" secondAttribute="bottom" constant="8" id="PAL-a0-WTu"/>
                             <constraint firstItem="7dd-t0-qLm" firstAttribute="trailing" secondItem="rgm-GR-msR" secondAttribute="trailing" constant="5" id="Pql-vs-TVk"/>
@@ -930,6 +939,7 @@
                             <constraint firstItem="ZiX-ey-ytX" firstAttribute="leading" secondItem="1KF-Ig-f7f" secondAttribute="trailing" constant="8" id="lHk-yC-4T3"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="width" secondItem="br0-jd-8t5" secondAttribute="width" id="oET-ZR-pbm"/>
                             <constraint firstItem="1KF-Ig-f7f" firstAttribute="leading" secondItem="7dd-t0-qLm" secondAttribute="leading" constant="16" id="p2b-IS-y8o"/>
+                            <constraint firstItem="ALn-U1-A9X" firstAttribute="top" secondItem="7dd-t0-qLm" secondAttribute="top" constant="2" id="rKR-k5-8GT"/>
                             <constraint firstItem="7dd-t0-qLm" firstAttribute="trailing" secondItem="NAe-IT-bhu" secondAttribute="trailing" constant="16" id="rhW-pK-pwO"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="top" secondItem="j73-xB-qHv" secondAttribute="bottom" constant="4" id="s2t-rI-36h"/>
                             <constraint firstItem="1KF-Ig-f7f" firstAttribute="height" secondItem="7dd-t0-qLm" secondAttribute="height" multiplier="0.197836" id="sFg-ph-8ym"/>
@@ -946,6 +956,7 @@
                         <outlet property="invitesRightConstraint" destination="qHR-be-bxV" id="DV8-wU-TiP"/>
                         <outlet property="locationButton" destination="ENO-jx-Lww" id="auE-fO-Wu5"/>
                         <outlet property="nameLabel" destination="xm0-zg-zBC" id="h0D-o3-dmu"/>
+                        <outlet property="optionsButton" destination="ALn-U1-A9X" id="brN-ci-cIO"/>
                         <outlet property="ownerLabel" destination="P1F-NY-A8h" id="imh-rR-DQf"/>
                         <outlet property="profilePictureImageView" destination="1KF-Ig-f7f" id="voG-HW-2Sn"/>
                         <outlet property="profilePictureTopConstraint" destination="OMq-NT-aG5" id="3DB-83-faf"/>
@@ -3375,6 +3386,7 @@ Violating these conditions may result in the suspension of your account upon rev
         <image name="HomeTeamDefault" width="270" height="270"/>
         <image name="Icon" width="256" height="256"/>
         <image name="Location" width="256" height="256"/>
+        <image name="More" width="240" height="240"/>
         <image name="Reload" width="256" height="256"/>
         <image name="RivalFlairExample" width="445" height="529"/>
         <image name="Search" width="256" height="256"/>
