@@ -98,7 +98,6 @@ class TailgateViewController: UIViewController {
             self.trashButton.isHidden = true
             self.locationButton.isHidden = true
             self.invitesRightConstraint.isActive = false
-            self.optionsButton.dropDownView.dropDownOptions = ["Report Content", "Block User"]
             self.invitesButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         } else {
             self.exitButton.isHidden = true
@@ -143,9 +142,13 @@ class TailgateViewController: UIViewController {
         })
     }
     
+    
+    
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.containerSwipeNavigationController?.showEmbeddedView(position: .center)
     }
+    
+    
     
     @IBAction func trashButtonPressed(_ sender: UIButton) {
         
@@ -189,9 +192,13 @@ class TailgateViewController: UIViewController {
         
     }
     
+    
+    
     @IBAction func exitButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
     
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
         // Only allow the current user to add images to the tailgate if they have
@@ -258,6 +265,29 @@ class TailgateViewController: UIViewController {
             
             self.present(locationNotEnabledAlert, animated: true, completion: nil)
         }
+    }
+    
+    
+    
+    @IBAction func optionsButtonPressed(_ sender: Any) {
+        let optionsController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            
+        }
+        optionsController.addAction(cancelAction)
+        
+        let blockUserAction = UIAlertAction(title: "Block User", style: .destructive) { (action) in
+            
+        }
+        optionsController.addAction(blockUserAction)
+        
+        let reportContentAction = UIAlertAction(title: "Report Content", style: .destructive) { (action) in
+            
+        }
+        optionsController.addAction(reportContentAction)
+        
+        self.present(optionsController, animated: true, completion: nil)
     }
     
     

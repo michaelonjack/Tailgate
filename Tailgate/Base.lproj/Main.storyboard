@@ -895,12 +895,15 @@
                                 <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALn-U1-A9X" customClass="DropDownButton" customModule="Tailgate" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALn-U1-A9X">
                                 <rect key="frame" x="8" y="22" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ALn-U1-A9X" secondAttribute="height" multiplier="1:1" id="prc-Do-Ymk"/>
                                 </constraints>
                                 <state key="normal" image="More"/>
+                                <connections>
+                                    <action selector="optionsButtonPressed:" destination="O2l-0b-cuo" eventType="touchUpInside" id="feY-2V-ai2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
