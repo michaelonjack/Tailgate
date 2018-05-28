@@ -206,30 +206,31 @@ class TailgateViewController: UIViewController {
         if hasFullAccess == true || self.tailgate.isUserInvited(userId: getCurrentUserId()) {
             var ypConfig = YPImagePickerConfiguration()
             ypConfig.onlySquareImagesFromCamera = true
-            ypConfig.onlySquareImagesFromLibrary = true
+            ypConfig.onlySquareFromLibrary = true
             ypConfig.showsFilters = true
-            ypConfig.showsVideoInLibrary = false
+            ypConfig.libraryMediaType = .photo
             ypConfig.usesFrontCamera = false
             ypConfig.shouldSaveNewPicturesToAlbum = false
         
             let picker = YPImagePicker(configuration: ypConfig)
-            picker.didSelectImage = { image in
+            picker.didFinishPicking { items, _ in
                 
-                let timestamp:String = getTimestampString()
-                let tailgateOwnerId:String = self.tailgate.ownerId
-                let tailgateId:String = self.tailgate.id
-                let uploadPath:String = "images/users/" + tailgateOwnerId + "/tailgate/" + tailgateId + "/" +  timestamp
-                uploadImageToStorage(image: image, uploadPath: uploadPath, completion: { (downloadUrl) in
-                    if let imageUrl = downloadUrl {
-                        
-                        let imageUrlsReference = Database.database().reference(withPath: "tailgates/" + self.tailgate.id + "/imageUrls")
-                        imageUrlsReference.updateChildValues([timestamp: downloadUrl!])
-                        
-                        self.imageUrls.append(imageUrl)
-                        self.imageCollectionView.reloadData()
-                    }
-                })
-                
+                if let photo = items.singlePhoto {
+                    let timestamp:String = getTimestampString()
+                    let tailgateOwnerId:String = self.tailgate.ownerId
+                    let tailgateId:String = self.tailgate.id
+                    let uploadPath:String = "images/users/" + tailgateOwnerId + "/tailgate/" + tailgateId + "/" +  timestamp
+                    uploadImageToStorage(image: photo.image, uploadPath: uploadPath, completion: { (downloadUrl) in
+                        if let imageUrl = downloadUrl {
+                            
+                            let imageUrlsReference = Database.database().reference(withPath: "tailgates/" + self.tailgate.id + "/imageUrls")
+                            imageUrlsReference.updateChildValues([timestamp: downloadUrl!])
+                            
+                            self.imageUrls.append(imageUrl)
+                            self.imageCollectionView.reloadData()
+                        }
+                    })
+                }
                 picker.dismiss(animated: true, completion: nil)
             }
             present(picker, animated: true, completion: nil)

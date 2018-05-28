@@ -14,7 +14,6 @@ target 'Tailgate' do
   pod 'YPImagePicker'
   pod 'SDWebImage'
   pod 'SDWebImage/MapKit'
-  pod 'IQKeyboardManagerSwift'
   pod 'SwipeNavigationController'
   pod 'VegaScrollFlowLayout'
   pod 'NotificationBannerSwift'

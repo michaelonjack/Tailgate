@@ -68,24 +68,28 @@ class GamedaySignsViewController: UIViewController {
     @IBAction func submitSignPressed(_ sender: Any) {
         var ypConfig = YPImagePickerConfiguration()
         ypConfig.onlySquareImagesFromCamera = true
-        ypConfig.onlySquareImagesFromLibrary = true
+        ypConfig.onlySquareFromLibrary = true
         ypConfig.showsFilters = true
-        ypConfig.showsVideoInLibrary = false
+        ypConfig.libraryMediaType = .photo
         ypConfig.usesFrontCamera = false
         ypConfig.shouldSaveNewPicturesToAlbum = false
         
         let picker = YPImagePicker(configuration: ypConfig)
-        picker.didSelectImage = { image in
+        picker.didFinishPicking { items, _ in
             
-            let uploadPath = "images/Gameday/" + configuration.week + "/submitted/" +  getTimestampString() + ".jpg"
-            uploadImageToStorage(image: image, uploadPath: uploadPath, completion: { (downloadUrl) in
-                // Nothing for now!
-            })
-            
-            DispatchQueue.main.async {
+            if let photo = items.singlePhoto {
+                let uploadPath = "images/Gameday/" + configuration.week + "/submitted/" +  getTimestampString() + ".jpg"
+                uploadImageToStorage(image: photo.image, uploadPath: uploadPath, completion: { (downloadUrl) in
+                    // Nothing for now!
+                })
+                
+                DispatchQueue.main.async {
+                    picker.dismiss(animated: true, completion: nil)
+                    let successBanner = NotificationBanner(attributedTitle: NSAttributedString(string: "Sign Submitted"), attributedSubtitle: NSAttributedString(string: "Check back to see if your sign gets posted!"), style: .success)
+                    successBanner.show()
+                }
+            } else {
                 picker.dismiss(animated: true, completion: nil)
-                let successBanner = NotificationBanner(attributedTitle: NSAttributedString(string: "Sign Submitted"), attributedSubtitle: NSAttributedString(string: "Check back to see if your sign gets posted!"), style: .success)
-                successBanner.show()
             }
         }
         present(picker, animated: true, completion: nil)

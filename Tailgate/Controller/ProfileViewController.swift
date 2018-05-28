@@ -97,22 +97,25 @@ class ProfileViewController: UIViewController {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             var ypConfig = YPImagePickerConfiguration()
             ypConfig.onlySquareImagesFromCamera = true
-            ypConfig.onlySquareImagesFromLibrary = true
+            ypConfig.onlySquareFromLibrary = true
             ypConfig.showsFilters = true
-            ypConfig.showsVideoInLibrary = false
+            ypConfig.libraryMediaType = .photo
             ypConfig.usesFrontCamera = false
             ypConfig.shouldSaveNewPicturesToAlbum = false
             
             let picker = YPImagePicker(configuration: ypConfig)
-            picker.didSelectImage = { image in
-                // Sets the user's profile picture to be this image
-                self.profilePictureButton.setImage(image, for: .normal)
-                self.profilePictureButton.imageView?.contentMode = .scaleAspectFill
+            picker.didFinishPicking { items, _ in
                 
-                let uploadPath = "images/users/" + getCurrentUserId() + "/ProfilePicture"
-                uploadImageToStorage(image: image, uploadPath: uploadPath, completion: { (downloadUrl) in
-                    updateValueForCurrentUser(key: "profilePictureUrl", value: downloadUrl!)
-                })
+                if let photo = items.singlePhoto {
+                    // Sets the user's profile picture to be this image
+                    self.profilePictureButton.setImage(photo.image, for: .normal)
+                    self.profilePictureButton.imageView?.contentMode = .scaleAspectFill
+                    
+                    let uploadPath = "images/users/" + getCurrentUserId() + "/ProfilePicture"
+                    uploadImageToStorage(image: photo.image, uploadPath: uploadPath, completion: { (downloadUrl) in
+                        updateValueForCurrentUser(key: "profilePictureUrl", value: downloadUrl!)
+                    })
+                }
                 
                 picker.dismiss(animated: true, completion: nil)
             }

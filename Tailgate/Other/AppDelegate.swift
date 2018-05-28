@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import IQKeyboardManagerSwift
 import SwipeNavigationController
 
 @UIApplicationMain
@@ -38,8 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Remove text from navigation bar
         //let BarButtonItemAppearance = UIBarButtonItem.appearance()
         //BarButtonItemAppearance.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear], for: .normal)
-        
-        IQKeyboardManager.shared.enable = true
         
         // Determine which view controller should be initially shown
         self.window = UIWindow(frame: UIScreen.main.bounds)

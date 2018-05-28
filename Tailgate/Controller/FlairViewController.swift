@@ -33,26 +33,30 @@ class FlairViewController: UIViewController {
         getCurrentUser { (currentUser) in
             if let schoolName = currentUser.schoolName {
                 var ypConfig = YPImagePickerConfiguration()
-                ypConfig.onlySquareImagesFromLibrary = true
+                ypConfig.onlySquareFromLibrary = true
                 ypConfig.showsFilters = true
-                ypConfig.showsVideoInLibrary = false
+                ypConfig.libraryMediaType = .photo
                 ypConfig.screens = [.library]
                 
                 let picker = YPImagePicker(configuration: ypConfig)
                 
-                picker.didSelectImage = { image in
+                picker.didFinishPicking { items, _ in
                     
-                    let imageName = currentUser.uid + "-" + getTimestampString()
-                    let uploadPath = "images/" + schoolName.replacingOccurrences(of: " ", with: "") + "/submittedFlair/mySchool/" + imageName + ".jpg"
-                    
-                    uploadImageToStorage(image: image, uploadPath: uploadPath, completion: { (downloadUrl) in
-                        // nothing for now!
-                    })
-                    
-                    DispatchQueue.main.async {
+                    if let photo = items.singlePhoto {
+                        let imageName = currentUser.uid + "-" + getTimestampString()
+                        let uploadPath = "images/" + schoolName.replacingOccurrences(of: " ", with: "") + "/submittedFlair/mySchool/" + imageName + ".jpg"
+                        
+                        uploadImageToStorage(image: photo.image, uploadPath: uploadPath, completion: { (downloadUrl) in
+                            // nothing for now!
+                        })
+                        
+                        DispatchQueue.main.async {
+                            picker.dismiss(animated: true, completion: nil)
+                            let successBanner = NotificationBanner(attributedTitle: NSAttributedString(string: "Flair Submitted"), attributedSubtitle: NSAttributedString(string: "Check back to see if your flair gets selected!"), style: .success)
+                            successBanner.show()
+                        }
+                    } else {
                         picker.dismiss(animated: true, completion: nil)
-                        let successBanner = NotificationBanner(attributedTitle: NSAttributedString(string: "Flair Submitted"), attributedSubtitle: NSAttributedString(string: "Check back to see if your flair gets selected!"), style: .success)
-                        successBanner.show()
                     }
                 }
                 
