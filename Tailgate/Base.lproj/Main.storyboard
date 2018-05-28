@@ -703,7 +703,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TailgateCell" id="upz-3z-kic" customClass="ImageCollectionViewCell" customModule="Tailgate" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TailgateCell" id="upz-3z-kic" customClass="TailgateImageCollectionViewCell" customModule="Tailgate" customModuleProvider="target">
                                         <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -713,16 +713,30 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dKd-0V-WCb">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpL-bM-SKe">
+                                                    <rect key="frame" x="178" y="10" width="12" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="IpL-bM-SKe" secondAttribute="height" multiplier="1:1" id="Auw-L1-BEC"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Exit2"/>
+                                                    <connections>
+                                                        <action selector="deleteButtonPressed:" destination="upz-3z-kic" eventType="touchUpInside" id="MeG-bf-5Pt"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="IpL-bM-SKe" firstAttribute="width" secondItem="dKd-0V-WCb" secondAttribute="width" multiplier="0.06" id="Gw9-qD-nOn"/>
+                                            <constraint firstItem="IpL-bM-SKe" firstAttribute="top" secondItem="upz-3z-kic" secondAttribute="topMargin" constant="2" id="Hg6-08-LR4"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="IpL-bM-SKe" secondAttribute="trailing" constant="2" id="WPJ-SK-HuH"/>
                                             <constraint firstAttribute="bottom" secondItem="dKd-0V-WCb" secondAttribute="bottom" id="mfY-J6-Sz7"/>
                                             <constraint firstItem="dKd-0V-WCb" firstAttribute="leading" secondItem="upz-3z-kic" secondAttribute="leading" id="qd1-le-Qmb"/>
                                             <constraint firstItem="dKd-0V-WCb" firstAttribute="top" secondItem="upz-3z-kic" secondAttribute="top" id="xsB-8y-ENY"/>
                                             <constraint firstAttribute="trailing" secondItem="dKd-0V-WCb" secondAttribute="trailing" id="zGb-fD-Tbg"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="imageView" destination="dKd-0V-WCb" id="mTx-6P-ShR"/>
+                                            <outlet property="deleteButton" destination="IpL-bM-SKe" id="WoX-mT-1M3"/>
+                                            <outlet property="imageView" destination="dKd-0V-WCb" id="pN7-VF-nyg"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -758,13 +772,13 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j73-xB-qHv" userLabel="ButtonsView">
-                                <rect key="frame" x="0.0" y="198" width="375" height="55"/>
+                                <rect key="frame" x="0.0" y="207.5" width="375" height="45.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TfI-rF-6Yh" userLabel="DrinksButtonView">
-                                        <rect key="frame" x="0.0" y="0.0" width="94" height="55"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="45.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZY-bt-Cme">
-                                                <rect key="frame" x="25" y="5.5" width="44" height="44"/>
+                                                <rect key="frame" x="29" y="5" width="36" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="DZY-bt-Cme" secondAttribute="height" multiplier="1:1" id="1zR-cX-WPv"/>
                                                 </constraints>
@@ -782,10 +796,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGy-wZ-kGG" userLabel="CheckInButtonView">
-                                        <rect key="frame" x="94" y="0.0" width="94" height="55"/>
+                                        <rect key="frame" x="94" y="0.0" width="94" height="45.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENO-jx-Lww">
-                                                <rect key="frame" x="25" y="5.5" width="44" height="44"/>
+                                                <rect key="frame" x="29" y="5" width="36" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ENO-jx-Lww" secondAttribute="height" multiplier="1:1" id="yXE-oT-rxn"/>
                                                 </constraints>
@@ -803,10 +817,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l02-0d-6sl" userLabel="CameraButtonView">
-                                        <rect key="frame" x="281.5" y="0.0" width="93.5" height="55"/>
+                                        <rect key="frame" x="281.5" y="0.0" width="93.5" height="45.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orG-uh-ZKa">
-                                                <rect key="frame" x="26" y="6.5" width="42" height="42"/>
+                                                <rect key="frame" x="29.5" y="6" width="35" height="34.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="orG-uh-ZKa" secondAttribute="height" multiplier="1:1" id="Hr3-oG-z2p"/>
                                                 </constraints>
@@ -824,10 +838,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTb-9E-l6I" userLabel="InvitesButtonView">
-                                        <rect key="frame" x="187.5" y="0.0" width="94" height="55"/>
+                                        <rect key="frame" x="187.5" y="0.0" width="94" height="45.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbL-xj-01T">
-                                                <rect key="frame" x="25" y="5.5" width="44" height="44"/>
+                                                <rect key="frame" x="29" y="5" width="36" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="WbL-xj-01T" secondAttribute="height" multiplier="1:1" id="WtQ-tZ-NIN"/>
                                                 </constraints>
@@ -918,7 +932,7 @@
                             <constraint firstItem="P1F-NY-A8h" firstAttribute="width" secondItem="xm0-zg-zBC" secondAttribute="width" id="CIM-mw-h47"/>
                             <constraint firstItem="brP-rp-Gba" firstAttribute="bottom" secondItem="7dd-t0-qLm" secondAttribute="bottom" constant="30" id="CwU-tI-2vE"/>
                             <constraint firstItem="ymQ-eA-OKh" firstAttribute="width" secondItem="xm0-zg-zBC" secondAttribute="width" id="EAs-pz-Zuz"/>
-                            <constraint firstItem="j73-xB-qHv" firstAttribute="height" secondItem="7dd-t0-qLm" secondAttribute="height" multiplier="0.0850077" id="GRH-wm-PSG"/>
+                            <constraint firstItem="j73-xB-qHv" firstAttribute="height" secondItem="7dd-t0-qLm" secondAttribute="height" multiplier="0.07" id="GRH-wm-PSG"/>
                             <constraint firstItem="rgm-GR-msR" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.052473" id="Gs4-B3-Y1Z"/>
                             <constraint firstItem="j73-xB-qHv" firstAttribute="width" secondItem="br0-jd-8t5" secondAttribute="width" id="Hez-og-GQL"/>
                             <constraint firstItem="ymQ-eA-OKh" firstAttribute="height" secondItem="xm0-zg-zBC" secondAttribute="height" id="JUV-hB-BJQ"/>
@@ -2312,7 +2326,7 @@
                                         <rect key="frame" x="15" y="0.0" width="345" height="757.5"/>
                                         <attributedString key="attributedText">
                                             <fragment>
-                                                <mutableString key="content">Terms of Service
+                                                <string key="content">Terms of Service
 
 Last updated: May 22, 2018
 
@@ -2338,7 +2352,7 @@ b) bullies, harasses, or intimidates.
 c) defames.
 d) spams or solicits our users.
 
-Violating these conditions may result in the suspension of your account upon review.</mutableString>
+Violating these conditions may result in the suspension of your account upon review.</string>
                                                 <attributes>
                                                     <color key="NSColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="13" name=".SFNSText"/>
@@ -2347,7 +2361,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
-                                        <mutableString key="userLabel">Terms of Service  Last updated: May 22, 2018  By using Tailgator or any of our other products or services that link to these Terms of Service, you agree to the Terms of Service. Of course, if you don’t agree with them, then don’t use Tailgator.   Who Can Use Tailgator By using this application you state that: a) You are not a person who is barred from receiving the Services under the laws of the United States or any other applicable jurisdiction—meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition. b) You will comply with these Terms and all applicable local, state, national, and international laws, rules, and regulations.   Content Much of the content on Tailgator is produced by users and other third parties. Whether that content is posted publicly or sent privately, the content is the sole responsibility of the person or organization that submitted it. Although Tailgator reserves the right to review or remove all content that appears on the application, we do not necessarily review all of it. So we cannot—and do not—take responsibility for any content that others provide through the application.  We want to make clear that we do not want the application put to bad uses. But because we do not review all content, we cannot guarantee that content on the application will always conform to our preferred guidelines.   Respecting Other People’s Rights Tailgator respects the rights of others. And so should you. You therefore may not use the application, or enable anyone else to use the application, in a manner that: a) violates or infringes someone else’s rights of publicity, privacy, copyright, trademark, or other intellectual-property right. b) bullies, harasses, or intimidates. c) defames. d) spams or solicits our users.  Violating these conditions may result in the suspension of your account upon review.</mutableString>
+                                        <string key="userLabel">Terms of Service  Last updated: May 22, 2018  By using Tailgator or any of our other products or services that link to these Terms of Service, you agree to the Terms of Service. Of course, if you don’t agree with them, then don’t use Tailgator.   Who Can Use Tailgator By using this application you state that: a) You are not a person who is barred from receiving the Services under the laws of the United States or any other applicable jurisdiction—meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition. b) You will comply with these Terms and all applicable local, state, national, and international laws, rules, and regulations.   Content Much of the content on Tailgator is produced by users and other third parties. Whether that content is posted publicly or sent privately, the content is the sole responsibility of the person or organization that submitted it. Although Tailgator reserves the right to review or remove all content that appears on the application, we do not necessarily review all of it. So we cannot—and do not—take responsibility for any content that others provide through the application.  We want to make clear that we do not want the application put to bad uses. But because we do not review all content, we cannot guarantee that content on the application will always conform to our preferred guidelines.   Respecting Other People’s Rights Tailgator respects the rights of others. And so should you. You therefore may not use the application, or enable anyone else to use the application, in a manner that: a) violates or infringes someone else’s rights of publicity, privacy, copyright, trademark, or other intellectual-property right. b) bullies, harasses, or intimidates. c) defames. d) spams or solicits our users.  Violating these conditions may result in the suspension of your account upon review.</string>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -2833,14 +2847,6 @@ Violating these conditions may result in the suspension of your account upon rev
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FlairExample" translatesAutoresizingMaskIntoConstraints="NO" id="91x-je-Rwf">
                                 <rect key="frame" x="0.0" y="64" width="375" height="428"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="cnM-6J-lRJ">
-                                <rect key="frame" x="37" y="148" width="300" height="180"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">Flair are the images that represent your schools' tailgates on the map. Add new flair that other users can select when creating their tailgate.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -2852,20 +2858,22 @@ Violating these conditions may result in the suspension of your account upon rev
                             <constraint firstItem="gdI-B2-4DM" firstAttribute="width" secondItem="G30-dd-1CZ" secondAttribute="width" id="PDt-wf-qoV"/>
                             <constraint firstItem="Fgn-zv-RJh" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="R7d-vB-pTY"/>
                             <constraint firstItem="EEt-EY-oan" firstAttribute="width" secondItem="G30-dd-1CZ" secondAttribute="width" id="TND-mi-mQR"/>
-                            <constraint firstItem="cnM-6J-lRJ" firstAttribute="width" secondItem="t7Y-8a-mV4" secondAttribute="width" multiplier="0.8" id="XHg-ei-XFk"/>
                             <constraint firstItem="Fgn-zv-RJh" firstAttribute="bottom" secondItem="t7Y-8a-mV4" secondAttribute="bottom" id="Zzj-V2-M1M"/>
-                            <constraint firstItem="cnM-6J-lRJ" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="c1d-PM-Qd5"/>
                             <constraint firstItem="gdI-B2-4DM" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="eEC-wf-g6p"/>
-                            <constraint firstItem="cnM-6J-lRJ" firstAttribute="height" secondItem="t7Y-8a-mV4" secondAttribute="height" multiplier="0.298507" id="eLz-FH-sBb"/>
                             <constraint firstItem="91x-je-Rwf" firstAttribute="width" secondItem="t7Y-8a-mV4" secondAttribute="width" id="fh7-cA-DFc"/>
                             <constraint firstItem="EEt-EY-oan" firstAttribute="centerX" secondItem="t7Y-8a-mV4" secondAttribute="centerX" id="iDT-8b-1sT"/>
-                            <constraint firstItem="t7Y-8a-mV4" firstAttribute="top" secondItem="cnM-6J-lRJ" secondAttribute="bottom" constant="-264" id="o5M-nv-otx"/>
                             <constraint firstItem="Fgn-zv-RJh" firstAttribute="height" secondItem="t7Y-8a-mV4" secondAttribute="height" multiplier="0.0746269" id="ujH-SM-If3"/>
                             <constraint firstItem="91x-je-Rwf" firstAttribute="top" secondItem="t7Y-8a-mV4" secondAttribute="top" id="vqT-W9-cuu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t7Y-8a-mV4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="FLAIR" id="lAF-OZ-M78"/>
+                    <navigationItem key="navigationItem" title="FLAIR" id="lAF-OZ-M78">
+                        <barButtonItem key="rightBarButtonItem" title="?" id="Cxs-sc-krH">
+                            <connections>
+                                <action selector="questionButtonPressed:" destination="WwX-ha-j3m" id="bG6-l2-g0X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="flairExampleImageView" destination="91x-je-Rwf" id="ija-R1-V3k"/>
                     </connections>
@@ -2991,20 +2999,13 @@ Violating these conditions may result in the suspension of your account upon rev
                                     <segue destination="cPd-Wb-eYo" kind="show" id="Ap7-k3-adz"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RivalFlairExample" translatesAutoresizingMaskIntoConstraints="NO" id="EGB-NP-Rnt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RivalFlairExample" translatesAutoresizingMaskIntoConstraints="NO" id="EGB-NP-Rnt">
                                 <rect key="frame" x="0.0" y="64" width="375" height="493"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uN-Ik-Wr9">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every few weeks we'll force your rivals to use the flair that you've submitted. Make it hurt." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="4iK-Hy-PHk">
-                                <rect key="frame" x="37" y="160" width="300" height="132"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -3013,20 +3014,22 @@ Violating these conditions may result in the suspension of your account upon rev
                             <constraint firstItem="cAz-ht-37J" firstAttribute="top" secondItem="EGB-NP-Rnt" secondAttribute="bottom" id="Eey-ir-p3o"/>
                             <constraint firstItem="cAz-ht-37J" firstAttribute="width" secondItem="Z3U-Ct-ypc" secondAttribute="width" id="F3A-r6-PH1"/>
                             <constraint firstItem="EGB-NP-Rnt" firstAttribute="centerX" secondItem="Mgw-h2-0mw" secondAttribute="centerX" id="GJI-B5-fR8"/>
-                            <constraint firstItem="4iK-Hy-PHk" firstAttribute="height" secondItem="Mgw-h2-0mw" secondAttribute="height" multiplier="0.218756" id="Gee-rA-Frf"/>
                             <constraint firstItem="1uN-Ik-Wr9" firstAttribute="height" secondItem="Mgw-h2-0mw" secondAttribute="height" multiplier="0.0746269" id="Kym-wz-RAl"/>
-                            <constraint firstItem="4iK-Hy-PHk" firstAttribute="centerX" secondItem="Mgw-h2-0mw" secondAttribute="centerX" id="O2H-cL-ja9"/>
                             <constraint firstItem="EGB-NP-Rnt" firstAttribute="top" secondItem="Mgw-h2-0mw" secondAttribute="top" id="Yew-e7-Iy8"/>
                             <constraint firstItem="EGB-NP-Rnt" firstAttribute="width" secondItem="Mgw-h2-0mw" secondAttribute="width" id="eRu-hb-tFD"/>
                             <constraint firstItem="1uN-Ik-Wr9" firstAttribute="bottom" secondItem="Mgw-h2-0mw" secondAttribute="bottom" id="fJM-M1-059"/>
-                            <constraint firstItem="4iK-Hy-PHk" firstAttribute="width" secondItem="Mgw-h2-0mw" secondAttribute="width" multiplier="0.8" id="jLE-NH-yNb"/>
-                            <constraint firstItem="Mgw-h2-0mw" firstAttribute="top" secondItem="4iK-Hy-PHk" secondAttribute="bottom" constant="-228" id="ueH-uz-AMs"/>
                             <constraint firstItem="cAz-ht-37J" firstAttribute="centerX" secondItem="Mgw-h2-0mw" secondAttribute="centerX" id="v1H-61-Pih"/>
                             <constraint firstItem="1uN-Ik-Wr9" firstAttribute="top" secondItem="cAz-ht-37J" secondAttribute="bottom" id="vXb-W6-mvM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mgw-h2-0mw"/>
                     </view>
-                    <navigationItem key="navigationItem" title="RIVAL FLAIR" id="sEy-sz-FOm"/>
+                    <navigationItem key="navigationItem" title="RIVAL FLAIR" id="sEy-sz-FOm">
+                        <barButtonItem key="rightBarButtonItem" title="?" id="Q0M-Sf-yta">
+                            <connections>
+                                <action selector="questionButtonPressed:" destination="wIo-xg-iJj" id="nSL-FE-XPh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xiD-oU-0SH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3305,7 +3308,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                         <rect key="frame" x="15" y="0.0" width="345" height="757.5"/>
                                         <attributedString key="attributedText">
                                             <fragment>
-                                                <mutableString key="content">Terms of Service
+                                                <string key="content">Terms of Service
 
 Last updated: May 22, 2018
 
@@ -3331,7 +3334,7 @@ b) bullies, harasses, or intimidates.
 c) defames.
 d) spams or solicits our users.
 
-Violating these conditions may result in the suspension of your account upon review.</mutableString>
+Violating these conditions may result in the suspension of your account upon review.</string>
                                                 <attributes>
                                                     <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="13" name=".SFNSText"/>

@@ -28,6 +28,16 @@ class FlairViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
+    
+    @IBAction func questionButtonPressed(_ sender: Any) {
+        let alert = createAlert(title: "What's flair?", message: "Flair are the images that represent your schools' tailgates on the map. Add new flair that other users can select when creating their tailgate.")
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
 
     @IBAction func addFlairButton(_ sender: Any) {
         getCurrentUser { (currentUser) in

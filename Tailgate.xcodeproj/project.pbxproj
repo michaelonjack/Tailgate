@@ -55,6 +55,7 @@
 		B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */; };
 		B1BC52CD1FE09A0400BCBAE8 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CC1FE09A0400BCBAE8 /* ImageCollectionViewCell.swift */; };
 		B1BC52CF1FE0C12700BCBAE8 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */; };
+		B1C6C3EA20BC7A5D005DEED8 /* TailgateImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C6C3E920BC7A5D005DEED8 /* TailgateImageCollectionViewCell.swift */; };
 		B1CAD9A2204B5F7400934F57 /* SettingsNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CAD9A1204B5F7400934F57 /* SettingsNameViewController.swift */; };
 		B1CAD9A4204B6CDE00934F57 /* SettingsEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CAD9A3204B6CDE00934F57 /* SettingsEmailViewController.swift */; };
 		B1DD1CD22039ED6600291EAE /* CreateTailgateFlairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DD1CD12039ED6600291EAE /* CreateTailgateFlairViewController.swift */; };
@@ -136,6 +137,7 @@
 		B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateViewController.swift; sourceTree = "<group>"; };
 		B1BC52CC1FE09A0400BCBAE8 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		B1C6C3E920BC7A5D005DEED8 /* TailgateImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1CAD9A1204B5F7400934F57 /* SettingsNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNameViewController.swift; sourceTree = "<group>"; };
 		B1CAD9A3204B6CDE00934F57 /* SettingsEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEmailViewController.swift; sourceTree = "<group>"; };
 		B1DD1CD12039ED6600291EAE /* CreateTailgateFlairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateFlairViewController.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 		B1DD1CD9203E505F00291EAE /* CollectionCells */ = {
 			isa = PBXGroup;
 			children = (
+				B1C6C3E920BC7A5D005DEED8 /* TailgateImageCollectionViewCell.swift */,
 				B1485628206752C1006A5456 /* FeedCollectionViewCell.swift */,
 				B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */,
 				B1DD1CDA203E591400291EAE /* UsersCollectionViewCell.swift */,
@@ -538,6 +541,7 @@
 				B1E83BE41FDD857A00185E17 /* TopDownSegue.swift in Sources */,
 				B1DD1CD42039EF7700291EAE /* HighlightableImageCollectionViewCell.swift in Sources */,
 				B13B814A1FEA0446008F3A38 /* UserTableViewCell.swift in Sources */,
+				B1C6C3EA20BC7A5D005DEED8 /* TailgateImageCollectionViewCell.swift in Sources */,
 				B1BC52CF1FE0C12700BCBAE8 /* DatabaseHelper.swift in Sources */,
 				B1E22732208B66BB00672F53 /* FlairViewController.swift in Sources */,
 				B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */,

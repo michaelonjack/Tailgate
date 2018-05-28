@@ -12,13 +12,18 @@ class RivalFlairViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // "images/" + schoolName.replacingOccurrences(of: " ", with: "") + "/submittedFlair/rival/" + imageName + ".jpg"
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
+    
+    @IBAction func questionButtonPressed(_ sender: Any) {
+        let alert = createAlert(title: "What's rival flair?", message: "Every few weeks we'll force your rivals to use the flair that you've submitted. Make it hurt.")
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }

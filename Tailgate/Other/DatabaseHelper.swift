@@ -49,6 +49,20 @@ func uploadImageToStorage(image:UIImage, uploadPath:String, completion : @escapi
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
+// removeImageFromStorage
+//
+// Removes an image saved in firebase storage
+//
+func removeImageFromStorage(path:String, completion : @escaping (_ error: Error?) -> Void) {
+    let storageReference = Storage.storage().reference(withPath: path)
+    storageReference.delete { (error) in
+        completion(error)
+    }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
 // moveNode
 //
 //
@@ -70,26 +84,51 @@ func moveNode(fromPath:String, toPath:String) {
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
+// deleteTailgateImage
+//
+// Deletes an image from a tailgate
+//
+func deleteTailgateImage(tailgate: Tailgate, imageId: String) {
+    let tailgateOwnerId:String = tailgate.ownerId
+    let tailgateId:String = tailgate.id
+    let storagePath:String = "images/users/" + tailgateOwnerId + "/tailgate/" + tailgateId + "/" + imageId
+    
+    // Remove image from storage
+    removeImageFromStorage(path: storagePath) { (error) in
+        // nothing for now
+    }
+    
+    // Remove reference to the image in the database
+    let tailgateImageReference = Database.database().reference(withPath: "tailgates/" + tailgateId + "/imageUrls/" + imageId)
+    tailgateImageReference.removeValue()
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
 // getTailgateImageUrls
 //
 // Returns the download urls of all images associated with the parameter tailgate
 //
-func getTailgateImageUrls(tailgate:Tailgate, completion: @escaping (_ urls: [String]) -> Void) {
+func getTailgateImageUrls(tailgate:Tailgate, completion: @escaping (_ urls: [String], _ ids: [String]) -> Void) {
+    var imgIds:[String] = []
     var imgUrls:[String] = []
     let imageUrlsReference = Database.database().reference(withPath: "tailgates/" + tailgate.id + "/imageUrls")
     imageUrlsReference.keepSynced(true)
     
     imageUrlsReference.observeSingleEvent(of: .value, with: { (snapshot) in
         if let urlDict = snapshot.value as? [String:AnyObject] {
-            for (_, url) in urlDict {
+            for (id, url) in urlDict {
                 let imgUrl = url as? String ?? ""
                 if imgUrl != "" {
+                    imgIds.append(id)
                     imgUrls.append(imgUrl)
                 }
             }
         }
         
-        completion(imgUrls)
+        completion(imgUrls, imgIds)
     })
 }
 

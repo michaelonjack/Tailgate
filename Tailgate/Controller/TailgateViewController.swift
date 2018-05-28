@@ -42,6 +42,7 @@ class TailgateViewController: UIViewController {
     var locationBanner:StatusBarNotificationBanner = StatusBarNotificationBanner(attributedTitle: NSAttributedString(string: "Updating location..."), style: .warning)
     var tailgate: Tailgate!
     var hasFullAccess: Bool! = true
+    var imageIds: [String] = []
     var imageUrls: [String] = []
     var selectedImageIndex: IndexPath? {
         didSet {
@@ -88,7 +89,8 @@ class TailgateViewController: UIViewController {
             }
         })
         
-        getTailgateImageUrls(tailgate: self.tailgate!) { imgUrls in
+        getTailgateImageUrls(tailgate: self.tailgate!) { (imgUrls, imgIds) in
+            self.imageIds = imgIds
             self.imageUrls = imgUrls
             self.imageCollectionView.reloadData()
         }
@@ -227,6 +229,7 @@ class TailgateViewController: UIViewController {
                             imageUrlsReference.updateChildValues([timestamp: downloadUrl!])
                             
                             self.imageUrls.append(imageUrl)
+                            self.imageIds.append(timestamp)
                             self.imageCollectionView.reloadData()
                         }
                     })
@@ -408,10 +411,19 @@ extension TailgateViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // The cell coming back is now a FlickrPhotoCell
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
-                                                      for: indexPath) as! ImageCollectionViewCell
+                                                      for: indexPath) as! TailgateImageCollectionViewCell
+        
+        cell.delegate = self
         cell.imageView.sd_setImage(with: URL(string: self.imageUrls[indexPath.row]), completed: nil)
+        
+        // Show the delete button when the owner of the tailgate selects the image
+        if let selectedIndex = self.selectedImageIndex, selectedIndex == indexPath, self.tailgate.ownerId == getCurrentUserId()  {
+            cell.deleteButton.isHidden = false
+        } else {
+            cell.deleteButton.isHidden = true
+        }
         
         return cell
     }
@@ -461,3 +473,41 @@ extension TailgateViewController : UICollectionViewDelegateFlowLayout {
         return 1.0;
     }
 }
+
+
+
+
+
+extension TailgateViewController : TailgateImageCellDelegate {
+    func delete(cell: TailgateImageCollectionViewCell) {
+        if let indexPath = self.imageCollectionView.indexPath(for: cell) {
+            let deleteConfirmationAlert = UIAlertController(title: nil, message: "Are you sure you want to delete this tailgate photo?", preferredStyle: .alert)
+            
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+                let imageId: String = self.imageIds[indexPath.row]
+                
+                // From the image from storage
+                deleteTailgateImage(tailgate: self.tailgate, imageId: imageId)
+                
+                // Remove the entry from the collection view data source
+                self.imageIds.remove(at: indexPath.row)
+                self.imageUrls.remove(at: indexPath.row)
+                
+                // Delete the entry from the collection view itself
+                self.imageCollectionView.deleteItems(at: [indexPath])
+            }
+            deleteConfirmationAlert.addAction(deleteAction)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                // canceled
+            }
+            deleteConfirmationAlert.addAction(cancelAction)
+            
+            self.present(deleteConfirmationAlert, animated: true, completion: nil)
+        }
+    }
+}
+
+
+
