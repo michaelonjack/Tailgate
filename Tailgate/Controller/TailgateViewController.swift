@@ -203,8 +203,7 @@ class TailgateViewController: UIViewController {
     
     
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
-        // Only allow the current user to add images to the tailgate if they have
-        // full access for they've been invited
+        // Only allow the current user to add images to the tailgate if they have full access for they've been invited
         if hasFullAccess == true || self.tailgate.isUserInvited(userId: getCurrentUserId()) {
             var ypConfig = YPImagePickerConfiguration()
             ypConfig.onlySquareImagesFromCamera = true

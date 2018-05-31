@@ -782,6 +782,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="DZY-bt-Cme" secondAttribute="height" multiplier="1:1" id="1zR-cX-WPv"/>
                                                 </constraints>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button" image="Beverage"/>
                                                 <connections>
                                                     <segue destination="mBe-rg-jDM" kind="show" identifier="TailgateToSupplies" id="I36-K5-Q4v"/>
@@ -803,6 +804,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ENO-jx-Lww" secondAttribute="height" multiplier="1:1" id="yXE-oT-rxn"/>
                                                 </constraints>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button" image="Location"/>
                                                 <connections>
                                                     <action selector="locationButtonPressed:" destination="O2l-0b-cuo" eventType="touchUpInside" id="YSB-Mb-4Gh"/>
@@ -824,6 +826,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="orG-uh-ZKa" secondAttribute="height" multiplier="1:1" id="Hr3-oG-z2p"/>
                                                 </constraints>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button" image="Camera"/>
                                                 <connections>
                                                     <action selector="cameraButtonPressed:" destination="O2l-0b-cuo" eventType="touchUpInside" id="era-9Y-iq4"/>
@@ -845,6 +848,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="WbL-xj-01T" secondAttribute="height" multiplier="1:1" id="WtQ-tZ-NIN"/>
                                                 </constraints>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button" image="Friends2"/>
                                                 <connections>
                                                     <segue destination="jYz-Re-I4F" kind="show" identifier="TailgateToInvite" id="sAv-Ih-VXR"/>
