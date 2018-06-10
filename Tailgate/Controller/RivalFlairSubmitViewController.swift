@@ -57,9 +57,9 @@ class RivalFlairSubmitViewController: UIViewController {
     @IBAction func submitRivalFlairButtonPressed(_ sender: Any) {
         if let _ = schoolTable.indexPathForSelectedRow {
             var ypConfig = YPImagePickerConfiguration()
-            ypConfig.onlySquareFromLibrary = true
+            ypConfig.library.onlySquare = true
             ypConfig.showsFilters = true
-            ypConfig.libraryMediaType = .photo
+            ypConfig.library.mediaType = .photo
             ypConfig.screens = [.library]
             
             let picker = YPImagePicker(configuration: ypConfig)

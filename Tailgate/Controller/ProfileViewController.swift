@@ -97,9 +97,9 @@ class ProfileViewController: UIViewController {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             var ypConfig = YPImagePickerConfiguration()
             ypConfig.onlySquareImagesFromCamera = true
-            ypConfig.onlySquareFromLibrary = true
+            ypConfig.library.onlySquare = true
             ypConfig.showsFilters = true
-            ypConfig.libraryMediaType = .photo
+            ypConfig.library.mediaType = .photo
             ypConfig.usesFrontCamera = false
             ypConfig.shouldSaveNewPicturesToAlbum = false
             

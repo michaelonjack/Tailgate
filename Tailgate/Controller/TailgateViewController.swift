@@ -207,9 +207,9 @@ class TailgateViewController: UIViewController {
         if hasFullAccess == true || self.tailgate.isUserInvited(userId: getCurrentUserId()) {
             var ypConfig = YPImagePickerConfiguration()
             ypConfig.onlySquareImagesFromCamera = true
-            ypConfig.onlySquareFromLibrary = true
+            ypConfig.library.onlySquare = true
             ypConfig.showsFilters = true
-            ypConfig.libraryMediaType = .photo
+            ypConfig.library.mediaType = .photo
             ypConfig.usesFrontCamera = false
             ypConfig.shouldSaveNewPicturesToAlbum = false
         

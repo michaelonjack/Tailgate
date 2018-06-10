@@ -43,9 +43,9 @@ class FlairViewController: UIViewController {
         getCurrentUser { (currentUser) in
             if let schoolName = currentUser.schoolName {
                 var ypConfig = YPImagePickerConfiguration()
-                ypConfig.onlySquareFromLibrary = true
+                ypConfig.library.onlySquare = true
                 ypConfig.showsFilters = true
-                ypConfig.libraryMediaType = .photo
+                ypConfig.library.mediaType = .photo
                 ypConfig.screens = [.library]
                 
                 let picker = YPImagePicker(configuration: ypConfig)

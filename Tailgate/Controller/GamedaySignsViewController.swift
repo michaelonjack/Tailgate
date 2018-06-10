@@ -68,9 +68,9 @@ class GamedaySignsViewController: UIViewController {
     @IBAction func submitSignPressed(_ sender: Any) {
         var ypConfig = YPImagePickerConfiguration()
         ypConfig.onlySquareImagesFromCamera = true
-        ypConfig.onlySquareFromLibrary = true
+        ypConfig.library.onlySquare = true
         ypConfig.showsFilters = true
-        ypConfig.libraryMediaType = .photo
+        ypConfig.library.mediaType = .photo
         ypConfig.usesFrontCamera = false
         ypConfig.shouldSaveNewPicturesToAlbum = false
         

@@ -2,8 +2,7 @@
 
 ## YPImagePicker
 
-YPImagePicker is an instagram-like photo/video picker for iOS written in pure Swift.
-It comes with adjustable square crop and filters.
+YPImagePicker is an instagram-like photo/video picker for iOS written in pure Swift. It is feature-rich and highly customizable to match your App's requirements.
 
 [![Version](https://img.shields.io/cocoapods/v/YPImagePicker.svg?style=flat)](http://cocoapods.org/pods/YPImagePicker)
 [![Platform](https://img.shields.io/cocoapods/p/YPImagePicker.svg?style=flat)](http://cocoapods.org/pods/YPImagePicker)
@@ -14,34 +13,23 @@ It comes with adjustable square crop and filters.
 Give it a quick try :
 `pod repo update` then `pod try YPImagePicker`
 
-🌅 Library - 📷 Photo - 🎥 Video - ✂️ Crop - ⚡️ Flash - 🖼 Filters
-
 <img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/library.PNG" width="200px" > <img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/photo.PNG" width="200px" > <img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/video.PNG" width="200px" > <img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/filters.PNG" width="200px" >
 
 Those features are available just with a few lines of code!
 
-## Improvements
-YPImagePicker was built from the great Fusuma library.
+## Notable Features
 
-Here are the improvements we added :
-
-- Albums
-- Filters
-- Videos in the library
-- Both Square and non-square images
-- Permission managenent
-- Pan between tabs which feels smoother
-- Improve Overall Code Quality
-- Simplify API
-- Replaces icons with lighter Text
-- Preselect Front camera (e.g for avatars)
-- Replaces Delegate based with callbacks based api
-- Uses Native Navigation bar over custom View (gotta be a good UIKit citizen)
-- Faster library load
-- Hidden status bar for a more immersive XP
-- Flash Auto mode
-- Video Torch Mode
-- iPhone X support
+🌅 Library  
+📷 Photo  
+🎥 Video  
+✂️ Crop  
+⚡️ Flash  
+🖼 Filters  
+📁 Albums  
+🔢 Multiple Selection  
+📏 Video Trimming & Cover selection  
+📐 Output image size  
+And many more...
 
 ## Installation
 
@@ -93,7 +81,7 @@ var config = YPImagePickerConfiguration()
 config.libraryMediaType = .photoAndVideo
 config.onlySquareFromLibrary = false
 config.onlySquareImagesFromCamera = true
-config.libraryTargetImageSize = .original
+config.targetImageSize = .original
 config.usesFrontCamera = true
 config.showsFilters = true
 config.filters = [YPFilterDescriptor(name: "Normal", filterName: ""),
@@ -134,12 +122,13 @@ The picker only has one callback `didFinishPicking` enabling you to handle all t
 ### Single Photo
 ```swift
 let picker = YPImagePicker()
-picker.didFinishPicking { items, _ in
+picker.didFinishPicking { [unowned picker] items, _ in
     if let photo = items.singlePhoto {
         print(photo.fromCamera) // Image source (camera or library)
         print(photo.image) // Final image selected by the user
         print(photo.originalImage) // original image selected by the user, unfiltered
         print(photo.modifiedImage) // Transformed image, can be nil
+        print(photo.exifMeta) // Print exif meta data of original image.
     }
     picker.dismiss(animated: true, completion: nil)
 }
@@ -154,7 +143,7 @@ config.screens = [.library, .video]
 config.libraryMediaType = .video
 
 let picker = YPImagePicker(configuration: config)
-picker.didFinishPicking { items, _ in
+picker.didFinishPicking { [unowned picker] items, _ in
     if let video = items.singleVideo {
         print(video.fromCamera)
         print(video.thumbnail)
@@ -176,7 +165,7 @@ let picker = YPImagePicker(configuration: config)
 ```
 Then you can handle multiple selection in the same callback you know and love :
 ```swift
-picker.didFinishPicking { items, cancelled in
+picker.didFinishPicking { [unowned picker] items, cancelled in
     for item in items {
         switch item {
         case .photo(let photo):
@@ -191,7 +180,7 @@ picker.didFinishPicking { items, cancelled in
 
 ### Handle Cancel event (if needed)
 ```swift
-picker.didFinishPicking { items, cancelled in
+picker.didFinishPicking { [unowned picker] items, cancelled in
     if cancelled {
         print("Picker was canceled")
     }
@@ -201,17 +190,7 @@ picker.didFinishPicking { items, cancelled in
 That's it !
 
 ## Languages
-Supported languages out of the box:
-- English
-- Spanish
-- French
-- Russian
-- Dutch
-- Brazilian
-- Turkish
-- Arabic
-- German
-- Italian
+🇺🇸 English, 🇪🇸 Spanish, 🇫🇷 French 🇷🇺 Russian, 🇳🇱 Dutch, 🇧🇷 Brazilian, 🇹🇷 Turkish,  Arabic, 🇩🇪 German, 🇮🇹 Italian, 🇯🇵 Japanese
 
 If your language is not supported, you can still customize the wordings via the `configuration.wordings` api:
 
@@ -225,7 +204,7 @@ Better yet you can submit an issue or pull request with your `Localizable.string
 ## Original Project & Author
 
 This project has been first inspired by [Fusuma](https://github.com/ytakzk/Fusuma)
-Considering the big code and design changes, this moved form a fork to a standalone separate repo, also for discoverability purposes.
+Considering the big code, design changes and all the additional features added along the way, this moved form a fork to a standalone separate repo, also for discoverability purposes.
 Original Fusuma author is [ytakz](http://ytakzk.me)
 
 ## Core Team
@@ -245,6 +224,10 @@ Original Fusuma author is [ytakz](http://ytakzk.me)
 [Emil](https://github.com/heitara),
 [Rafael Damasceno](https://github.com/DamascenoRafael),
 [cenkingunlugu](https://github.com/https://github.com/cenkingunlugu)
+[heitara](https://github.com/heitara)
+[portellaa](https://github.com/portellaa)
+[Romixery](https://github.com/romixery)
+[shotat](https://github.com/shotat)
 
 ## They helped us one way or another 👏
 [userdar](https://github.com/userdar),
@@ -288,6 +271,10 @@ Original Fusuma author is [ytakz](http://ytakzk.me)
 [devender54321](https://github.com/devender54321),
 [Didar1994](https://github.com/Didar1994),
 [relaxsus](https://github.com/relaxsus)
+[restoflash](https://github.com/restoflash)
+
+## Dependency
+YPImagePicker relies on [prynt/PryntTrimmerView](https://github.com/prynt/PryntTrimmerView) for provide video trimming and cover features. Big thanks to @HHK1 for making this open source :)
 
 ## License
 YPImagePicker is released under the MIT license.  
@@ -296,4 +283,4 @@ See [LICENSE](LICENSE) for details.
 ## Swift Version
 
 - Swift 3 -> version [**1.2.1**](https://github.com/Yummypets/YPImagePicker/releases/tag/1.2.1)
-- Swift 4 -> version [**2.7.3**](https://github.com/Yummypets/YPImagePicker/releases/tag/2.8.1)
+- Swift 4.1 -> version [**3.1.0**](https://github.com/Yummypets/YPImagePicker/releases/tag/3.1.0)
