@@ -280,13 +280,15 @@ class TailgateViewController: UIViewController {
         }
         optionsController.addAction(cancelAction)
         
+        // User has requested to block the tailgate owner
         let blockUserAction = UIAlertAction(title: "Block User", style: .destructive) { (action) in
             
         }
         optionsController.addAction(blockUserAction)
         
+        // User has requested to report content in a tailgate
         let reportContentAction = UIAlertAction(title: "Report Content", style: .destructive) { (action) in
-            
+            self.performSegue(withIdentifier: "TailgateToReport", sender: nil)
         }
         optionsController.addAction(reportContentAction)
         
@@ -305,6 +307,11 @@ class TailgateViewController: UIViewController {
         else if segue.identifier! == "TailgateToSupplies" {
             let suppliesVC: SuppliesViewController = segue.destination as! SuppliesViewController
             suppliesVC.tailgate = self.tailgate
+        }
+            
+        else if segue.identifier! == "TailgateToReport" {
+            let reportVC: ReportContentViewController = segue.destination as! ReportContentViewController
+            reportVC.tailgate = self.tailgate
         }
     }
     

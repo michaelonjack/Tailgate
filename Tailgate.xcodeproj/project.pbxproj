@@ -56,6 +56,8 @@
 		B1BC52CD1FE09A0400BCBAE8 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CC1FE09A0400BCBAE8 /* ImageCollectionViewCell.swift */; };
 		B1BC52CF1FE0C12700BCBAE8 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */; };
 		B1C6C3EA20BC7A5D005DEED8 /* TailgateImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C6C3E920BC7A5D005DEED8 /* TailgateImageCollectionViewCell.swift */; };
+		B1C6C3EC20CDF9D0005DEED8 /* ReportContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C6C3EB20CDF9D0005DEED8 /* ReportContentViewController.swift */; };
+		B1C6C3EE20CE014D005DEED8 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C6C3ED20CE014D005DEED8 /* Report.swift */; };
 		B1CAD9A2204B5F7400934F57 /* SettingsNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CAD9A1204B5F7400934F57 /* SettingsNameViewController.swift */; };
 		B1CAD9A4204B6CDE00934F57 /* SettingsEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CAD9A3204B6CDE00934F57 /* SettingsEmailViewController.swift */; };
 		B1DD1CD22039ED6600291EAE /* CreateTailgateFlairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DD1CD12039ED6600291EAE /* CreateTailgateFlairViewController.swift */; };
@@ -138,6 +140,8 @@
 		B1BC52CC1FE09A0400BCBAE8 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		B1C6C3E920BC7A5D005DEED8 /* TailgateImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		B1C6C3EB20CDF9D0005DEED8 /* ReportContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportContentViewController.swift; sourceTree = "<group>"; };
+		B1C6C3ED20CE014D005DEED8 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		B1CAD9A1204B5F7400934F57 /* SettingsNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNameViewController.swift; sourceTree = "<group>"; };
 		B1CAD9A3204B6CDE00934F57 /* SettingsEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEmailViewController.swift; sourceTree = "<group>"; };
 		B1DD1CD12039ED6600291EAE /* CreateTailgateFlairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateFlairViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				B1BBF2E21FEEBC98007B1ACF /* Drink.swift */,
 				B1E2273920A66D5B00672F53 /* Supply.swift */,
 				B1BBF2E41FEEBCA4007B1ACF /* Food.swift */,
+				B1C6C3ED20CE014D005DEED8 /* Report.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				B1A18FD52054D61000D9C12A /* GamedayScheduleViewController.swift */,
 				B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */,
 				B1DD1CD7203E409B00291EAE /* FriendsViewController.swift */,
+				B1C6C3EB20CDF9D0005DEED8 /* ReportContentViewController.swift */,
 				B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */,
 				B1E2273D20A694F300672F53 /* SuppliesViewController.swift */,
 				B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */,
@@ -538,6 +544,7 @@
 				B1E22736209E0C1B00672F53 /* KeychainPasswordItem.swift in Sources */,
 				B10E9EA11FDCE4D600DB4751 /* TailgateAnnotationARView.swift in Sources */,
 				B1A18FD42054CD6600D9C12A /* ScheduleCollectionViewCell.swift in Sources */,
+				B1C6C3EE20CE014D005DEED8 /* Report.swift in Sources */,
 				B1E83BE41FDD857A00185E17 /* TopDownSegue.swift in Sources */,
 				B1DD1CD42039EF7700291EAE /* HighlightableImageCollectionViewCell.swift in Sources */,
 				B13B814A1FEA0446008F3A38 /* UserTableViewCell.swift in Sources */,
@@ -575,6 +582,7 @@
 				B1E227302084024A00672F53 /* SettingsSchoolViewController.swift in Sources */,
 				B1E83BE01FDD795000185E17 /* SignUpPasswordViewController.swift in Sources */,
 				B1E83BD71FDCFBE200185E17 /* ProfileViewController.swift in Sources */,
+				B1C6C3EC20CDF9D0005DEED8 /* ReportContentViewController.swift in Sources */,
 				B1BBF2E31FEEBC98007B1ACF /* Drink.swift in Sources */,
 				B1625EF820AD0DDE00CCFFBA /* RivalFlairSubmitViewController.swift in Sources */,
 				B10E9E6B1FDCB6A200DB4751 /* AppDelegate.swift in Sources */,
