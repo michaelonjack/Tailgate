@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var friendsButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var friendsButtonTrailingConstraint: NSLayoutConstraint!
     
-    
+    let refreshControl = UIRefreshControl()
     let currentUserRef = Database.database().reference(withPath: "users/" + getCurrentUserId())
     
     var feedItems:[Tailgate] = []
@@ -40,6 +40,7 @@ class ProfileViewController: UIViewController {
         vegaLayout.itemSize = CGSize(width: self.invitesCollectionView.frame.width - 16, height: 90)
         vegaLayout.sectionInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         vegaLayout.springHardness = 60
+        self.addRefreshControl()
         
         // Get all public tailgates and tailgates the current user is invited to
         getTailgatesToDisplay { (tailgates) in
@@ -153,6 +154,29 @@ extension ProfileViewController: UICollectionViewDelegate {
         tailgateViewController.tailgate = selectedFeedItem
         tailgateViewController.hasFullAccess = false
         self.present(tailgateViewController, animated: true, completion: nil)
+    }
+    
+    func addRefreshControl() {
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            self.invitesCollectionView.refreshControl = self.refreshControl
+        } else {
+            self.invitesCollectionView.addSubview(self.refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshFeedCollectionView(_:)), for: .valueChanged)
+    }
+    
+    @objc private func refreshFeedCollectionView(_ sender: Any) {
+        // Get all public tailgates and tailgates the current user is invited to
+        getTailgatesToDisplay { (tailgates) in
+            self.feedItems = tailgates
+            
+            DispatchQueue.main.async {
+                self.invitesCollectionView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
     }
 }
 
