@@ -7,13 +7,15 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 final class Configuration {
     private static let sharedConfiguration:Configuration = Configuration()
     
     var week:String = "week1"
-    var schoolCache: [String:School] = [:]
+    var currentUser:User!
+    var schoolCache:[String:School] = [:]
     
     private init() {
         // Set the current week
@@ -29,6 +31,17 @@ final class Configuration {
         
         refreshSchoolCache { (schoolDict) in
             // Nothing needed, cache already refreshed
+        }
+        
+        Auth.auth().addStateDidChangeListener { (auth, newUser) in
+            // Set the current user
+            if (Auth.auth().currentUser != nil) {
+                let userReference = Database.database().reference(withPath: "users/" + getCurrentUserId())
+                userReference.keepSynced(true)
+                userReference.observe(.value) { (snapshot) in
+                    self.currentUser = User(snapshot: snapshot)
+                }
+            }
         }
     }
     

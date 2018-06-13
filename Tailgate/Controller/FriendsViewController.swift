@@ -75,11 +75,19 @@ class FriendsViewController: UIViewController {
         self.searchTextField.attributedPlaceholder = NSAttributedString(string: searchTextField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray])
         
         getUsers( completion: { (users) in
-            self.allUsers = users
+            let unblockedUsers = users.filter {
+                !configuration.currentUser.blocksUser(withId: $0.uid) &&
+                !configuration.currentUser.blockedByUser(withId: $0.uid)
+            }
+            self.allUsers = unblockedUsers
         })
         
         getFriends( completion:  { (friends) in
-            self.myFriends = friends
+            let unblockedFriends = friends.filter {
+                !configuration.currentUser.blocksUser(withId: $0.uid) &&
+                !configuration.currentUser.blockedByUser(withId: $0.uid)
+            }
+            self.myFriends = unblockedFriends
         })
     }
 

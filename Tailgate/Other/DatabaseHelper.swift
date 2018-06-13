@@ -311,6 +311,14 @@ func getTailgatesToDisplay(completion: @escaping (([Tailgate]) -> Void)) {
             
             // Only show tailgates scheduled to start in the future or have started in the past 5 days
             tailgates = tailgates.filter { $0.startTime > deadline }
+            
+            // Remove tailgates owned by users blocked by the current user
+            // Remove tailgates owned by users that have blocked the current user
+            tailgates = tailgates.filter {
+                !configuration.currentUser.blocksUser(withId: $0.ownerId) &&
+                !configuration.currentUser.blockedByUser(withId: $0.ownerId)
+            }
+            
             completion(tailgates)
         })
     }
@@ -678,6 +686,22 @@ func addFriend(friendId:String) {
 func removeFriend(friendId:String) {
     let currentUserReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
     currentUserReference.child("friends").child(friendId).removeValue()
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// blockUser
+//
+// Adds a user from the current user's blocked list
+//
+func blockUser(userId:String) {
+    let currentUserReference = Database.database().reference(withPath: "users/" + getCurrentUserId())
+    currentUserReference.child("blocked").updateChildValues([UUID().uuidString:userId])
+    
+    let blockedUserReference = Database.database().reference(withPath: "users/" + userId)
+    blockedUserReference.child("blockedBy").updateChildValues([UUID().uuidString:getCurrentUserId()])
 }
 
 

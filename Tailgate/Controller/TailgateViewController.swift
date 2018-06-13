@@ -282,7 +282,18 @@ class TailgateViewController: UIViewController {
         
         // User has requested to block the tailgate owner
         let blockUserAction = UIAlertAction(title: "Block User", style: .destructive) { (action) in
+            let blockConfirmationAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to block this user?", preferredStyle: .alert)
+            let blockAction = UIAlertAction(title: "Block", style: .destructive) { (action) in
+                blockUser(userId: self.tailgate.ownerId)
+            }
+            blockConfirmationAlert.addAction(blockAction)
             
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                // canceled
+            }
+            blockConfirmationAlert.addAction(cancelAction)
+            
+            self.present(blockConfirmationAlert, animated: true, completion: nil)
         }
         optionsController.addAction(blockUserAction)
         
