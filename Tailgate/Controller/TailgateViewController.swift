@@ -273,7 +273,12 @@ class TailgateViewController: UIViewController {
     
     
     @IBAction func optionsButtonPressed(_ sender: Any) {
+        
         let optionsController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if let popoverController = optionsController.popoverPresentationController {
+            popoverController.sourceView = (sender as! UIView).superview
+            popoverController.sourceRect = (sender as! UIView).frame
+        }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             
