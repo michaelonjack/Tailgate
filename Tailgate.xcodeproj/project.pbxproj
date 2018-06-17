@@ -50,6 +50,8 @@
 		B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD72054DFEB00D9C12A /* Game.swift */; };
 		B1AC0323207116FE00CB3661 /* cfb_json.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1AC0322207116FE00CB3661 /* cfb_json.txt */; };
 		B1AC03252071329000CB3661 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AC03242071329000CB3661 /* Configuration.swift */; };
+		B1B1E1E820D69576001B81EA /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B1E1E720D69576001B81EA /* art.scnassets */; };
+		B1B1E1EA20D69BD7001B81EA /* MapARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1E1E920D69BD7001B81EA /* MapARViewController.swift */; };
 		B1BBF2E31FEEBC98007B1ACF /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBF2E21FEEBC98007B1ACF /* Drink.swift */; };
 		B1BBF2E51FEEBCA4007B1ACF /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBF2E41FEEBCA4007B1ACF /* Food.swift */; };
 		B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */; };
@@ -134,6 +136,8 @@
 		B1A18FD72054DFEB00D9C12A /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B1AC0322207116FE00CB3661 /* cfb_json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cfb_json.txt; sourceTree = "<group>"; };
 		B1AC03242071329000CB3661 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		B1B1E1E720D69576001B81EA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		B1B1E1E920D69BD7001B81EA /* MapARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapARViewController.swift; sourceTree = "<group>"; };
 		B1BBF2E21FEEBC98007B1ACF /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		B1BBF2E41FEEBCA4007B1ACF /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 				B10E9EA01FDCE4D600DB4751 /* TailgateAnnotationARView.swift */,
 				B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */,
 				B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */,
+				B1B1E1E720D69576001B81EA /* art.scnassets */,
 				B10E9E711FDCB6A200DB4751 /* Assets.xcassets */,
 				B10E9E9C1FDCC22900DB4751 /* Other */,
 				B10E9E9A1FDCC1DD00DB4751 /* Supporting Files */,
@@ -277,6 +282,7 @@
 				B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */,
 				B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */,
 				B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */,
+				B1B1E1E920D69BD7001B81EA /* MapARViewController.swift */,
 				B1817833204A4B350029CF27 /* SettingsControllers */,
 				B13B813E1FE6EC91008F3A38 /* TableCells */,
 				B1DD1CD9203E505F00291EAE /* CollectionCells */,
@@ -436,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1AC0323207116FE00CB3661 /* cfb_json.txt in Resources */,
+				B1B1E1E820D69576001B81EA /* art.scnassets in Resources */,
 				B10E9E751FDCB6A200DB4751 /* LaunchScreen.storyboard in Resources */,
 				B10E9E7D1FDCB76900DB4751 /* GoogleService-Info.plist in Resources */,
 				B10E9E721FDCB6A200DB4751 /* Assets.xcassets in Resources */,
@@ -527,6 +534,7 @@
 				B1CAD9A2204B5F7400934F57 /* SettingsNameViewController.swift in Sources */,
 				B166002620B0AE600055103C /* LabelCollectionViewCell.swift in Sources */,
 				B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */,
+				B1B1E1EA20D69BD7001B81EA /* MapARViewController.swift in Sources */,
 				B1CAD9A4204B6CDE00934F57 /* SettingsEmailViewController.swift in Sources */,
 				B1BC52CD1FE09A0400BCBAE8 /* ImageCollectionViewCell.swift in Sources */,
 				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
@@ -731,7 +739,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64B49T3B7F;
 				INFOPLIST_FILE = "Tailgate/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaelonjack.Tailgate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -751,7 +759,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64B49T3B7F;
 				INFOPLIST_FILE = "Tailgate/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaelonjack.Tailgate;
 				PRODUCT_NAME = "$(TARGET_NAME)";

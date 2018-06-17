@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fIY-Kk-ac4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fIY-Kk-ac4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1850,6 +1850,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="hEO-8l-L9h" id="9n5-Jf-nFw"/>
+                        <segue destination="zg0-TG-OGd" kind="show" identifier="MapToAR" id="Wsc-Wy-77S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIX-zV-lzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3359,6 +3360,59 @@ Violating these conditions may result in the suspension of your account upon rev
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQ8-H7-iZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1495" y="-3264"/>
+        </scene>
+        <!--MapAR View Controller-->
+        <scene sceneID="n0m-OX-caP">
+            <objects>
+                <viewController id="zg0-TG-OGd" customClass="MapARViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q8p-cb-rDE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQv-vQ-i0l">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcn-pM-9Bf">
+                                <rect key="frame" x="-0.5" y="589" width="375" height="24"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JdY-kW-Zlb">
+                                <rect key="frame" x="333" y="20" width="26" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JdY-kW-Zlb" secondAttribute="height" multiplier="1:1" id="9xc-PU-KWP"/>
+                                </constraints>
+                                <state key="normal" image="Exit"/>
+                                <connections>
+                                    <action selector="closePressed:" destination="zg0-TG-OGd" eventType="touchUpInside" id="xnQ-h0-Lgd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JdY-kW-Zlb" firstAttribute="height" secondItem="yg2-sg-h3j" secondAttribute="height" multiplier="0.04" id="0sd-yM-PIp"/>
+                            <constraint firstItem="rcn-pM-9Bf" firstAttribute="top" secondItem="JQv-vQ-i0l" secondAttribute="bottom" constant="-78" id="1EU-eQ-8mD"/>
+                            <constraint firstItem="rcn-pM-9Bf" firstAttribute="width" secondItem="JQv-vQ-i0l" secondAttribute="width" id="4bp-wH-CbG"/>
+                            <constraint firstItem="JdY-kW-Zlb" firstAttribute="top" secondItem="yg2-sg-h3j" secondAttribute="top" id="9uz-zA-kSU"/>
+                            <constraint firstItem="yg2-sg-h3j" firstAttribute="trailing" secondItem="JdY-kW-Zlb" secondAttribute="trailing" constant="16" id="FwX-Jz-zi3"/>
+                            <constraint firstItem="rcn-pM-9Bf" firstAttribute="centerX" secondItem="JQv-vQ-i0l" secondAttribute="centerX" id="KlU-jd-F9e"/>
+                            <constraint firstItem="yg2-sg-h3j" firstAttribute="trailing" secondItem="JQv-vQ-i0l" secondAttribute="trailing" id="TNP-QM-WpG"/>
+                            <constraint firstItem="JQv-vQ-i0l" firstAttribute="leading" secondItem="yg2-sg-h3j" secondAttribute="leading" id="bDR-Ti-39d"/>
+                            <constraint firstItem="yg2-sg-h3j" firstAttribute="bottom" secondItem="JQv-vQ-i0l" secondAttribute="bottom" id="chO-89-ecK"/>
+                            <constraint firstItem="JQv-vQ-i0l" firstAttribute="top" secondItem="q8p-cb-rDE" secondAttribute="top" id="nDZ-CX-1Xm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yg2-sg-h3j"/>
+                    </view>
+                    <connections>
+                        <outlet property="distanceLabel" destination="rcn-pM-9Bf" id="CFi-it-G5E"/>
+                        <outlet property="sceneView" destination="JQv-vQ-i0l" id="7AQ-xE-gSy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iqx-gk-M0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2063.1999999999998" y="-980.05997001499259"/>
         </scene>
         <!--Settings Terms View Controller-->
         <scene sceneID="OLw-hn-OBb">

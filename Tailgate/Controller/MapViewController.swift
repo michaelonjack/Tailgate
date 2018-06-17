@@ -17,6 +17,7 @@ class MapViewController: UIViewController {
     fileprivate let locationManager = CLLocationManager()
     fileprivate var arViewController: ARViewController!
     var tailgates: [TailgateAnnotation] = []
+    var selectedTailgate: TailgateAnnotation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,14 @@ class MapViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MapToAR" {
+            if let arController:MapARViewController = segue.destination as? MapARViewController {
+                arController.tailgateLocation = self.selectedTailgate.location
+            }
+        }
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -107,7 +115,10 @@ extension MapViewController: MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             // you grab the Tailgate object that this tap refers to
             let tailgate = view.annotation as! TailgateAnnotation
+            self.selectedTailgate = tailgate
+            self.performSegue(withIdentifier: "MapToAR", sender: nil)
             
+            /*
             arViewController = ARViewController()
             // First the dataSource for the arViewController is set. The dataSource provides views for visible POIs
             arViewController.dataSource = self
@@ -116,6 +127,7 @@ extension MapViewController: MKMapViewDelegate {
             
             // show the AR view
             self.present(arViewController, animated: true, completion: nil)
+ */
         }
         
         // Show the tailgate view when the left accessory view is tapped
