@@ -35,7 +35,6 @@ PODS:
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
   - GTMSessionFetcher/Core (1.1.15)
-  - HDAugmentedReality (2.3.0)
   - leveldb-library (1.20)
   - MarqueeLabel/Swift (3.1.6)
   - nanopb (0.3.8):
@@ -56,7 +55,7 @@ PODS:
   - SteviaLayout (4.2.0)
   - SwipeNavigationController (2.0.2)
   - VegaScrollFlowLayout (1.1)
-  - YPImagePicker (3.1.1):
+  - YPImagePicker (3.2.0):
     - PryntTrimmerView (~> 2.0)
     - SteviaLayout (~> 4.2.0)
 
@@ -65,7 +64,6 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
-  - HDAugmentedReality
   - NotificationBannerSwift
   - SDWebImage
   - SDWebImage/MapKit
@@ -84,7 +82,6 @@ SPEC REPOS:
     - FirebaseStorage
     - GoogleToolboxForMac
     - GTMSessionFetcher
-    - HDAugmentedReality
     - leveldb-library
     - MarqueeLabel
     - nanopb
@@ -107,7 +104,6 @@ SPEC CHECKSUMS:
   FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
-  HDAugmentedReality: 2ea96cb488aa81298e6557a897b4252d62e55843
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -118,8 +114,8 @@ SPEC CHECKSUMS:
   SteviaLayout: 0d2112caea45707695e8c718262c8ea3dd37ef17
   SwipeNavigationController: 592681599a3105a44484e5b7af9055cee7a0d7b9
   VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
-  YPImagePicker: dd0a901a293f99e982f75554738574c735734a76
+  YPImagePicker: 2d9c7f1e29642fa43f875f66a9b6cc4c0793ec8a
 
-PODFILE CHECKSUM: f9a778fe8900f28ee1b921c4d47435e9f6f1a043
+PODFILE CHECKSUM: 9d00d74d26cd44004876f81d2d6587ff2bf2a2bc
 
 COCOAPODS: 1.5.2

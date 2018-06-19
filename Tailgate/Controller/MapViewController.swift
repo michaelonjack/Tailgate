@@ -9,13 +9,11 @@
 import UIKit
 import MapKit
 import CoreLocation
-import HDAugmentedReality
 
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     fileprivate let locationManager = CLLocationManager()
-    fileprivate var arViewController: ARViewController!
     var tailgates: [TailgateAnnotation] = []
     var selectedTailgate: TailgateAnnotation!
     
@@ -117,17 +115,6 @@ extension MapViewController: MKMapViewDelegate {
             let tailgate = view.annotation as! TailgateAnnotation
             self.selectedTailgate = tailgate
             self.performSegue(withIdentifier: "MapToAR", sender: nil)
-            
-            /*
-            arViewController = ARViewController()
-            // First the dataSource for the arViewController is set. The dataSource provides views for visible POIs
-            arViewController.dataSource = self
-            
-            arViewController.setAnnotations( [TailgateAnnotationAR(location: tailgate.location, name: tailgate.title!, school: tailgate.school, owner: tailgate.owner)!] )
-            
-            // show the AR view
-            self.present(arViewController, animated: true, completion: nil)
- */
         }
         
         // Show the tailgate view when the left accessory view is tapped
@@ -139,38 +126,6 @@ extension MapViewController: MKMapViewDelegate {
             tailgateViewController.hasFullAccess = false
             self.present(tailgateViewController, animated: true, completion: nil)
         }
-    }
-}
-
-
-
-extension MapViewController: ARDataSource {
-    func ar(_ arViewController: ARViewController, viewForAnnotation: ARAnnotation) -> ARAnnotationView {
-        let annotationView = TailgateAnnotationARView()
-        annotationView.annotation = viewForAnnotation
-        annotationView.delegate = self
-        annotationView.frame = CGRect(x: 0, y: 0, width: 250, height: 100)
-        
-        return annotationView
-    }
-}
-
-
-
-extension MapViewController: AnnotationViewDelegate {
-    func didTouch(annotationView: TailgateAnnotationARView) {
-        // First you cast annotationViews annotation to a Tailgate
-        if let annotation = annotationView.annotation as? TailgateAnnotationAR {
-            self.showInfoView(forTailgate: annotation)
-        }
-    }
-    
-    func showInfoView(forTailgate tailgate: TailgateAnnotationAR) {
-        // To show the additional info you create an alert view with the POIs name as title and an info text as message
-        let alert = UIAlertController(title: tailgate.name , message: tailgate.description, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        // Since ViewController is not a part of the view hirarchy right now, you use arViewController to show the alert
-        arViewController.present(alert, animated: true, completion: nil)
     }
 }
 

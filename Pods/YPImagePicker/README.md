@@ -1,13 +1,17 @@
+<h1 align="center"> <br><img src="Images/logo/logotype_horizontal.png?raw=true" alt="ypimagepicker" width="512"> <br>
+
 <img src="https://raw.githubusercontent.com/Yummypets/YPImagePicker/master/Images/visual.jpg" width="400px" >
 
 ## YPImagePicker
 
 YPImagePicker is an instagram-like photo/video picker for iOS written in pure Swift. It is feature-rich and highly customizable to match your App's requirements.
 
+[![Language: Swift 4](https://img.shields.io/badge/language-swift%204-f48041.svg?style=flat)](https://developer.apple.com/swift)
 [![Version](https://img.shields.io/cocoapods/v/YPImagePicker.svg?style=flat)](http://cocoapods.org/pods/YPImagePicker)
 [![Platform](https://img.shields.io/cocoapods/p/YPImagePicker.svg?style=flat)](http://cocoapods.org/pods/YPImagePicker)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![codebeat badge](https://codebeat.co/badges/9710a89d-b1e2-4e55-a4a2-3ae1f98f4c53)](https://codebeat.co/projects/github-com-yummypets-ypimagepicker-master)
+[![License: MIT](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/Yummypets/YPImagePicker/blob/master/LICENSE)
 [![GitHub tag](https://img.shields.io/github/release/Yummypets/YPImagePicker.svg)]()
 
 Give it a quick try :
@@ -97,7 +101,7 @@ config.showsCrop = .rectangle(ratio: (16/9))
 config.wordings.libraryTitle = "Gallery"
 config.hidesStatusBar = false
 config.overlayView = myOverlayView
-config.maxNumberOfItems = 5
+config.library.maxNumberOfItems = 5
 
 // Build a picker with your configuration
 let picker = YPImagePicker(configuration: config)
@@ -157,10 +161,10 @@ present(picker, animated: true, completion: nil)
 As you can see `singlePhoto` and `singleVideo` helpers are here to help you handle single media which are very common, while using the same callback for all your use-cases \o/
 
 ### Multiple selection
-To enable multiple selection make sure to set `maxNumberOfItems` in the configuration like so:
+To enable multiple selection make sure to set `library.maxNumberOfItems` in the configuration like so:
 ```swift
 var config = YPImagePickerConfiguration()
-config.maxNumberOfItems = 3
+config.library.maxNumberOfItems = 3
 let picker = YPImagePicker(configuration: config)
 ```
 Then you can handle multiple selection in the same callback you know and love :
@@ -228,6 +232,8 @@ Original Fusuma author is [ytakz](http://ytakzk.me)
 [portellaa](https://github.com/portellaa)
 [Romixery](https://github.com/romixery)
 [shotat](https://github.com/shotat)
+
+Special thanks to [ihtiht](https://github.com/ihtiht) for the cool looking logo!
 
 ## They helped us one way or another 👏
 [userdar](https://github.com/userdar),

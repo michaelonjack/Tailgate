@@ -10,7 +10,6 @@ target 'Tailgate' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
-  pod 'HDAugmentedReality'
   pod 'YPImagePicker'
   pod 'SDWebImage'
   pod 'SDWebImage/MapKit'

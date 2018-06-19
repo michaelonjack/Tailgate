@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 import SwipeNavigationController
 
 class InvitesViewController: UIViewController {

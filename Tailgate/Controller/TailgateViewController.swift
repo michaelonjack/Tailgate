@@ -252,6 +252,7 @@ class TailgateViewController: UIViewController {
             self.locationBanner.show()
                 
             self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
             // Request location authorization for the app
             self.locationManager.requestWhenInUseAuthorization()
             // Request a location update
@@ -373,30 +374,31 @@ extension TailgateViewController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        let location = manager.location
-        self.tailgate.location = location
-        
-        let mapVC:MapViewController =  self.containerSwipeNavigationController?.leftViewController as! MapViewController
-       
-        // Remove any existing annotations for this tailgate if they exist
-        mapVC.removeAnnotation(tailgate: self.tailgate)
-        // Add the tailgate annotation to the map
-        if self.tailgate.isPublic == true {
-            mapVC.mapView.addAnnotation( TailgateAnnotation(tailgate: self.tailgate) )
+        if let location = locations.last {
+            self.tailgate.location = location
+            
+            let mapVC:MapViewController =  self.containerSwipeNavigationController?.leftViewController as! MapViewController
+           
+            // Remove any existing annotations for this tailgate if they exist
+            mapVC.removeAnnotation(tailgate: self.tailgate)
+            // Add the tailgate annotation to the map
+            if self.tailgate.isPublic == true {
+                mapVC.mapView.addAnnotation( TailgateAnnotation(tailgate: self.tailgate) )
+            }
+            
+            // Update tailgate coordinates in database
+            let longitude = manager.location?.coordinate.longitude
+            let latitude = manager.location?.coordinate.latitude
+            Database.database().reference(withPath: "tailgates/" + tailgate.id).updateChildValues(["longitude":longitude!, "latitude":latitude!])
+            
+            self.locationBanner.dismiss()
+            
+            let successBanner = NotificationBanner(attributedTitle: NSAttributedString(string: "Location Updated"), attributedSubtitle: NSAttributedString(string: "Your tailgate will now show on the map!"), style: .success)
+            successBanner.show()
+            
+            // Vibrate phone
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
-        
-        // Update tailgate coordinates in database
-        let longitude = manager.location?.coordinate.longitude
-        let latitude = manager.location?.coordinate.latitude
-        Database.database().reference(withPath: "tailgates/" + tailgate.id).updateChildValues(["longitude":longitude!, "latitude":latitude!])
-        
-        self.locationBanner.dismiss()
-        
-        let successBanner = NotificationBanner(attributedTitle: NSAttributedString(string: "Location Updated"), attributedSubtitle: NSAttributedString(string: "Your tailgate will now show on the map!"), style: .success)
-        successBanner.show()
-        
-        // Vibrate phone
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

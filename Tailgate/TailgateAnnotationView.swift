@@ -8,7 +8,7 @@
 
 import Foundation
 import MapKit
-import Firebase
+import FirebaseDatabase
 import SDWebImage
 
 class TailgateAnnotationView: MKAnnotationView {
