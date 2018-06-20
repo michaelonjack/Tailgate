@@ -22,18 +22,24 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profilePictureTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var friendsButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var friendsButtonTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet var emptyView: UIView!
     
     let refreshControl = UIRefreshControl()
     let currentUserRef = Database.database().reference(withPath: "users/" + getCurrentUserId())
     
     var feedItems:[Tailgate] = []
+    var state = CollectionState.loading {
+        didSet {
+            setCollectionBackgroundView()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.invitesCollectionView.delegate = self
         self.invitesCollectionView.dataSource = self
-        self.invitesCollectionView.backgroundView = EmptyBackgroundView(scrollView: self.invitesCollectionView, image: UIImage(named: "Notification")!, title: "No New Notifications", message: "Tailgates you're invited to and other alerts will show here")
+        
         let vegaLayout = VegaScrollFlowLayout()
         self.invitesCollectionView.collectionViewLayout = vegaLayout
         vegaLayout.minimumLineSpacing = 15
@@ -60,6 +66,18 @@ class ProfileViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    func setCollectionBackgroundView() {
+        switch state {
+        case .empty, .loading:
+            invitesCollectionView.backgroundView = emptyView
+            invitesCollectionView.backgroundView?.isHidden = false
+        default:
+            invitesCollectionView.backgroundView?.isHidden = true
+            invitesCollectionView.backgroundView = nil
+        }
     }
     
     
@@ -190,9 +208,9 @@ extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         if self.feedItems.count > 0 {
-            collectionView.backgroundView?.isHidden = true
+            state = .populated
         } else {
-            collectionView.backgroundView?.isHidden = false
+            state = .empty
         }
         
         return self.feedItems.count

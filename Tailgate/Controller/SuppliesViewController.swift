@@ -15,10 +15,16 @@ class SuppliesViewController: UIViewController {
     @IBOutlet weak var suppliesTable: UITableView!
     @IBOutlet weak var newSupplyTextField: UITextField!
     @IBOutlet weak var addSupplyButton: UIButton!
+    @IBOutlet var emptyView: UIView!
     
     var tailgate: Tailgate!
     var supplies:[Supply] = []
     var newSupplyText:String = ""
+    var state = TableState.loading {
+        didSet {
+            setTableBackgroundView()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +34,6 @@ class SuppliesViewController: UIViewController {
 
         suppliesTable.delegate = self
         suppliesTable.dataSource = self
-        suppliesTable.backgroundView = EmptyBackgroundView(scrollView: self.suppliesTable, image: UIImage(named: "Food2")!, title: "No Food :(", message: "Tailgate with no food...hard pass..")
         
         newSupplyTextField.delegate = self
         
@@ -78,9 +83,22 @@ class SuppliesViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    func setTableBackgroundView() {
+        switch state {
+        case .empty, .loading:
+            suppliesTable.backgroundView = emptyView
+            suppliesTable.backgroundView?.isHidden = false
+            suppliesTable.separatorStyle = .none
+        default:
+            suppliesTable.backgroundView?.isHidden = true
+            suppliesTable.backgroundView = nil
+            suppliesTable.separatorStyle = .singleLine
+        }
+    }
 }
 
 
@@ -132,11 +150,9 @@ extension SuppliesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.supplies.count > 0 {
-            suppliesTable.backgroundView?.isHidden = true
-            suppliesTable.separatorStyle = .singleLine
+            self.state = .populated
         } else {
-            suppliesTable.backgroundView?.isHidden = false
-            suppliesTable.separatorStyle = .none
+            self.state = .empty
         }
         
         return self.supplies.count

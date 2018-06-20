@@ -31,6 +31,7 @@ class TailgateViewController: UIViewController {
     @IBOutlet weak var invitesRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var profilePictureTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonsViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var emptyView: UIView!
     
     fileprivate let reuseIdentifier = "TailgateCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
@@ -44,6 +45,11 @@ class TailgateViewController: UIViewController {
     var hasFullAccess: Bool! = true
     var imageIds: [String] = []
     var imageUrls: [String] = []
+    var state = CollectionState.loading {
+        didSet {
+            setCollectionBackgroundView()
+        }
+    }
     var selectedImageIndex: IndexPath? {
         didSet {
             var imagesToUpdate = [IndexPath]()
@@ -76,7 +82,6 @@ class TailgateViewController: UIViewController {
         super.viewDidLoad()
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
-        imageCollectionView.backgroundView = EmptyBackgroundView(scrollView: self.imageCollectionView, image: UIImage(named: "Football")!, title: "Tailgate Photos", message: "Photos uploaded by you or your invites will show here")
         
         nameLabel.text = tailgate.name
         schoolLabel.text = tailgate.school.name
@@ -142,6 +147,19 @@ class TailgateViewController: UIViewController {
                 print("Error -- Loading Profile Picture")
             }
         })
+    }
+    
+    
+    
+    func setCollectionBackgroundView() {
+        switch state {
+        case .empty, .loading:
+            imageCollectionView.backgroundView = emptyView
+            imageCollectionView.backgroundView?.isHidden = false
+        default:
+            imageCollectionView.backgroundView?.isHidden = true
+            imageCollectionView.backgroundView = nil
+        }
     }
     
     
@@ -426,9 +444,9 @@ extension TailgateViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         if self.imageUrls.count > 0 {
-            collectionView.backgroundView?.isHidden = true
+            state = .populated
         } else {
-            collectionView.backgroundView?.isHidden = false
+            state = .empty
         }
         
         return self.imageUrls.count

@@ -38,7 +38,6 @@
 		B166002420B0A1BD0055103C /* GamedayContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166002320B0A1BD0055103C /* GamedayContainerViewController.swift */; };
 		B166002620B0AE600055103C /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B166002520B0AE600055103C /* LabelCollectionViewCell.swift */; };
 		B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16BC4D11FEECA290087C2F1 /* Tailgate.swift */; };
-		B17F5A6020D9A5190029E11E /* EmptyBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17F5A5F20D9A5190029E11E /* EmptyBackgroundView.xib */; };
 		B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */; };
 		B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */; };
 		B19BFD5620B4BBF1009D6AD2 /* SignUpAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */; };
@@ -123,7 +122,6 @@
 		B166002320B0A1BD0055103C /* GamedayContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedayContainerViewController.swift; sourceTree = "<group>"; };
 		B166002520B0AE600055103C /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		B16BC4D11FEECA290087C2F1 /* Tailgate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tailgate.swift; sourceTree = "<group>"; };
-		B17F5A5F20D9A5190029E11E /* EmptyBackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyBackgroundView.xib; sourceTree = "<group>"; };
 		B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayViewController.swift; sourceTree = "<group>"; };
 		B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreementViewController.swift; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 		B10E9E9C1FDCC22900DB4751 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				B17F5A5F20D9A5190029E11E /* EmptyBackgroundView.xib */,
 				B1E22737209E1B9600672F53 /* BiometricIDAuth.swift */,
 				B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */,
 				B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */,
@@ -440,7 +437,6 @@
 			files = (
 				B1AC0323207116FE00CB3661 /* cfb_json.txt in Resources */,
 				B1B1E1E820D69576001B81EA /* art.scnassets in Resources */,
-				B17F5A6020D9A5190029E11E /* EmptyBackgroundView.xib in Resources */,
 				B10E9E751FDCB6A200DB4751 /* LaunchScreen.storyboard in Resources */,
 				B10E9E7D1FDCB76900DB4751 /* GoogleService-Info.plist in Resources */,
 				B10E9E721FDCB6A200DB4751 /* Assets.xcassets in Resources */,

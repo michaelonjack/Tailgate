@@ -14,12 +14,18 @@ import NotificationBannerSwift
 class GamedaySignsViewController: UIViewController {
 
     @IBOutlet weak var signCollectionView: UICollectionView!
+    @IBOutlet var emptyView: UIView!
     
     fileprivate let reuseIdentifier = "SignCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
     fileprivate let itemsPerRow: CGFloat = 3
     
     var imageUrls: [String] = []
+    var state = CollectionState.loading {
+        didSet {
+            setCollectionBackgroundView()
+        }
+    }
     var selectedImageIndex: IndexPath? {
         didSet {
             var imagesToUpdate = [IndexPath]()
@@ -52,7 +58,6 @@ class GamedaySignsViewController: UIViewController {
         super.viewDidLoad()
         signCollectionView.delegate = self
         signCollectionView.dataSource = self
-        signCollectionView.backgroundView = EmptyBackgroundView(scrollView: self.signCollectionView, image: UIImage(named: "Football")!, title: "Gameday Signs", message: "Gameday signs uploaded by users will show here")
         
         // Get sign image urls
         getGamedaySignImageUrls { (imgUrls) in
@@ -64,6 +69,21 @@ class GamedaySignsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
+    
+    func setCollectionBackgroundView() {
+        switch state {
+        case .empty, .loading:
+            signCollectionView.backgroundView = emptyView
+            signCollectionView.backgroundView?.isHidden = false
+        default:
+            signCollectionView.backgroundView?.isHidden = true
+            signCollectionView.backgroundView = nil
+        }
+    }
+    
+    
 
     @IBAction func submitSignPressed(_ sender: Any) {
         var ypConfig = YPImagePickerConfiguration()
@@ -117,9 +137,9 @@ extension GamedaySignsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         if self.imageUrls.count > 0 {
-            collectionView.backgroundView?.isHidden = true
+            state = .populated
         } else {
-            collectionView.backgroundView?.isHidden = false
+            state = .empty
         }
         
         return self.imageUrls.count

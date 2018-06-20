@@ -12,6 +12,7 @@ class CreateTailgateSuppliesViewController: UIViewController {
     
     @IBOutlet weak var suppliesTable: UITableView!
     @IBOutlet weak var newSupplyTextField: UITextField!
+    @IBOutlet var emptyView: UIView!
     
     var tailgateName: String!
     var tailgateSchool: School!
@@ -20,6 +21,11 @@ class CreateTailgateSuppliesViewController: UIViewController {
     
     var supplies:[Supply] = []
     var newSupplyText:String = ""
+    var state = TableState.loading {
+        didSet {
+            setTableBackgroundView()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +33,6 @@ class CreateTailgateSuppliesViewController: UIViewController {
 
         suppliesTable.delegate = self
         suppliesTable.dataSource = self
-        suppliesTable.backgroundView = EmptyBackgroundView(scrollView: self.suppliesTable, image: UIImage(named: "Food2")!, title: "No Food :(", message: "Tailgate with no food...hard pass..")
         
         newSupplyTextField.delegate = self
     }
@@ -35,6 +40,23 @@ class CreateTailgateSuppliesViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
+    
+    func setTableBackgroundView() {
+        switch state {
+        case .empty, .loading:
+            suppliesTable.backgroundView = emptyView
+            suppliesTable.backgroundView?.isHidden = false
+            suppliesTable.separatorStyle = .none
+        default:
+            suppliesTable.backgroundView?.isHidden = true
+            suppliesTable.backgroundView = nil
+            suppliesTable.separatorStyle = .singleLine
+        }
+    }
+    
+    
     
     @IBAction func addSupplyPressed(_ sender: Any) {
         
@@ -118,11 +140,9 @@ extension CreateTailgateSuppliesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if self.supplies.count > 0 {
-            suppliesTable.backgroundView?.isHidden = true
-            suppliesTable.separatorStyle = .singleLine
+            state = .populated
         } else {
-            suppliesTable.backgroundView?.isHidden = false
-            suppliesTable.separatorStyle = .none
+            state = .empty
         }
         
         return self.supplies.count

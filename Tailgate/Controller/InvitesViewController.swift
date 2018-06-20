@@ -15,12 +15,18 @@ class InvitesViewController: UIViewController {
     
     @IBOutlet weak var usersTable: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet var emptyView: UIView!
     
     var tailgate: Tailgate!
     var friends:[User] = []
     var searchResults:[User] = []
     var selectedInvites:[User] = []
     var isOwner:Bool!
+    var state = TableState.loading {
+        didSet {
+            setTableBackgroundView()
+        }
+    }
     var searchText:String = "" {
         didSet {
             if searchText == "" {
@@ -61,7 +67,6 @@ class InvitesViewController: UIViewController {
         usersTable.allowsMultipleSelection = isOwner == true
         usersTable.rowHeight = UITableViewAutomaticDimension
         usersTable.estimatedRowHeight = 100
-        usersTable.backgroundView = EmptyBackgroundView(scrollView: self.usersTable, image: UIImage(named: "Search2")!, title: "No Results Found", message: "Try entering a new search term.")
         
         searchTextField.delegate = self
         
@@ -80,8 +85,24 @@ class InvitesViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    func setTableBackgroundView() {
+        switch state {
+        case .empty, .loading:
+            usersTable.backgroundView = emptyView
+            usersTable.backgroundView?.isHidden = false
+            usersTable.separatorStyle = .none
+        default:
+            usersTable.backgroundView?.isHidden = true
+            usersTable.backgroundView = nil
+            usersTable.separatorStyle = .singleLine
+        }
+    }
+    
+    
     
     @IBAction func donePressed(_ sender: Any) {
         updateTailgateInvites(tailgate: self.tailgate, invites: self.selectedInvites)
@@ -179,11 +200,9 @@ extension InvitesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.searchResults.count > 0 {
-            usersTable.backgroundView?.isHidden = true
-            usersTable.separatorStyle = .singleLine
+            self.state = .populated
         } else {
-            usersTable.backgroundView?.isHidden = false
-            usersTable.separatorStyle = .none
+            self.state = .empty
         }
         
         return self.searchResults.count
