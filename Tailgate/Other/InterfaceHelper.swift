@@ -19,31 +19,6 @@ func createAlert(title: String, message: String) -> UIAlertController {
 
 
 
-extension UIViewController {
-    
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
-
-
-
-extension UIColor {
-    static let lavender = UIColor(red:0.72, green:0.56, blue:0.90, alpha:1.0)
-    static let steel = UIColor(red:0.475635, green:0.475647, blue:0.47564, alpha:1.0)
-    static let salmon = UIColor(red: 1.0, green: 0.493272, blue: 0.473998, alpha: 1.0)
-    static let cantaloupe = UIColor(red: 1.0, green: 0.832346, blue: 0.473206, alpha: 1.0)
-    static let nickel = UIColor(red: 0.574149, green: 0.574162, blue: 0.574155, alpha: 1.0)
-}
-
-
-
 extension NSLayoutConstraint {
     func updateVerticalConstantForViewHeight(view:UIView) {
         let heightMultiplier = view.bounds.height / 667
@@ -53,24 +28,6 @@ extension NSLayoutConstraint {
     func updateHorizontalConstantForViewWidth(view:UIView) {
         let widthMultiplier = view.bounds.width / 375
         self.constant = self.constant * widthMultiplier
-    }
-}
-
-
-
-extension String {
-    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
-        
-        return ceil(boundingBox.height)
-    }
-    
-    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font: font], context: nil)
-        
-        return ceil(boundingBox.width)
     }
 }
 

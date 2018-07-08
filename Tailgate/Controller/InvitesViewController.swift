@@ -58,6 +58,7 @@ class InvitesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         
         self.isOwner = self.tailgate.ownerId == Auth.auth().currentUser?.uid
         

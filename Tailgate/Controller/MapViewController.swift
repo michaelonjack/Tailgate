@@ -6,9 +6,11 @@
 //  Copyright © 2017 Michael Onjack. All rights reserved.
 //
 
+import ARKit
 import UIKit
 import MapKit
 import CoreLocation
+import FirebaseDatabase
 
 class MapViewController: UIViewController {
 
@@ -23,16 +25,24 @@ class MapViewController: UIViewController {
         locationManager.delegate = self
         mapView.delegate = self
         
-        // register the custom tailgate view with the map view’s default reuse identifier
-        mapView.register(TailgateAnnotationView.self,
-                         forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        
         addTailgateAnnotations()
         
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        mapView.showsUserLocation = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        mapView.showsUserLocation = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +62,14 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func reloadButtonPressed(_ sender: UIButton) {
+        
+        // Animate the button with a 360 spin to give user feedback
+        UIView.animate(withDuration: 0.3) {
+            sender.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        }
+        UIView.animate(withDuration: 0.3, delay: 0.15, options: .curveEaseIn, animations: {
+            sender.transform = CGAffineTransform(rotationAngle: CGFloat.pi * 2.0)
+        }, completion: nil)
         
         // Remove any existing annotations on the map before starting
         self.mapView.removeAnnotations(self.mapView.annotations)
@@ -111,10 +129,17 @@ extension MapViewController: MKMapViewDelegate {
         
         // Show the AR view when the right accessory view is tapped
         if control == view.rightCalloutAccessoryView {
-            // you grab the Tailgate object that this tap refers to
-            let tailgate = view.annotation as! TailgateAnnotation
-            self.selectedTailgate = tailgate
-            self.performSegue(withIdentifier: "MapToAR", sender: nil)
+            if locationServiceIsEnabled() {
+                // you grab the Tailgate object that this tap refers to
+                let tailgate = view.annotation as! TailgateAnnotation
+                self.selectedTailgate = tailgate
+                self.performSegue(withIdentifier: "MapToAR", sender: nil)
+            }
+            
+            else {
+                let locationNotEnabledAlert = createAlert(title: "Location Services Disabled", message: "Location services are required to use augmented reality.")
+                self.present(locationNotEnabledAlert, animated: true, completion: nil)
+            }
         }
         
         // Show the tailgate view when the left accessory view is tapped
@@ -126,6 +151,73 @@ extension MapViewController: MKMapViewDelegate {
             tailgateViewController.hasFullAccess = false
             self.present(tailgateViewController, animated: true, completion: nil)
         }
+    }
+    
+    
+    
+    // Called every time the map needs to show an annotation
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // Define a reuse identifier.
+        // This is a string that will be used to ensure we reuse annotation views as much as possible
+        let identifier = "Tailgate"
+        
+        // Check whether the annotation we're creating a view for is one of our tailgate annotation
+        if let tailgateAnnotation = annotation as? TailgateAnnotation {
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            
+            if annotationView == nil {
+                annotationView = MKAnnotationView(annotation: tailgateAnnotation, reuseIdentifier: identifier)
+                
+                annotationView!.canShowCallout = true
+                annotationView!.calloutOffset = CGPoint(x: -5, y: 5)
+                
+                // Only show the AR button in the callout if AR is supported by the user's device
+                if ARWorldTrackingConfiguration.isSupported {
+                    // Here, you create a UIButton, set its background image to the AR icon, then set the view’s right callout accessory to this button
+                    let arButton = UIButton(frame: CGRect(origin: CGPoint.zero,
+                                                            size: CGSize(width: 30, height: 30)))
+                    arButton.setBackgroundImage(UIImage(named: "AR"), for: UIControlState())
+                    annotationView!.rightCalloutAccessoryView = arButton
+                }
+                
+                // Here, you create a UIButton, set its background image to the Open icon, then set the view’s left callout accessory to this button
+                let infoButton = UIButton(frame: CGRect(origin: CGPoint.zero,
+                                                        size: CGSize(width: 30, height: 30)))
+                infoButton.setBackgroundImage(UIImage(named: "Open"), for: UIControlState())
+                annotationView!.leftCalloutAccessoryView = infoButton
+            }
+                
+            let detailLabel = UILabel()
+            detailLabel.numberOfLines = 0
+            detailLabel.font = detailLabel.font.withSize(12)
+            detailLabel.text = tailgateAnnotation.owner
+            annotationView!.detailCalloutAccessoryView = detailLabel
+            
+            let schoolPath = tailgateAnnotation.school.replacingOccurrences(of: " ", with: "")
+            let schoolReference = Database.database().reference(withPath: "schools/" + schoolPath)
+            schoolReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                let dataDict = snapshot.value as? NSDictionary
+                
+                if snapshot.hasChild("annotationImageUrl") {
+                    let flairUrlStr = tailgateAnnotation.flairImageUrl
+                    let picUrlStr = dataDict?["annotationImageUrl"] as? String ?? ""
+                    
+                    if flairUrlStr != "" {
+                        let picUrl = URL(string: flairUrlStr)
+                        annotationView!.sd_setImage(with: picUrl, completed: nil)
+                    }
+                        
+                    else if picUrlStr != "" {
+                        let picUrl = URL(string: picUrlStr)
+                        annotationView!.sd_setImage(with: picUrl, completed: nil)
+                    }
+                }
+            })
+            
+            return annotationView
+        }
+        
+        return nil
     }
 }
 

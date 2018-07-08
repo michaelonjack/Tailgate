@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		49BA78C420163EE3DDC041E9 /* Pods_Tailgate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 410830783C54B0E57F8DD1DD /* Pods_Tailgate.framework */; };
+		B10B21FA20E93D6A00B3B49D /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B21F920E93D6A00B3B49D /* UIColor+Additions.swift */; };
+		B10B21FC20E93E1500B3B49D /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B21FB20E93E1500B3B49D /* UIViewController+Additions.swift */; };
+		B10B21FE20E93E7600B3B49D /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B21FD20E93E7600B3B49D /* String+Additions.swift */; };
 		B10E9E6B1FDCB6A200DB4751 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */; };
 		B10E9E6D1FDCB6A200DB4751 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */; };
 		B10E9E701FDCB6A200DB4751 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */; };
@@ -16,7 +19,6 @@
 		B10E9E7D1FDCB76900DB4751 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */; };
 		B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */; };
 		B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E801FDCBA6100DB4751 /* TailgateAnnotation.swift */; };
-		B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */; };
 		B11FAF752065D75D00238981 /* GamedaySignsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */; };
 		B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */; };
 		B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */; };
@@ -40,6 +42,7 @@
 		B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16BC4D11FEECA290087C2F1 /* Tailgate.swift */; };
 		B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */; };
 		B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */; };
+		B18256EC20E1886D00BB6C9F /* ARKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18256EB20E1886D00BB6C9F /* ARKitHelper.swift */; };
 		B19BFD5620B4BBF1009D6AD2 /* SignUpAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */; };
 		B19BFD5820B4FC57009D6AD2 /* SettingsTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFD5720B4FC57009D6AD2 /* SettingsTermsViewController.swift */; };
 		B1A18FD22054CD3800D9C12A /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */; };
@@ -90,6 +93,9 @@
 		3AE3B1693BC377D8745FDBA2 /* Pods-Tailgate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailgate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tailgate/Pods-Tailgate.debug.xcconfig"; sourceTree = "<group>"; };
 		410830783C54B0E57F8DD1DD /* Pods_Tailgate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tailgate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49879F753DFD1B6BC81285F /* Pods-Tailgate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tailgate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tailgate/Pods-Tailgate.release.xcconfig"; sourceTree = "<group>"; };
+		B10B21F920E93D6A00B3B49D /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		B10B21FB20E93E1500B3B49D /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
+		B10B21FD20E93E7600B3B49D /* String+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		B10E9E671FDCB6A200DB4751 /* Tailgate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tailgate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +106,6 @@
 		B10E9E7C1FDCB76900DB4751 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B10E9E801FDCBA6100DB4751 /* TailgateAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotation.swift; sourceTree = "<group>"; };
-		B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotationView.swift; sourceTree = "<group>"; };
 		B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedaySignsViewController.swift; sourceTree = "<group>"; };
 		B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateNameViewController.swift; sourceTree = "<group>"; };
 		B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateAccessibilityViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +129,7 @@
 		B16BC4D11FEECA290087C2F1 /* Tailgate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tailgate.swift; sourceTree = "<group>"; };
 		B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayViewController.swift; sourceTree = "<group>"; };
+		B18256EB20E1886D00BB6C9F /* ARKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitHelper.swift; sourceTree = "<group>"; };
 		B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreementViewController.swift; sourceTree = "<group>"; };
 		B19BFD5720B4FC57009D6AD2 /* SettingsTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTermsViewController.swift; sourceTree = "<group>"; };
 		B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
@@ -182,6 +188,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B10B21F820E93D0B00B3B49D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B10B21F920E93D6A00B3B49D /* UIColor+Additions.swift */,
+				B10B21FB20E93E1500B3B49D /* UIViewController+Additions.swift */,
+				B10B21FD20E93E7600B3B49D /* String+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B10E9E5E1FDCB6A200DB4751 = {
 			isa = PBXGroup;
 			children = (
@@ -206,11 +222,11 @@
 				B1AC0322207116FE00CB3661 /* cfb_json.txt */,
 				B10E9E9B1FDCC20200DB4751 /* Model */,
 				B10E9E9D1FDCC25400DB4751 /* Controller */,
-				B10E9E9E1FDCC78C00DB4751 /* TailgateAnnotationView.swift */,
 				B10E9E731FDCB6A200DB4751 /* LaunchScreen.storyboard */,
 				B10E9E6E1FDCB6A200DB4751 /* Main.storyboard */,
 				B1B1E1E720D69576001B81EA /* art.scnassets */,
 				B10E9E711FDCB6A200DB4751 /* Assets.xcassets */,
+				B10B21F820E93D0B00B3B49D /* Extensions */,
 				B10E9E9C1FDCC22900DB4751 /* Other */,
 				B10E9E9A1FDCC1DD00DB4751 /* Supporting Files */,
 			);
@@ -248,6 +264,7 @@
 			children = (
 				B1E22737209E1B9600672F53 /* BiometricIDAuth.swift */,
 				B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */,
+				B18256EB20E1886D00BB6C9F /* ARKitHelper.swift */,
 				B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */,
 				B148562A20681CB0006A5456 /* InterfaceHelper.swift */,
 				B1E83BE31FDD857A00185E17 /* TopDownSegue.swift */,
@@ -529,8 +546,8 @@
 				B1B1E1EA20D69BD7001B81EA /* MapARViewController.swift in Sources */,
 				B1CAD9A4204B6CDE00934F57 /* SettingsEmailViewController.swift in Sources */,
 				B1BC52CD1FE09A0400BCBAE8 /* ImageCollectionViewCell.swift in Sources */,
-				B10E9E9F1FDCC78C00DB4751 /* TailgateAnnotationView.swift in Sources */,
 				B1FEC4EE2042223400FEE05F /* SettingsViewController.swift in Sources */,
+				B10B21FA20E93D6A00B3B49D /* UIColor+Additions.swift in Sources */,
 				B1DD1CDD203E593B00291EAE /* FriendTableViewCell.swift in Sources */,
 				B13B81371FE60086008F3A38 /* CreateTailgateDateViewController.swift in Sources */,
 				B1E2273E20A694F300672F53 /* SuppliesViewController.swift in Sources */,
@@ -553,7 +570,9 @@
 				B154B1F4201D7BFE005DDC8A /* InvitesViewController.swift in Sources */,
 				B1AC03252071329000CB3661 /* Configuration.swift in Sources */,
 				B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */,
+				B10B21FE20E93E7600B3B49D /* String+Additions.swift in Sources */,
 				B13B81401FE6ECD4008F3A38 /* SchoolTableViewCell.swift in Sources */,
+				B18256EC20E1886D00BB6C9F /* ARKitHelper.swift in Sources */,
 				B13B81421FE6F1B6008F3A38 /* School.swift in Sources */,
 				B1DD1CD22039ED6600291EAE /* CreateTailgateFlairViewController.swift in Sources */,
 				B11FAF752065D75D00238981 /* GamedaySignsViewController.swift in Sources */,
@@ -564,6 +583,7 @@
 				B1E2273C20A6709100672F53 /* SupplyTableViewCell.swift in Sources */,
 				B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */,
 				B1DD1CD8203E409B00291EAE /* FriendsViewController.swift in Sources */,
+				B10B21FC20E93E1500B3B49D /* UIViewController+Additions.swift in Sources */,
 				B166002020B074500055103C /* GamedayPageViewController.swift in Sources */,
 				B1DD1CDB203E591400291EAE /* UsersCollectionViewCell.swift in Sources */,
 				B1FEC4F020422AE500FEE05F /* SettingsTableViewCell.swift in Sources */,

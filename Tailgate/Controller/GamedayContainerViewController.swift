@@ -34,6 +34,8 @@ class GamedayContainerViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+    // We're using an Embed segue to embed the PageController within our container view so this segue will be called automatically when the GamedayContainerViewController loads
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let pageController = segue.destination as? GamedayPageViewController {

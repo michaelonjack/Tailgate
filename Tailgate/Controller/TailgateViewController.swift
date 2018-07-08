@@ -392,7 +392,7 @@ extension TailgateViewController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        if let location = locations.last {
+        if let location = manager.location {
             self.tailgate.location = location
             
             let mapVC:MapViewController =  self.containerSwipeNavigationController?.leftViewController as! MapViewController

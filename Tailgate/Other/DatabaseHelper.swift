@@ -219,6 +219,7 @@ func getFlairImageUrls(school:School, completion: @escaping (_ urls: [(url3x:Str
 func getTailgates(completion: @escaping (([Tailgate]) -> Void)) {
     var tailgates:[Tailgate] = []
     let tailgateReference = Database.database().reference(withPath: "tailgates/")
+    tailgateReference.keepSynced(true)
     
     tailgateReference.observeSingleEvent(of: .value, with: { (snapshot) in
         for tailgateSnapshot in snapshot.children {

@@ -11,8 +11,20 @@ import ARKit
 import SceneKit
 import CoreLocation
 
+enum ARState {
+    case notAvailable
+    case initializing
+    case excessiveMotion
+    case insufficientFeatures
+    case resuming
+    case calculatingDistance
+    case distanceCalculated
+}
+
 class MapARViewController: UIViewController {
 
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var distanceLabel: UILabel!
     
@@ -23,15 +35,19 @@ class MapARViewController: UIViewController {
         }
     }
     var tailgateLocation:CLLocation!
-    var distance : Float! = 0.0 {
+    var distance : Float! = 0.0
+    var state = ARState.initializing {
         didSet {
             setStatusText()
-            print("distance: \(distance)")
         }
     }
     
     var modelNode:SCNNode!
-    let rootNodeName = "StopSign"
+    var directionNode:SCNNode!
+    // The stop sign model is at a 1/0.083 scale so in order to get an accurate distance
+    // we'll scale the matrix by 1/0.083
+    let modelNodeScale:Float = 12.0481927711
+    let rootNodeName = "stopsign"
     var originalTransform:SCNMatrix4!
     
     override func viewDidLoad() {
@@ -44,6 +60,14 @@ class MapARViewController: UIViewController {
         let scene = SCNScene()
         // Set the scene to the view
         sceneView.scene = scene
+        
+        // Modify buttons
+        closeButton.layer.borderWidth = 1.0
+        closeButton.layer.borderColor = UIColor(white: 1.0, alpha: 0.7).cgColor
+        closeButton.layer.cornerRadius = 5.0
+        resetButton.layer.borderWidth = 1.0
+        resetButton.layer.borderColor = UIColor(white: 1.0, alpha: 0.7).cgColor
+        resetButton.layer.cornerRadius = 5.0
         
         // Start location services
         locationManager.delegate = self
@@ -72,6 +96,10 @@ class MapARViewController: UIViewController {
         // Pause the view's session
         //sceneView.session.pause()
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,26 +109,53 @@ class MapARViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func resetPressed(_ sender: Any) {
+        // Remove any existing nodes from the scene
+        self.modelNode.removeFromParentNode()
+        self.directionNode.removeFromParentNode()
+        self.modelNode = nil
+        self.directionNode = nil
+        
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.worldAlignment = .gravityAndHeading
+        
+        // Run the view's session
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+    }
+    
     func setStatusText() {
-        let text = "Distance: \(String(format: "%.2f meters", self.distance))"
-        self.distanceLabel.text = text
+        
+        switch(self.state) {
+        case .initializing:
+            self.distanceLabel.text = "Initializing..."
+        case .calculatingDistance:
+            self.distanceLabel.text = "Calculating distance..."
+        case .distanceCalculated:
+            let text = "Distance: \(String(format: "%.2f meters", self.distance))"
+            self.distanceLabel.text = text
+        case .excessiveMotion:
+            self.distanceLabel.text = "Excessive motion. Try holding your device steady for a few seconds."
+        case .insufficientFeatures:
+            self.distanceLabel.text = "Insufficient features. Try moving your device around to find more objects in space"
+        case .resuming:
+            self.distanceLabel.text = "Resuming..."
+        case .notAvailable:
+            self.distanceLabel.text = "Augmented Reality not available."
+        }
     }
 
     func userLocationUpdated() {
-        self.distance  = Float(self.tailgateLocation.distance(from: self.userLocation))
+        guard let currentFrame = sceneView.session.currentFrame else {
+            return
+        }
         
+        self.distance  = Float(self.tailgateLocation.distance(from: self.userLocation))
+        self.state = .distanceCalculated
         
         // If this is the first update received, self.modelNode will be nil, so you have to instantiate the model
         if self.modelNode == nil {
             let modelScene = SCNScene(named: "art.scnassets/stopsign.dae")!
-            print(modelScene)
-            let parentNode:SCNNode = SCNNode()
-            parentNode.name = "fullstopsign"
-            parentNode.addChildNode(modelScene.rootNode.childNode(withName: "StopSign", recursively: true)!)
-            parentNode.addChildNode(modelScene.rootNode.childNode(withName: "Bolt", recursively: true)!)
-            parentNode.addChildNode(modelScene.rootNode.childNode(withName: "Bolt2", recursively: true)!)
-            parentNode.addChildNode(modelScene.rootNode.childNode(withName: "Pole", recursively: true)!)
-            self.modelNode = parentNode
+            self.modelNode = modelScene.rootNode.childNode(withName: rootNodeName, recursively: true)!
             
             // Move model's pivot to its center in the Y axis
             let (minBox, maxBox) = self.modelNode.boundingBox
@@ -109,23 +164,56 @@ class MapARViewController: UIViewController {
             // Save original transform to calculate future rotations
             self.originalTransform = self.modelNode.transform
             
-            // Position the model in the correct place
-            positionModel(self.tailgateLocation)
-            
             // Add the model to the scene
             sceneView.scene.rootNode.addChildNode(self.modelNode)
-        }
-        
-        else {
-            // Begin animation
-            SCNTransaction.begin()
-            SCNTransaction.animationDuration = 1.0
             
-            // Position the model in the correct place
-            positionModel(self.tailgateLocation)
+            var userTranslationTransform = matrix_identity_float4x4
+            userTranslationTransform.columns.3.x = currentFrame.camera.transform.columns.3.x // left right
+            userTranslationTransform.columns.3.y = currentFrame.camera.transform.columns.3.y // back!
+            userTranslationTransform.columns.3.z = currentFrame.camera.transform.columns.3.z // up
+            print("userTranslationTransform: \(userTranslationTransform)")
             
-            // End animation
-            SCNTransaction.commit()
+            let bearingDegrees = bearingBetweenLocations(userLocation, tailgateLocation)
+            print("bearing: \(bearingDegrees)")
+            let rotationMatrix = rotateAroundZ(matrix_identity_float4x4, Float(bearingDegrees))
+            print("rotationMatrix: \(rotationMatrix)")
+            
+            let position = vector_float4(0.0, -(distance), 0.0, 0.0)
+            let translationMatrix = getTranslationMatrix(matrix_identity_float4x4, position)
+            print("translationMatrix: \(translationMatrix)")
+            
+            var combinedMatrix = simd_mul(rotationMatrix, translationMatrix)
+            combinedMatrix.columns.3.x = combinedMatrix.columns.3.x * modelNodeScale
+            combinedMatrix.columns.3.y = combinedMatrix.columns.3.y * modelNodeScale
+            combinedMatrix.columns.3.z = combinedMatrix.columns.3.z * modelNodeScale
+            print("combinedMatrix: \(combinedMatrix)")
+            
+            let transformMatrix = simd_mul(userTranslationTransform, combinedMatrix)
+            
+            self.modelNode.simdTransform = matrix_multiply(self.modelNode.simdTransform, transformMatrix)
+            
+            
+            
+            // Construct the direction node to lead the user to their destination
+            let directionNodeGeomety = SCNBox(width: self.sceneView.bounds.height / 6000, height: self.sceneView.bounds.height / 6000, length: 0, chamferRadius: 0)
+            directionNodeGeomety.firstMaterial?.diffuse.contents = UIImage(named: "PointEmoji")
+            self.directionNode = SCNNode(geometry: directionNodeGeomety)
+            
+            // Add the node to the scene
+            self.sceneView.scene.rootNode.addChildNode(self.directionNode)
+            
+            // Place the node 0.7 meters from the user
+            var dirTranslationMatrix = matrix_identity_float4x4
+            dirTranslationMatrix.columns.3.z = -0.7
+            
+            // Rotate the destination node so it's in line with the stop sign node
+            let dirRotationMatrix = rotateAroundY(matrix_identity_float4x4, Float(bearingDegrees))
+            
+            // Create the transform using these two matrices
+            let directionNodeTransform = simd_mul(dirRotationMatrix, dirTranslationMatrix)
+            
+            // Apply the transform to the direction node to put it in place
+            self.directionNode.simdTransform = simd_mul(userTranslationTransform, directionNodeTransform)
         }
     }
     
@@ -159,48 +247,54 @@ extension MapARViewController: CLLocationManagerDelegate {
 
 
 extension MapARViewController: ARSCNViewDelegate {
-    func positionModel(_ location: CLLocation) {
-        // Translate node
-        self.modelNode.position = translateNode(location)
+    
+    func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
+        switch(camera.trackingState) {
+        case .normal:
+            if distance != 0.0 {
+                self.state = ARState.distanceCalculated
+            } else {
+                self.state = ARState.calculatingDistance
+            }
+        case .notAvailable:
+            self.state = ARState.notAvailable
+        case .limited(let reason):
+            switch reason {
+            case .excessiveMotion:
+                self.state = ARState.excessiveMotion
+            case .insufficientFeatures:
+                self.state = ARState.insufficientFeatures
+            case .initializing:
+                self.state = ARState.initializing
+            case .relocalizing:
+                self.state = ARState.resuming
+            }
+        }
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         
-        // Scale node
-        self.modelNode.scale = scaleNode(location)
-    }
-    
-    
-    
-    func rotateNode(_ angleInRadians: Float, _ transform: SCNMatrix4) -> SCNMatrix4 {
-        let rotation = SCNMatrix4MakeRotation(angleInRadians, 0, 1, 0)
-        return SCNMatrix4Mult(transform, rotation)
-    }
-    
-    func scaleNode (_ location: CLLocation) -> SCNVector3 {
-        let scale = min( max( Float(1000/distance), 1.5 ), 3 )
-        return SCNVector3(x: scale, y: scale, z: scale)
-    }
-    
-    func translateNode (_ location: CLLocation) -> SCNVector3 {
-        let locationTransform =
-            transformMatrix(matrix_identity_float4x4, userLocation, location)
-        return positionFromTransform(locationTransform)
-    }
-    
-    func positionFromTransform(_ transform: simd_float4x4) -> SCNVector3 {
-        return SCNVector3Make(
-            transform.columns.3.x, transform.columns.3.y, transform.columns.3.z
-        )
-    }
-    
-    func transformMatrix(_ matrix: simd_float4x4, _ originLocation: CLLocation, _ driverLocation: CLLocation) -> simd_float4x4 {
-        let bearing = bearingBetweenLocations(userLocation, driverLocation)
-        let rotationMatrix = rotateAroundY(matrix_identity_float4x4, Float(bearing))
+        guard let currentFrame = sceneView.session.currentFrame else {
+            return
+        }
         
-        let position = vector_float4(0.0, 0.0, -distance, 0.0)
-        let translationMatrix = getTranslationMatrix(matrix_identity_float4x4, position)
+        guard let _ = self.directionNode else {
+            return
+        }
         
-        let transformMatrix = simd_mul(rotationMatrix, translationMatrix)
+        // When the user gets too close to the direction indicator node, we want to reposition the node
+        // to again be 0.7 meters away from the user
+        // This way the direction node will lead the user to their destination
+        let distanceFromDirectionNode = currentFrame.camera.transform.columns.3.z - self.directionNode.simdTransform.columns.3.z
         
-        return simd_mul(matrix, transformMatrix)
+        // If the user is "too close" (which we arbitrarily say is 0.03 meters)
+        // and the user isn't very close to the destination, then reposition the node
+        if abs(distanceFromDirectionNode) < 0.03 && self.distance > 10 {
+            var directionNodeTransform = matrix_identity_float4x4
+            directionNodeTransform.columns.3.z = -0.7
+            
+            self.directionNode.simdTransform = simd_mul(self.directionNode.simdTransform, directionNodeTransform)
+        }
     }
     
     func getTranslationMatrix(_ matrix: simd_float4x4, _ translation : vector_float4) -> simd_float4x4 {
@@ -208,42 +302,6 @@ extension MapARViewController: ARSCNViewDelegate {
         matrix.columns.3 = translation
         return matrix
     }
-    
-    func rotateAroundY(_ matrix: simd_float4x4, _ degrees: Float) -> simd_float4x4 {
-        var matrix = matrix
-        
-        matrix.columns.0.x = cos(degrees)
-        matrix.columns.0.z = -sin(degrees)
-        
-        matrix.columns.2.x = sin(degrees)
-        matrix.columns.2.z = cos(degrees)
-        return matrix.inverse
-    }
-    
-    func bearingBetweenLocations(_ originLocation: CLLocation, _ driverLocation: CLLocation) -> Double {
-        let lat1 = originLocation.coordinate.latitude.toRadians()
-        let lon1 = originLocation.coordinate.longitude.toRadians()
-        
-        let lat2 = driverLocation.coordinate.latitude.toRadians()
-        let lon2 = driverLocation.coordinate.longitude.toRadians()
-        
-        let longitudeDiff = lon2 - lon1
-        
-        let y = sin(longitudeDiff) * cos(lat2);
-        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(longitudeDiff);
-        
-        return atan2(y, x)
-    }
 }
 
 
-
-extension FloatingPoint {
-    func toRadians() -> Self {
-        return self * .pi / 180
-    }
-    
-    func toDegrees() -> Self {
-        return self * 180 / .pi
-    }
-}
