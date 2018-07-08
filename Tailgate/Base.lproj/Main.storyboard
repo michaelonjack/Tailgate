@@ -1917,6 +1917,7 @@
                         <outlet property="friendsButtonTopConstraint" destination="fg4-9V-1Un" id="g30-Xv-fnd"/>
                         <outlet property="friendsButtonTrailingConstraint" destination="JND-ly-N4j" id="hRh-CA-CQT"/>
                         <outlet property="invitesCollectionView" destination="Ucm-4b-9e7" id="wH5-PT-IKT"/>
+                        <outlet property="loadingView" destination="FYV-Cf-geu" id="i33-ie-PPR"/>
                         <outlet property="profilePictureButton" destination="DnX-qB-j59" id="5cZ-0A-xil"/>
                         <outlet property="profilePictureTopConstraint" destination="Vcz-gu-RxV" id="C55-zN-azz"/>
                         <outlet property="settingsButtonLeadingConstraint" destination="yat-5P-cJg" id="gdf-UO-iYf"/>
@@ -1962,6 +1963,21 @@
                         <constraint firstItem="y1C-oB-ulG" firstAttribute="top" secondItem="Y0j-eW-LV4" secondAttribute="bottom" constant="32" id="aNP-5A-gVc"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="aZj-BS-kRo"/>
+                </view>
+                <view contentMode="scaleToFill" id="FYV-Cf-geu" userLabel="Loading View">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FMO-9A-LQ1">
+                            <rect key="frame" x="110" y="54" width="20" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="FMO-9A-LQ1" firstAttribute="centerY" secondItem="Nzr-Bu-7IX" secondAttribute="centerY" id="1R9-CF-Vak"/>
+                        <constraint firstItem="FMO-9A-LQ1" firstAttribute="centerX" secondItem="Nzr-Bu-7IX" secondAttribute="centerX" id="SFN-FX-ISk"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="Nzr-Bu-7IX"/>
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQE-Fv-T5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -23,6 +23,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var friendsButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var friendsButtonTrailingConstraint: NSLayoutConstraint!
     @IBOutlet var emptyView: UIView!
+    @IBOutlet var loadingView: UIView!
     
     let refreshControl = UIRefreshControl()
     let currentUserRef = Database.database().reference(withPath: "users/" + getCurrentUserId())
@@ -36,6 +37,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        state = .loading
         
         self.invitesCollectionView.delegate = self
         self.invitesCollectionView.dataSource = self
@@ -51,6 +54,13 @@ class ProfileViewController: UIViewController {
         // Get all public tailgates and tailgates the current user is invited to
         getTailgatesToDisplay { (tailgates) in
             self.feedItems = tailgates
+            
+            if self.feedItems.count > 0 {
+                self.state = .populated
+            } else {
+                self.state = .empty
+            }
+            
             self.invitesCollectionView.reloadData()
         }
        
@@ -70,8 +80,12 @@ class ProfileViewController: UIViewController {
     
     
     func setCollectionBackgroundView() {
+        
         switch state {
-        case .empty, .loading:
+        case .loading:
+            invitesCollectionView.backgroundView = loadingView
+            invitesCollectionView.backgroundView?.isHidden = false
+        case .empty:
             invitesCollectionView.backgroundView = emptyView
             invitesCollectionView.backgroundView?.isHidden = false
         default:
@@ -207,11 +221,6 @@ extension ProfileViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        if self.feedItems.count > 0 {
-            state = .populated
-        } else {
-            state = .empty
-        }
         
         return self.feedItems.count
     }

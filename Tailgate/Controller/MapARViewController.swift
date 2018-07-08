@@ -289,7 +289,7 @@ extension MapARViewController: ARSCNViewDelegate {
         
         // If the user is "too close" (which we arbitrarily say is 0.03 meters)
         // and the user isn't very close to the destination, then reposition the node
-        if abs(distanceFromDirectionNode) < 0.03 && self.distance > 10 {
+        if abs(distanceFromDirectionNode) < 0.05 && self.distance > 10 {
             var directionNodeTransform = matrix_identity_float4x4
             directionNodeTransform.columns.3.z = -0.7
             
