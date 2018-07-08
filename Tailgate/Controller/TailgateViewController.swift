@@ -117,6 +117,8 @@ class TailgateViewController: UIViewController {
         loadProfilePicture()
     }
     
+    
+    
     /////////////////////////////////////////////////////
     //
     // loadProfilePicture
@@ -467,6 +469,17 @@ extension TailgateViewController: UICollectionViewDataSource {
             cell.deleteButton.isHidden = true
         }
         
+        // Show the share button when a user invited to the tailgate selects the image
+        if let selectedIndex = self.selectedImageIndex, selectedIndex == indexPath  {
+            if self.tailgate.invites.contains(configuration.currentUser) || self.tailgate.ownerId == getCurrentUserId() {
+                cell.shareButton.isHidden = false
+            } else {
+                cell.shareButton.isHidden = true
+            }
+        } else {
+            cell.shareButton.isHidden = true
+        }
+        
         return cell
     }
 }
@@ -548,6 +561,17 @@ extension TailgateViewController : TailgateImageCellDelegate {
             
             self.present(deleteConfirmationAlert, animated: true, completion: nil)
         }
+    }
+    
+    func share(cell: TailgateImageCollectionViewCell) {
+        let activityController = UIActivityViewController(activityItems: [cell.imageView.image!], applicationActivities: [])
+        
+        if let popoverController = activityController.popoverPresentationController {
+            popoverController.sourceView = (cell).superview
+            popoverController.sourceRect = (cell).frame
+        }
+        
+        self.present(activityController, animated: true)
     }
 }
 

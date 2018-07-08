@@ -723,13 +723,26 @@
                                                         <action selector="deleteButtonPressed:" destination="upz-3z-kic" eventType="touchUpInside" id="MeG-bf-5Pt"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ix2-Rb-VUW">
+                                                    <rect key="frame" x="10" y="10" width="14" height="14"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Ix2-Rb-VUW" secondAttribute="height" multiplier="1:1" id="CBO-jL-LD3"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Share"/>
+                                                    <connections>
+                                                        <action selector="shareButtonPressed:" destination="upz-3z-kic" eventType="touchUpInside" id="AIb-gg-H0E"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="IpL-bM-SKe" firstAttribute="width" secondItem="dKd-0V-WCb" secondAttribute="width" multiplier="0.06" id="Gw9-qD-nOn"/>
                                             <constraint firstItem="IpL-bM-SKe" firstAttribute="top" secondItem="upz-3z-kic" secondAttribute="topMargin" constant="2" id="Hg6-08-LR4"/>
+                                            <constraint firstItem="Ix2-Rb-VUW" firstAttribute="top" secondItem="upz-3z-kic" secondAttribute="topMargin" constant="2" id="TWK-QB-dfI"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="IpL-bM-SKe" secondAttribute="trailing" constant="2" id="WPJ-SK-HuH"/>
+                                            <constraint firstItem="Ix2-Rb-VUW" firstAttribute="leading" secondItem="upz-3z-kic" secondAttribute="leadingMargin" constant="2" id="jIf-b2-YDS"/>
                                             <constraint firstAttribute="bottom" secondItem="dKd-0V-WCb" secondAttribute="bottom" id="mfY-J6-Sz7"/>
+                                            <constraint firstItem="Ix2-Rb-VUW" firstAttribute="width" secondItem="dKd-0V-WCb" secondAttribute="width" multiplier="0.07" id="nkn-KK-pEw"/>
                                             <constraint firstItem="dKd-0V-WCb" firstAttribute="leading" secondItem="upz-3z-kic" secondAttribute="leading" id="qd1-le-Qmb"/>
                                             <constraint firstItem="dKd-0V-WCb" firstAttribute="top" secondItem="upz-3z-kic" secondAttribute="top" id="xsB-8y-ENY"/>
                                             <constraint firstAttribute="trailing" secondItem="dKd-0V-WCb" secondAttribute="trailing" id="zGb-fD-Tbg"/>
@@ -737,6 +750,7 @@
                                         <connections>
                                             <outlet property="deleteButton" destination="IpL-bM-SKe" id="WoX-mT-1M3"/>
                                             <outlet property="imageView" destination="dKd-0V-WCb" id="pN7-VF-nyg"/>
+                                            <outlet property="shareButton" destination="Ix2-Rb-VUW" id="A0J-la-NS8"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -3821,6 +3835,7 @@ Violating these conditions may result in the suspension of your account upon rev
         <image name="Search2" width="256" height="256"/>
         <image name="Settings" width="128" height="128"/>
         <image name="SettingsArrow" width="270" height="270"/>
+        <image name="Share" width="64" height="64"/>
         <image name="Trash" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
