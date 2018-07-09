@@ -37,6 +37,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.15)
   - leveldb-library (1.20)
   - MarqueeLabel/Swift (3.1.6)
+  - MessageKit (0.13.5)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -64,6 +65,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - MessageKit
   - NotificationBannerSwift
   - SDWebImage
   - SDWebImage/MapKit
@@ -84,6 +86,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - MarqueeLabel
+    - MessageKit
     - nanopb
     - NotificationBannerSwift
     - PryntTrimmerView
@@ -106,6 +109,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
+  MessageKit: c4bd50e285a0f0761bc23a2e982aa7840873c4f5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   NotificationBannerSwift: b231e4c3244848ef300e1c53ce027b9756b9b06f
   PryntTrimmerView: 4260ae497a2f3e1bbfc0b71247eb74ab92bf0490
@@ -116,6 +120,6 @@ SPEC CHECKSUMS:
   VegaScrollFlowLayout: 9158061f29179147755f937c2b21693fc5dbbac3
   YPImagePicker: 2d9c7f1e29642fa43f875f66a9b6cc4c0793ec8a
 
-PODFILE CHECKSUM: 9d00d74d26cd44004876f81d2d6587ff2bf2a2bc
+PODFILE CHECKSUM: 2a36a33cbab95d9d096d634c1c0568ea0478831b
 
 COCOAPODS: 1.5.2

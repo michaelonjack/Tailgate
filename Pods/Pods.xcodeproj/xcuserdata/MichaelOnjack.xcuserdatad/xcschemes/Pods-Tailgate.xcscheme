@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3063A9806DBDFF9821EF1A8E30D86E8D"
+               BlueprintIdentifier = "4716E5A1BD0346E052416D0EAF7D44A0"
                BuildableName = "Pods_Tailgate.framework"
                BlueprintName = "Pods-Tailgate"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3063A9806DBDFF9821EF1A8E30D86E8D"
+            BlueprintIdentifier = "4716E5A1BD0346E052416D0EAF7D44A0"
             BuildableName = "Pods_Tailgate.framework"
             BlueprintName = "Pods-Tailgate"
             ReferencedContainer = "container:Pods.xcodeproj">

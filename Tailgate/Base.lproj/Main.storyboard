@@ -2852,6 +2852,22 @@ Violating these conditions may result in the suspension of your account upon rev
             </objects>
             <point key="canvasLocation" x="592.79999999999995" y="-3264.0179910044981"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="HKx-Ot-2e3">
+            <objects>
+                <viewController id="8de-Cz-6zK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qh3-tM-I94">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fBm-BG-Cd0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kns-Xb-Ott"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kq3-eR-BQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3248.8000000000002" y="-4683.5082458770621"/>
+        </scene>
         <!--Gameday Schedule View Controller-->
         <scene sceneID="CCD-be-EJq">
             <objects>
@@ -3823,6 +3839,24 @@ Violating these conditions may result in the suspension of your account upon rev
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Bl-4r-V8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3586" y="-3955"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oHT-gD-ECL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z1C-gU-oc9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="86a-r4-XOK">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8de-Cz-6zK" kind="relationship" relationship="rootViewController" id="n6w-zZ-EzH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y2z-uv-6Up" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2309.5999999999999" y="-4684.4077961019493"/>
         </scene>
     </scenes>
     <resources>

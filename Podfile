@@ -16,5 +16,6 @@ target 'Tailgate' do
   pod 'SwipeNavigationController'
   pod 'VegaScrollFlowLayout'
   pod 'NotificationBannerSwift'
+  pod 'MessageKit'
 
 end
