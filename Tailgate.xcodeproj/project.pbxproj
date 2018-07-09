@@ -76,6 +76,7 @@
 		B1E2273A20A66D5B00672F53 /* Supply.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2273920A66D5B00672F53 /* Supply.swift */; };
 		B1E2273C20A6709100672F53 /* SupplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2273B20A6709100672F53 /* SupplyTableViewCell.swift */; };
 		B1E2273E20A694F300672F53 /* SuppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2273D20A694F300672F53 /* SuppliesViewController.swift */; };
+		B1E5DDE620F3BAA2006107BA /* TrashTalkThreadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5DDE520F3BAA2006107BA /* TrashTalkThreadsViewController.swift */; };
 		B1E83BD71FDCFBE200185E17 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */; };
 		B1E83BD91FDCFC5600185E17 /* NewTailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD81FDCFC5600185E17 /* NewTailgateViewController.swift */; };
 		B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */; };
@@ -163,6 +164,7 @@
 		B1E2273920A66D5B00672F53 /* Supply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Supply.swift; sourceTree = "<group>"; };
 		B1E2273B20A6709100672F53 /* SupplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplyTableViewCell.swift; sourceTree = "<group>"; };
 		B1E2273D20A694F300672F53 /* SuppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliesViewController.swift; sourceTree = "<group>"; };
+		B1E5DDE520F3BAA2006107BA /* TrashTalkThreadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTalkThreadsViewController.swift; sourceTree = "<group>"; };
 		B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B1E83BD81FDCFC5600185E17 /* NewTailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTailgateViewController.swift; sourceTree = "<group>"; };
 		B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */,
 				B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */,
 				B1B1E1E920D69BD7001B81EA /* MapARViewController.swift */,
+				B1E5DDE520F3BAA2006107BA /* TrashTalkThreadsViewController.swift */,
 				B1817833204A4B350029CF27 /* SettingsControllers */,
 				B13B813E1FE6EC91008F3A38 /* TableCells */,
 				B1DD1CD9203E505F00291EAE /* CollectionCells */,
@@ -540,6 +543,7 @@
 				B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */,
 				B13B81461FE9FB3A008F3A38 /* DrinkTableViewCell.swift in Sources */,
 				B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */,
+				B1E5DDE620F3BAA2006107BA /* TrashTalkThreadsViewController.swift in Sources */,
 				B1E83BEA1FDDBF6100185E17 /* RightLeftSegue.swift in Sources */,
 				B1E83BEC1FDE286B00185E17 /* HomeViewController.swift in Sources */,
 				B1CAD9A2204B5F7400934F57 /* SettingsNameViewController.swift in Sources */,

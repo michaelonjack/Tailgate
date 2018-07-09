@@ -18,8 +18,9 @@ class GamedayPageViewController: UIPageViewController {
         let scheduleController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GamedayScheduleViewController")
         let signsController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GamedaySignsViewController")
         let flairController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FlairNavigationController")
+        let trashTalkController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TrashTalkNavigationController")
         
-        return [signsController, scheduleController, flairController]
+        return [signsController, scheduleController, flairController, trashTalkController]
     }()
 
     override func viewDidLoad() {

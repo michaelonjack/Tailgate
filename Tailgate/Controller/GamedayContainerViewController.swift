@@ -13,7 +13,7 @@ class GamedayContainerViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var navigationCollectionView: UICollectionView!
     
-    let navigationButtons:[String] = ["SIGNS", "SCHEDULE", "FLAIR"]
+    let navigationButtons:[String] = ["SIGNS", "SCHEDULE", "FLAIR", "TRASH TALK"]
     var gameDayPageViewController: GamedayPageViewController?
     var lastSelectedButtonIndex = 1
     
@@ -141,7 +141,7 @@ extension GamedayContainerViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width/3, height: collectionView.bounds.size.height)
+        return CGSize(width: collectionView.bounds.size.width/3.5, height: collectionView.bounds.size.height)
     }
     
     //  returns the spacing between the cells, headers, and footers. A constant is used to store the value
