@@ -263,6 +263,7 @@
 				B1E2273920A66D5B00672F53 /* Supply.swift */,
 				B1BBF2E41FEEBCA4007B1ACF /* Food.swift */,
 				B1C6C3ED20CE014D005DEED8 /* Report.swift */,
+				B1E5DDEB20F42168006107BA /* TrashTalkMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,7 +305,6 @@
 				B1B1E1E920D69BD7001B81EA /* MapARViewController.swift */,
 				B1E5DDE520F3BAA2006107BA /* TrashTalkThreadsViewController.swift */,
 				B1E5DDE920F3C719006107BA /* TrashTalkMessagesViewController.swift */,
-				B1E5DDEB20F42168006107BA /* TrashTalkMessage.swift */,
 				B1817833204A4B350029CF27 /* SettingsControllers */,
 				B13B813E1FE6EC91008F3A38 /* TableCells */,
 				B1DD1CD9203E505F00291EAE /* CollectionCells */,

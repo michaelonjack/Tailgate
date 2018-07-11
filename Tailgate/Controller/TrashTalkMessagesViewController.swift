@@ -12,7 +12,10 @@ import YPImagePicker
 
 class TrashTalkMessagesViewController: MessagesViewController {
     
-    var messages:[TrashTalkMessage] = []
+    var messages:[TrashTalkMessage] = [
+        TrashTalkMessage(text: "blah", sender: Sender(id: "blah", displayName: "Blah"), messageId: UUID().uuidString, date: Date(), team: configuration.currentUser.school),
+        TrashTalkMessage(text: "bloop", sender: Sender(id: "bloop", displayName: "bloop"), messageId: UUID().uuidString, date: Date(), team: configuration.currentUser.school),
+    ]
     var game: Game!
 
     override func viewDidLoad() {
@@ -30,13 +33,59 @@ class TrashTalkMessagesViewController: MessagesViewController {
         messageInputBar.topStackView.spacing = 5.0
         messageInputBar.topStackView.alignment = .center
         messageInputBar.topStackView.distribution = .fillProportionally
-        messageInputBar.topStackViewPadding = UIEdgeInsets(top: 8, left: 5, bottom: 8, right: 5)
+        updateTopStackView()
         
         setKeyboardStyle()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    func updateTopStackView(forNewItem newItem: InputBarButtonItem? = nil, ofWidth width:CGFloat? = nil) {
+        
+        //
+        if messageInputBar.topStackViewItems.count == 0 && newItem == nil {
+            self.messageInputBar.sendButton.isEnabled = false
+            messageInputBar.topStackViewPadding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+            self.messageInputBar.setStackViewItems([], forStack: .top, animated: true)
+            return
+        }
+        
+        // Calculate the size of the new fixed space entry
+        var topStackViewItems = self.messageInputBar.topStackViewItems
+        let stackViewSpacing = self.messageInputBar.topStackView.spacing
+        var usedSpace:CGFloat = newItem == nil ? 0 : width! + stackViewSpacing
+        
+        for item in self.messageInputBar.topStackViewItems where item.image != nil {
+            usedSpace = usedSpace + item.bounds.size.width + stackViewSpacing
+        }
+        
+        let emptySpace = self.messageInputBar.bounds.size.width - usedSpace - self.messageInputBar.topStackViewPadding.left - self.messageInputBar.topStackViewPadding.right
+        
+        // Remove the fixed space entry if it exists
+        if topStackViewItems.count > 0 {
+            topStackViewItems.removeLast()
+        }
+        // Add the button
+        if let newItem = newItem {
+            topStackViewItems.append(newItem)
+        }
+        // If there are images in the top stack view, add the empty right padding
+        if topStackViewItems.count > 0 {
+            topStackViewItems.append(.fixedSpace(emptySpace))
+        }
+        
+        if topStackViewItems.count > 0 {
+            self.messageInputBar.sendButton.isEnabled = true
+            messageInputBar.topStackViewPadding = UIEdgeInsets(top: 8, left: 5, bottom: 0, right: 5)
+        } else {
+            self.messageInputBar.sendButton.isEnabled = false
+            messageInputBar.topStackViewPadding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        }
+        
+        self.messageInputBar.setStackViewItems(topStackViewItems, forStack: .top, animated: true)
     }
 
     
@@ -70,33 +119,31 @@ class TrashTalkMessagesViewController: MessagesViewController {
             let picker = YPImagePicker(configuration: ypConfig)
             picker.didFinishPicking { items, _ in
                 if let photo = items.singlePhoto {
-                    var topStackViewItems = self.messageInputBar.topStackViewItems
                     
                     let imageButton = InputBarButtonItem()
                     imageButton.image = photo.image
                     imageButton.setSize(CGSize(width: photo.image.size.width/40, height: photo.image.size.height/40), animated: true)
                     imageButton.layer.cornerRadius = 8.0
                     imageButton.layer.masksToBounds = true
-                    imageButton.backgroundColor = UIColor.darkGray
+                    imageButton.onTouchUpInside({ (_) in
+                        let removeImageAlert = UIAlertController(title: nil, message: "Remove image from message?", preferredStyle: .alert)
+                        let removeAction = UIAlertAction(title: "Remove", style: .destructive) { (action) in
+                            var stackItems = self.messageInputBar.topStackViewItems
+                            stackItems.remove(at: stackItems.index{$0 == imageButton}!)
+                            self.messageInputBar.setStackViewItems(stackItems, forStack: .top, animated: false)
+                            self.updateTopStackView()
+                        }
+                        removeImageAlert.addAction(removeAction)
+                        
+                        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+                            // canceled
+                        }
+                        removeImageAlert.addAction(cancelAction)
+                        
+                        self.present(removeImageAlert, animated: true, completion: nil)
+                    })
                     
-                    // Calculate the size of the new fixed space entry
-                    let stackViewSpacing = self.messageInputBar.topStackView.spacing
-                    var usedSpace:CGFloat = photo.image.size.width/40 + stackViewSpacing
-                    for item in self.messageInputBar.topStackViewItems where item.image != nil {
-                        usedSpace = usedSpace + item.bounds.size.width + stackViewSpacing
-                    }
-                    let emptySpace = self.messageInputBar.bounds.size.width - usedSpace - self.messageInputBar.topStackViewPadding.left - self.messageInputBar.topStackViewPadding.right
-                    
-                    // Remove the fixed space entry if it exists
-                    if topStackViewItems.count > 0 {
-                        topStackViewItems.removeLast()
-                    }
-                    // Add the button
-                    topStackViewItems.append(imageButton)
-                    topStackViewItems.append(.fixedSpace(emptySpace))
-                    
-                    self.messageInputBar.setStackViewItems(topStackViewItems, forStack: .top, animated: false)
-                    self.messageInputBar.sendButton.isEnabled = true
+                    self.updateTopStackView(forNewItem: imageButton, ofWidth: photo.image.size.width/40)
                 }
                 picker.dismiss(animated: true, completion: nil)
             }
@@ -117,6 +164,9 @@ class TrashTalkMessagesViewController: MessagesViewController {
         messageInputBar.rightStackView.distribution = .equalCentering
     }
 }
+
+
+
 
 
 
@@ -149,6 +199,14 @@ extension TrashTalkMessagesViewController: MessagesDataSource {
         formatter.dateStyle = .medium
         
         let dateString = formatter.string(from: message.sentDate)
+        
+        if let message = message as? TrashTalkMessage {
+            let scoreString = "Score: " + String(message.score)
+            let bottomLabelText = dateString + "   -   " + scoreString
+            
+            return NSAttributedString(string: bottomLabelText, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
+        }
+        
         return NSAttributedString(string: dateString, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
     }
 }
@@ -160,6 +218,9 @@ extension TrashTalkMessagesViewController: MessagesLayoutDelegate {
         return 10.0
     }
 }
+
+
+
 
 
 
@@ -211,6 +272,9 @@ extension TrashTalkMessagesViewController: MessagesDisplayDelegate {
 
 
 
+
+
+
 extension TrashTalkMessagesViewController: MessageInputBarDelegate {
     
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
@@ -225,7 +289,8 @@ extension TrashTalkMessagesViewController: MessageInputBarDelegate {
         }
         
         // Clear the top stack view now that the images have been sent
-        self.messageInputBar.setStackViewItems([], forStack: .top, animated: true)
+        messageInputBar.setStackViewItems([], forStack: .top, animated: false)
+        updateTopStackView()
         
         for component in inputBar.inputTextView.components {
             
@@ -246,6 +311,9 @@ extension TrashTalkMessagesViewController: MessageInputBarDelegate {
         messagesCollectionView.scrollToBottom()
     }
 }
+
+
+
 
 
 

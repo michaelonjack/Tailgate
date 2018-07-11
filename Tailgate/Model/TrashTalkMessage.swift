@@ -15,6 +15,7 @@ struct TrashTalkMessage: MessageType {
     var sentDate: Date
     var data: MessageData
     var senderTeam: School?
+    var score: Int
     
     private init(data: MessageData, sender: Sender, messageId: String, date: Date, team: School?) {
         self.data = data
@@ -22,6 +23,7 @@ struct TrashTalkMessage: MessageType {
         self.messageId = messageId
         self.sentDate = date
         self.senderTeam = team
+        self.score = 0
     }
     
     init(text: String, sender: Sender, messageId: String, date: Date, team: School?) {
