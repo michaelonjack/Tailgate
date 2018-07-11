@@ -266,4 +266,12 @@ extension TrashTalkMessagesViewController: MessageCellDelegate {
     func didTapBottomLabel(in cell: MessageCollectionViewCell) {
         print("Bottom label tapped")
     }
+    
+    func didDoubleTapTopCell(in cell: MessageCollectionViewCell) {
+        print("Top of cell double tapped")
+    }
+    
+    func didDoubleTapBottomCell(in cell: MessageCollectionViewCell) {
+        print("Bottom of cell double tapped")
+    }
 }
