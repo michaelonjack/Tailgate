@@ -14,6 +14,7 @@ class TrashTalkThreadsViewController: UIViewController {
     
     var conferences:[String] = ["BIG 10", "BIG 12", "ACC", "PAC-12", "SEC"]
     var games:[String:[Game]] = [:]
+    var selectedGame: Game?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +45,23 @@ class TrashTalkThreadsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let messagesController = segue.destination as? TrashTalkMessagesViewController {
+            messagesController.game = self.selectedGame!
+        }
+    }
 }
 
 
 
 extension TrashTalkThreadsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentConference = self.conferences[indexPath.section]
+        let conferenceKey = currentConference.lowercased().replacingOccurrences(of: " ", with: "")
+        let game = self.games[conferenceKey]![indexPath.row]
         
+        self.selectedGame = game
+        self.performSegue(withIdentifier: "ThreadToMessages", sender: nil)
     }
 }
 
@@ -80,7 +91,8 @@ extension TrashTalkThreadsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell()
+        let cell = threadsTable.dequeueReusableCell(withIdentifier: "ThreadCell", for: indexPath) as! TrashTalkThreadTableViewCell
+        
         let row = indexPath.row
         let section = indexPath.section
         
@@ -88,6 +100,7 @@ extension TrashTalkThreadsViewController: UITableViewDataSource {
         let conferenceKey = conference.lowercased().replacingOccurrences(of: " ", with: "")
         let game = self.games[conferenceKey]![row]
         
+        cell.game = game
         cell.textLabel?.text = game.awayTeam + " at " + game.homeTeam
         cell.textLabel?.font = UIFont.systemFont(ofSize: 12.0, weight: .light)
         cell.textLabel?.numberOfLines = 0

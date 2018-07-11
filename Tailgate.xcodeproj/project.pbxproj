@@ -77,6 +77,9 @@
 		B1E2273C20A6709100672F53 /* SupplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2273B20A6709100672F53 /* SupplyTableViewCell.swift */; };
 		B1E2273E20A694F300672F53 /* SuppliesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E2273D20A694F300672F53 /* SuppliesViewController.swift */; };
 		B1E5DDE620F3BAA2006107BA /* TrashTalkThreadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5DDE520F3BAA2006107BA /* TrashTalkThreadsViewController.swift */; };
+		B1E5DDEA20F3C719006107BA /* TrashTalkMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5DDE920F3C719006107BA /* TrashTalkMessagesViewController.swift */; };
+		B1E5DDEC20F42168006107BA /* TrashTalkMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5DDEB20F42168006107BA /* TrashTalkMessage.swift */; };
+		B1E5DDEE20F42B96006107BA /* TrashTalkThreadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5DDED20F42B96006107BA /* TrashTalkThreadTableViewCell.swift */; };
 		B1E83BD71FDCFBE200185E17 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */; };
 		B1E83BD91FDCFC5600185E17 /* NewTailgateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BD81FDCFC5600185E17 /* NewTailgateViewController.swift */; };
 		B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */; };
@@ -165,6 +168,9 @@
 		B1E2273B20A6709100672F53 /* SupplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplyTableViewCell.swift; sourceTree = "<group>"; };
 		B1E2273D20A694F300672F53 /* SuppliesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuppliesViewController.swift; sourceTree = "<group>"; };
 		B1E5DDE520F3BAA2006107BA /* TrashTalkThreadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTalkThreadsViewController.swift; sourceTree = "<group>"; };
+		B1E5DDE920F3C719006107BA /* TrashTalkMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTalkMessagesViewController.swift; sourceTree = "<group>"; };
+		B1E5DDEB20F42168006107BA /* TrashTalkMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTalkMessage.swift; sourceTree = "<group>"; };
+		B1E5DDED20F42B96006107BA /* TrashTalkThreadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTalkThreadTableViewCell.swift; sourceTree = "<group>"; };
 		B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B1E83BD81FDCFC5600185E17 /* NewTailgateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTailgateViewController.swift; sourceTree = "<group>"; };
 		B1E83BDA1FDD6C9900185E17 /* SignUpNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNameViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +303,8 @@
 				B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */,
 				B1B1E1E920D69BD7001B81EA /* MapARViewController.swift */,
 				B1E5DDE520F3BAA2006107BA /* TrashTalkThreadsViewController.swift */,
+				B1E5DDE920F3C719006107BA /* TrashTalkMessagesViewController.swift */,
+				B1E5DDEB20F42168006107BA /* TrashTalkMessage.swift */,
 				B1817833204A4B350029CF27 /* SettingsControllers */,
 				B13B813E1FE6EC91008F3A38 /* TableCells */,
 				B1DD1CD9203E505F00291EAE /* CollectionCells */,
@@ -325,6 +333,7 @@
 		B13B813E1FE6EC91008F3A38 /* TableCells */ = {
 			isa = PBXGroup;
 			children = (
+				B1E5DDED20F42B96006107BA /* TrashTalkThreadTableViewCell.swift */,
 				B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */,
 				B1FEC4EF20422AE500FEE05F /* SettingsTableViewCell.swift */,
 				B1DD1CDC203E593B00291EAE /* FriendTableViewCell.swift */,
@@ -558,6 +567,7 @@
 				B13B81371FE60086008F3A38 /* CreateTailgateDateViewController.swift in Sources */,
 				B1E2273E20A694F300672F53 /* SuppliesViewController.swift in Sources */,
 				B13B813D1FE61263008F3A38 /* CreateTailgateSchoolViewController.swift in Sources */,
+				B1E5DDEE20F42B96006107BA /* TrashTalkThreadTableViewCell.swift in Sources */,
 				B13B81481FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift in Sources */,
 				B1BBF2E51FEEBCA4007B1ACF /* Food.swift in Sources */,
 				B19BFD5620B4BBF1009D6AD2 /* SignUpAgreementViewController.swift in Sources */,
@@ -600,6 +610,7 @@
 				B166002420B0A1BD0055103C /* GamedayContainerViewController.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,
 				B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */,
+				B1E5DDEC20F42168006107BA /* TrashTalkMessage.swift in Sources */,
 				B148562B20681CB0006A5456 /* InterfaceHelper.swift in Sources */,
 				B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */,
 				B13B81391FE60829008F3A38 /* CreateTailgateSuppliesViewController.swift in Sources */,
@@ -609,6 +620,7 @@
 				B1C6C3EC20CDF9D0005DEED8 /* ReportContentViewController.swift in Sources */,
 				B1BBF2E31FEEBC98007B1ACF /* Drink.swift in Sources */,
 				B1625EF820AD0DDE00CCFFBA /* RivalFlairSubmitViewController.swift in Sources */,
+				B1E5DDEA20F3C719006107BA /* TrashTalkMessagesViewController.swift in Sources */,
 				B10E9E6B1FDCB6A200DB4751 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

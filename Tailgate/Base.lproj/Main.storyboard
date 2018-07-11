@@ -1795,7 +1795,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SzK-Ch-zjy">
-                                <rect key="frame" x="16" y="30" width="40" height="40"/>
+                                <rect key="frame" x="16" y="30" width="35.5" height="35.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="SzK-Ch-zjy" secondAttribute="height" multiplier="1:1" id="FjT-Vf-iXn"/>
                                 </constraints>
@@ -1808,7 +1808,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tut-C0-0L1">
-                                <rect key="frame" x="319" y="30" width="40" height="40"/>
+                                <rect key="frame" x="323.5" y="30" width="35.5" height="35.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tut-C0-0L1" secondAttribute="height" multiplier="1:1" id="cVZ-kg-gYe"/>
                                 </constraints>
@@ -1899,13 +1899,13 @@
                             <constraint firstItem="Ucm-4b-9e7" firstAttribute="bottom" secondItem="hsf-SM-pYR" secondAttribute="bottom" id="1dO-Mz-z9D"/>
                             <constraint firstItem="Ucm-4b-9e7" firstAttribute="width" secondItem="A45-Rb-3MN" secondAttribute="width" id="5bJ-7g-o7o"/>
                             <constraint firstItem="hsf-SM-pYR" firstAttribute="trailing" secondItem="tut-C0-0L1" secondAttribute="trailing" constant="16" id="JND-ly-N4j"/>
-                            <constraint firstItem="SzK-Ch-zjy" firstAttribute="height" secondItem="hsf-SM-pYR" secondAttribute="height" multiplier="0.0618238" id="VMS-aB-XJD"/>
+                            <constraint firstItem="SzK-Ch-zjy" firstAttribute="height" secondItem="hsf-SM-pYR" secondAttribute="height" multiplier="0.055" id="VMS-aB-XJD"/>
                             <constraint firstItem="DnX-qB-j59" firstAttribute="top" secondItem="hsf-SM-pYR" secondAttribute="top" constant="59" id="Vcz-gu-RxV"/>
                             <constraint firstItem="DnX-qB-j59" firstAttribute="centerX" secondItem="hsf-SM-pYR" secondAttribute="centerX" id="cQE-Ru-qvp"/>
                             <constraint firstItem="Ucm-4b-9e7" firstAttribute="centerX" secondItem="A45-Rb-3MN" secondAttribute="centerX" id="fXU-fl-NBM"/>
                             <constraint firstItem="tut-C0-0L1" firstAttribute="top" secondItem="hsf-SM-pYR" secondAttribute="top" constant="10" id="fg4-9V-1Un"/>
                             <constraint firstItem="Ucm-4b-9e7" firstAttribute="height" secondItem="hsf-SM-pYR" secondAttribute="height" multiplier="0.485317" id="lPH-T5-ndB"/>
-                            <constraint firstItem="tut-C0-0L1" firstAttribute="height" secondItem="hsf-SM-pYR" secondAttribute="height" multiplier="0.0618238" id="ojP-gz-xl7"/>
+                            <constraint firstItem="tut-C0-0L1" firstAttribute="height" secondItem="hsf-SM-pYR" secondAttribute="height" multiplier="0.055" id="ojP-gz-xl7"/>
                             <constraint firstItem="DnX-qB-j59" firstAttribute="height" secondItem="A45-Rb-3MN" secondAttribute="height" multiplier="0.374812" id="qR5-TK-Ep5"/>
                             <constraint firstItem="SzK-Ch-zjy" firstAttribute="top" secondItem="hsf-SM-pYR" secondAttribute="top" constant="10" id="wMm-jx-785"/>
                             <constraint firstItem="SzK-Ch-zjy" firstAttribute="leading" secondItem="hsf-SM-pYR" secondAttribute="leading" constant="16" id="yat-5P-cJg"/>
@@ -2863,6 +2863,16 @@ Violating these conditions may result in the suspension of your account upon rev
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L52-xK-5u6">
                                 <rect key="frame" x="0.0" y="64" width="375" height="561"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ThreadCell" id="5MZ-v8-vnw" customClass="TrashTalkThreadTableViewCell" customModule="Tailgate" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5MZ-v8-vnw" id="d6f-uk-RC0">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X0V-An-VUq">
                                 <rect key="frame" x="-0.5" y="625" width="375" height="42"/>
@@ -2885,11 +2895,27 @@ Violating these conditions may result in the suspension of your account upon rev
                     <navigationItem key="navigationItem" title="TRASH TALK" id="chh-aX-rIt"/>
                     <connections>
                         <outlet property="threadsTable" destination="L52-xK-5u6" id="Qnf-4h-kr4"/>
+                        <segue destination="YR9-yn-OEd" kind="show" identifier="ThreadToMessages" id="awN-kd-MtO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kq3-eR-BQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3248.8000000000002" y="-4683.5082458770621"/>
+        </scene>
+        <!--Trash Talk Messages View Controller-->
+        <scene sceneID="Dpt-CV-N6j">
+            <objects>
+                <viewController id="YR9-yn-OEd" customClass="TrashTalkMessagesViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zkd-bx-yRW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2W9-YY-rBc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zhE-lS-CeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4274" y="-4684"/>
         </scene>
         <!--Gameday Schedule View Controller-->
         <scene sceneID="CCD-be-EJq">
