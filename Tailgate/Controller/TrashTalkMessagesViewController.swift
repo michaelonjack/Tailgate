@@ -7,15 +7,15 @@
 //
 
 import UIKit
+import AVFoundation
 import MessageKit
 import YPImagePicker
+import FirebaseDatabase
+import SDWebImage
 
 class TrashTalkMessagesViewController: MessagesViewController {
     
-    var messages:[TrashTalkMessage] = [
-        TrashTalkMessage(text: "blah", sender: Sender(id: "blah", displayName: "Blah"), messageId: UUID().uuidString, date: Date(), team: configuration.currentUser.school),
-        TrashTalkMessage(text: "bloop", sender: Sender(id: "bloop", displayName: "bloop"), messageId: UUID().uuidString, date: Date(), team: configuration.currentUser.school),
-    ]
+    var messages:[TrashTalkMessage] = []
     var game: Game!
 
     override func viewDidLoad() {
@@ -35,11 +35,31 @@ class TrashTalkMessagesViewController: MessagesViewController {
         messageInputBar.topStackView.distribution = .fillProportionally
         updateTopStackView()
         
+        
+        loadMessages()
         setKeyboardStyle()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func loadMessages() {
+        let threadName:String = game.awayTeam.replacingOccurrences(of: " ", with: "") + "at" + game.homeTeam.replacingOccurrences(of: " ", with: "")
+        let messagesPath:String = "trashtalk/" + configuration.week + "/" + threadName + "/mesages"
+        
+        let messagesReference = Database.database().reference(withPath: messagesPath)
+        messagesReference.keepSynced(true)
+        
+        messagesReference.observeSingleEvent(of: .value) { (snapshot) in
+            for messageSnapshot in snapshot.children {
+                self.messages.append( TrashTalkMessage(snapshot: messageSnapshot as! DataSnapshot) )
+            }
+            
+            DispatchQueue.main.async {
+                self.messagesCollectionView.reloadData()
+            }
+        }
     }
     
     
@@ -163,6 +183,32 @@ class TrashTalkMessagesViewController: MessagesViewController {
         messageInputBar.rightStackView.alignment = .center
         messageInputBar.rightStackView.distribution = .equalCentering
     }
+    
+    func uploadTrashTalkMessage(message: TrashTalkMessage) {
+        
+        let threadName:String = game.awayTeam.replacingOccurrences(of: " ", with: "") + "at" + game.homeTeam.replacingOccurrences(of: " ", with: "")
+        let messagesPath:String = "trashtalk/" + configuration.week + "/" + threadName + "/mesages"
+        let dbReference = Database.database().reference(withPath: messagesPath)
+        
+        switch message.data {
+        case .text(_):
+            dbReference.updateChildValues([message.messageId : message.toAnyObject()])
+        case .photo(let image):
+            let timestamp:String = getTimestampString()
+            let imgUploadPath:String = "images/trashtalk/" + configuration.week + "/" + threadName + "/" + timestamp
+            
+            uploadImageToStorage(image: image, uploadPath: imgUploadPath) { (downloadUrlStr) in
+                if let downloadUrlStr = downloadUrlStr, let downloadUrl = URL(string: downloadUrlStr) {
+                    var mutatedMessage = message
+                    mutatedMessage.imgUrl = downloadUrl
+                    
+                    dbReference.updateChildValues([mutatedMessage.messageId : mutatedMessage.toAnyObject()])
+                }
+            }
+        default:
+            break
+        }
+    }
 }
 
 
@@ -209,6 +255,34 @@ extension TrashTalkMessagesViewController: MessagesDataSource {
         
         return NSAttributedString(string: dateString, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let messagesCollectionView = collectionView as? MessagesCollectionView else {
+            fatalError("The collectionView is not a MessagesCollectionView.")
+        }
+        
+        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
+            fatalError("MessagesDataSource has not been set.")
+        }
+        
+        let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
+        
+        switch message.data {
+        case .text, .attributedText, .emoji:
+            let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
+            cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+            return cell
+        case .photo, .video:
+            let cell = messagesCollectionView.dequeueReusableCell(MediaMessageCell.self, for: indexPath)
+            cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+            return cell
+        case .location:
+            let cell = messagesCollectionView.dequeueReusableCell(LocationMessageCell.self, for: indexPath)
+            cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+            return cell
+        }
+    }
 }
 
 
@@ -216,6 +290,68 @@ extension TrashTalkMessagesViewController: MessagesDataSource {
 extension TrashTalkMessagesViewController: MessagesLayoutDelegate {
     func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 10.0
+    }
+    
+    func heightForMedia(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        
+        if var message = message as? TrashTalkMessage {
+        
+            if let url = message.imgUrl, message.mediaStatus == .notLoaded {
+            
+                // Update the media status to show the image is already being fetched
+                message.mediaStatus = .loading
+                print("loading")
+                self.messages[indexPath.section] = message
+                
+                SDWebImageDownloader.shared().downloadImage(with: url, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
+                    
+                    if error != nil {
+                        message.mediaStatus = .error
+                        print("error")
+                        self.messages[indexPath.section] = message
+                    }
+                    
+                    else if let image = image {
+                        message.mediaStatus = .loaded
+                        print("loaded")
+                        message.data = .photo(image)
+                        self.messages[indexPath.section] = message
+                        
+                        DispatchQueue.main.async {
+                            self.messagesCollectionView.reloadItems(at: [indexPath])
+                        }
+                    }
+                })
+            }
+            
+            switch message.mediaStatus {
+            case .notLoaded, .loading, .error:
+                return 40
+            case .loaded:
+                switch message.data {
+                case .photo(let image), .video(_, let image):
+                    let boundingRect = CGRect(origin: .zero, size: CGSize(width: maxWidth, height: .greatestFiniteMagnitude))
+                    return AVMakeRect(aspectRatio: image.size, insideRect: boundingRect).height
+                default:
+                    return 0
+                }
+            }
+        }
+        
+        return 40
+    }
+    
+    func widthForMedia(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        if let message = message as? TrashTalkMessage {
+            switch message.mediaStatus {
+            case .notLoaded, .loading, .error:
+                return 40
+            case .loaded:
+                return maxWidth
+            }
+        }
+        
+        return maxWidth
     }
 }
 
@@ -283,6 +419,9 @@ extension TrashTalkMessagesViewController: MessageInputBarDelegate {
         for topBarItem in self.messageInputBar.topStackViewItems {
             if let itemImage = topBarItem.image {
                 let imageMessage = TrashTalkMessage(image: itemImage, sender: currentSender(), messageId: UUID().uuidString, date: Date(), team: configuration.currentUser.school)
+                
+                uploadTrashTalkMessage(message: imageMessage)
+                
                 self.messages.append(imageMessage)
                 self.messagesCollectionView.insertSections([messages.count-1])
             }
@@ -296,12 +435,18 @@ extension TrashTalkMessagesViewController: MessageInputBarDelegate {
             
             if let image = component as? UIImage {
                 let imageMessage = TrashTalkMessage(image: image, sender: currentSender(), messageId: UUID().uuidString, date: Date(), team: configuration.currentUser.school)
+                
+                uploadTrashTalkMessage(message: imageMessage)
+                
                 self.messages.append(imageMessage)
                 self.messagesCollectionView.insertSections([messages.count-1])
             }
             
             else if let text = component as? String {
                 let textMessage = TrashTalkMessage(text: text, sender: currentSender(), messageId: UUID().uuidString, date: Date(), team: configuration.currentUser.school)
+                
+                uploadTrashTalkMessage(message: textMessage)
+                
                 self.messages.append(textMessage)
                 self.messagesCollectionView.insertSections([messages.count-1])
             }
