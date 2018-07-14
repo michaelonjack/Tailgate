@@ -714,7 +714,7 @@ func blockUser(userId:String) {
 // Updates a field for the current user
 //
 func updateValueForCurrentUser(key:String, value:Any) {
-    let currentUserReference = Database.database().reference(withPath: "users/" + (Auth.auth().currentUser?.uid)!)
+    let currentUserReference = Database.database().reference(withPath: "users/" + getCurrentUserId())
     currentUserReference.updateChildValues([key:value])
 }
 
@@ -740,6 +740,30 @@ func getTimestampString() -> String {
 //
 func getCurrentUserId() -> String {
     return (Auth.auth().currentUser?.uid)!
+}
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// saveVotedMessages
+//
+// Saves the parameter user's upvoted and downvoted messages
+//
+func saveVotedMessages(forUser user:User) {
+    var upvoted:[String:String] = [:]
+    for messageId in user.upvotedMessageIds {
+        upvoted[UUID().uuidString] = messageId
+    }
+    
+    var downvoted:[String:String] = [:]
+    for messageId in user.downvotedMessageIds {
+        downvoted[UUID().uuidString] = messageId
+    }
+    
+    updateValueForCurrentUser(key: "upvoted", value: upvoted)
+    updateValueForCurrentUser(key: "downvoted", value: downvoted)
 }
 
 

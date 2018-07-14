@@ -16,7 +16,12 @@ import SDWebImage
 class TrashTalkMessagesViewController: MessagesViewController {
     
     var messages:[TrashTalkMessage] = []
-    var game: Game!
+    var game: Game! {
+        didSet {
+            threadName = game.awayTeam.replacingOccurrences(of: " ", with: "") + "at" + game.homeTeam.replacingOccurrences(of: " ", with: "")
+        }
+    }
+    var threadName: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +49,15 @@ class TrashTalkMessagesViewController: MessagesViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Once the user exits, do a mass save of their upvoted/downvoted messages
+        saveVotedMessages(forUser: configuration.currentUser)
+    }
+    
     func loadMessages() {
-        let threadName:String = game.awayTeam.replacingOccurrences(of: " ", with: "") + "at" + game.homeTeam.replacingOccurrences(of: " ", with: "")
-        let messagesPath:String = "trashtalk/" + configuration.week + "/" + threadName + "/mesages"
+        let messagesPath:String = "trashtalk/" + configuration.week + "/" + threadName + "/messages"
         
         let messagesReference = Database.database().reference(withPath: messagesPath)
         messagesReference.keepSynced(true)
@@ -186,8 +197,7 @@ class TrashTalkMessagesViewController: MessagesViewController {
     
     func uploadTrashTalkMessage(message: TrashTalkMessage) {
         
-        let threadName:String = game.awayTeam.replacingOccurrences(of: " ", with: "") + "at" + game.homeTeam.replacingOccurrences(of: " ", with: "")
-        let messagesPath:String = "trashtalk/" + configuration.week + "/" + threadName + "/mesages"
+        let messagesPath:String = "trashtalk/" + configuration.week + "/" + threadName + "/messages"
         let dbReference = Database.database().reference(withPath: messagesPath)
         
         switch message.data {
@@ -241,19 +251,19 @@ extension TrashTalkMessagesViewController: MessagesDataSource {
     
     func cellBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         
-        let formatter: DateFormatter = DateFormatter()
-        formatter.dateStyle = .medium
-        
-        let dateString = formatter.string(from: message.sentDate)
-        
         if let message = message as? TrashTalkMessage {
-            let scoreString = "Score: " + String(message.score)
-            let bottomLabelText = dateString + "   -   " + scoreString
+            var scoreString = "Score: " + String(message.score)
             
-            return NSAttributedString(string: bottomLabelText, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
+            if configuration.currentUser.didUpvoteMessage(withId: message.messageId) {
+                scoreString = scoreString + " 👍"
+            } else if configuration.currentUser.didDownvoteMessage(withId: message.messageId) {
+                scoreString = scoreString + " 👎"
+            }
+            
+            return NSAttributedString(string: scoreString, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
         }
         
-        return NSAttributedString(string: dateString, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
+        return NSAttributedString(string: "Score: ", attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -418,7 +428,8 @@ extension TrashTalkMessagesViewController: MessageInputBarDelegate {
         // Check if any images were uploaded in the top stack view
         for topBarItem in self.messageInputBar.topStackViewItems {
             if let itemImage = topBarItem.image {
-                let imageMessage = TrashTalkMessage(image: itemImage, sender: currentSender(), messageId: UUID().uuidString, date: Date(), team: configuration.currentUser.school)
+                var imageMessage = TrashTalkMessage(image: itemImage, sender: currentSender(), messageId: UUID().uuidString, date: Date(), team: configuration.currentUser.school)
+                imageMessage.mediaStatus = .loaded
                 
                 uploadTrashTalkMessage(message: imageMessage)
                 
@@ -434,7 +445,8 @@ extension TrashTalkMessagesViewController: MessageInputBarDelegate {
         for component in inputBar.inputTextView.components {
             
             if let image = component as? UIImage {
-                let imageMessage = TrashTalkMessage(image: image, sender: currentSender(), messageId: UUID().uuidString, date: Date(), team: configuration.currentUser.school)
+                var imageMessage = TrashTalkMessage(image: image, sender: currentSender(), messageId: UUID().uuidString, date: Date(), team: configuration.currentUser.school)
+                imageMessage.mediaStatus = .loaded
                 
                 uploadTrashTalkMessage(message: imageMessage)
                 
@@ -481,10 +493,72 @@ extension TrashTalkMessagesViewController: MessageCellDelegate {
     }
     
     func didDoubleTapTopCell(in cell: MessageCollectionViewCell) {
-        print("Top of cell double tapped")
+        if let indexPath = messagesCollectionView.indexPath(for: cell) {
+            var tappedMessage = messages[indexPath.section]
+            var scoreDifference = 0
+            
+            if configuration.currentUser.didUpvoteMessage(withId: tappedMessage.messageId) {
+                configuration.currentUser.removeVoteFromMessage(withId: tappedMessage.messageId)
+                tappedMessage.score = tappedMessage.score - 1
+                scoreDifference = -1
+            } else if configuration.currentUser.didDownvoteMessage(withId: tappedMessage.messageId) {
+                configuration.currentUser.removeVoteFromMessage(withId: tappedMessage.messageId)
+                configuration.currentUser.upvoteMessage(withId: tappedMessage.messageId)
+                tappedMessage.score = tappedMessage.score + 2
+                scoreDifference = 2
+            } else {
+                configuration.currentUser.upvoteMessage(withId: tappedMessage.messageId)
+                tappedMessage.score = tappedMessage.score + 1
+                scoreDifference = 1
+            }
+            
+            // Update the vote count in the database
+            print("trashtalk/" + configuration.week + "/" + threadName + "/messages/" + tappedMessage.messageId)
+            let messageReference = Database.database().reference(withPath: "trashtalk/" + configuration.week + "/" + threadName + "/messages/" + tappedMessage.messageId)
+            messageReference.keepSynced(true)
+            messageReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                let message = TrashTalkMessage(snapshot: snapshot)
+                let updatedMessageScore = message.score + scoreDifference
+                messageReference.updateChildValues(["score":updatedMessageScore])
+            }, withCancel: nil)
+            
+            messages[indexPath.section] = tappedMessage
+            messagesCollectionView.reloadItems(at: [indexPath])
+        }
     }
     
     func didDoubleTapBottomCell(in cell: MessageCollectionViewCell) {
-        print("Bottom of cell double tapped")
+        if let indexPath = messagesCollectionView.indexPath(for: cell) {
+            var tappedMessage = messages[indexPath.section]
+            var scoreDifference = 0
+            
+            if configuration.currentUser.didUpvoteMessage(withId: tappedMessage.messageId) {
+                configuration.currentUser.removeVoteFromMessage(withId: tappedMessage.messageId)
+                configuration.currentUser.downvoteMessage(withId: tappedMessage.messageId)
+                tappedMessage.score = tappedMessage.score - 2
+                scoreDifference = -2
+                
+            } else if configuration.currentUser.didDownvoteMessage(withId: tappedMessage.messageId) {
+                configuration.currentUser.removeVoteFromMessage(withId: tappedMessage.messageId)
+                tappedMessage.score = tappedMessage.score + 1
+                scoreDifference = 1
+            } else {
+                configuration.currentUser.downvoteMessage(withId: tappedMessage.messageId)
+                tappedMessage.score = tappedMessage.score - 1
+                scoreDifference = -1
+            }
+            
+            // Update the vote count in the database
+            let messageReference = Database.database().reference(withPath: "trashtalk/" + configuration.week + "/" + threadName + "/messages/" + tappedMessage.messageId)
+            messageReference.keepSynced(true)
+            messageReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                let message = TrashTalkMessage(snapshot: snapshot)
+                let updatedMessageScore = message.score + scoreDifference
+                messageReference.updateChildValues(["score":updatedMessageScore])
+            }, withCancel: nil)
+            
+            messages[indexPath.section] = tappedMessage
+            messagesCollectionView.reloadItems(at: [indexPath])
+        }
     }
 }
