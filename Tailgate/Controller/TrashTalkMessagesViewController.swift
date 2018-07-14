@@ -28,6 +28,9 @@ class TrashTalkMessagesViewController: MessagesViewController {
         
         self.navigationController?.navigationBar.isTranslucent = false
         
+        messagesCollectionView.register(TrashTalkTextMessageCell.self)
+        messagesCollectionView.register(TrashTalkMediaMessageCell.self)
+        
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
@@ -266,7 +269,7 @@ extension TrashTalkMessagesViewController: MessagesDataSource {
         return NSAttributedString(string: "Score: ", attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let messagesCollectionView = collectionView as? MessagesCollectionView else {
             fatalError("The collectionView is not a MessagesCollectionView.")
@@ -280,11 +283,11 @@ extension TrashTalkMessagesViewController: MessagesDataSource {
         
         switch message.data {
         case .text, .attributedText, .emoji:
-            let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
+            let cell = messagesCollectionView.dequeueReusableCell(TrashTalkTextMessageCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
         case .photo, .video:
-            let cell = messagesCollectionView.dequeueReusableCell(MediaMessageCell.self, for: indexPath)
+            let cell = messagesCollectionView.dequeueReusableCell(TrashTalkMediaMessageCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
         case .location:
@@ -513,7 +516,6 @@ extension TrashTalkMessagesViewController: MessageCellDelegate {
             }
             
             // Update the vote count in the database
-            print("trashtalk/" + configuration.week + "/" + threadName + "/messages/" + tappedMessage.messageId)
             let messageReference = Database.database().reference(withPath: "trashtalk/" + configuration.week + "/" + threadName + "/messages/" + tappedMessage.messageId)
             messageReference.keepSynced(true)
             messageReference.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -523,7 +525,10 @@ extension TrashTalkMessagesViewController: MessageCellDelegate {
             }, withCancel: nil)
             
             messages[indexPath.section] = tappedMessage
-            messagesCollectionView.reloadItems(at: [indexPath])
+            
+            DispatchQueue.main.async {
+                self.messagesCollectionView.reloadItems(at: [indexPath])
+            }
         }
     }
     
@@ -558,7 +563,10 @@ extension TrashTalkMessagesViewController: MessageCellDelegate {
             }, withCancel: nil)
             
             messages[indexPath.section] = tappedMessage
-            messagesCollectionView.reloadItems(at: [indexPath])
+            
+            DispatchQueue.main.async {
+                self.messagesCollectionView.reloadItems(at: [indexPath])
+            }
         }
     }
 }
