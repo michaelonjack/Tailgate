@@ -43,6 +43,14 @@ class TrashTalkMessagesViewController: MessagesViewController {
         messageInputBar.topStackView.distribution = .fillProportionally
         updateTopStackView()
         
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(
+                image: UIImage(named: "Sort"),
+                style: .plain,
+                target: self,
+                action: #selector(TrashTalkMessagesViewController.sortPressed)
+            )
+        ]
         
         loadMessages()
         setKeyboardStyle()
@@ -74,6 +82,26 @@ class TrashTalkMessagesViewController: MessagesViewController {
                 self.messagesCollectionView.reloadData()
             }
         }
+    }
+    
+    
+    @objc func sortPressed() {
+        let actionSheetController = UIAlertController(title: "Sorting Options", message: nil, preferredStyle: .actionSheet)
+        let actions = [
+            UIAlertAction(title: "Sort by Sent Date", style: .default, handler: { (_) in
+                self.messages.sort(by: { $0.sentDate > $1.sentDate })
+                self.messagesCollectionView.reloadData()
+                self.messagesCollectionView.scrollToBottom()
+            }),
+            UIAlertAction(title: "Sort by Upvotes", style: .default, handler: { (_) in
+                self.messages.sort(by: { $0.score > $1.score })
+                self.messagesCollectionView.reloadData()
+                self.messagesCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+            }),
+            UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        ]
+        actions.forEach { actionSheetController.addAction($0) }
+        present(actionSheetController, animated: true, completion: nil)
     }
     
     
