@@ -15,6 +15,7 @@ class Report {
     let reportingUserId:String!
     let reportedUserId:String!
     let tailgateId:String!
+    var threadName:String!
     let submissionDate:Date!
     var submissionDateStr:String {
         let formatter = DateFormatter()
@@ -28,6 +29,17 @@ class Report {
         self.reportingUserId = reportingUserId
         self.reportedUserId = reportedUserId
         self.tailgateId = tailgateId
+        self.threadName = ""
+        self.submissionDate = Date()
+    }
+    
+    init(report:String, reportingUserId:String, game:Game) {
+        self.id = UUID().uuidString
+        self.report = report
+        self.reportingUserId = reportingUserId
+        self.reportedUserId = ""
+        self.tailgateId = ""
+        self.threadName = game.awayTeam.replacingOccurrences(of: " ", with: "") + "at" + game.homeTeam.replacingOccurrences(of: " ", with: "")
         self.submissionDate = Date()
     }
     
@@ -37,7 +49,8 @@ class Report {
             "reportingUserId": reportingUserId,
             "reportedUserId": reportedUserId,
             "tailgateId": tailgateId,
-            "submissionDate": submissionDateStr
+            "submissionDate": submissionDateStr,
+            "threadName": threadName
         ]
     }
     

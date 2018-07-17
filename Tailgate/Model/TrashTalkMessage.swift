@@ -32,6 +32,7 @@ struct TrashTalkMessage: MessageType {
     var imgUrl: URL?
     var score: Int
     var mediaStatus: MediaStatus
+    var showDetail:Bool
     
     private init(data: MessageData, sender: Sender, messageId: String, date: Date, team: School?) {
         self.data = data
@@ -41,6 +42,7 @@ struct TrashTalkMessage: MessageType {
         self.senderTeam = team
         self.score = 0
         self.mediaStatus = .notLoaded
+        self.showDetail = false
     }
     
     init(text: String, sender: Sender, messageId: String, date: Date, team: School?) {
@@ -69,6 +71,7 @@ struct TrashTalkMessage: MessageType {
         self.score = snapshotValue["score"] as? Int ?? 0
         self.senderTeam = configuration.schoolCache[snapshotValue["senderTeam"] as? String ?? ""]
         self.mediaStatus = .notLoaded
+        self.showDetail = false
         
         // Set the sender
         let senderId = snapshotValue["sender"]!["id"] as? String ?? ""

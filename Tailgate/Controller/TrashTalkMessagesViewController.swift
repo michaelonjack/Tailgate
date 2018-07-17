@@ -49,6 +49,12 @@ class TrashTalkMessagesViewController: MessagesViewController {
                 style: .plain,
                 target: self,
                 action: #selector(TrashTalkMessagesViewController.sortPressed)
+            ),
+            UIBarButtonItem(
+                image: UIImage(named: "MoreSmall"),
+                style: .plain,
+                target: self,
+                action: #selector(TrashTalkMessagesViewController.optionsPressed)
             )
         ]
         
@@ -65,6 +71,13 @@ class TrashTalkMessagesViewController: MessagesViewController {
         
         // Once the user exits, do a mass save of their upvoted/downvoted messages
         saveVotedMessages(forUser: configuration.currentUser)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MessagesToReport" {
+            let reportController = segue.destination as! TrashTalkReportViewController
+            reportController.game = self.game
+        }
     }
     
     func loadMessages() {
@@ -86,7 +99,7 @@ class TrashTalkMessagesViewController: MessagesViewController {
     
     
     @objc func sortPressed() {
-        let actionSheetController = UIAlertController(title: "Sorting Options", message: nil, preferredStyle: .actionSheet)
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let actions = [
             UIAlertAction(title: "Sort by Sent Date", style: .default, handler: { (_) in
                 self.messages.sort(by: { $0.sentDate > $1.sentDate })
@@ -97,6 +110,19 @@ class TrashTalkMessagesViewController: MessagesViewController {
                 self.messages.sort(by: { $0.score > $1.score })
                 self.messagesCollectionView.reloadData()
                 self.messagesCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+            }),
+            UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        ]
+        actions.forEach { actionSheetController.addAction($0) }
+        present(actionSheetController, animated: true, completion: nil)
+    }
+    
+    
+    @objc func optionsPressed() {
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let actions = [
+            UIAlertAction(title: "Report Content", style: .destructive, handler: { (_) in
+                self.performSegue(withIdentifier: "MessagesToReport", sender: nil)
             }),
             UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         ]
@@ -217,7 +243,7 @@ class TrashTalkMessagesViewController: MessagesViewController {
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 5, bottom: 8, right: 5)
         
-        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
+        messageInputBar.setLeftStackViewWidthConstant(to: 40, animated: false)
         messageInputBar.setStackViewItems(buttons, forStack: .left, animated: false)
         
         messageInputBar.leftStackView.alignment = .center
@@ -276,8 +302,17 @@ extension TrashTalkMessagesViewController: MessagesDataSource {
     }
     
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        let name = message.sender.displayName
-        return NSAttributedString(string: name, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption1)])
+        var labelText = ""
+        
+        if let message = message as? TrashTalkMessage {
+            if message.showDetail {
+                labelText = message.sender.displayName
+            } else {
+                labelText = ""
+            }
+        }
+        
+        return NSAttributedString(string: labelText, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption1)])
     }
     
     func cellBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
@@ -289,6 +324,12 @@ extension TrashTalkMessagesViewController: MessagesDataSource {
                 scoreString = scoreString + " 👍"
             } else if configuration.currentUser.didDownvoteMessage(withId: message.messageId) {
                 scoreString = scoreString + " 👎"
+            }
+            
+            var messagesCopy = self.messages
+            messagesCopy.sort(by: { $0.score > $1.score })
+            if message.messageId == messagesCopy[0].messageId {
+                scoreString = scoreString + " 🏆"
             }
             
             return NSAttributedString(string: scoreString, attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .caption2)])
@@ -445,6 +486,16 @@ extension TrashTalkMessagesViewController: MessagesDisplayDelegate {
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         return isFromCurrentSender(message: message) ? UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1) : UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
     }
+    
+    /////////////////////////////////////////////////////////////////
+    //
+    // shouldDisplayHeader
+    //
+    // Determines if the message header should be displayed for a specific message cell
+    //
+    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> Bool {
+        return false
+    }
 }
 
 
@@ -507,7 +558,16 @@ extension TrashTalkMessagesViewController: MessageInputBarDelegate {
 
 extension TrashTalkMessagesViewController: MessageCellDelegate {
     func didTapAvatar(in cell: MessageCollectionViewCell) {
-        print("Avatar tapped")
+        if let indexPath = messagesCollectionView.indexPath(for: cell) {
+            var tappedMessage = messages[indexPath.section]
+            tappedMessage.showDetail = !tappedMessage.showDetail
+            
+            messages[indexPath.section] = tappedMessage
+            
+            DispatchQueue.main.async {
+                self.messagesCollectionView.reloadItems(at: [indexPath])
+            }
+        }
     }
     
     func didTapMessage(in cell: MessageCollectionViewCell) {

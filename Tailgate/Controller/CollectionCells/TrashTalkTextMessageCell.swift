@@ -28,11 +28,12 @@ open class TrashTalkTextMessageCell: TextMessageCell {
         
         let border = CALayer()
         let cellWidth = self.frame.width
+        let cellHeight = self.frame.height
         
         if isFromCurrentSender {
-            border.frame = CGRect(x: cellTopLabel.frame.maxX - (cellWidth * (4/10)), y: 0, width: cellWidth * (4/10), height: 2)
+            border.frame = CGRect(x: 0, y: 0, width: 4, height: cellHeight)
         } else {
-            border.frame = CGRect(x: cellTopLabel.frame.minX, y: 0, width: cellWidth * (4/10), height: 2)
+            border.frame = CGRect(x: cellWidth-4, y: 0, width: 4, height: cellHeight)
         }
         
         if configuration.currentUser.didUpvoteMessage(withId: message.messageId) {
