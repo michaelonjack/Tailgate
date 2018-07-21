@@ -15,6 +15,7 @@ class TrashTalkReportViewController: UIViewController {
     @IBOutlet weak var reportTextView: UITextView!
     
     var game:Game!
+    var messageId:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class TrashTalkReportViewController: UIViewController {
     @IBAction func submitReportPressed(_ sender: Any) {
         // Create the new report
         if self.reportTextView.text != "" {
-            let report = Report(report: self.reportTextView.text, reportingUserId: getCurrentUserId(), game: game)
+            let report = Report(report: self.reportTextView.text, reportingUserId: getCurrentUserId(), game: game, messageId: messageId)
             
             let reportsReference = Database.database().reference(withPath: "reports/" + report.id)
             reportsReference.setValue(report.toAnyObject())

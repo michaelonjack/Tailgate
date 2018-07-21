@@ -22,6 +22,7 @@ class TrashTalkMessagesViewController: MessagesViewController {
         }
     }
     var threadName: String!
+    var lastSelectedMessageId:String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +81,7 @@ class TrashTalkMessagesViewController: MessagesViewController {
         if segue.identifier == "MessagesToReport" {
             let reportController = segue.destination as! TrashTalkReportViewController
             reportController.game = self.game
+            reportController.messageId = lastSelectedMessageId
         }
     }
     
@@ -713,7 +715,11 @@ extension TrashTalkMessagesViewController: TrashTalkMessageCellDelegate {
                 }
             }),
             UIAlertAction(title: "Report Message", style: .destructive, handler: { (_) in
-                self.performSegue(withIdentifier: "MessagesToReport", sender: nil)
+                if let indexPath = self.messagesCollectionView.indexPath(for: cell) {
+                    let tappedMessage = self.messages[indexPath.section]
+                    self.lastSelectedMessageId = tappedMessage.messageId
+                    self.performSegue(withIdentifier: "MessagesToReport", sender: nil)
+                }
             }),
             UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         ]
