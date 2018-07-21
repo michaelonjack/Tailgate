@@ -46,6 +46,7 @@
 		B18C66D320FA7B42000BA81D /* TrashTalkMediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18C66D220FA7B42000BA81D /* TrashTalkMediaMessageCell.swift */; };
 		B18C66D520FA7D53000BA81D /* TrashTalkTextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18C66D420FA7D53000BA81D /* TrashTalkTextMessageCell.swift */; };
 		B18C66D720FE9D7A000BA81D /* TrashTalkReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18C66D620FE9D7A000BA81D /* TrashTalkReportViewController.swift */; };
+		B18C66D92101623C000BA81D /* TrashTalkMessageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18C66D82101623C000BA81D /* TrashTalkMessageCellDelegate.swift */; };
 		B19BFD5620B4BBF1009D6AD2 /* SignUpAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */; };
 		B19BFD5820B4FC57009D6AD2 /* SettingsTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFD5720B4FC57009D6AD2 /* SettingsTermsViewController.swift */; };
 		B1A18FD22054CD3800D9C12A /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */; };
@@ -140,6 +141,7 @@
 		B18C66D220FA7B42000BA81D /* TrashTalkMediaMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTalkMediaMessageCell.swift; sourceTree = "<group>"; };
 		B18C66D420FA7D53000BA81D /* TrashTalkTextMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTalkTextMessageCell.swift; sourceTree = "<group>"; };
 		B18C66D620FE9D7A000BA81D /* TrashTalkReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTalkReportViewController.swift; sourceTree = "<group>"; };
+		B18C66D82101623C000BA81D /* TrashTalkMessageCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTalkMessageCellDelegate.swift; sourceTree = "<group>"; };
 		B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreementViewController.swift; sourceTree = "<group>"; };
 		B19BFD5720B4FC57009D6AD2 /* SettingsTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTermsViewController.swift; sourceTree = "<group>"; };
 		B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 		B1DD1CD9203E505F00291EAE /* CollectionCells */ = {
 			isa = PBXGroup;
 			children = (
+				B18C66D82101623C000BA81D /* TrashTalkMessageCellDelegate.swift */,
 				B18C66D420FA7D53000BA81D /* TrashTalkTextMessageCell.swift */,
 				B18C66D220FA7B42000BA81D /* TrashTalkMediaMessageCell.swift */,
 				B1C6C3E920BC7A5D005DEED8 /* TailgateImageCollectionViewCell.swift */,
@@ -628,6 +631,7 @@
 				B13B81391FE60829008F3A38 /* CreateTailgateSuppliesViewController.swift in Sources */,
 				B1E227302084024A00672F53 /* SettingsSchoolViewController.swift in Sources */,
 				B1E83BE01FDD795000185E17 /* SignUpPasswordViewController.swift in Sources */,
+				B18C66D92101623C000BA81D /* TrashTalkMessageCellDelegate.swift in Sources */,
 				B1E83BD71FDCFBE200185E17 /* ProfileViewController.swift in Sources */,
 				B1C6C3EC20CDF9D0005DEED8 /* ReportContentViewController.swift in Sources */,
 				B1BBF2E31FEEBC98007B1ACF /* Drink.swift in Sources */,

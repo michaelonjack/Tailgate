@@ -27,6 +27,8 @@ class TrashTalkMessagesViewController: MessagesViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.backgroundColor = .white
+        self.navigationController?.navigationBar.alpha = 0.9
         
         messagesCollectionView.register(TrashTalkTextMessageCell.self)
         messagesCollectionView.register(TrashTalkMediaMessageCell.self)
@@ -51,13 +53,14 @@ class TrashTalkMessagesViewController: MessagesViewController {
                 action: #selector(TrashTalkMessagesViewController.sortPressed)
             ),
             UIBarButtonItem(
-                image: UIImage(named: "MoreSmall"),
+                image: UIImage(named: "Question"),
                 style: .plain,
                 target: self,
-                action: #selector(TrashTalkMessagesViewController.optionsPressed)
+                action: #selector(TrashTalkMessagesViewController.questionPressed)
             )
         ]
         
+        setupGestureRecognizers()
         loadMessages()
         setKeyboardStyle()
     }
@@ -77,6 +80,43 @@ class TrashTalkMessagesViewController: MessagesViewController {
         if segue.identifier == "MessagesToReport" {
             let reportController = segue.destination as! TrashTalkReportViewController
             reportController.game = self.game
+        }
+    }
+    
+    func setupGestureRecognizers() {
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTapGesture(_:)))
+        doubleTapGesture.delaysTouchesBegan = true
+        doubleTapGesture.numberOfTapsRequired = 2
+        messagesCollectionView.addGestureRecognizer(doubleTapGesture)
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(_:)))
+        longPressGesture.delaysTouchesBegan = true
+        messagesCollectionView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc
+    open func handleDoubleTapGesture(_ gesture: UIGestureRecognizer) {
+        guard gesture.state == .ended else { return }
+        
+        let touchLocation = gesture.location(in: messagesCollectionView)
+        guard let indexPath = messagesCollectionView.indexPathForItem(at: touchLocation) else { return }
+        
+        if let cell = messagesCollectionView.cellForItem(at: indexPath) as? TrashTalkTextMessageCell {
+            cell.handleDoubleTapGesture(gesture)
+        } else if let cell = messagesCollectionView.cellForItem(at: indexPath) as? TrashTalkMediaMessageCell {
+            cell.handleDoubleTapGesture(gesture)
+        }
+    }
+    
+    @objc
+    open func handleLongPressGesture(_ gesture: UIGestureRecognizer) {
+        let touchLocation = gesture.location(in: messagesCollectionView)
+        guard let indexPath = messagesCollectionView.indexPathForItem(at: touchLocation) else { return }
+        
+        if let cell = messagesCollectionView.cellForItem(at: indexPath) as? TrashTalkTextMessageCell {
+            cell.handleLongPressGesture(gesture)
+        } else if let cell = messagesCollectionView.cellForItem(at: indexPath) as? TrashTalkMediaMessageCell {
+            cell.handleLongPressGesture(gesture)
         }
     }
     
@@ -118,22 +158,15 @@ class TrashTalkMessagesViewController: MessagesViewController {
     }
     
     
-    @objc func optionsPressed() {
-        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let actions = [
-            UIAlertAction(title: "Report Content", style: .destructive, handler: { (_) in
-                self.performSegue(withIdentifier: "MessagesToReport", sender: nil)
-            }),
-            UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        ]
-        actions.forEach { actionSheetController.addAction($0) }
-        present(actionSheetController, animated: true, completion: nil)
+    @objc func questionPressed() {
+        let howToAlert = createAlert(title: "How To", message: "Double tap the top of a message to upvote.\n\nDouble tap the bottom of a message to downvote.\n\nPress and hold a message to copy or report it.")
+        self.present(howToAlert, animated: true)
     }
     
     
     func updateTopStackView(forNewItem newItem: InputBarButtonItem? = nil, ofWidth width:CGFloat? = nil) {
         
-        //
+        // If there aren't any images attached to the message, hide the top stack view
         if messageInputBar.topStackViewItems.count == 0 && newItem == nil {
             self.messageInputBar.sendButton.isEnabled = false
             messageInputBar.topStackViewPadding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
@@ -556,7 +589,7 @@ extension TrashTalkMessagesViewController: MessageInputBarDelegate {
 
 
 
-extension TrashTalkMessagesViewController: MessageCellDelegate {
+extension TrashTalkMessagesViewController: TrashTalkMessageCellDelegate {
     func didTapAvatar(in cell: MessageCollectionViewCell) {
         if let indexPath = messagesCollectionView.indexPath(for: cell) {
             var tappedMessage = messages[indexPath.section]
@@ -656,5 +689,35 @@ extension TrashTalkMessagesViewController: MessageCellDelegate {
                 self.messagesCollectionView.reloadItems(at: [indexPath])
             }
         }
+    }
+    
+    func didLongPressMessage(in cell: MessageCollectionViewCell) {
+        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let actions = [
+            UIAlertAction(title: "Copy", style: .default, handler: { (_) in
+                if let indexPath = self.messagesCollectionView.indexPath(for: cell) {
+                    let tappedMessage = self.messages[indexPath.section]
+                    
+                    switch tappedMessage.data {
+                    case .text(let message), .emoji(let message):
+                        UIPasteboard.general.string = message
+                    case .attributedText(let attrMessage):
+                        UIPasteboard.general.string = attrMessage.string
+                    case .photo(let image):
+                        UIPasteboard.general.image = image
+                    case .video(file: let url, thumbnail: _):
+                        UIPasteboard.general.string = url.absoluteString
+                    default:
+                        break
+                    }
+                }
+            }),
+            UIAlertAction(title: "Report Message", style: .destructive, handler: { (_) in
+                self.performSegue(withIdentifier: "MessagesToReport", sender: nil)
+            }),
+            UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        ]
+        actions.forEach { actionSheetController.addAction($0) }
+        present(actionSheetController, animated: true, completion: nil)
     }
 }

@@ -133,23 +133,6 @@ open class MessageCollectionViewCell: UICollectionViewCell, CollectionViewReusab
         }
     }
     
-    open func handleDoubleTapGesture(_ gesture: UIGestureRecognizer) {
-        let touchLocation = gesture.location(in: self)
-        
-        let cellMinY = cellTopLabel.frame.maxY - cellTopLabel.frame.height
-        let cellMidY = messageContainerView.frame.midY
-        let cellMaxY = cellBottomLabel.frame.maxY
-        
-        switch true {
-        case cellMinY <= touchLocation.y && touchLocation.y < cellMidY:
-            delegate?.didDoubleTapTopCell(in: self)
-        case cellMidY < touchLocation.y && touchLocation.y <= cellMaxY:
-            delegate?.didDoubleTapBottomCell(in: self)
-        default:
-            break
-        }
-    }
-    
     /// Handle long press gesture, return true when gestureRecognizer's touch point in `messageContainerView`'s frame
     open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let touchPoint = gestureRecognizer.location(in: self)

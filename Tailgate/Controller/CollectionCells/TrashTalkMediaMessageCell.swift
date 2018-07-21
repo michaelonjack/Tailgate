@@ -12,6 +12,45 @@ import MessageKit
 open class TrashTalkMediaMessageCell: MediaMessageCell {
     open override class func reuseIdentifier() -> String { return "messagekit.cell.trashtalk.mediamessage" }
     
+    open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+    
+    open func handleDoubleTapGesture(_ gesture: UIGestureRecognizer) {
+        let touchLocation = gesture.location(in: self)
+        
+        let cellMinY = cellTopLabel.frame.maxY - cellTopLabel.frame.height
+        let cellMidY = messageContainerView.frame.midY
+        let cellMaxY = cellBottomLabel.frame.maxY
+        
+        if let delegate = delegate as? TrashTalkMessageCellDelegate {
+            switch true {
+            case cellMinY <= touchLocation.y && touchLocation.y < cellMidY:
+                delegate.didDoubleTapTopCell(in: self)
+            case cellMidY < touchLocation.y && touchLocation.y <= cellMaxY:
+                delegate.didDoubleTapBottomCell(in: self)
+            default:
+                break
+            }
+        }
+    }
+    
+    open func handleLongPressGesture(_ gesture: UIGestureRecognizer) {
+        guard let longPressGesture = gesture as? UILongPressGestureRecognizer else { return }
+        let touchLocation = gesture.location(in: self)
+        
+        if let delegate = delegate as? TrashTalkMessageCellDelegate {
+            switch true {
+            case messageContainerView.frame.contains(touchLocation) && !cellContentView(canHandle: convert(touchLocation, to: messageContainerView)):
+                if longPressGesture.state == .began {
+                    delegate.didLongPressMessage(in: self)
+                }
+            default:
+                break
+            }
+        }
+    }
+    
     open override func configure(with message: MessageType, at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView) {
         super.configure(with: message, at: indexPath, and: messagesCollectionView)
         
