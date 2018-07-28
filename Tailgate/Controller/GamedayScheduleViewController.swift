@@ -17,7 +17,7 @@ class GamedayScheduleViewController: UIViewController {
     @IBOutlet weak var titleLableTopConstraint: NSLayoutConstraint!
     
     var conferences = ["BIG 10", "BIG 12", "ACC", "PAC-12", "SEC"]
-    var games:[String:[Game]] = [:]
+    var games:[String:[GameCell]] = [:]
     var collectionViewCurrentIndex:Int {
         return Int(self.schedulesCollectionView.contentOffset.x / self.schedulesCollectionView.frame.size.width)
     }
@@ -35,7 +35,7 @@ class GamedayScheduleViewController: UIViewController {
         for conference in conferences {
             let conferenceKey = conference.lowercased().replacingOccurrences(of: " ", with: "")
             
-            getCurrentGamesForConference(conferenceName: conferenceKey, completion: { (games) in
+            getCurrentGameCellsForConference(conferenceName: conferenceKey, completion: { (games) in
                 self.games[conferenceKey] = games
                 self.schedulesCollectionView.reloadItems(at: [IndexPath(item: self.games.count-1, section: 0)])
             })

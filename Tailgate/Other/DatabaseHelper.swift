@@ -424,7 +424,7 @@ func getDrinks(completion: @escaping (([Drink]) -> Void)) {
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
-// getCurrentGames
+// getCurrentGamesForConference
 //
 // Returns all games for this week
 //
@@ -441,6 +441,31 @@ func getCurrentGamesForConference(conferenceName:String, completion: @escaping (
         }
         
         games = games.sorted(by: { $0.startTime! < $1.startTime! })
+        completion(games)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// getCurrentGameCellsForConference
+//
+// Returns all games for this week
+//
+func getCurrentGameCellsForConference(conferenceName:String, completion: @escaping (([GameCell]) -> Void)) {
+    var games:[GameCell] = []
+    let currentGamesReference = Database.database().reference(withPath: "games/" + configuration.week + "/" + conferenceName)
+    currentGamesReference.keepSynced(true)
+    
+    currentGamesReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        for gamesSnapshot in snapshot.children {
+            
+            let game = Game(snapshot: gamesSnapshot as! DataSnapshot)
+            games.append( GameCell(game: game) )
+        }
+        
+        games = games.sorted(by: { $0.game.startTime! < $1.game.startTime! })
         completion(games)
     })
 }
