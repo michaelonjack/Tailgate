@@ -53,12 +53,15 @@ class SuppliesViewController: UIViewController {
                 let supplier = currentUser.name
                 
                 let newSupply = Supply(name: supplyName, supplier: supplier)
-                self.supplies.append(newSupply)
                 
                 DispatchQueue.main.async {
                     self.newSupplyText = ""
                     self.newSupplyTextField.text = ""
-                    self.suppliesTable.reloadData()
+                    
+                    self.suppliesTable.beginUpdates()
+                    self.supplies.append(newSupply)
+                    self.suppliesTable.insertRows(at: [IndexPath(row: self.supplies.count-1, section: 0)], with: .none)
+                    self.suppliesTable.endUpdates()
                 }
             }
         }
@@ -126,6 +129,22 @@ extension SuppliesViewController: UITableViewDelegate {
         
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if tailgate.isOwner(userId: configuration.currentUser.uid) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            supplies.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .none)
+            tableView.endUpdates()
+        }
+    }
 }
 
 
