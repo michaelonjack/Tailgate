@@ -336,6 +336,7 @@ func getTailgatesToDisplay(completion: @escaping (([Tailgate]) -> Void)) {
 func getSchools(completion: @escaping (([School]) -> Void)) {
     var schools:[School] = []
     let schoolReference = Database.database().reference(withPath: "schools/")
+    schoolReference.keepSynced(true)
     
     schoolReference.observeSingleEvent(of: .value, with: { (snapshot) in
         for schoolSnapshot in snapshot.children {

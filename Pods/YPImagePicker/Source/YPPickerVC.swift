@@ -44,6 +44,11 @@ public class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
         
         delegate = self
         
+        // Force Library only when using `minNumberOfItems`.
+        if YPConfig.library.minNumberOfItems > 1 {
+            YPImagePickerConfiguration.shared.screens = [.library]
+        }
+        
         // Library
         if YPConfig.screens.contains(.library) {
             libraryVC = YPLibraryVC()
@@ -53,8 +58,8 @@ public class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
         // Camera
         if YPConfig.screens.contains(.photo) {
             cameraVC = YPCameraVC()
-            cameraVC?.didCapturePhoto = { [unowned self] img in
-                self.didSelectItems?([YPMediaItem.photo(p: YPMediaPhoto(image: img,
+            cameraVC?.didCapturePhoto = { [weak self] img in
+                self?.didSelectItems?([YPMediaItem.photo(p: YPMediaPhoto(image: img,
                                                                         fromCamera: true))])
             }
         }
@@ -62,8 +67,8 @@ public class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
         // Video
         if YPConfig.screens.contains(.video) {
             videoVC = YPVideoVC()
-            videoVC?.didCaptureVideo = { [unowned self] videoURL in
-                self.didSelectItems?([YPMediaItem
+            videoVC?.didCaptureVideo = { [weak self] videoURL in
+                self?.didSelectItems?([YPMediaItem
                     .video(v: YPMediaVideo(thumbnail: thumbnailFromVideoPath(videoURL),
                                            videoURL: videoURL,
                                            fromCamera: true))])
@@ -107,8 +112,6 @@ public class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
             startOnPage(index)
         }
         
-        updateMode(with: currentController)
-        
         YPHelper.changeBackButtonIcon(self)
         YPHelper.changeBackButtonTitle(self)
     }
@@ -116,6 +119,8 @@ public class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraVC?.v.shotButton.isEnabled = true
+        
+        updateMode(with: currentController)
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -153,12 +158,15 @@ public class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
         mode = modeFor(vc: vc)
         
         // Re-trigger permission check
-        if let vc = vc as? YPPermissionCheckable {
+        if let vc = vc as? YPLibraryVC {
             vc.checkPermission()
+        } else if let cameraVC = vc as? YPCameraVC {
+            cameraVC.start()
+        } else if let videoVC = vc as? YPVideoVC {
+            videoVC.start()
         }
-        
+    
         updateUI()
-        startCurrentCamera()
     }
     
     func stopCurrentCamera() {
@@ -169,17 +177,6 @@ public class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
             cameraVC?.stopCamera()
         case .video:
             videoVC?.stopCamera()
-        }
-    }
-    
-    func startCurrentCamera() {
-        switch mode {
-        case .library:
-            break
-        case .camera:
-            cameraVC?.tryToStartCamera()
-        case .video:
-            videoVC?.tryToStartCamera()
         }
     }
     
@@ -262,6 +259,12 @@ public class YPPickerVC: YPBottomPager, YPBottomPagerDelegate {
                                                                 target: self,
                                                                 action: #selector(done))
             navigationItem.rightBarButtonItem?.tintColor = YPConfig.colors.tintColor
+            
+            // Disable Next Button until minNumberOfItems is reached.
+            let minNumberOfItems = YPConfig.library.minNumberOfItems
+            if minNumberOfItems > 1 {
+                navigationItem.rightBarButtonItem?.isEnabled = libraryVC!.selection.count >= minNumberOfItems
+            }
         case .camera:
             navigationItem.titleView = nil
             title = cameraVC?.title
@@ -320,7 +323,7 @@ extension YPPickerVC: YPLibraryViewDelegate {
     public func libraryViewFinishedLoading() {
         libraryVC?.isProcessing = false
         DispatchQueue.main.async {
-            self.v.scrollView.isScrollEnabled = true
+            self.v.scrollView.isScrollEnabled = YPConfig.isScrollToChangeModesEnabled
             self.libraryVC?.v.hideLoader()
             self.updateUI()
         }

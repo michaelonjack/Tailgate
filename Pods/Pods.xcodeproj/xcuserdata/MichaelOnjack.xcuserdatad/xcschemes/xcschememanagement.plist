@@ -53,16 +53,6 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>MessageKit-MessageKitAssets.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
-		</dict>
-		<key>MessageKit.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
-		</dict>
 		<key>NotificationBannerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>

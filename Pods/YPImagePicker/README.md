@@ -14,6 +14,10 @@ YPImagePicker is an instagram-like photo/video picker for iOS written in pure Sw
 [![License: MIT](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/Yummypets/YPImagePicker/blob/master/LICENSE)
 [![GitHub tag](https://img.shields.io/github/release/Yummypets/YPImagePicker.svg)]()
 
+
+[Installation](#installation) - [Configuration](#configuration) - [Usage](#usage) - [Languages](#languages) - [UI Customization](#ui-customization)
+
+
 Give it a quick try :
 `pod repo update` then `pod try YPImagePicker`
 
@@ -82,8 +86,8 @@ you'll need to ad these `plist entries` :
 
 ```swift
 var config = YPImagePickerConfiguration()
-config.libraryMediaType = .photoAndVideo
-config.onlySquareFromLibrary = false
+config.library.mediaType = .photoAndVideo
+config.library.onlySquare  = false
 config.onlySquareImagesFromCamera = true
 config.targetImageSize = .original
 config.usesFrontCamera = true
@@ -91,17 +95,21 @@ config.showsFilters = true
 config.filters = [YPFilterDescriptor(name: "Normal", filterName: ""),
                   YPFilterDescriptor(name: "Mono", filterName: "CIPhotoEffectMono")]
 config.shouldSaveNewPicturesToAlbum = true
-config.videoCompression = AVAssetExportPresetHighestQuality
+config.video.compression = AVAssetExportPresetHighestQuality
 config.albumName = "MyGreatAppName"
 config.screens = [.library, .photo, .video]
 config.startOnScreen = .library
-config.videoRecordingTimeLimit = 10
-config.videoFromLibraryTimeLimit = 20
+config.video.recordingTimeLimit = 10
+config.video.libraryTimeLimit = 20
 config.showsCrop = .rectangle(ratio: (16/9))
 config.wordings.libraryTitle = "Gallery"
 config.hidesStatusBar = false
 config.overlayView = myOverlayView
 config.library.maxNumberOfItems = 5
+config.library.minNumberOfItems = 3
+config.library.numberOfItemsInRow = 3
+config.library.spacingBetweenItems = 2
+config.isScrollToChangeModesEnabled = false
 
 // Build a picker with your configuration
 let picker = YPImagePicker(configuration: config)
@@ -194,7 +202,7 @@ picker.didFinishPicking { [unowned picker] items, cancelled in
 That's it !
 
 ## Languages
-🇺🇸 English, 🇪🇸 Spanish, 🇫🇷 French 🇷🇺 Russian, 🇳🇱 Dutch, 🇧🇷 Brazilian, 🇹🇷 Turkish,  Arabic, 🇩🇪 German, 🇮🇹 Italian, 🇯🇵 Japanese
+🇺🇸 English, 🇪🇸 Spanish, 🇫🇷 French 🇷🇺 Russian, 🇳🇱 Dutch, 🇧🇷 Brazilian, 🇹🇷 Turkish, 🇸🇾 Arabic, 🇩🇪 German, 🇮🇹 Italian, 🇯🇵 Japanese, 🇨🇳 Chinese, 🇮🇩 Indonesian
 
 If your language is not supported, you can still customize the wordings via the `configuration.wordings` api:
 
@@ -204,6 +212,30 @@ config.wordings.cameraTitle = "Camera"
 config.wordings.next = "OK"
 ```
 Better yet you can submit an issue or pull request with your `Localizable.strings` file to add a new language !
+
+## UI Customization
+We tried to keep things as native as possible, so this is done mostly through native Apis.
+
+### Navigation bar color
+```swift
+let coloredImage = UIImage(color: .red)
+UINavigationBar.appearance().setBackgroundImage(coloredImage, for: UIBarMetrics.default)
+// UIImage+color helper https://stackoverflow.com/questions/26542035/create-uiimage-with-solid-color-in-swift
+```
+
+### Navigation bar fonts
+```swift
+let attributes = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 30, weight: .bold) ]
+UINavigationBar.appearance().titleTextAttributes = attributes // Title fonts
+UIBarButtonItem.appearance().setTitleTextAttributes(attributes, for: .normal) // Bar Button fonts
+```
+
+### Navigation bar Text colors
+```swift
+UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.yellow ] // Title color
+UINavigationBar.appearance().tintColor = .red // Left. bar buttons
+config.colors.tintColor = .green // Right bar buttons (actions)
+```
 
 ## Original Project & Author
 
