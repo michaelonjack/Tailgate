@@ -231,11 +231,19 @@ extension ProfileViewController: UICollectionViewDataSource {
         
         let currentFeedItem = self.feedItems[indexPath.row]
        
-        // Update constraints
-        cell.imageViewTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
-        cell.imageViewLeadingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
-        cell.detailLabelTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
-        cell.indicatorTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
+        // Update constraints IF they have not been updated yet
+        if cell.imageViewTrailingConstraint.constant == 14 {
+            cell.imageViewTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
+        }
+        if cell.imageViewLeadingConstraint.constant == 12 {
+            cell.imageViewLeadingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
+        }
+        if cell.detailLabelTrailingConstraint.constant == 7.5 {
+            cell.detailLabelTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
+        }
+        if cell.indicatorTrailingConstraint.constant == 5 {
+            cell.indicatorTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
+        }
         
         cell.titleLabel.text = currentFeedItem.name
         
