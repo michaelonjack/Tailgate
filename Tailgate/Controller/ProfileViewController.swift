@@ -73,6 +73,10 @@ class ProfileViewController: UIViewController {
         self.profilePictureTopConstraint.updateVerticalConstantForViewHeight(view: self.view)
         self.friendsButtonTopConstraint.updateVerticalConstantForViewHeight(view: self.view)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        detectFirstLaunch()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -197,6 +201,19 @@ extension ProfileViewController: UICollectionViewDelegate {
         }
         
         refreshControl.addTarget(self, action: #selector(refreshFeedCollectionView(_:)), for: .valueChanged)
+    }
+    
+    func detectFirstLaunch() {
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            print("Not first launch.")
+        } else {
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "ProfileToTutorial", sender: nil)
+            }
+        }
     }
     
     @objc private func refreshFeedCollectionView(_ sender: Any) {

@@ -43,6 +43,7 @@
 		B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */; };
 		B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */; };
 		B18256EC20E1886D00BB6C9F /* ARKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18256EB20E1886D00BB6C9F /* ARKitHelper.swift */; };
+		B1936A3621296A5B00C53DDE /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1936A3521296A5B00C53DDE /* TutorialViewController.swift */; };
 		B19BFD5620B4BBF1009D6AD2 /* SignUpAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */; };
 		B19BFD5820B4FC57009D6AD2 /* SettingsTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFD5720B4FC57009D6AD2 /* SettingsTermsViewController.swift */; };
 		B1A18FD22054CD3800D9C12A /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */; };
@@ -130,6 +131,7 @@
 		B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayViewController.swift; sourceTree = "<group>"; };
 		B18256EB20E1886D00BB6C9F /* ARKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitHelper.swift; sourceTree = "<group>"; };
+		B1936A3521296A5B00C53DDE /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreementViewController.swift; sourceTree = "<group>"; };
 		B19BFD5720B4FC57009D6AD2 /* SettingsTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTermsViewController.swift; sourceTree = "<group>"; };
 		B1A18FD12054CD3800D9C12A /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */,
 				B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */,
 				B1B1E1E920D69BD7001B81EA /* MapARViewController.swift */,
+				B1936A3521296A5B00C53DDE /* TutorialViewController.swift */,
 				B1817833204A4B350029CF27 /* SettingsControllers */,
 				B13B813E1FE6EC91008F3A38 /* TableCells */,
 				B1DD1CD9203E505F00291EAE /* CollectionCells */,
@@ -579,6 +582,7 @@
 				B13B81441FE9FB29008F3A38 /* FoodTableViewCell.swift in Sources */,
 				B1E22738209E1B9600672F53 /* BiometricIDAuth.swift in Sources */,
 				B1E83BE61FDD890500185E17 /* User.swift in Sources */,
+				B1936A3621296A5B00C53DDE /* TutorialViewController.swift in Sources */,
 				B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */,
 				B1E2273C20A6709100672F53 /* SupplyTableViewCell.swift in Sources */,
 				B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */,

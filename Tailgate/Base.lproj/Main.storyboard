@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAM-Kd-Hws" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-958" y="-2913"/>
+            <point key="canvasLocation" x="-1071" y="-2919"/>
         </scene>
         <!--Email-->
         <scene sceneID="VMd-Ub-2p2">
@@ -473,6 +473,76 @@
             </objects>
             <point key="canvasLocation" x="-2062" y="-3953"/>
         </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="meR-Gp-FeX">
+            <objects>
+                <viewController id="5Nb-dT-suc" customClass="TutorialViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jBi-gB-eZf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2X-Ik-RiZ">
+                                <rect key="frame" x="133" y="617" width="108" height="30"/>
+                                <state key="normal" title="Dismiss">
+                                    <color key="titleColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissPressed:" destination="5Nb-dT-suc" eventType="touchUpInside" id="1kH-OD-Bes"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to the right to see tailgates near you and around the country." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sZl-7Q-mT4">
+                                <rect key="frame" x="27.5" y="90" width="320" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to the left to create your own tailgate." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jhh-X3-e4b">
+                                <rect key="frame" x="27.5" y="181" width="320" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe down to see the current week's schedule, gameday signs, and submit flair for your team." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SKv-uf-Xc7">
+                                <rect key="frame" x="27.5" y="272" width="320" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="zNw-vP-BJe">
+                                <rect key="frame" x="81.5" y="386" width="211" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zNw-vP-BJe" secondAttribute="height" multiplier="80:76" id="80d-4C-ZeM"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jhh-X3-e4b" firstAttribute="top" secondItem="sZl-7Q-mT4" secondAttribute="bottom" constant="50" id="5id-ae-eYw"/>
+                            <constraint firstItem="SKv-uf-Xc7" firstAttribute="width" secondItem="jBi-gB-eZf" secondAttribute="width" multiplier="0.853333" id="8ng-QE-gfc"/>
+                            <constraint firstItem="zNw-vP-BJe" firstAttribute="centerX" secondItem="JzS-4z-1wM" secondAttribute="centerX" id="AGO-tE-k3C"/>
+                            <constraint firstItem="sZl-7Q-mT4" firstAttribute="top" secondItem="JzS-4z-1wM" secondAttribute="top" constant="70" id="Aqf-9H-s5u"/>
+                            <constraint firstItem="E2X-Ik-RiZ" firstAttribute="top" secondItem="zNw-vP-BJe" secondAttribute="bottom" constant="31" id="HeH-5h-JCQ"/>
+                            <constraint firstItem="SKv-uf-Xc7" firstAttribute="top" secondItem="jhh-X3-e4b" secondAttribute="bottom" constant="50" id="KL9-QC-XIM"/>
+                            <constraint firstItem="sZl-7Q-mT4" firstAttribute="width" secondItem="jBi-gB-eZf" secondAttribute="width" multiplier="0.853333" id="OAs-kX-GXs"/>
+                            <constraint firstItem="jhh-X3-e4b" firstAttribute="centerX" secondItem="JzS-4z-1wM" secondAttribute="centerX" id="Rgj-Vv-U0k"/>
+                            <constraint firstItem="JzS-4z-1wM" firstAttribute="bottom" secondItem="E2X-Ik-RiZ" secondAttribute="bottom" constant="20" id="U1b-eE-FYQ"/>
+                            <constraint firstItem="SKv-uf-Xc7" firstAttribute="centerX" secondItem="JzS-4z-1wM" secondAttribute="centerX" id="XkF-jq-wPz"/>
+                            <constraint firstItem="E2X-Ik-RiZ" firstAttribute="width" secondItem="jBi-gB-eZf" secondAttribute="width" multiplier="0.288" id="Y0N-BZ-uJJ"/>
+                            <constraint firstItem="sZl-7Q-mT4" firstAttribute="centerX" secondItem="JzS-4z-1wM" secondAttribute="centerX" id="YUA-3O-8Jy"/>
+                            <constraint firstItem="jhh-X3-e4b" firstAttribute="width" secondItem="jBi-gB-eZf" secondAttribute="width" multiplier="0.853333" id="kIQ-UJ-8YV"/>
+                            <constraint firstItem="zNw-vP-BJe" firstAttribute="height" secondItem="jBi-gB-eZf" secondAttribute="height" multiplier="0.3" id="pp5-vi-tWb"/>
+                            <constraint firstItem="E2X-Ik-RiZ" firstAttribute="centerX" secondItem="JzS-4z-1wM" secondAttribute="centerX" id="zSv-Jm-yUm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JzS-4z-1wM"/>
+                    </view>
+                    <connections>
+                        <outlet property="topConstraint" destination="Aqf-9H-s5u" id="s1B-fC-gqK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g78-fs-cXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="41" y="-2159"/>
+        </scene>
         <!--Friends View Controller-->
         <scene sceneID="tag-1S-mup">
             <objects>
@@ -683,7 +753,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rp1-hF-JDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089" y="-1884"/>
+            <point key="canvasLocation" x="1244" y="-2159"/>
         </scene>
         <!--Tailgate View Controller-->
         <scene sceneID="TP4-cY-nva">
@@ -1925,6 +1995,7 @@
                         <segue destination="GTv-zW-I56" kind="custom" identifier="ProfileToMap" customClass="RightLeftSegue" customModule="Tailgate" customModuleProvider="target" id="EXY-XP-nn9"/>
                         <segue destination="kfJ-As-ks6" kind="show" identifier="ProfileToNewTailgate" id="COJ-oW-hyk"/>
                         <segue destination="O2l-0b-cuo" kind="show" identifier="ProfileToTailgate" id="u7i-bp-TO8"/>
+                        <segue destination="5Nb-dT-suc" kind="show" identifier="ProfileToTutorial" id="yHh-ls-LcB"/>
                     </connections>
                 </viewController>
                 <view contentMode="scaleToFill" id="OwW-Tk-q1k" userLabel="Empty View">
@@ -2776,7 +2847,7 @@ Violating these conditions may result in the suspension of your account upon rev
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9DG-qt-hX1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-958" y="-2159"/>
+            <point key="canvasLocation" x="-1071" y="-2159"/>
         </scene>
         <!--Gameday Container View Controller-->
         <scene sceneID="rVY-Wh-jZI">
