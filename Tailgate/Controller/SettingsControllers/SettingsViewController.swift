@@ -142,6 +142,9 @@ extension SettingsViewController: UITableViewDelegate {
             
         case "Terms of Service":
             self.performSegue(withIdentifier: "SettingsToTerms", sender: nil)
+            
+        case "Contact":
+            self.performSegue(withIdentifier: "SettingsToContact", sender: nil)
         
         default:
             var _ = 0
