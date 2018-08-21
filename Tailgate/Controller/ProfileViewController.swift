@@ -221,6 +221,12 @@ extension ProfileViewController: UICollectionViewDelegate {
         getTailgatesToDisplay { (tailgates) in
             self.feedItems = tailgates
             
+            if self.feedItems.count > 0 {
+                self.state = .populated
+            } else {
+                self.state = .empty
+            }
+            
             DispatchQueue.main.async {
                 self.invitesCollectionView.reloadData()
                 self.refreshControl.endRefreshing()
