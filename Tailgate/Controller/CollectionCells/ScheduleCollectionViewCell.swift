@@ -51,7 +51,7 @@ extension ScheduleCollectionViewCell: UITableViewDelegate {
         let gameCell = self.games[indexPath.row]
         
         let tableViewWidth = tableView.bounds.width
-        let detailLabelHeight = gameCell.game.startTimeDisplayStr.height(withConstrainedWidth: tableViewWidth * 0.191136, font: UIFont.systemFont(ofSize: 12.0))
+        let detailLabelHeight = gameCell.game.score == "0 - 0" ?  gameCell.game.startTimeDisplayStr.height(withConstrainedWidth: tableViewWidth * 0.191136, font: UIFont.systemFont(ofSize: 12.0)) : gameCell.game.score.height(withConstrainedWidth: tableViewWidth * 0.191136, font: UIFont.systemFont(ofSize: 12.0))
         let teamsLabelHeight = (gameCell.game.awayTeam + " at " + gameCell.game.homeTeam).height(withConstrainedWidth: tableViewWidth * 0.747922, font: UIFont.systemFont(ofSize: 12.0))
         let awayTeamLabelHeight = gameCell.game.awayTeam.height(withConstrainedWidth: tableViewWidth * 0.3324, font: UIFont.systemFont(ofSize: 12.0))
         let homeTeamLabelHeight = gameCell.game.homeTeam.height(withConstrainedWidth: tableViewWidth * 0.3324, font: UIFont.systemFont(ofSize: 12.0))
@@ -110,6 +110,7 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         // Reset the recycled cell's labels
         cell.teamsLabel.text = ""
         cell.detailLabel.text = ""
+        cell.scoreLabel.text = "0 - 0"
         cell.awayTeamLabel.text = ""
         cell.homeTeamLabel.text = ""
         // Reset the cell's selection
@@ -128,7 +129,8 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         cell.teamsLabel.text = currGame.awayTeam + " at " + currGame.homeTeam
         cell.awayTeamLabel.text = currGame.awayTeam
         cell.homeTeamLabel.text = currGame.homeTeam
-        if currGame.score == "" {
+        cell.scoreLabel.text = currGame.score
+        if currGame.score == "0 - 0" {
             cell.detailLabel.text = currGame.startTimeDisplayStr
         } else {
             cell.detailLabel.text = currGame.score

@@ -13,8 +13,13 @@ class Game {
     let id:String
     let homeTeam:String
     let awayTeam:String
-    let score:String
+    let homeTeamScore:Int
+    let awayTeamScore:Int
     let startTime:Date?
+    var score:String {
+        let scoreStr = String(awayTeamScore) + " - " + String(homeTeamScore)
+        return scoreStr
+    }
     var startTimeDisplayStr:String {
         let dateFormatter = DateFormatter()
         let calendar = Calendar.current
@@ -52,7 +57,8 @@ class Game {
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
         self.startTime = startTime
-        self.score = score
+        self.awayTeamScore = 0
+        self.homeTeamScore = 0
     }
     
     init(homeTeam:String, awayTeam:String, startTime:Date) {
@@ -60,7 +66,8 @@ class Game {
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
         self.startTime = startTime
-        self.score = ""
+        self.homeTeamScore = 0
+        self.awayTeamScore = 0
     }
     
     init(snapshot: DataSnapshot) {
@@ -69,7 +76,8 @@ class Game {
         self.id = snapshot.key
         self.homeTeam = snapshotValue["homeTeam"] as! String
         self.awayTeam = snapshotValue["awayTeam"] as! String
-        self.score = snapshotValue["score"] as? String ?? ""
+        self.homeTeamScore = snapshotValue["homeTeamScore"] as? Int ?? 0
+        self.awayTeamScore = snapshotValue["awayTeamScore"] as? Int ?? 0
         
         let startTimeStr = snapshotValue["startTime"] as? String ?? ""
         
@@ -86,7 +94,9 @@ class Game {
         return [
             "awayTeam": awayTeam,
             "homeTeam": homeTeam,
-            "startTime": startTimeDatabaseStr
+            "startTime": startTimeDatabaseStr,
+            "homeTeamScore": homeTeamScore,
+            "awayTeamScore": awayTeamScore
         ]
     }
 }
