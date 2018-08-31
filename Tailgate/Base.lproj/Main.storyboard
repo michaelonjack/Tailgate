@@ -3004,11 +3004,20 @@ Violating these conditions may result in the suspension of your account upon rev
                                                                             <constraint firstAttribute="width" secondItem="Z6j-aQ-hQR" secondAttribute="height" multiplier="1:1" id="gfT-zz-kXh"/>
                                                                         </constraints>
                                                                     </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lV8-mU-hZk">
+                                                                        <rect key="frame" x="165" y="103" width="30" height="24"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                        <state key="normal" title="View"/>
+                                                                        <connections>
+                                                                            <action selector="gameLinkPressed:" destination="QLT-rf-nSC" eventType="touchUpInside" id="oKJ-dB-WNt"/>
+                                                                        </connections>
+                                                                    </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstItem="ogD-vu-NAu" firstAttribute="centerX" secondItem="UJk-FZ-2y3" secondAttribute="centerX" id="1GG-gS-vwu"/>
                                                                     <constraint firstItem="UJk-FZ-2y3" firstAttribute="top" secondItem="0fK-hF-D50" secondAttribute="bottom" constant="12.5" id="45K-xe-RG4"/>
+                                                                    <constraint firstItem="lV8-mU-hZk" firstAttribute="top" secondItem="XBI-m3-gdz" secondAttribute="bottom" constant="8" id="6a0-np-O1r"/>
                                                                     <constraint firstItem="bzl-hk-n8S" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" multiplier="0.747922" id="7fY-Ys-vXs"/>
                                                                     <constraint firstItem="bzl-hk-n8S" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="11" id="Cuo-fs-dlH"/>
                                                                     <constraint firstAttribute="trailing" secondItem="0fK-hF-D50" secondAttribute="trailing" constant="7" id="Dbb-2I-BoK"/>
@@ -3017,6 +3026,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                                                     <constraint firstItem="ogD-vu-NAu" firstAttribute="centerY" secondItem="zlQ-rb-YjK" secondAttribute="centerY" id="Ns2-s1-Ak5"/>
                                                                     <constraint firstItem="Z6j-aQ-hQR" firstAttribute="leading" secondItem="BDU-X9-BeQ" secondAttribute="leading" constant="35" id="Oqg-BB-LrV"/>
                                                                     <constraint firstItem="ogD-vu-NAu" firstAttribute="top" secondItem="UJk-FZ-2y3" secondAttribute="bottom" constant="11" id="RNr-1N-Xa0"/>
+                                                                    <constraint firstItem="lV8-mU-hZk" firstAttribute="centerX" secondItem="BDU-X9-BeQ" secondAttribute="centerX" id="S0N-Fa-Cee"/>
                                                                     <constraint firstItem="0fK-hF-D50" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="11" id="d9E-IE-6Kg"/>
                                                                     <constraint firstAttribute="trailing" secondItem="UJk-FZ-2y3" secondAttribute="trailing" constant="35" id="jPx-cS-C7b"/>
                                                                     <constraint firstItem="0fK-hF-D50" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" multiplier="0.191136" id="kzx-xQ-Vd6"/>
@@ -3038,6 +3048,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                                                 <outlet property="awayTeamLogo" destination="Z6j-aQ-hQR" id="6m5-md-rbV"/>
                                                                 <outlet property="awayTeamLogoLeadingConstraint" destination="Oqg-BB-LrV" id="Z3M-TJ-omT"/>
                                                                 <outlet property="detailLabel" destination="0fK-hF-D50" id="yVv-cG-dlu"/>
+                                                                <outlet property="gameLink" destination="lV8-mU-hZk" id="90F-zx-Nrz"/>
                                                                 <outlet property="homeTeamLabel" destination="ogD-vu-NAu" id="rHQ-mf-2ZJ"/>
                                                                 <outlet property="homeTeamLogo" destination="UJk-FZ-2y3" id="g9e-wm-PYp"/>
                                                                 <outlet property="homeTeamLogoTrailingConstraint" destination="jPx-cS-C7b" id="GbZ-m5-q3p"/>

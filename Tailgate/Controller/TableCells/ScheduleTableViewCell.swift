@@ -13,6 +13,7 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var teamsLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var gameLink: UIButton!
     @IBOutlet weak var awayTeamLogo: UIImageView!
     @IBOutlet weak var homeTeamLogo: UIImageView!
     @IBOutlet weak var awayTeamLabel: UILabel!
@@ -29,4 +30,16 @@ class ScheduleTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
+    @IBAction func gameLinkPressed(_ sender: Any) {
+        if let teamsStr = self.teamsLabel.text {
+            let gameLink = "https://www.google.com/search?q=" + teamsStr.replacingOccurrences(of: " ", with: "%20") + "%20football"
+            guard let gameUrl = URL(string: gameLink) else {
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(gameUrl) {
+                UIApplication.shared.open(gameUrl, options: [:])
+            }
+        }
+    }
 }
