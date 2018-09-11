@@ -2924,6 +2924,79 @@ Violating these conditions may result in the suspension of your account upon rev
             </objects>
             <point key="canvasLocation" x="592.79999999999995" y="-3264.0179910044981"/>
         </scene>
+        <!--Picker Popup View Controller-->
+        <scene sceneID="Mo1-Tp-w3l">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="s2c-OK-gC9" customClass="PickerPopupViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="V25-Aj-RQM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKL-Tg-KCj">
+                                <rect key="frame" x="39" y="213" width="297.5" height="261"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j7j-iT-AaK">
+                                        <rect key="frame" x="0.0" y="0.0" width="298" height="213"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyb-0S-hf2">
+                                        <rect key="frame" x="148.5" y="213" width="149" height="48"/>
+                                        <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="CANCEL">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="s2c-OK-gC9" eventType="touchUpInside" id="vPR-g3-Vca"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3NK-Lm-csK">
+                                        <rect key="frame" x="0.0" y="213" width="148.5" height="48"/>
+                                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="SELECT">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectButtonPressed:" destination="s2c-OK-gC9" eventType="touchUpInside" id="Dn3-rW-Bcb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="j7j-iT-AaK" secondAttribute="trailing" id="5jd-Iu-Hhd"/>
+                                    <constraint firstItem="nyb-0S-hf2" firstAttribute="width" secondItem="FKL-Tg-KCj" secondAttribute="width" multiplier="0.5" id="Bpj-Gg-mVd"/>
+                                    <constraint firstItem="j7j-iT-AaK" firstAttribute="leading" secondItem="FKL-Tg-KCj" secondAttribute="leading" id="CDk-DO-egP"/>
+                                    <constraint firstAttribute="bottom" secondItem="3NK-Lm-csK" secondAttribute="bottom" id="Qap-AJ-jpH"/>
+                                    <constraint firstItem="3NK-Lm-csK" firstAttribute="leading" secondItem="FKL-Tg-KCj" secondAttribute="leading" id="REl-pP-Tl6"/>
+                                    <constraint firstAttribute="bottom" secondItem="nyb-0S-hf2" secondAttribute="bottom" id="VQH-iM-mt9"/>
+                                    <constraint firstItem="3NK-Lm-csK" firstAttribute="width" secondItem="FKL-Tg-KCj" secondAttribute="width" multiplier="0.5" id="XCk-SS-gP5"/>
+                                    <constraint firstItem="3NK-Lm-csK" firstAttribute="top" secondItem="j7j-iT-AaK" secondAttribute="bottom" id="ZPm-q5-QG7"/>
+                                    <constraint firstAttribute="trailing" secondItem="nyb-0S-hf2" secondAttribute="trailing" id="fXr-Ov-Cyc"/>
+                                    <constraint firstItem="3NK-Lm-csK" firstAttribute="height" secondItem="FKL-Tg-KCj" secondAttribute="height" multiplier="0.183333" id="fcf-zX-pHL"/>
+                                    <constraint firstItem="nyb-0S-hf2" firstAttribute="height" secondItem="FKL-Tg-KCj" secondAttribute="height" multiplier="0.183333" id="usR-cd-Xb7"/>
+                                    <constraint firstItem="j7j-iT-AaK" firstAttribute="top" secondItem="FKL-Tg-KCj" secondAttribute="top" id="yCu-Tq-OZk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25082940924657532" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FKL-Tg-KCj" firstAttribute="centerX" secondItem="oMX-zt-LKj" secondAttribute="centerX" id="43i-Xf-yK0"/>
+                            <constraint firstItem="FKL-Tg-KCj" firstAttribute="centerY" secondItem="oMX-zt-LKj" secondAttribute="centerY" id="Sdu-Gt-ynQ"/>
+                            <constraint firstItem="FKL-Tg-KCj" firstAttribute="width" secondItem="oMX-zt-LKj" secondAttribute="width" multiplier="0.793333" id="l7w-Iu-hCU"/>
+                            <constraint firstItem="FKL-Tg-KCj" firstAttribute="height" secondItem="oMX-zt-LKj" secondAttribute="height" multiplier="0.403679" id="nYt-b3-4TD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oMX-zt-LKj"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="nyb-0S-hf2" id="dbc-Rg-ZmO"/>
+                        <outlet property="picker" destination="j7j-iT-AaK" id="gBD-JL-JPu"/>
+                        <outlet property="popupView" destination="FKL-Tg-KCj" id="q8R-Or-viD"/>
+                        <outlet property="selectButton" destination="3NK-Lm-csK" id="paN-G7-mgl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="51q-hg-8jC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2309.5999999999999" y="-4643.0284857571214"/>
+        </scene>
         <!--Gameday Schedule View Controller-->
         <scene sceneID="CCD-be-EJq">
             <objects>
@@ -3083,6 +3156,16 @@ Violating these conditions may result in the suspension of your account upon rev
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5l-h7-jNh">
+                                <rect key="frame" x="319" y="27" width="40" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Week X">
+                                    <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="s2c-OK-gC9" kind="presentation" identifier="ScheduleToPickerPopup" id="yNH-Gd-PbQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -3090,11 +3173,13 @@ Violating these conditions may result in the suspension of your account upon rev
                             <constraint firstItem="lEQ-5P-7zA" firstAttribute="top" secondItem="iw3-Ml-ZJm" secondAttribute="top" constant="8" id="6u8-2B-PEd"/>
                             <constraint firstItem="f6Q-sv-Dgp" firstAttribute="centerX" secondItem="iw3-Ml-ZJm" secondAttribute="centerX" id="DPZ-Me-EHu"/>
                             <constraint firstItem="lEQ-5P-7zA" firstAttribute="height" secondItem="iw3-Ml-ZJm" secondAttribute="height" multiplier="0.0370943" id="Kum-k1-rGM"/>
+                            <constraint firstItem="s5l-h7-jNh" firstAttribute="centerY" secondItem="lEQ-5P-7zA" secondAttribute="centerY" id="SPz-c7-fD1"/>
                             <constraint firstItem="f6Q-sv-Dgp" firstAttribute="top" secondItem="lEQ-5P-7zA" secondAttribute="bottom" constant="8" id="WZf-OP-r6Q"/>
                             <constraint firstItem="PpS-hF-pPz" firstAttribute="bottom" secondItem="iw3-Ml-ZJm" secondAttribute="bottom" id="XWf-ak-fA4"/>
                             <constraint firstItem="PpS-hF-pPz" firstAttribute="height" secondItem="iw3-Ml-ZJm" secondAttribute="height" multiplier="0.0695518" id="bvW-tx-V84"/>
                             <constraint firstItem="PpS-hF-pPz" firstAttribute="width" secondItem="iw3-Ml-ZJm" secondAttribute="width" id="kBP-w1-HhI"/>
                             <constraint firstItem="f6Q-sv-Dgp" firstAttribute="width" secondItem="iw3-Ml-ZJm" secondAttribute="width" id="n4f-cP-Enb"/>
+                            <constraint firstItem="iw3-Ml-ZJm" firstAttribute="trailing" secondItem="s5l-h7-jNh" secondAttribute="trailing" constant="16" id="nXd-Xu-7Lg"/>
                             <constraint firstItem="lEQ-5P-7zA" firstAttribute="width" secondItem="obc-k1-Dgp" secondAttribute="width" multiplier="0.733333" id="nts-RG-4L4"/>
                             <constraint firstItem="PpS-hF-pPz" firstAttribute="top" secondItem="f6Q-sv-Dgp" secondAttribute="bottom" id="okf-Dg-zt6"/>
                             <constraint firstItem="PpS-hF-pPz" firstAttribute="centerX" secondItem="iw3-Ml-ZJm" secondAttribute="centerX" id="xtL-p0-k9y"/>
@@ -3107,6 +3192,7 @@ Violating these conditions may result in the suspension of your account upon rev
                         <outlet property="schedulesCollectionView" destination="f6Q-sv-Dgp" id="44n-kR-M7U"/>
                         <outlet property="titleLabel" destination="lEQ-5P-7zA" id="HhU-XW-VUO"/>
                         <outlet property="titleLableTopConstraint" destination="6u8-2B-PEd" id="DS6-sw-jrk"/>
+                        <outlet property="weekButton" destination="s5l-h7-jNh" id="4pT-E3-MLb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rUN-RA-BdT" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,6 +12,7 @@ class GamedayScheduleViewController: UIViewController {
 
     @IBOutlet weak var schedulesCollectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var weekButton: UIButton!
     @IBOutlet weak var navigationView: UIView!
     @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLableTopConstraint: NSLayoutConstraint!
@@ -41,12 +42,69 @@ class GamedayScheduleViewController: UIViewController {
             })
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.weekButton.titleLabel?.text = "Week " + String(configuration.weekNum)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ScheduleToPickerPopup" {
+            
+            guard let popupController = segue.destination as? PickerPopupViewController else {return}
+            
+            var values:[String] = []
+            for i in 1..<14 {
+                values.append("Week " + String(i))
+            }
+            
+            popupController.values = values
+            popupController.initialIndex = configuration.weekNum-1
+            popupController.pickerPopupDelegate = self
+        }
+    }
+}
 
+
+
+extension GamedayScheduleViewController: PickerPopupDelegate {
+    func selectPressed(popupController: PickerPopupViewController, selectedIndex:Int, selectedValue: String) {
+        
+        DispatchQueue.main.async {
+            popupController.dismiss(animated: true, completion: nil)
+            self.weekButton.titleLabel?.text = selectedValue
+        }
+        
+        let selectedWeek = selectedIndex+1
+        
+        games = [:]
+        
+        // Get games for selected week
+        for conference in conferences {
+            let conferenceKey = conference.lowercased().replacingOccurrences(of: " ", with: "")
+            
+            getCurrentGameCellsForConference(conferenceName: conferenceKey, forWeek: selectedWeek, completion: { (games) in
+                self.games[conferenceKey] = games
+                self.schedulesCollectionView.reloadItems(at: [IndexPath(item: self.games.count-1, section: 0)])
+                
+                if self.games.count == self.conferences.count {
+                    DispatchQueue.main.async {
+                        print("reloading")
+                        self.schedulesCollectionView.reloadData()
+                    }
+                }
+            })
+        }
+    }
+    
+    
 }
 
 

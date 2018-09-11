@@ -454,9 +454,9 @@ func getCurrentGamesForConference(conferenceName:String, completion: @escaping (
 //
 // Returns all games for this week
 //
-func getCurrentGameCellsForConference(conferenceName:String, completion: @escaping (([GameCell]) -> Void)) {
+func getCurrentGameCellsForConference(conferenceName:String, forWeek week:Int = configuration.weekNum, completion: @escaping (([GameCell]) -> Void)) {
     var games:[GameCell] = []
-    let currentGamesReference = Database.database().reference(withPath: "games/" + configuration.week + "/" + conferenceName)
+    let currentGamesReference = Database.database().reference(withPath: "games/week" + String(week) + "/" + conferenceName)
     currentGamesReference.keepSynced(true)
     
     currentGamesReference.observeSingleEvent(of: .value, with: { (snapshot) in

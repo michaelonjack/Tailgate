@@ -43,6 +43,7 @@
 		B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */; };
 		B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */; };
 		B18256EC20E1886D00BB6C9F /* ARKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18256EB20E1886D00BB6C9F /* ARKitHelper.swift */; };
+		B1929E672147548200431E1D /* PickerPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1929E662147548200431E1D /* PickerPopupViewController.swift */; };
 		B1936A3621296A5B00C53DDE /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1936A3521296A5B00C53DDE /* TutorialViewController.swift */; };
 		B1936A38212A199D00C53DDE /* SettingsContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1936A37212A199D00C53DDE /* SettingsContactViewController.swift */; };
 		B19BFD5620B4BBF1009D6AD2 /* SignUpAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */; };
@@ -132,6 +133,7 @@
 		B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayViewController.swift; sourceTree = "<group>"; };
 		B18256EB20E1886D00BB6C9F /* ARKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitHelper.swift; sourceTree = "<group>"; };
+		B1929E662147548200431E1D /* PickerPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerPopupViewController.swift; sourceTree = "<group>"; };
 		B1936A3521296A5B00C53DDE /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		B1936A37212A199D00C53DDE /* SettingsContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContactViewController.swift; sourceTree = "<group>"; };
 		B19BFD5520B4BBF1009D6AD2 /* SignUpAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAgreementViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */,
 				B1B1E1E920D69BD7001B81EA /* MapARViewController.swift */,
 				B1936A3521296A5B00C53DDE /* TutorialViewController.swift */,
+				B1929E662147548200431E1D /* PickerPopupViewController.swift */,
 				B1817833204A4B350029CF27 /* SettingsControllers */,
 				B13B813E1FE6EC91008F3A38 /* TableCells */,
 				B1DD1CD9203E505F00291EAE /* CollectionCells */,
@@ -564,6 +567,7 @@
 				B13B813B1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift in Sources */,
 				B19BFD5820B4FC57009D6AD2 /* SettingsTermsViewController.swift in Sources */,
 				B1E22736209E0C1B00672F53 /* KeychainPasswordItem.swift in Sources */,
+				B1929E672147548200431E1D /* PickerPopupViewController.swift in Sources */,
 				B1A18FD42054CD6600D9C12A /* ScheduleCollectionViewCell.swift in Sources */,
 				B1C6C3EE20CE014D005DEED8 /* Report.swift in Sources */,
 				B1E83BE41FDD857A00185E17 /* TopDownSegue.swift in Sources */,

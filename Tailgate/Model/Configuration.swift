@@ -14,6 +14,7 @@ final class Configuration {
     private static let sharedConfiguration:Configuration = Configuration()
     
     var week:String = "week1"
+    var weekNum:Int = 1
     var currentUser:User!
     var schoolCache:[String:School] = [:]
     
@@ -26,6 +27,7 @@ final class Configuration {
             if let configDict = snapshot.value as? [String:AnyObject] {
                 let weekNum = configDict["week"] as! Int
                 self.week = "week" + String(weekNum)
+                self.weekNum = weekNum
             }
         }
         
