@@ -162,14 +162,6 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    @IBAction func aroundMePressed(_ sender: Any) {
-        self.containerSwipeNavigationController?.showEmbeddedView(position: .left)
-    }
-    
-    @IBAction func myTailgatePressed(_ sender: Any) {
-        self.containerSwipeNavigationController?.showEmbeddedView(position: .right)
-    }
-    
 }
 
 
@@ -217,6 +209,8 @@ extension ProfileViewController: UICollectionViewDelegate {
     }
     
     @objc private func refreshFeedCollectionView(_ sender: Any) {
+        state = .loading
+        
         // Get all public tailgates and tailgates the current user is invited to
         getTailgatesToDisplay { (tailgates) in
             self.feedItems = tailgates

@@ -15,7 +15,9 @@ class GamedaySignsViewController: UIViewController {
 
     @IBOutlet weak var signCollectionView: UICollectionView!
     @IBOutlet var emptyView: UIView!
+    @IBOutlet var loadingView: UIView!
     
+    let refreshControl = UIRefreshControl()
     fileprivate let reuseIdentifier = "SignCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
     fileprivate let itemsPerRow: CGFloat = 3
@@ -56,12 +58,23 @@ class GamedaySignsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        state = .loading
+        
         signCollectionView.delegate = self
         signCollectionView.dataSource = self
+        self.addRefreshControl()
         
         // Get sign image urls
         getGamedaySignImageUrls { (imgUrls) in
             self.imageUrls = imgUrls
+            
+            if self.imageUrls.count > 0 {
+                self.state = .populated
+            } else {
+                self.state = .empty
+            }
+            
             self.signCollectionView.reloadData()
         }
     }
@@ -74,7 +87,10 @@ class GamedaySignsViewController: UIViewController {
     
     func setCollectionBackgroundView() {
         switch state {
-        case .empty, .loading:
+        case .loading:
+            signCollectionView.backgroundView = loadingView
+            signCollectionView.backgroundView?.isHidden = false
+        case .empty:
             signCollectionView.backgroundView = emptyView
             signCollectionView.backgroundView?.isHidden = false
         default:
@@ -124,6 +140,37 @@ extension GamedaySignsViewController: UICollectionViewDelegate {
         // If the tapped image is already the selected, set the largePhotoIndexPath property to nil, otherwise set it to the index path the user just tapped
         selectedImageIndex = selectedImageIndex == indexPath ? nil : indexPath
         return false
+    }
+    
+    func addRefreshControl() {
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            self.signCollectionView.refreshControl = self.refreshControl
+        } else {
+            self.signCollectionView.addSubview(self.refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshSignsCollectionView(_:)), for: .valueChanged)
+    }
+    
+    @objc private func refreshSignsCollectionView(_ sender: Any) {
+        state = .loading
+        
+        // Get sign image urls
+        getGamedaySignImageUrls { (imgUrls) in
+            self.imageUrls = imgUrls
+            
+            if self.imageUrls.count > 0 {
+                self.state = .populated
+            } else {
+                self.state = .empty
+            }
+            
+            DispatchQueue.main.async {
+                self.signCollectionView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
     }
 }
 

@@ -3367,6 +3367,7 @@ Violating these conditions may result in the suspension of your account upon rev
                     <navigationItem key="navigationItem" title="Signs" id="EsH-no-cVg"/>
                     <connections>
                         <outlet property="emptyView" destination="Cu1-1R-z9M" id="IrC-8b-rBd"/>
+                        <outlet property="loadingView" destination="2IJ-Fc-kDr" id="6KW-rg-7it"/>
                         <outlet property="signCollectionView" destination="nS1-Br-KvW" id="fhg-eM-cMb"/>
                     </connections>
                 </viewController>
@@ -3406,6 +3407,21 @@ Violating these conditions may result in the suspension of your account upon rev
                         <constraint firstItem="9XV-Zm-EXN" firstAttribute="centerX" secondItem="lRA-ES-epu" secondAttribute="centerX" id="wpU-g5-anb"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="lRA-ES-epu"/>
+                </view>
+                <view contentMode="scaleToFill" id="2IJ-Fc-kDr">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Qzj-qi-gNl">
+                            <rect key="frame" x="110" y="54" width="20" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Qzj-qi-gNl" firstAttribute="centerX" secondItem="Pvw-wv-esB" secondAttribute="centerX" id="ngy-9H-jX3"/>
+                        <constraint firstItem="Qzj-qi-gNl" firstAttribute="centerY" secondItem="Pvw-wv-esB" secondAttribute="centerY" id="pO7-lc-Up5"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="Pvw-wv-esB"/>
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xi1-Bj-hzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
