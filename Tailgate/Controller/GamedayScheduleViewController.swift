@@ -19,6 +19,7 @@ class GamedayScheduleViewController: UIViewController {
     
     var conferences = ["BIG 10", "BIG 12", "ACC", "PAC-12", "SEC"]
     var games:[String:[GameCell]] = [:]
+    var selectedWeek: Int?
     var collectionViewCurrentIndex:Int {
         return Int(self.schedulesCollectionView.contentOffset.x / self.schedulesCollectionView.frame.size.width)
     }
@@ -45,7 +46,12 @@ class GamedayScheduleViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
-            self.weekButton.titleLabel?.text = "Week " + String(configuration.weekNum)
+            
+            if let selectedWeek = self.selectedWeek {
+                self.weekButton.setTitle("Week " + String(selectedWeek), for: .normal)
+            } else {
+                self.weekButton.setTitle("Week " + String(configuration.weekNum), for: .normal)
+            }
         }
     }
 
@@ -66,7 +72,11 @@ class GamedayScheduleViewController: UIViewController {
             }
             
             popupController.values = values
-            popupController.initialIndex = configuration.weekNum-1
+            if let selectedWeek = self.selectedWeek {
+                popupController.initialIndex = selectedWeek-1
+            } else {
+                popupController.initialIndex =  configuration.weekNum-1
+            }
             popupController.pickerPopupDelegate = self
         }
     }
@@ -79,10 +89,10 @@ extension GamedayScheduleViewController: PickerPopupDelegate {
         
         DispatchQueue.main.async {
             popupController.dismiss(animated: true, completion: nil)
-            self.weekButton.titleLabel?.text = selectedValue
+            self.weekButton.setTitle(selectedValue, for: .normal)
         }
         
-        let selectedWeek = selectedIndex+1
+        selectedWeek = selectedIndex + 1
         
         games = [:]
         
@@ -90,7 +100,7 @@ extension GamedayScheduleViewController: PickerPopupDelegate {
         for conference in conferences {
             let conferenceKey = conference.lowercased().replacingOccurrences(of: " ", with: "")
             
-            getCurrentGameCellsForConference(conferenceName: conferenceKey, forWeek: selectedWeek, completion: { (games) in
+            getCurrentGameCellsForConference(conferenceName: conferenceKey, forWeek: selectedWeek!, completion: { (games) in
                 self.games[conferenceKey] = games
                 self.schedulesCollectionView.reloadItems(at: [IndexPath(item: self.games.count-1, section: 0)])
                 
