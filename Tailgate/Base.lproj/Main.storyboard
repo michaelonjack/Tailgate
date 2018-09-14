@@ -3163,7 +3163,17 @@ Violating these conditions may result in the suspension of your account upon rev
                                     <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="s2c-OK-gC9" kind="presentation" identifier="ScheduleToPickerPopup" id="yNH-Gd-PbQ"/>
+                                    <segue destination="s2c-OK-gC9" kind="presentation" identifier="ScheduleToWeekPickerPopup" id="yNH-Gd-PbQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y76-Bq-P6U">
+                                <rect key="frame" x="16" y="27" width="34" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="BIG 10">
+                                    <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="s2c-OK-gC9" kind="presentation" identifier="ScheduleToConferencePickerPopup" id="weM-jV-mOx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3177,17 +3187,20 @@ Violating these conditions may result in the suspension of your account upon rev
                             <constraint firstItem="f6Q-sv-Dgp" firstAttribute="top" secondItem="lEQ-5P-7zA" secondAttribute="bottom" constant="8" id="WZf-OP-r6Q"/>
                             <constraint firstItem="PpS-hF-pPz" firstAttribute="bottom" secondItem="iw3-Ml-ZJm" secondAttribute="bottom" id="XWf-ak-fA4"/>
                             <constraint firstItem="PpS-hF-pPz" firstAttribute="height" secondItem="iw3-Ml-ZJm" secondAttribute="height" multiplier="0.0695518" id="bvW-tx-V84"/>
+                            <constraint firstItem="Y76-Bq-P6U" firstAttribute="leading" secondItem="iw3-Ml-ZJm" secondAttribute="leading" constant="16" id="jQ3-Sz-Uvk"/>
                             <constraint firstItem="PpS-hF-pPz" firstAttribute="width" secondItem="iw3-Ml-ZJm" secondAttribute="width" id="kBP-w1-HhI"/>
                             <constraint firstItem="f6Q-sv-Dgp" firstAttribute="width" secondItem="iw3-Ml-ZJm" secondAttribute="width" id="n4f-cP-Enb"/>
                             <constraint firstItem="iw3-Ml-ZJm" firstAttribute="trailing" secondItem="s5l-h7-jNh" secondAttribute="trailing" constant="16" id="nXd-Xu-7Lg"/>
                             <constraint firstItem="lEQ-5P-7zA" firstAttribute="width" secondItem="obc-k1-Dgp" secondAttribute="width" multiplier="0.733333" id="nts-RG-4L4"/>
                             <constraint firstItem="PpS-hF-pPz" firstAttribute="top" secondItem="f6Q-sv-Dgp" secondAttribute="bottom" id="okf-Dg-zt6"/>
                             <constraint firstItem="PpS-hF-pPz" firstAttribute="centerX" secondItem="iw3-Ml-ZJm" secondAttribute="centerX" id="xtL-p0-k9y"/>
+                            <constraint firstItem="lEQ-5P-7zA" firstAttribute="centerY" secondItem="Y76-Bq-P6U" secondAttribute="centerY" id="zLX-AG-ctG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iw3-Ml-ZJm"/>
                     </view>
                     <connections>
                         <outlet property="collectionViewTopConstraint" destination="WZf-OP-r6Q" id="Bvk-2x-zel"/>
+                        <outlet property="conferenceButton" destination="Y76-Bq-P6U" id="T7P-wy-NSl"/>
                         <outlet property="navigationView" destination="PpS-hF-pPz" id="igl-bu-89y"/>
                         <outlet property="schedulesCollectionView" destination="f6Q-sv-Dgp" id="44n-kR-M7U"/>
                         <outlet property="titleLabel" destination="lEQ-5P-7zA" id="HhU-XW-VUO"/>
@@ -4085,6 +4098,7 @@ Violating these conditions may result in the suspension of your account upon rev
         <image name="Trash" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="weM-jV-mOx"/>
         <segue reference="u7i-bp-TO8"/>
     </inferredMetricsTieBreakers>
 </document>

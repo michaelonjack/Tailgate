@@ -13,6 +13,7 @@ class GamedayScheduleViewController: UIViewController {
     @IBOutlet weak var schedulesCollectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var weekButton: UIButton!
+    @IBOutlet weak var conferenceButton: UIButton!
     @IBOutlet weak var navigationView: UIView!
     @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLableTopConstraint: NSLayoutConstraint!
@@ -20,6 +21,7 @@ class GamedayScheduleViewController: UIViewController {
     var conferences = ["BIG 10", "BIG 12", "ACC", "PAC-12", "SEC"]
     var games:[String:[GameCell]] = [:]
     var selectedWeek: Int?
+    var selectedConference: Int? 
     var collectionViewCurrentIndex:Int {
         return Int(self.schedulesCollectionView.contentOffset.x / self.schedulesCollectionView.frame.size.width)
     }
@@ -62,7 +64,7 @@ class GamedayScheduleViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "ScheduleToPickerPopup" {
+        if segue.identifier == "ScheduleToWeekPickerPopup" {
             
             guard let popupController = segue.destination as? PickerPopupViewController else {return}
             
@@ -79,6 +81,14 @@ class GamedayScheduleViewController: UIViewController {
             }
             popupController.pickerPopupDelegate = self
         }
+        
+        else if segue.identifier == "ScheduleToConferencePickerPopup" {
+            guard let popupController = segue.destination as? PickerPopupViewController else {return}
+            
+            popupController.values = self.conferences
+            popupController.initialIndex = (self.selectedConference == nil ? 0 : self.selectedConference)
+            popupController.pickerPopupDelegate = self
+        }
     }
 }
 
@@ -87,30 +97,45 @@ class GamedayScheduleViewController: UIViewController {
 extension GamedayScheduleViewController: PickerPopupDelegate {
     func selectPressed(popupController: PickerPopupViewController, selectedIndex:Int, selectedValue: String) {
         
-        DispatchQueue.main.async {
-            popupController.dismiss(animated: true, completion: nil)
-            self.weekButton.setTitle(selectedValue, for: .normal)
+        let isWeekPicker:Bool = selectedValue.range(of: "Week") != nil
+        
+        if isWeekPicker {
+            DispatchQueue.main.async {
+                popupController.dismiss(animated: true, completion: nil)
+                self.weekButton.setTitle(selectedValue, for: .normal)
+            }
+            
+            selectedWeek = selectedIndex + 1
+            
+            games = [:]
+            
+            // Get games for selected week
+            for conference in conferences {
+                let conferenceKey = conference.lowercased().replacingOccurrences(of: " ", with: "")
+                
+                getCurrentGameCellsForConference(conferenceName: conferenceKey, forWeek: selectedWeek!, completion: { (games) in
+                    self.games[conferenceKey] = games
+                    self.schedulesCollectionView.reloadItems(at: [IndexPath(item: self.games.count-1, section: 0)])
+                    
+                    if self.games.count == self.conferences.count {
+                        DispatchQueue.main.async {
+                            print("reloading")
+                            self.schedulesCollectionView.reloadData()
+                        }
+                    }
+                })
+            }
         }
         
-        selectedWeek = selectedIndex + 1
-        
-        games = [:]
-        
-        // Get games for selected week
-        for conference in conferences {
-            let conferenceKey = conference.lowercased().replacingOccurrences(of: " ", with: "")
-            
-            getCurrentGameCellsForConference(conferenceName: conferenceKey, forWeek: selectedWeek!, completion: { (games) in
-                self.games[conferenceKey] = games
-                self.schedulesCollectionView.reloadItems(at: [IndexPath(item: self.games.count-1, section: 0)])
+        // If it's not the week picker then it's the conference picker
+        else {
+            DispatchQueue.main.async {
+                popupController.dismiss(animated: true, completion: nil)
+                self.conferenceButton.setTitle(selectedValue, for: .normal)
+                self.selectedConference = selectedIndex
                 
-                if self.games.count == self.conferences.count {
-                    DispatchQueue.main.async {
-                        print("reloading")
-                        self.schedulesCollectionView.reloadData()
-                    }
-                }
-            })
+                self.schedulesCollectionView.scrollToItem(at: IndexPath(item: selectedIndex, section: 0), at: .centeredHorizontally, animated: true)
+            }
         }
     }
     
@@ -126,7 +151,12 @@ extension GamedayScheduleViewController: UICollectionViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageWidth = schedulesCollectionView.frame.size.width
+        selectedConference = Int(ceil(schedulesCollectionView.contentOffset.x / pageWidth))
         
+        DispatchQueue.main.async {
+            self.conferenceButton.setTitle(self.conferences[self.selectedConference!], for: .normal)
+        }
     }
 }
 
