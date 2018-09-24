@@ -176,14 +176,14 @@ extension MapViewController: MKMapViewDelegate {
                     // Here, you create a UIButton, set its background image to the AR icon, then set the view’s right callout accessory to this button
                     let arButton = UIButton(frame: CGRect(origin: CGPoint.zero,
                                                             size: CGSize(width: 30, height: 30)))
-                    arButton.setBackgroundImage(UIImage(named: "AR"), for: UIControlState())
+                    arButton.setBackgroundImage(UIImage(named: "AR"), for: UIControl.State())
                     annotationView!.rightCalloutAccessoryView = arButton
                 }
                 
                 // Here, you create a UIButton, set its background image to the Open icon, then set the view’s left callout accessory to this button
                 let infoButton = UIButton(frame: CGRect(origin: CGPoint.zero,
                                                         size: CGSize(width: 30, height: 30)))
-                infoButton.setBackgroundImage(UIImage(named: "Open"), for: UIControlState())
+                infoButton.setBackgroundImage(UIImage(named: "Open"), for: UIControl.State())
                 annotationView!.leftCalloutAccessoryView = infoButton
             }
                 

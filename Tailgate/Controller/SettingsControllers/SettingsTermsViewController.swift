@@ -17,16 +17,16 @@ class SettingsTermsViewController: UIViewController {
         
         // Change font and color of nav header
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22.0), NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22.0), NSAttributedString.Key.foregroundColor: UIColor.white]
 
         
         // Add additional styling to the Terms of Service
         let attributedText = NSMutableAttributedString(attributedString: self.termsLabel.attributedText!)
         
-        attributedText.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 25, weight: .bold)], range: getRangeOfSubString(subString: "Terms of Service", fromString: self.termsLabel.text!))
-        attributedText.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20)], range: getRangeOfSubString(subString: "Who Can Use Tailgator", fromString: self.termsLabel.text!))
-        attributedText.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20)], range: getRangeOfSubString(subString: "Content", fromString: self.termsLabel.text!))
-        attributedText.addAttributes([NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20)], range: getRangeOfSubString(subString: "Respecting Other People’s Rights", fromString: self.termsLabel.text!))
+        attributedText.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 25, weight: .bold)], range: getRangeOfSubString(subString: "Terms of Service", fromString: self.termsLabel.text!))
+        attributedText.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)], range: getRangeOfSubString(subString: "Who Can Use Tailgator", fromString: self.termsLabel.text!))
+        attributedText.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)], range: getRangeOfSubString(subString: "Content", fromString: self.termsLabel.text!))
+        attributedText.addAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)], range: getRangeOfSubString(subString: "Respecting Other People’s Rights", fromString: self.termsLabel.text!))
         
         self.termsLabel.attributedText = attributedText
     }

@@ -66,7 +66,7 @@ class InvitesViewController: UIViewController {
         usersTable.dataSource = self
         usersTable.allowsSelection = isOwner == true
         usersTable.allowsMultipleSelection = isOwner == true
-        usersTable.rowHeight = UITableViewAutomaticDimension
+        usersTable.rowHeight = UITableView.automaticDimension
         usersTable.estimatedRowHeight = 100
         
         searchTextField.delegate = self
@@ -181,7 +181,7 @@ extension InvitesViewController: UITableViewDataSource {
         // Highlight the users that are already invited
         for invite in selectedInvites {
             if invite.uid == self.searchResults[indexPath.row].uid {
-                self.usersTable.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
+                self.usersTable.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
             }
         }
         

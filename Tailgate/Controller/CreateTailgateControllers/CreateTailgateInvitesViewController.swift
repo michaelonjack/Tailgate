@@ -55,7 +55,7 @@ class CreateTailgateInvitesViewController: UIViewController {
         usersTable.delegate = self
         usersTable.dataSource = self
         usersTable.allowsMultipleSelection = true
-        usersTable.rowHeight = UITableViewAutomaticDimension
+        usersTable.rowHeight = UITableView.automaticDimension
         usersTable.estimatedRowHeight = 100
         
         searchTextField.delegate = self

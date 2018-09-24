@@ -131,7 +131,7 @@ class ProfileViewController: UIViewController {
     
     
     @IBAction func profilePicturePressed(_ sender: UIButton) {
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
             var ypConfig = YPImagePickerConfiguration()
             ypConfig.onlySquareImagesFromCamera = true
             ypConfig.library.onlySquare = true

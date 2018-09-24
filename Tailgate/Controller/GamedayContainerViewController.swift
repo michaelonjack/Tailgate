@@ -23,7 +23,7 @@ class GamedayContainerViewController: UIViewController {
         self.navigationCollectionView.delegate = self
         self.navigationCollectionView.dataSource = self
         
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.navigationCollectionView.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

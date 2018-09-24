@@ -65,7 +65,7 @@ extension PickerPopupViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let value = values![row]
-        let valueAttrString = NSAttributedString(string: value, attributes: [NSAttributedStringKey.foregroundColor: UIColor(red:0.47, green:0.47, blue:0.47, alpha:1.0)])
+        let valueAttrString = NSAttributedString(string: value, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red:0.47, green:0.47, blue:0.47, alpha:1.0)])
         
         return valueAttrString
     }

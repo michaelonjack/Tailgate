@@ -72,7 +72,7 @@ class FriendsViewController: UIViewController {
         
         self.myFriendsButton.setTitleColor(.white, for: .normal)
         self.findFriendsButton.setTitleColor(.lightGray, for: .normal)
-        self.searchTextField.attributedPlaceholder = NSAttributedString(string: searchTextField.placeholder!, attributes: [NSAttributedStringKey.foregroundColor : UIColor.lightGray])
+        self.searchTextField.attributedPlaceholder = NSAttributedString(string: searchTextField.placeholder!, attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
         
         getUsers( completion: { (users) in
             let unblockedUsers = users.filter {
@@ -184,7 +184,7 @@ extension FriendsViewController: UICollectionViewDataSource {
         cell.userTableView.delegate = cell
         cell.userTableView.dataSource = cell
         cell.userTableView.allowsSelection = false
-        cell.userTableView.rowHeight = UITableViewAutomaticDimension
+        cell.userTableView.rowHeight = UITableView.automaticDimension
         cell.userTableView.estimatedRowHeight = 90
         cell.userTableView.layer.cornerRadius = 10
         if indexPath.row == 0 {

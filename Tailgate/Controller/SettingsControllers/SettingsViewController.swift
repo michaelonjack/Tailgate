@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController {
 
         self.settingsTable.delegate = self
         self.settingsTable.dataSource = self
-        self.settingsTable.rowHeight = UITableViewAutomaticDimension
+        self.settingsTable.rowHeight = UITableView.automaticDimension
         self.settingsTable.estimatedRowHeight = 44.0
         
         initNavBar()
@@ -61,10 +61,10 @@ class SettingsViewController: UIViewController {
 
     func initNavBar() {
         // Change font and color of nav header
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22.0), NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22.0), NSAttributedString.Key.foregroundColor: UIColor.white]
         
         // Add the exit button
-        let exitButton = UIButton(type: UIButtonType.custom)
+        let exitButton = UIButton(type: UIButton.ButtonType.custom)
         exitButton.setBackgroundImage(UIImage(named: "ExitNav"), for: .normal)
         exitButton.addTarget(self, action: #selector(exitPressed(_:)), for: .touchUpInside)
         exitButton.widthAnchor.constraint(equalToConstant: 27.0).isActive = true

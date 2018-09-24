@@ -28,7 +28,7 @@ func uploadImageToStorage(image:UIImage, uploadPath:String, completion : @escapi
     imageMetaData.contentType = "image/jpeg"
     
     var imageData = Data()
-    imageData = UIImageJPEGRepresentation(image, 1.0)!
+    imageData = image.jpegData(compressionQuality: 1.0)!
     
     storageReference.putData(imageData, metadata: imageMetaData) { (metaData, error) in
         if error == nil {

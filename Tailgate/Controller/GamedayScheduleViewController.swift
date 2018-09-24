@@ -33,7 +33,7 @@ class GamedayScheduleViewController: UIViewController {
         
         // Change font and color of nav header
         self.navigationController?.navigationBar.tintColor = UIColor.darkGray
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22.0), NSAttributedStringKey.foregroundColor: UIColor.darkGray]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22.0), NSAttributedString.Key.foregroundColor: UIColor.darkGray]
         
         // Get current games
         for conference in conferences {
@@ -184,7 +184,7 @@ extension GamedayScheduleViewController: UICollectionViewDataSource {
         cell.scheduleTableView.delegate = cell
         cell.scheduleTableView.dataSource = cell
         cell.scheduleTableView.allowsSelection = true
-        cell.scheduleTableView.rowHeight = UITableViewAutomaticDimension
+        cell.scheduleTableView.rowHeight = UITableView.automaticDimension
         cell.scheduleTableView.estimatedRowHeight = 44
         cell.scheduleTableView.layer.cornerRadius = 10
         cell.games = self.games[conferenceKey] ?? []
