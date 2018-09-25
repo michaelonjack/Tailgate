@@ -13,9 +13,10 @@ class GamedayContainerViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var navigationCollectionView: UICollectionView!
     
-    let navigationButtons:[String] = ["SIGNS", "SCHEDULE", "FLAIR"]
+    let navigationButtons:[String] = ["RANKINGS", "SIGNS", "SCHEDULE", "FLAIR"]
     var gameDayPageViewController: GamedayPageViewController?
-    var lastSelectedButtonIndex = 1
+    var initialSelectedIndex = 2
+    var lastSelectedButtonIndex = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,7 +127,7 @@ extension GamedayContainerViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NavigationCell", for: indexPath) as! LabelCollectionViewCell
         
         cell.label.text = self.navigationButtons[indexPath.row]
-        if let selectedIndexes = collectionView.indexPathsForSelectedItems, selectedIndexes.count == 0, indexPath.row == 1 {
+        if let selectedIndexes = collectionView.indexPathsForSelectedItems, selectedIndexes.count == 0, indexPath.row == initialSelectedIndex {
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
             cell.label.textColor = .black
         }
@@ -141,7 +142,7 @@ extension GamedayContainerViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width/3, height: collectionView.bounds.size.height)
+        return CGSize(width: collectionView.bounds.size.width/3.5, height: collectionView.bounds.size.height)
     }
     
     //  returns the spacing between the cells, headers, and footers. A constant is used to store the value

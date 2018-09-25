@@ -32,6 +32,8 @@
 		B13B81461FE9FB3A008F3A38 /* DrinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81451FE9FB3A008F3A38 /* DrinkTableViewCell.swift */; };
 		B13B81481FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */; };
 		B13B814A1FEA0446008F3A38 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */; };
+		B1425A08215993E8001C0E45 /* GamedayRankingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1425A07215993E8001C0E45 /* GamedayRankingsViewController.swift */; };
+		B1425A0A2159978A001C0E45 /* RankingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1425A092159978A001C0E45 /* RankingsTableViewCell.swift */; };
 		B1485629206752C1006A5456 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1485628206752C1006A5456 /* FeedCollectionViewCell.swift */; };
 		B148562B20681CB0006A5456 /* InterfaceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B148562A20681CB0006A5456 /* InterfaceHelper.swift */; };
 		B154B1F4201D7BFE005DDC8A /* InvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */; };
@@ -122,6 +124,8 @@
 		B13B81451FE9FB3A008F3A38 /* DrinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkTableViewCell.swift; sourceTree = "<group>"; };
 		B13B81471FEA0125008F3A38 /* CreateTailgateInvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateInvitesViewController.swift; sourceTree = "<group>"; };
 		B13B81491FEA0446008F3A38 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		B1425A07215993E8001C0E45 /* GamedayRankingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedayRankingsViewController.swift; sourceTree = "<group>"; };
+		B1425A092159978A001C0E45 /* RankingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsTableViewCell.swift; sourceTree = "<group>"; };
 		B1485628206752C1006A5456 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		B148562A20681CB0006A5456 /* InterfaceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceHelper.swift; sourceTree = "<group>"; };
 		B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 				B166001F20B074500055103C /* GamedayPageViewController.swift */,
 				B1A18FD52054D61000D9C12A /* GamedayScheduleViewController.swift */,
 				B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */,
+				B1425A07215993E8001C0E45 /* GamedayRankingsViewController.swift */,
 				B1DD1CD7203E409B00291EAE /* FriendsViewController.swift */,
 				B1C6C3EB20CDF9D0005DEED8 /* ReportContentViewController.swift */,
 				B154B1F3201D7BFE005DDC8A /* InvitesViewController.swift */,
@@ -338,6 +343,7 @@
 				B1E2273B20A6709100672F53 /* SupplyTableViewCell.swift */,
 				B13B81451FE9FB3A008F3A38 /* DrinkTableViewCell.swift */,
 				B13B813F1FE6ECD4008F3A38 /* SchoolTableViewCell.swift */,
+				B1425A092159978A001C0E45 /* RankingsTableViewCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 			files = (
 				B1A18FD62054D61000D9C12A /* GamedayScheduleViewController.swift in Sources */,
 				B1485629206752C1006A5456 /* FeedCollectionViewCell.swift in Sources */,
+				B1425A08215993E8001C0E45 /* GamedayRankingsViewController.swift in Sources */,
 				B1E2273A20A66D5B00672F53 /* Supply.swift in Sources */,
 				B1E83BD91FDCFC5600185E17 /* NewTailgateViewController.swift in Sources */,
 				B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */,
@@ -579,6 +586,7 @@
 				B1E83BDB1FDD6C9900185E17 /* SignUpNameViewController.swift in Sources */,
 				B154B1F4201D7BFE005DDC8A /* InvitesViewController.swift in Sources */,
 				B1AC03252071329000CB3661 /* Configuration.swift in Sources */,
+				B1425A0A2159978A001C0E45 /* RankingsTableViewCell.swift in Sources */,
 				B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */,
 				B10B21FE20E93E7600B3B49D /* String+Additions.swift in Sources */,
 				B13B81401FE6ECD4008F3A38 /* SchoolTableViewCell.swift in Sources */,

@@ -18,8 +18,9 @@ class GamedayPageViewController: UIPageViewController {
         let scheduleController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GamedayScheduleViewController")
         let signsController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GamedaySignsViewController")
         let flairController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FlairNavigationController")
+        let rankingsController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GamedayRankingsViewController")
         
-        return [signsController, scheduleController, flairController]
+        return [rankingsController, signsController, scheduleController, flairController]
     }()
 
     override func viewDidLoad() {
@@ -29,7 +30,7 @@ class GamedayPageViewController: UIPageViewController {
         self.dataSource = self
         
         // This sets up the first view that will show up on our page control
-        setViewControllers([controllers[1]], direction: .forward, animated: true, completion: nil)
+        setViewControllers([controllers[2]], direction: .forward, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

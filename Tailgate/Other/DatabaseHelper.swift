@@ -475,6 +475,42 @@ func getCurrentGameCellsForConference(conferenceName:String, forWeek week:Int = 
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
+// getRankings
+//
+// Returns dict of the ranking (i.e. [ {1:Alabama}, {2:Penn State}, ... ])
+//
+func getRankings(forWeek week:Int = configuration.weekNum, completion: @escaping (([Int:School]) -> Void)) {
+    var rankings:[Int:School] = [:]
+    let rankingsReference = Database.database().reference(withPath: "gameday/week" + String(week) + "/rankings/ap")
+    rankingsReference.keepSynced(true)
+    
+    rankingsReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        // Make sure all 25 ranking spots exist or else we'll get caught in an endless func
+        guard snapshot.childrenCount == 25 else {
+            completion(rankings)
+            return
+        }
+        
+        for rankingSnapshot in snapshot.children {
+            if let rSnapshot = rankingSnapshot as? DataSnapshot {
+                let ranking = Int(rSnapshot.key)!
+                let schoolName = rSnapshot.value as! String
+                getSchoolByName(name: schoolName, completion: { (school) in
+                    rankings[ ranking ] = school
+                    
+                    if rankings.count == 25 {
+                        completion(rankings)
+                    }
+                })
+            }
+        }
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
 // getUsers
 //
 // Returns all users from the database
