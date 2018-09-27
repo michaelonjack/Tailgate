@@ -13,6 +13,7 @@ class RankingsTableViewCell: UITableViewCell {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var schoolLogo: UIImageView!
     @IBOutlet weak var schoolNameLabel: UILabel!
+    @IBOutlet weak var rankLabelLeadingConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

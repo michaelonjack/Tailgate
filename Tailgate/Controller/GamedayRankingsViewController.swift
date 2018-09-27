@@ -69,6 +69,10 @@ extension GamedayRankingsViewController: UITableViewDataSource {
         cell.schoolNameLabel.text = ""
         cell.schoolLogo.image = UIImage(named: "AwayTeamDefault")
         
+        // Update the leading constraint width for the screen size
+        if cell.rankLabelLeadingConstraint.constant == 10 {
+                cell.rankLabelLeadingConstraint.updateHorizontalConstantForViewWidth(view: cell.contentView)
+        }
         
         let rank = indexPath.row + 1
         let school = self.rankings[rank]

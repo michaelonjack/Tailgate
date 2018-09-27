@@ -2951,7 +2951,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QqL-5Y-etZ">
-                                                    <rect key="frame" x="15" y="25" width="40" height="40"/>
+                                                    <rect key="frame" x="10" y="25" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="QqL-5Y-etZ" secondAttribute="height" multiplier="1:1" id="C4n-zX-WpU"/>
                                                         <constraint firstAttribute="height" constant="40" id="TYH-n6-qo5"/>
@@ -2960,14 +2960,14 @@ Violating these conditions may result in the suspension of your account upon rev
                                                     <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uJ-DA-d20">
-                                                    <rect key="frame" x="135" y="35" width="211" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="1uJ-DA-d20">
+                                                    <rect key="frame" x="130" y="35" width="216" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.47450980390000003" green="0.47450980390000003" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AwayTeamDefault" translatesAutoresizingMaskIntoConstraints="NO" id="t63-MM-wL1">
-                                                    <rect key="frame" x="60" y="15" width="60" height="60"/>
+                                                    <rect key="frame" x="55" y="15" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="t63-MM-wL1" secondAttribute="height" multiplier="1:1" id="fuT-Ro-atS"/>
                                                         <constraint firstAttribute="height" constant="60" id="wKS-J9-56k"/>
@@ -2977,7 +2977,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="1uJ-DA-d20" secondAttribute="bottom" constant="36.5" id="9DF-Lg-S25"/>
                                                 <constraint firstItem="t63-MM-wL1" firstAttribute="leading" secondItem="QqL-5Y-etZ" secondAttribute="trailing" constant="5" id="I4W-ra-fDG"/>
-                                                <constraint firstItem="QqL-5Y-etZ" firstAttribute="leading" secondItem="9NT-ad-dki" secondAttribute="leading" constant="15" id="LWR-nk-Tx6"/>
+                                                <constraint firstItem="QqL-5Y-etZ" firstAttribute="leading" secondItem="9NT-ad-dki" secondAttribute="leading" constant="10" id="LWR-nk-Tx6"/>
                                                 <constraint firstItem="1uJ-DA-d20" firstAttribute="leading" secondItem="t63-MM-wL1" secondAttribute="trailing" constant="15" id="XGN-bh-JhR"/>
                                                 <constraint firstItem="1uJ-DA-d20" firstAttribute="top" secondItem="9NT-ad-dki" secondAttribute="top" constant="35" id="Yqy-c5-Lnw"/>
                                                 <constraint firstItem="QqL-5Y-etZ" firstAttribute="centerY" secondItem="9NT-ad-dki" secondAttribute="centerY" id="dZn-ck-JNY"/>
@@ -2987,6 +2987,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="rankLabel" destination="QqL-5Y-etZ" id="UrV-Lp-Ifl"/>
+                                            <outlet property="rankLabelLeadingConstraint" destination="LWR-nk-Tx6" id="Waj-Sa-esy"/>
                                             <outlet property="schoolLogo" destination="t63-MM-wL1" id="OIA-oS-Sn5"/>
                                             <outlet property="schoolNameLabel" destination="1uJ-DA-d20" id="Wu1-DI-S4g"/>
                                         </connections>
