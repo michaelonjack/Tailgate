@@ -48,7 +48,7 @@ class SuppliesViewController: UIViewController {
     
     @IBAction func addSupplyPressed(_ sender: Any) {
         
-        if let supplyName = self.newSupplyTextField.text {
+        if let supplyName = self.newSupplyTextField.text, supplyName.replacingOccurrences(of: " ", with: "") != "" {
             getCurrentUser { (currentUser) in
                 let supplier = currentUser.name
                 
@@ -64,6 +64,12 @@ class SuppliesViewController: UIViewController {
                     self.suppliesTable.endUpdates()
                 }
             }
+        }
+        
+        else {
+            let alert = createAlert(title: "", message: "Give your supply a name!")
+            
+            self.present(alert, animated: true)
         }
     }
     
