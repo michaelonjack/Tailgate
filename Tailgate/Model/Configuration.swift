@@ -13,12 +13,16 @@ import FirebaseAuth
 final class Configuration {
     private static let sharedConfiguration:Configuration = Configuration()
     
-    var week:String = "week1"
-    var weekNum:Int = 1
+    var weekNum:Int!
+    var week:String!
     var currentUser:User!
     var schoolCache:[String:School] = [:]
     
     private init() {
+        // Default to cached values
+        self.weekNum = UserDefaults.standard.value(forKey: "week") as? Int ?? 1
+        self.week = "week" + String(weekNum)
+        
         // Set the current week
         let configurationReference = Database.database().reference(withPath: "configuration")
         configurationReference.keepSynced(true)
@@ -28,6 +32,9 @@ final class Configuration {
                 let weekNum = configDict["week"] as! Int
                 self.week = "week" + String(weekNum)
                 self.weekNum = weekNum
+                
+                // Cache the week number
+                UserDefaults.standard.setValue(weekNum, forKey: "week")
             }
         }
         
