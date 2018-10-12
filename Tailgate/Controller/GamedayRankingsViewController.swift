@@ -13,6 +13,7 @@ class GamedayRankingsViewController: UIViewController {
 
     @IBOutlet weak var rankingsTable: UITableView!
     
+    let refreshControl = UIRefreshControl()
     var rankings:[Int:School] = [:]
     
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ class GamedayRankingsViewController: UIViewController {
         rankingsTable.allowsSelection = false
         rankingsTable.estimatedRowHeight = 90
         rankingsTable.layer.cornerRadius = 10
+        addRefreshControl()
 
         getRankings { (rankings) in
             self.rankings = rankings
@@ -39,7 +41,28 @@ class GamedayRankingsViewController: UIViewController {
 
 
 extension GamedayRankingsViewController: UITableViewDelegate {
-
+    func addRefreshControl() {
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            self.rankingsTable.refreshControl = self.refreshControl
+        } else {
+            self.rankingsTable.addSubview(self.refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshRankingsTableView(_:)), for: .valueChanged)
+    }
+    
+    @objc private func refreshRankingsTableView(_ sender: Any) {
+        // Update rankings
+        getRankings { (rankings) in
+            self.rankings = rankings
+            
+            DispatchQueue.main.async {
+                self.rankingsTable.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
+    }
 }
 
 
