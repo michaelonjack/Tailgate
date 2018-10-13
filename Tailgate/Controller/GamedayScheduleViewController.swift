@@ -48,7 +48,6 @@ class GamedayScheduleViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
-            
             if let selectedWeek = self.selectedWeek {
                 self.weekButton.setTitle("Week " + String(selectedWeek), for: .normal)
             } else {

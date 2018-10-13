@@ -2994,14 +2994,26 @@ Violating these conditions may result in the suspension of your account upon rev
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUd-Y0-Lkv">
+                                <rect key="frame" x="311" y="27" width="48" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Week XX">
+                                    <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="s2c-OK-gC9" kind="presentation" identifier="RankingsToWeekPickerPopup" id="Cja-o9-bQN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xP1-s6-ZAQ" firstAttribute="centerX" secondItem="umF-fo-4cT" secondAttribute="centerX" id="0Wh-xb-Ss5"/>
+                            <constraint firstItem="nUd-Y0-Lkv" firstAttribute="centerY" secondItem="xP1-s6-ZAQ" secondAttribute="centerY" id="9pX-0H-m1M"/>
                             <constraint firstItem="TzW-1K-1jo" firstAttribute="top" secondItem="xP1-s6-ZAQ" secondAttribute="bottom" constant="8" id="C3v-JX-bnA"/>
                             <constraint firstItem="cYH-oB-WSO" firstAttribute="top" secondItem="TzW-1K-1jo" secondAttribute="bottom" id="KuV-pr-kNb"/>
                             <constraint firstItem="cYH-oB-WSO" firstAttribute="height" secondItem="umF-fo-4cT" secondAttribute="height" multiplier="0.0695518" id="OuB-SS-Wmb"/>
                             <constraint firstItem="umF-fo-4cT" firstAttribute="trailing" secondItem="TzW-1K-1jo" secondAttribute="trailing" constant="7" id="WSs-jz-UAw"/>
+                            <constraint firstItem="umF-fo-4cT" firstAttribute="trailing" secondItem="nUd-Y0-Lkv" secondAttribute="trailing" constant="16" id="WYj-5z-o5r"/>
                             <constraint firstItem="xP1-s6-ZAQ" firstAttribute="width" secondItem="KLB-wL-hcz" secondAttribute="width" multiplier="0.62666" id="cUd-eW-IjF"/>
                             <constraint firstItem="TzW-1K-1jo" firstAttribute="leading" secondItem="umF-fo-4cT" secondAttribute="leading" constant="7" id="dRI-7E-ur1"/>
                             <constraint firstItem="xP1-s6-ZAQ" firstAttribute="top" secondItem="umF-fo-4cT" secondAttribute="top" constant="8" id="eNJ-xW-dMV"/>
@@ -3014,6 +3026,7 @@ Violating these conditions may result in the suspension of your account upon rev
                     </view>
                     <connections>
                         <outlet property="rankingsTable" destination="TzW-1K-1jo" id="plK-vD-oX8"/>
+                        <outlet property="weekButton" destination="nUd-Y0-Lkv" id="9ds-LV-57I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v4G-gV-D7J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4194,7 +4207,7 @@ Violating these conditions may result in the suspension of your account upon rev
         <image name="Trash" width="204.80000305175781" height="204.80000305175781"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="weM-jV-mOx"/>
+        <segue reference="Cja-o9-bQN"/>
         <segue reference="u7i-bp-TO8"/>
     </inferredMetricsTieBreakers>
 </document>

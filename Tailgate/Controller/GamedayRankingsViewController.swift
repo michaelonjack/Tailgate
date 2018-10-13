@@ -12,9 +12,11 @@ import SDWebImage
 class GamedayRankingsViewController: UIViewController {
 
     @IBOutlet weak var rankingsTable: UITableView!
+    @IBOutlet weak var weekButton: UIButton!
     
     let refreshControl = UIRefreshControl()
     var rankings:[Int:School] = [:]
+    var selectedWeek: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,60 @@ class GamedayRankingsViewController: UIViewController {
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            if let selectedWeek = self.selectedWeek {
+                self.weekButton.setTitle("Week " + String(selectedWeek), for: .normal)
+            } else {
+                self.weekButton.setTitle("Week " + String(configuration.weekNum), for: .normal)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RankingsToWeekPickerPopup" {
+            guard let popupController = segue.destination as? PickerPopupViewController else {return}
+            
+            var values:[String] = []
+            for i in 1..<configuration.weekNum+1 {
+                values.append("Week " + String(i))
+            }
+            
+            popupController.values = values
+            if let selectedWeek = self.selectedWeek {
+                popupController.initialIndex = selectedWeek-1
+            } else {
+                popupController.initialIndex =  configuration.weekNum-1
+            }
+            popupController.pickerPopupDelegate = self
+        }
+    }
 
+}
+
+
+
+extension GamedayRankingsViewController: PickerPopupDelegate {
+    func selectPressed(popupController: PickerPopupViewController, selectedIndex: Int, selectedValue: String) {
+        
+        // Update the week button label to show the selected value
+        DispatchQueue.main.async {
+            popupController.dismiss(animated: true, completion: nil)
+            self.weekButton.setTitle(selectedValue, for: .normal)
+        }
+        
+        selectedWeek = selectedIndex + 1
+        
+        // Get the rankings for the selected week
+        getRankings(forWeek: selectedWeek!) { (rankings) in
+            self.rankings = rankings
+            
+            DispatchQueue.main.async {
+                self.rankingsTable.reloadData()
+            }
+        }
+    }
 }
 
 
@@ -54,7 +109,7 @@ extension GamedayRankingsViewController: UITableViewDelegate {
     
     @objc private func refreshRankingsTableView(_ sender: Any) {
         // Update rankings
-        getRankings { (rankings) in
+        getRankings(forWeek: selectedWeek ?? configuration.weekNum) { (rankings) in
             self.rankings = rankings
             
             DispatchQueue.main.async {
