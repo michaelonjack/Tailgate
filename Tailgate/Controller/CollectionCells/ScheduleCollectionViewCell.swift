@@ -26,6 +26,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     let refreshControl = UIRefreshControl()
     var conferenceName = ""
     var games:[GameCell] = []
+    var parentViewController:GamedayScheduleViewController!
 }
 
 
@@ -87,7 +88,7 @@ extension ScheduleCollectionViewCell: UITableViewDelegate {
     @objc private func refreshScheduleTable(_ sender: Any) {
         let conferenceKey = self.conferenceName.lowercased().replacingOccurrences(of: " ", with: "")
         
-        getCurrentGameCellsForConference(conferenceName: conferenceKey, completion: { (games) in
+        getGameCells(forConference: conferenceKey, forWeek: parentViewController.selectedWeek ?? configuration.weekNum, completion: { (games) in
             self.games = games
             
             refreshSchoolCache(completion: { (schoolDict) in

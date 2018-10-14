@@ -39,7 +39,7 @@ class GamedayScheduleViewController: UIViewController {
         for conference in conferences {
             let conferenceKey = conference.lowercased().replacingOccurrences(of: " ", with: "")
             
-            getCurrentGameCellsForConference(conferenceName: conferenceKey, completion: { (games) in
+            getGameCells(forConference: conferenceKey, completion: { (games) in
                 self.games[conferenceKey] = games
                 self.schedulesCollectionView.reloadItems(at: [IndexPath(item: self.games.count-1, section: 0)])
             })
@@ -112,7 +112,7 @@ extension GamedayScheduleViewController: PickerPopupDelegate {
             for conference in conferences {
                 let conferenceKey = conference.lowercased().replacingOccurrences(of: " ", with: "")
                 
-                getCurrentGameCellsForConference(conferenceName: conferenceKey, forWeek: selectedWeek!, completion: { (games) in
+                getGameCells(forConference: conferenceKey, forWeek: selectedWeek!, completion: { (games) in
                     self.games[conferenceKey] = games
                     self.schedulesCollectionView.reloadItems(at: [IndexPath(item: self.games.count-1, section: 0)])
                     
@@ -188,6 +188,7 @@ extension GamedayScheduleViewController: UICollectionViewDataSource {
         cell.scheduleTableView.layer.cornerRadius = 10
         cell.games = self.games[conferenceKey] ?? []
         cell.conferenceName = conferenceName
+        cell.parentViewController = self
         cell.scheduleTableView.reloadData()
         
         return cell
