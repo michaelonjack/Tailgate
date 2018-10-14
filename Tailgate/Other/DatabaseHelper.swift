@@ -140,9 +140,9 @@ func getTailgateImageUrls(tailgate:Tailgate, completion: @escaping (_ urls: [Str
 //
 // Returns the download urls of all gameday sign images
 //
-func getGamedaySignImageUrls(completion: @escaping (_ urls: [String]) -> Void) {
+func getGamedaySignImageUrls(forWeek week:Int = configuration.weekNum, completion: @escaping (_ urls: [String]) -> Void) {
     var imgUrls:[String] = []
-    let imageUrlsReference = Database.database().reference(withPath: "gameday/" + configuration.week + "/imageUrls")
+    let imageUrlsReference = Database.database().reference(withPath: "gameday/week" + String(week) + "/imageUrls")
     imageUrlsReference.keepSynced(true)
     
     imageUrlsReference.observeSingleEvent(of: .value, with: { (snapshot) in

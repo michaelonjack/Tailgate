@@ -3466,6 +3466,16 @@ Violating these conditions may result in the suspension of your account upon rev
                                 <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abJ-Yb-NGw">
+                                <rect key="frame" x="311" y="27" width="48" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Week XX">
+                                    <color key="titleColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="s2c-OK-gC9" kind="presentation" identifier="SignsToWeekPickerPopup" id="YEh-9y-GHx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -3475,8 +3485,10 @@ Violating these conditions may result in the suspension of your account upon rev
                             <constraint firstItem="nS1-Br-KvW" firstAttribute="centerX" secondItem="E2B-3o-563" secondAttribute="centerX" id="8bk-cu-kxZ"/>
                             <constraint firstItem="phq-Sh-S9T" firstAttribute="centerX" secondItem="E2B-3o-563" secondAttribute="centerX" id="Mjb-e9-rk7"/>
                             <constraint firstItem="nS1-Br-KvW" firstAttribute="width" secondItem="OA7-gD-hVa" secondAttribute="width" id="SDq-Wd-1uX"/>
+                            <constraint firstItem="OA7-gD-hVa" firstAttribute="trailing" secondItem="abJ-Yb-NGw" secondAttribute="trailing" constant="16" id="SrP-AA-Luz"/>
                             <constraint firstItem="vYv-qI-GX5" firstAttribute="height" secondItem="OA7-gD-hVa" secondAttribute="height" multiplier="0.0695517" id="YO8-g3-Wco"/>
                             <constraint firstItem="rth-wA-dNQ" firstAttribute="top" secondItem="OA7-gD-hVa" secondAttribute="top" constant="8" id="Z6O-ah-eE5"/>
+                            <constraint firstItem="abJ-Yb-NGw" firstAttribute="centerY" secondItem="rth-wA-dNQ" secondAttribute="centerY" id="a2a-W2-QWG"/>
                             <constraint firstItem="vYv-qI-GX5" firstAttribute="centerX" secondItem="OA7-gD-hVa" secondAttribute="centerX" id="hyb-zO-Bja"/>
                             <constraint firstItem="vYv-qI-GX5" firstAttribute="top" secondItem="phq-Sh-S9T" secondAttribute="bottom" id="m4E-Hz-nUN"/>
                             <constraint firstItem="nS1-Br-KvW" firstAttribute="top" secondItem="rth-wA-dNQ" secondAttribute="bottom" constant="15" id="rJp-bt-8Gz"/>
@@ -3491,6 +3503,7 @@ Violating these conditions may result in the suspension of your account upon rev
                         <outlet property="emptyView" destination="Cu1-1R-z9M" id="IrC-8b-rBd"/>
                         <outlet property="loadingView" destination="2IJ-Fc-kDr" id="6KW-rg-7it"/>
                         <outlet property="signCollectionView" destination="nS1-Br-KvW" id="fhg-eM-cMb"/>
+                        <outlet property="weekButton" destination="abJ-Yb-NGw" id="hjc-SU-Erq"/>
                     </connections>
                 </viewController>
                 <view contentMode="scaleToFill" id="Cu1-1R-z9M" userLabel="Empty View">
@@ -4207,7 +4220,7 @@ Violating these conditions may result in the suspension of your account upon rev
         <image name="Trash" width="204.80000305175781" height="204.80000305175781"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cja-o9-bQN"/>
+        <segue reference="YEh-9y-GHx"/>
         <segue reference="u7i-bp-TO8"/>
     </inferredMetricsTieBreakers>
 </document>
