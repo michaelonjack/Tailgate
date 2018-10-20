@@ -198,7 +198,7 @@ extension ProfileViewController: UICollectionViewDelegate {
     func detectFirstLaunch() {
         let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore  {
-            print("Not first launch.")
+            //print("Not first launch.")
         } else {
             UserDefaults.standard.set(true, forKey: "launchedBefore")
             

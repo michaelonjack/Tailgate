@@ -425,20 +425,53 @@ func getDrinks(completion: @escaping (([Drink]) -> Void)) {
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
-// getCurrentGamesForConference
+// getLastUpdatedDate
+//
+//
+//
+func getLastUpdatedDate(forConference conference:String, forWeek week:Int = configuration.weekNum, completion: @escaping((Date?)->Void)) {
+    let gameReference = Database.database().reference(withPath: "games/week" + String(week) + "/" + conference)
+    
+    gameReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        let lastUpdatedStr = snapshotValue["lastUpdated"] as? String ?? ""
+        var lastUpdatedDate:Date?
+        
+        if lastUpdatedStr == "" {
+            lastUpdatedDate = nil
+        } else {
+            lastUpdatedDate = dateFormatter.date(from: lastUpdatedStr)
+        }
+        
+        completion(lastUpdatedDate)
+    })
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// getGames
 //
 // Returns all games for this week
 //
-func getCurrentGamesForConference(conferenceName:String, completion: @escaping (([Game]) -> Void)) {
+func getGames(forConference conferenceName:String, forWeek week:Int = configuration.weekNum, completion: @escaping (([Game]) -> Void)) {
     var games:[Game] = []
-    let currentGamesReference = Database.database().reference(withPath: "games/" + configuration.week + "/" + conferenceName)
+    let currentGamesReference = Database.database().reference(withPath: "games/week" + String(week) + "/" + conferenceName)
     currentGamesReference.keepSynced(true)
     
     currentGamesReference.observeSingleEvent(of: .value, with: { (snapshot) in
         for gamesSnapshot in snapshot.children {
             
-            let game = Game(snapshot: gamesSnapshot as! DataSnapshot)
-            games.append(game)
+            guard let gamesSnapshot = gamesSnapshot as? DataSnapshot else {continue}
+            
+            if let _ = gamesSnapshot.value as? [String: AnyObject] {
+                let game = Game(snapshot: gamesSnapshot)
+                games.append(game)
+            }
         }
         
         games = games.sorted(by: { $0.startTime! < $1.startTime! })
@@ -462,8 +495,12 @@ func getGameCells(forConference conferenceName:String, forWeek week:Int = config
     currentGamesReference.observeSingleEvent(of: .value, with: { (snapshot) in
         for gamesSnapshot in snapshot.children {
             
-            let game = Game(snapshot: gamesSnapshot as! DataSnapshot)
-            games.append( GameCell(game: game) )
+            guard let gamesSnapshot = gamesSnapshot as? DataSnapshot else {continue}
+            
+            if let _ = gamesSnapshot.value as? [String: AnyObject] {
+                let game = Game(snapshot: gamesSnapshot)
+                games.append( GameCell(game: game) )
+            }
         }
         
         games = games.sorted(by: { $0.game.startTime! < $1.game.startTime! })

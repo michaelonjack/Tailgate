@@ -13,8 +13,8 @@ class Game {
     let id:String
     let homeTeam:String
     let awayTeam:String
-    let homeTeamScore:Int
-    let awayTeamScore:Int
+    var homeTeamScore:Int
+    var awayTeamScore:Int
     let startTime:Date?
     var score:String {
         let scoreStr = String(awayTeamScore) + " - " + String(homeTeamScore)

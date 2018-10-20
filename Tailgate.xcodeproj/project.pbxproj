@@ -56,6 +56,7 @@
 		B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A18FD72054DFEB00D9C12A /* Game.swift */; };
 		B1AC0323207116FE00CB3661 /* cfb_json.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1AC0322207116FE00CB3661 /* cfb_json.txt */; };
 		B1AC03252071329000CB3661 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AC03242071329000CB3661 /* Configuration.swift */; };
+		B1AF1BED217AFCF500EDF931 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF1BEC217AFCF500EDF931 /* APIHelper.swift */; };
 		B1B1E1E820D69576001B81EA /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B1E1E720D69576001B81EA /* art.scnassets */; };
 		B1B1E1EA20D69BD7001B81EA /* MapARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B1E1E920D69BD7001B81EA /* MapARViewController.swift */; };
 		B1BBF2E31FEEBC98007B1ACF /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBF2E21FEEBC98007B1ACF /* Drink.swift */; };
@@ -148,6 +149,7 @@
 		B1A18FD72054DFEB00D9C12A /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B1AC0322207116FE00CB3661 /* cfb_json.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cfb_json.txt; sourceTree = "<group>"; };
 		B1AC03242071329000CB3661 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		B1AF1BEC217AFCF500EDF931 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		B1B1E1E720D69576001B81EA /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		B1B1E1E920D69BD7001B81EA /* MapARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapARViewController.swift; sourceTree = "<group>"; };
 		B1BBF2E21FEEBC98007B1ACF /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				B1E22737209E1B9600672F53 /* BiometricIDAuth.swift */,
 				B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */,
+				B1AF1BEC217AFCF500EDF931 /* APIHelper.swift */,
 				B18256EB20E1886D00BB6C9F /* ARKitHelper.swift */,
 				B1BC52CE1FE0C12700BCBAE8 /* DatabaseHelper.swift */,
 				B148562A20681CB0006A5456 /* InterfaceHelper.swift */,
@@ -609,6 +612,7 @@
 				B1A18FD22054CD3800D9C12A /* ScheduleTableViewCell.swift in Sources */,
 				B1E22734208B6E5500672F53 /* RivalFlairViewController.swift in Sources */,
 				B10E9E6D1FDCB6A200DB4751 /* LoginViewController.swift in Sources */,
+				B1AF1BED217AFCF500EDF931 /* APIHelper.swift in Sources */,
 				B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */,
 				B166002420B0A1BD0055103C /* GamedayContainerViewController.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,

@@ -88,16 +88,18 @@ extension ScheduleCollectionViewCell: UITableViewDelegate {
     @objc private func refreshScheduleTable(_ sender: Any) {
         let conferenceKey = self.conferenceName.lowercased().replacingOccurrences(of: " ", with: "")
         
-        getGameCells(forConference: conferenceKey, forWeek: parentViewController.selectedWeek ?? configuration.weekNum, completion: { (games) in
-            self.games = games
-            
-            refreshSchoolCache(completion: { (schoolDict) in
-                DispatchQueue.main.async {
-                    self.scheduleTableView.reloadData()
-                    self.refreshControl.endRefreshing()
-                }
+        updatesScores(forConference: conferenceKey, forWeek: self.parentViewController.selectedWeek ?? configuration.weekNum) { (success) in
+            getGameCells(forConference: conferenceKey, forWeek: self.parentViewController.selectedWeek ?? configuration.weekNum, completion: { (games) in
+                self.games = games
+                
+                refreshSchoolCache(completion: { (schoolDict) in
+                    DispatchQueue.main.async {
+                        self.scheduleTableView.reloadData()
+                        self.refreshControl.endRefreshing()
+                    }
+                })
             })
-        })
+        }
     }
     
 }
