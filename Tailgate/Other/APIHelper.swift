@@ -19,6 +19,12 @@ struct JSONGame: Decodable {
 
 func updatesScores(forConference conference: String, forWeek week: Int, completion: @escaping ((Bool) -> Void)) {
     
+    // Only update the scores for the current week
+    if week != configuration.weekNum {
+        completion(true)
+        return
+    }
+    
     let UPDATE_INTERVAL = 15
     
     // We're restricting the live score updates to once every 15 minutes so do a check of when this conference's scores were last update
