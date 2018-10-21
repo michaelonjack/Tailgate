@@ -116,6 +116,7 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         cell.scoreLabel.text = "0 - 0"
         cell.awayTeamLabel.text = ""
         cell.homeTeamLabel.text = ""
+        cell.gameLink.setTitle("View", for: .normal)
         // Reset the cell's selection
         cell.setSelected(false, animated: false)
         // Reset the recycled cell's logos
@@ -133,6 +134,7 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         cell.awayTeamLabel.text = currGame.awayTeam
         cell.homeTeamLabel.text = currGame.homeTeam
         cell.scoreLabel.text = currGame.score
+        cell.gameLink.setTitle(currGame.status == "" ? "View" : currGame.status, for: .normal)
         if currGame.score == "0 - 0" {
             cell.detailLabel.text = currGame.startTimeDisplayStr
         } else {

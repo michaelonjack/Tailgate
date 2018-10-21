@@ -15,6 +15,7 @@ class Game {
     let awayTeam:String
     var homeTeamScore:Int
     var awayTeamScore:Int
+    var status:String
     let startTime:Date?
     var score:String {
         let scoreStr = String(awayTeamScore) + " - " + String(homeTeamScore)
@@ -59,6 +60,7 @@ class Game {
         self.startTime = startTime
         self.awayTeamScore = 0
         self.homeTeamScore = 0
+        self.status = ""
     }
     
     init(homeTeam:String, awayTeam:String, startTime:Date) {
@@ -68,6 +70,7 @@ class Game {
         self.startTime = startTime
         self.homeTeamScore = 0
         self.awayTeamScore = 0
+        self.status = ""
     }
     
     init(snapshot: DataSnapshot) {
@@ -76,6 +79,7 @@ class Game {
         self.id = snapshot.key
         self.homeTeam = snapshotValue["homeTeam"] as! String
         self.awayTeam = snapshotValue["awayTeam"] as! String
+        self.status = snapshotValue["status"] as? String ?? ""
         self.homeTeamScore = snapshotValue["homeTeamScore"] as? Int ?? 0
         self.awayTeamScore = snapshotValue["awayTeamScore"] as? Int ?? 0
         
@@ -94,6 +98,7 @@ class Game {
         return [
             "awayTeam": awayTeam,
             "homeTeam": homeTeam,
+            "status": status,
             "startTime": startTimeDatabaseStr,
             "homeTeamScore": homeTeamScore,
             "awayTeamScore": awayTeamScore

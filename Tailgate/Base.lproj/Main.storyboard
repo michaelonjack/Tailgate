@@ -3187,7 +3187,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                                                         </constraints>
                                                                     </imageView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lV8-mU-hZk">
-                                                                        <rect key="frame" x="165.5" y="103" width="30" height="24"/>
+                                                                        <rect key="frame" x="139" y="103" width="83" height="24"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                         <state key="normal" title="View"/>
                                                                         <connections>
@@ -3201,6 +3201,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                                                     <constraint firstItem="UJk-FZ-2y3" firstAttribute="top" secondItem="0fK-hF-D50" secondAttribute="bottom" constant="12.5" id="45K-xe-RG4"/>
                                                                     <constraint firstItem="lV8-mU-hZk" firstAttribute="top" secondItem="XBI-m3-gdz" secondAttribute="bottom" constant="8" id="6a0-np-O1r"/>
                                                                     <constraint firstItem="bzl-hk-n8S" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" multiplier="0.747922" id="7fY-Ys-vXs"/>
+                                                                    <constraint firstItem="lV8-mU-hZk" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" multiplier="0.23" id="ChY-cv-K1S"/>
                                                                     <constraint firstItem="bzl-hk-n8S" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="11" id="Cuo-fs-dlH"/>
                                                                     <constraint firstAttribute="trailing" secondItem="0fK-hF-D50" secondAttribute="trailing" constant="7" id="Dbb-2I-BoK"/>
                                                                     <constraint firstItem="XBI-m3-gdz" firstAttribute="centerX" secondItem="BDU-X9-BeQ" secondAttribute="centerX" id="Fcf-aL-Zn1"/>
@@ -4220,7 +4221,7 @@ Violating these conditions may result in the suspension of your account upon rev
         <image name="Trash" width="204.80000305175781" height="204.80000305175781"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YEh-9y-GHx"/>
+        <segue reference="yNH-Gd-PbQ"/>
         <segue reference="u7i-bp-TO8"/>
     </inferredMetricsTieBreakers>
 </document>

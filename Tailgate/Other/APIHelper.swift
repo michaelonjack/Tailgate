@@ -14,6 +14,7 @@ struct JSONGame: Decodable {
     let awayTeamScore:String
     let homeTeamName:String
     let awayTeamName:String
+    let status:String
 }
 
 func updatesScores(forConference conference: String, forWeek week: Int, completion: @escaping ((Bool) -> Void)) {
@@ -58,6 +59,7 @@ func updatesScores(forConference conference: String, forWeek week: Int, completi
                                 
                                 game.awayTeamScore = Int(jsonGame.awayTeamScore) ?? 0
                                 game.homeTeamScore = Int(jsonGame.homeTeamScore) ?? 0
+                                game.status = jsonGame.status
                                 let gameReference = Database.database().reference(withPath: "games/week" + String(week) + "/" + conference)
                                 gameReference.updateChildValues([game.id : game.toAnyObject()])
                                 
