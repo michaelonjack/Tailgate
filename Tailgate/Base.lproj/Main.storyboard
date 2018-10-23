@@ -92,6 +92,7 @@
                         <segue destination="hBi-gD-CH2" kind="show" identifier="SettingsToSchool" id="YuV-s6-rKX"/>
                         <segue destination="dVD-9F-c0X" kind="show" identifier="SettingsToTerms" id="oHP-ou-iP1"/>
                         <segue destination="Hgm-XS-sK8" kind="show" identifier="SettingsToContact" id="HKV-0L-e2i"/>
+                        <segue destination="HYp-wE-7OT" kind="show" identifier="SettingsToPrivacyPolicy" id="CKE-6k-k5L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAM-Kd-Hws" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4188,7 +4189,584 @@ Violating these conditions may result in the suspension of your account upon rev
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Bl-4r-V8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3586" y="-3955"/>
+            <point key="canvasLocation" x="-3591" y="-3957"/>
+        </scene>
+        <!--Settings Terms View Controller-->
+        <scene sceneID="OQq-Lh-qf6">
+            <objects>
+                <viewController id="CMz-eb-r5Z" customClass="SettingsTermsViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="onZ-Lh-jXS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2J-6E-hId">
+                                <rect key="frame" x="0.0" y="572" width="375" height="95"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="V2J-6E-hId" secondAttribute="height" multiplier="75:19" id="emU-lM-sXM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="CLOSE">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closePressed:" destination="CMz-eb-r5Z" eventType="touchUpInside" id="c0R-Ov-2fM"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sP3-U0-Uin">
+                                <rect key="frame" x="0.0" y="20" width="375" height="552"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrY-sI-zh4">
+                                        <rect key="frame" x="15" y="0.0" width="345" height="757.5"/>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">Terms of Service
+
+Last updated: May 22, 2018
+
+By using Tailgator or any of its associated services, you agree to the Terms of Service. Of course, if you don’t agree with them, then don’t use Tailgator.
+
+
+Who Can Use Tailgator
+By using this application you state that:
+a) You are not a person who is barred from receiving the Services under the laws of the United States or any other applicable jurisdiction—meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition.
+b) You will comply with these Terms and all applicable local, state, national, and international laws, rules, and regulations.
+
+
+Content
+Much of the content on Tailgator is produced by users and other third parties. Whether that content is posted publicly or sent privately, the content is the sole responsibility of the person or organization that submitted it. Although Tailgator reserves the right to review or remove all content that appears on the application, we do not necessarily review all of it. So we cannot—and do not—take responsibility for any content that others provide through the application.
+
+We want to make clear that we do not want the application put to bad uses. But because we do not review all content, we cannot guarantee that content on the application will always conform to our preferred guidelines.
+
+
+Respecting Other People’s Rights
+Tailgator respects the rights of others. And so should you. You therefore may not use the application, or enable anyone else to use the application, in a manner that:
+a) violates or infringes someone else’s rights of publicity, privacy, copyright, trademark, or other intellectual-property right.
+b) bullies, harasses, or intimidates.
+c) defames.
+d) spams or solicits our users.
+
+Violating these conditions may result in the suspension of your account upon review.</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <string key="userLabel">Terms of Service  Last updated: May 22, 2018  By using Tailgator or any of our other products or services that link to these Terms of Service, you agree to the Terms of Service. Of course, if you don’t agree with them, then don’t use Tailgator.   Who Can Use Tailgator By using this application you state that: a) You are not a person who is barred from receiving the Services under the laws of the United States or any other applicable jurisdiction—meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition. b) You will comply with these Terms and all applicable local, state, national, and international laws, rules, and regulations.   Content Much of the content on Tailgator is produced by users and other third parties. Whether that content is posted publicly or sent privately, the content is the sole responsibility of the person or organization that submitted it. Although Tailgator reserves the right to review or remove all content that appears on the application, we do not necessarily review all of it. So we cannot—and do not—take responsibility for any content that others provide through the application.  We want to make clear that we do not want the application put to bad uses. But because we do not review all content, we cannot guarantee that content on the application will always conform to our preferred guidelines.   Respecting Other People’s Rights Tailgator respects the rights of others. And so should you. You therefore may not use the application, or enable anyone else to use the application, in a manner that: a) violates or infringes someone else’s rights of publicity, privacy, copyright, trademark, or other intellectual-property right. b) bullies, harasses, or intimidates. c) defames. d) spams or solicits our users.  Violating these conditions may result in the suspension of your account upon review.</string>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="HrY-sI-zh4" secondAttribute="trailing" constant="15" id="4br-bs-WJL"/>
+                                    <constraint firstItem="HrY-sI-zh4" firstAttribute="leading" secondItem="sP3-U0-Uin" secondAttribute="leading" constant="15" id="K6B-Kf-lWc"/>
+                                    <constraint firstItem="HrY-sI-zh4" firstAttribute="top" secondItem="sP3-U0-Uin" secondAttribute="top" id="dcN-oM-6br"/>
+                                    <constraint firstAttribute="bottom" secondItem="HrY-sI-zh4" secondAttribute="bottom" constant="100" id="wXF-ES-YUk"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="V2J-6E-hId" firstAttribute="width" secondItem="onZ-Lh-jXS" secondAttribute="width" id="Rn0-mi-PA4"/>
+                            <constraint firstItem="sP3-U0-Uin" firstAttribute="width" secondItem="onZ-Lh-jXS" secondAttribute="width" id="SUu-cO-zkJ"/>
+                            <constraint firstItem="V2J-6E-hId" firstAttribute="top" secondItem="sP3-U0-Uin" secondAttribute="bottom" id="VHm-6s-SK6"/>
+                            <constraint firstItem="sP3-U0-Uin" firstAttribute="top" secondItem="YAF-M4-XuP" secondAttribute="top" id="Wld-l2-aMq"/>
+                            <constraint firstItem="V2J-6E-hId" firstAttribute="bottom" secondItem="YAF-M4-XuP" secondAttribute="bottom" id="c01-pV-7ts"/>
+                            <constraint firstItem="sP3-U0-Uin" firstAttribute="centerX" secondItem="YAF-M4-XuP" secondAttribute="centerX" id="jeC-ic-Btm"/>
+                            <constraint firstItem="V2J-6E-hId" firstAttribute="centerX" secondItem="YAF-M4-XuP" secondAttribute="centerX" id="jt5-lT-JO3"/>
+                            <constraint firstItem="HrY-sI-zh4" firstAttribute="width" secondItem="YAF-M4-XuP" secondAttribute="width" multiplier="0.92" id="oDJ-At-toT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YAF-M4-XuP"/>
+                    </view>
+                    <connections>
+                        <outlet property="termsLabel" destination="HrY-sI-zh4" id="GjF-uV-nIc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g6s-aZ-fAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3591" y="-3957"/>
+        </scene>
+        <!--Settings Terms View Controller-->
+        <scene sceneID="3lj-IG-pS7">
+            <objects>
+                <viewController id="3li-lZ-hm0" customClass="SettingsTermsViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Fa-AX-G3N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="434-7v-O3l">
+                                <rect key="frame" x="0.0" y="572" width="375" height="95"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="434-7v-O3l" secondAttribute="height" multiplier="75:19" id="ZYJ-OY-aoE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="CLOSE">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closePressed:" destination="3li-lZ-hm0" eventType="touchUpInside" id="Mlg-Zf-UCo"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pnk-dw-Wlb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="552"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lo6-2X-HEg">
+                                        <rect key="frame" x="15" y="0.0" width="345" height="757.5"/>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">Terms of Service
+
+Last updated: May 22, 2018
+
+By using Tailgator or any of its associated services, you agree to the Terms of Service. Of course, if you don’t agree with them, then don’t use Tailgator.
+
+
+Who Can Use Tailgator
+By using this application you state that:
+a) You are not a person who is barred from receiving the Services under the laws of the United States or any other applicable jurisdiction—meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition.
+b) You will comply with these Terms and all applicable local, state, national, and international laws, rules, and regulations.
+
+
+Content
+Much of the content on Tailgator is produced by users and other third parties. Whether that content is posted publicly or sent privately, the content is the sole responsibility of the person or organization that submitted it. Although Tailgator reserves the right to review or remove all content that appears on the application, we do not necessarily review all of it. So we cannot—and do not—take responsibility for any content that others provide through the application.
+
+We want to make clear that we do not want the application put to bad uses. But because we do not review all content, we cannot guarantee that content on the application will always conform to our preferred guidelines.
+
+
+Respecting Other People’s Rights
+Tailgator respects the rights of others. And so should you. You therefore may not use the application, or enable anyone else to use the application, in a manner that:
+a) violates or infringes someone else’s rights of publicity, privacy, copyright, trademark, or other intellectual-property right.
+b) bullies, harasses, or intimidates.
+c) defames.
+d) spams or solicits our users.
+
+Violating these conditions may result in the suspension of your account upon review.</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <string key="userLabel">Terms of Service  Last updated: May 22, 2018  By using Tailgator or any of our other products or services that link to these Terms of Service, you agree to the Terms of Service. Of course, if you don’t agree with them, then don’t use Tailgator.   Who Can Use Tailgator By using this application you state that: a) You are not a person who is barred from receiving the Services under the laws of the United States or any other applicable jurisdiction—meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition. b) You will comply with these Terms and all applicable local, state, national, and international laws, rules, and regulations.   Content Much of the content on Tailgator is produced by users and other third parties. Whether that content is posted publicly or sent privately, the content is the sole responsibility of the person or organization that submitted it. Although Tailgator reserves the right to review or remove all content that appears on the application, we do not necessarily review all of it. So we cannot—and do not—take responsibility for any content that others provide through the application.  We want to make clear that we do not want the application put to bad uses. But because we do not review all content, we cannot guarantee that content on the application will always conform to our preferred guidelines.   Respecting Other People’s Rights Tailgator respects the rights of others. And so should you. You therefore may not use the application, or enable anyone else to use the application, in a manner that: a) violates or infringes someone else’s rights of publicity, privacy, copyright, trademark, or other intellectual-property right. b) bullies, harasses, or intimidates. c) defames. d) spams or solicits our users.  Violating these conditions may result in the suspension of your account upon review.</string>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Lo6-2X-HEg" firstAttribute="leading" secondItem="Pnk-dw-Wlb" secondAttribute="leading" constant="15" id="M0b-sw-hZx"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lo6-2X-HEg" secondAttribute="bottom" constant="100" id="Qkg-tu-ZLq"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lo6-2X-HEg" secondAttribute="trailing" constant="15" id="uzk-Rh-pgX"/>
+                                    <constraint firstItem="Lo6-2X-HEg" firstAttribute="top" secondItem="Pnk-dw-Wlb" secondAttribute="top" id="yKb-cU-khn"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="434-7v-O3l" firstAttribute="width" secondItem="8Fa-AX-G3N" secondAttribute="width" id="0BZ-QO-mi2"/>
+                            <constraint firstItem="Pnk-dw-Wlb" firstAttribute="top" secondItem="4gR-Fv-yhl" secondAttribute="top" id="C9O-ma-xRb"/>
+                            <constraint firstItem="434-7v-O3l" firstAttribute="top" secondItem="Pnk-dw-Wlb" secondAttribute="bottom" id="FuE-QE-V6s"/>
+                            <constraint firstItem="Pnk-dw-Wlb" firstAttribute="width" secondItem="8Fa-AX-G3N" secondAttribute="width" id="OYU-2P-hwM"/>
+                            <constraint firstItem="Pnk-dw-Wlb" firstAttribute="centerX" secondItem="4gR-Fv-yhl" secondAttribute="centerX" id="ZDj-9w-ArZ"/>
+                            <constraint firstItem="Lo6-2X-HEg" firstAttribute="width" secondItem="4gR-Fv-yhl" secondAttribute="width" multiplier="0.92" id="a90-fF-aCt"/>
+                            <constraint firstItem="434-7v-O3l" firstAttribute="centerX" secondItem="4gR-Fv-yhl" secondAttribute="centerX" id="fTF-NL-9hg"/>
+                            <constraint firstItem="434-7v-O3l" firstAttribute="bottom" secondItem="4gR-Fv-yhl" secondAttribute="bottom" id="y7O-nk-y1u"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4gR-Fv-yhl"/>
+                    </view>
+                    <connections>
+                        <outlet property="termsLabel" destination="Lo6-2X-HEg" id="T61-xJ-fgU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yhi-ml-PIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3591" y="-3957"/>
+        </scene>
+        <!--Settings Terms View Controller-->
+        <scene sceneID="Cct-Oo-X72">
+            <objects>
+                <viewController id="gUO-BJ-OTJ" customClass="SettingsTermsViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HaT-Rk-Uy5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnT-Jp-aC1">
+                                <rect key="frame" x="0.0" y="572" width="375" height="95"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LnT-Jp-aC1" secondAttribute="height" multiplier="75:19" id="EtD-2a-5nL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="CLOSE">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closePressed:" destination="gUO-BJ-OTJ" eventType="touchUpInside" id="6pv-P8-iuD"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVE-ng-Fe1">
+                                <rect key="frame" x="0.0" y="20" width="375" height="552"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oR7-5L-hK3">
+                                        <rect key="frame" x="15" y="0.0" width="345" height="757.5"/>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">Terms of Service
+
+Last updated: May 22, 2018
+
+By using Tailgator or any of its associated services, you agree to the Terms of Service. Of course, if you don’t agree with them, then don’t use Tailgator.
+
+
+Who Can Use Tailgator
+By using this application you state that:
+a) You are not a person who is barred from receiving the Services under the laws of the United States or any other applicable jurisdiction—meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition.
+b) You will comply with these Terms and all applicable local, state, national, and international laws, rules, and regulations.
+
+
+Content
+Much of the content on Tailgator is produced by users and other third parties. Whether that content is posted publicly or sent privately, the content is the sole responsibility of the person or organization that submitted it. Although Tailgator reserves the right to review or remove all content that appears on the application, we do not necessarily review all of it. So we cannot—and do not—take responsibility for any content that others provide through the application.
+
+We want to make clear that we do not want the application put to bad uses. But because we do not review all content, we cannot guarantee that content on the application will always conform to our preferred guidelines.
+
+
+Respecting Other People’s Rights
+Tailgator respects the rights of others. And so should you. You therefore may not use the application, or enable anyone else to use the application, in a manner that:
+a) violates or infringes someone else’s rights of publicity, privacy, copyright, trademark, or other intellectual-property right.
+b) bullies, harasses, or intimidates.
+c) defames.
+d) spams or solicits our users.
+
+Violating these conditions may result in the suspension of your account upon review.</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <string key="userLabel">Terms of Service  Last updated: May 22, 2018  By using Tailgator or any of our other products or services that link to these Terms of Service, you agree to the Terms of Service. Of course, if you don’t agree with them, then don’t use Tailgator.   Who Can Use Tailgator By using this application you state that: a) You are not a person who is barred from receiving the Services under the laws of the United States or any other applicable jurisdiction—meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition. b) You will comply with these Terms and all applicable local, state, national, and international laws, rules, and regulations.   Content Much of the content on Tailgator is produced by users and other third parties. Whether that content is posted publicly or sent privately, the content is the sole responsibility of the person or organization that submitted it. Although Tailgator reserves the right to review or remove all content that appears on the application, we do not necessarily review all of it. So we cannot—and do not—take responsibility for any content that others provide through the application.  We want to make clear that we do not want the application put to bad uses. But because we do not review all content, we cannot guarantee that content on the application will always conform to our preferred guidelines.   Respecting Other People’s Rights Tailgator respects the rights of others. And so should you. You therefore may not use the application, or enable anyone else to use the application, in a manner that: a) violates or infringes someone else’s rights of publicity, privacy, copyright, trademark, or other intellectual-property right. b) bullies, harasses, or intimidates. c) defames. d) spams or solicits our users.  Violating these conditions may result in the suspension of your account upon review.</string>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="oR7-5L-hK3" secondAttribute="bottom" constant="100" id="5yG-kl-ud7"/>
+                                    <constraint firstItem="oR7-5L-hK3" firstAttribute="leading" secondItem="sVE-ng-Fe1" secondAttribute="leading" constant="15" id="laY-eY-gsy"/>
+                                    <constraint firstAttribute="trailing" secondItem="oR7-5L-hK3" secondAttribute="trailing" constant="15" id="qbQ-pL-UTw"/>
+                                    <constraint firstItem="oR7-5L-hK3" firstAttribute="top" secondItem="sVE-ng-Fe1" secondAttribute="top" id="vey-HW-3F1"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LnT-Jp-aC1" firstAttribute="bottom" secondItem="vYH-Fb-bfY" secondAttribute="bottom" id="HwJ-LN-DuC"/>
+                            <constraint firstItem="LnT-Jp-aC1" firstAttribute="centerX" secondItem="vYH-Fb-bfY" secondAttribute="centerX" id="IQh-iL-ePp"/>
+                            <constraint firstItem="LnT-Jp-aC1" firstAttribute="top" secondItem="sVE-ng-Fe1" secondAttribute="bottom" id="KU6-o4-bK4"/>
+                            <constraint firstItem="sVE-ng-Fe1" firstAttribute="width" secondItem="HaT-Rk-Uy5" secondAttribute="width" id="Lhs-vL-Ks6"/>
+                            <constraint firstItem="LnT-Jp-aC1" firstAttribute="width" secondItem="HaT-Rk-Uy5" secondAttribute="width" id="e1T-cj-Esi"/>
+                            <constraint firstItem="oR7-5L-hK3" firstAttribute="width" secondItem="vYH-Fb-bfY" secondAttribute="width" multiplier="0.92" id="p0J-6S-Esf"/>
+                            <constraint firstItem="sVE-ng-Fe1" firstAttribute="top" secondItem="vYH-Fb-bfY" secondAttribute="top" id="ppH-K2-w9i"/>
+                            <constraint firstItem="sVE-ng-Fe1" firstAttribute="centerX" secondItem="vYH-Fb-bfY" secondAttribute="centerX" id="tyM-f3-hXy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vYH-Fb-bfY"/>
+                    </view>
+                    <connections>
+                        <outlet property="termsLabel" destination="oR7-5L-hK3" id="FAP-l2-QD9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i1B-6Z-JUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3591" y="-3957"/>
+        </scene>
+        <!--Settings Privacy Policy View Controller-->
+        <scene sceneID="9mL-m5-R9Z">
+            <objects>
+                <viewController id="HYp-wE-7OT" customClass="SettingsPrivacyPolicyViewController" customModule="Tailgate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YHh-7U-obF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygB-o1-9wY">
+                                <rect key="frame" x="0.0" y="572" width="375" height="95"/>
+                                <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ygB-o1-9wY" secondAttribute="height" multiplier="75:19" id="Ayn-UB-8Bh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="CLOSE">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="closePressed:" destination="HYp-wE-7OT" eventType="touchUpInside" id="657-vw-ght"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="507-cf-u6G">
+                                <rect key="frame" x="0.0" y="64" width="375" height="508"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMD-Cl-uuR">
+                                        <rect key="frame" x="15" y="0.0" width="345" height="878.5"/>
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">Privacy Policy
+
+Last updated: October 22, 2018
+
+When you use Tailgator, you’ll share some information with us. So we want to be upfront about the information we collect, how we use it and the controls we give you to access, update, and delete your information.
+
+
+Information We Collect
+When you interact with Tailgator, we collect the information that you choose to share with us. For example, Tailgator requires you to set up a basic account, so we need to collect a few important details about you, such as: a name, a password, an email address, and your date of birth. </string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">You can also optionally provide a profile picture, your location, and the university you attend in order to use other features in the app.
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92142999999999997" green="0.92144999999999999" blue="0.92144000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92142999999999997" green="0.92144999999999999" blue="0.92144000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">Tailgator does not collect any information about you from third parties.
+
+
+How We Use the Information
+The information you share with Tailgator will only be used within the app itself; viewable by you and other users. If you choose to enable Location Services, your location will only be used to find nearby tailgates and only while the app is in use. At no point will your location be saved within the app.</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92142999999999997" green="0.92144999999999999" blue="0.92144000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92142999999999997" green="0.92144999999999999" blue="0.92144000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                        <tabStops>
+                                                            <textTab alignment="left" location="28">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="56">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="84">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="112">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="140">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="168">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="196">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="224">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="252">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="280">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="308">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="336">
+                                                                <options/>
+                                                            </textTab>
+                                                        </tabStops>
+                                                    </paragraphStyle>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">Your data will not be shared with third parties in the form of advertising tools or analytic services.
+
+
+Control Over Your Information
+Tailgator will retain your data until you decide to remove or modify it. All information we collect on you can be viewed/modified from the Settings screen which is accessed through pressing the cogwheel button in the top left corner of the app's home screen. Should you choose to add a profile picture, it can be modified by tapping your picture on the app's home screen.</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92142999999999997" green="0.92144999999999999" blue="0.92144000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content" base64-UTF8="YES">
+Cgo
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92142999999999997" green="0.92144999999999999" blue="0.92144000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                        <tabStops>
+                                                            <textTab alignment="left" location="28">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="56">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="84">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="112">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="140">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="168">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="196">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="224">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="252">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="280">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="308">
+                                                                <options/>
+                                                            </textTab>
+                                                            <textTab alignment="left" location="336">
+                                                                <options/>
+                                                            </textTab>
+                                                        </tabStops>
+                                                    </paragraphStyle>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">Revisions to the Privacy Policy
+We may change this Privacy Policy from time to time. But when we do, we’ll let you know one way or another. Sometimes, we’ll let you know by revising the date at the top of the Privacy Policy that’s available here. Other times, we may provide you with additional notice (such as providing you with an in-app notification).
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92142999999999997" green="0.92144999999999999" blue="0.92144000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92142999999999997" green="0.92144999999999999" blue="0.92144000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92142999999999997" green="0.92144999999999999" blue="0.92144000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92142999999999997" green="0.92144999999999999" blue="0.92144000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" red="0.92142999999999997" green="0.92144999999999999" blue="0.92144000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name=".SFNSText"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                        <string key="userLabel">Privacy Policy  Last updated: October 22, 2018  When you use Tailgator, you’ll share some information with us. So we want to be upfront about the information we collect and how we use it and the controls we give you to access, update, and delete your information.   Who Can Use Tailgator By using this application you state that: a) You are not a person who is barred from receiving the Services under the laws of the United States or any other applicable jurisdiction—meaning that you do not appear on the U.S. Treasury Department’s list of Specially Designated Nationals or face any other similar prohibition. b) You will comply with these Terms and all applicable local, state, national, and international laws, rules, and regulations.   Content Much of the content on Tailgator is produced by users and other third parties. Whether that content is posted publicly or sent privately, the content is the sole responsibility of the person or organization that submitted it. Although Tailgator reserves the right to review or remove all content that appears on the application, we do not necessarily review all of it. So we cannot—and do not—take responsibility for any content that others provide through the application.  We want to make clear that we do not want the application put to bad uses. But because we do not review all content, we cannot guarantee that content on the application will always conform to our preferred guidelines.   Respecting Other People’s Rights Tailgator respects the rights of others. And so should you. You therefore may not use the application, or enable anyone else to use the application, in a manner that: a) violates or infringes someone else’s rights of publicity, privacy, copyright, trademark, or other intellectual-property right. b) bullies, harasses, or intimidates. c) defames. d) spams or solicits our users.  Violating these conditions may result in the suspension of your account upon review.</string>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xMD-Cl-uuR" secondAttribute="trailing" constant="15" id="OcT-KD-66n"/>
+                                    <constraint firstItem="xMD-Cl-uuR" firstAttribute="top" secondItem="507-cf-u6G" secondAttribute="top" id="PUy-YW-ae0"/>
+                                    <constraint firstItem="xMD-Cl-uuR" firstAttribute="leading" secondItem="507-cf-u6G" secondAttribute="leading" constant="15" id="RGF-92-XUJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="xMD-Cl-uuR" secondAttribute="bottom" constant="100" id="fOr-cu-iBo"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="507-cf-u6G" firstAttribute="width" secondItem="YHh-7U-obF" secondAttribute="width" id="0xg-6u-hYB"/>
+                            <constraint firstItem="ygB-o1-9wY" firstAttribute="centerX" secondItem="1IJ-yk-HVm" secondAttribute="centerX" id="2PQ-cq-Cca"/>
+                            <constraint firstItem="507-cf-u6G" firstAttribute="centerX" secondItem="1IJ-yk-HVm" secondAttribute="centerX" id="8RI-2o-uS2"/>
+                            <constraint firstItem="xMD-Cl-uuR" firstAttribute="width" secondItem="1IJ-yk-HVm" secondAttribute="width" multiplier="0.92" id="PdI-bn-jJR"/>
+                            <constraint firstItem="507-cf-u6G" firstAttribute="top" secondItem="1IJ-yk-HVm" secondAttribute="top" id="awt-tq-syz"/>
+                            <constraint firstItem="ygB-o1-9wY" firstAttribute="width" secondItem="YHh-7U-obF" secondAttribute="width" id="gVI-ZS-mup"/>
+                            <constraint firstItem="ygB-o1-9wY" firstAttribute="top" secondItem="507-cf-u6G" secondAttribute="bottom" id="p0S-Wh-Za3"/>
+                            <constraint firstItem="ygB-o1-9wY" firstAttribute="bottom" secondItem="1IJ-yk-HVm" secondAttribute="bottom" id="zmQ-AU-y48"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1IJ-yk-HVm"/>
+                    </view>
+                    <connections>
+                        <outlet property="policyLabel" destination="xMD-Cl-uuR" id="WeF-Lr-Kka"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="you-xC-45N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5306" y="-3958"/>
         </scene>
     </scenes>
     <resources>

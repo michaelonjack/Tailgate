@@ -20,6 +20,7 @@
 		B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */; };
 		B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E801FDCBA6100DB4751 /* TailgateAnnotation.swift */; };
 		B11FAF752065D75D00238981 /* GamedaySignsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */; };
+		B12CCC33217E92DA00CC9C25 /* SettingsPrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12CCC32217E92DA00CC9C25 /* SettingsPrivacyPolicyViewController.swift */; };
 		B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */; };
 		B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */; };
 		B13B81371FE60086008F3A38 /* CreateTailgateDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81361FE60086008F3A38 /* CreateTailgateDateViewController.swift */; };
@@ -113,6 +114,7 @@
 		B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B10E9E801FDCBA6100DB4751 /* TailgateAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotation.swift; sourceTree = "<group>"; };
 		B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedaySignsViewController.swift; sourceTree = "<group>"; };
+		B12CCC32217E92DA00CC9C25 /* SettingsPrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateNameViewController.swift; sourceTree = "<group>"; };
 		B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateAccessibilityViewController.swift; sourceTree = "<group>"; };
 		B13B81361FE60086008F3A38 /* CreateTailgateDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateDateViewController.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 		B1817833204A4B350029CF27 /* SettingsControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B12CCC32217E92DA00CC9C25 /* SettingsPrivacyPolicyViewController.swift */,
 				B1CAD9A3204B6CDE00934F57 /* SettingsEmailViewController.swift */,
 				B1FEC4ED2042223400FEE05F /* SettingsViewController.swift */,
 				B1E2272F2084024A00672F53 /* SettingsSchoolViewController.swift */,
@@ -576,6 +579,7 @@
 				B19BFD5620B4BBF1009D6AD2 /* SignUpAgreementViewController.swift in Sources */,
 				B13B813B1FE609F7008F3A38 /* CreateTailgateDrinkViewController.swift in Sources */,
 				B19BFD5820B4FC57009D6AD2 /* SettingsTermsViewController.swift in Sources */,
+				B12CCC33217E92DA00CC9C25 /* SettingsPrivacyPolicyViewController.swift in Sources */,
 				B1E22736209E0C1B00672F53 /* KeychainPasswordItem.swift in Sources */,
 				B1929E672147548200431E1D /* PickerPopupViewController.swift in Sources */,
 				B1A18FD42054CD6600D9C12A /* ScheduleCollectionViewCell.swift in Sources */,
