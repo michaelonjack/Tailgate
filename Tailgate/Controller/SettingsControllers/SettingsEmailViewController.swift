@@ -14,8 +14,9 @@ class SettingsEmailViewController: UIViewController {
     @IBOutlet weak var emailTextField: PaddedTextField!
     @IBOutlet weak var statusLabel: UILabel!
     
-    var presentingController: UIViewController?
     var email: String?
+    
+    var delegate: SettingsDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +44,12 @@ class SettingsEmailViewController: UIViewController {
                 updateValueForCurrentUser(key: "email", value: email)
                 
                 // Update the Settings table
-                if let presentingController = self.presentingController as? SettingsViewController {
-                    presentingController.loadData()
-                    DispatchQueue.main.async {
-                        self.navigationController?.popViewController(animated: true)
-                    }
+                if let delegate = self.delegate {
+                    delegate.settingsUpdated(updatedValues: ["email" : email])
+                }
+                
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
                 }
             } else {
                 let errorAlert = createAlert(title: "Update Failed", message: (error?.localizedDescription)!)

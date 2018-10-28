@@ -14,13 +14,14 @@ class SettingsSchoolViewController: UIViewController {
     @IBOutlet weak var schoolsCollectionView: UICollectionView!
     
     var schools:[School] = []
-    var presentingController: UIViewController?
     var schoolName:String?
     var selectedSchool:School?
     
     fileprivate let reuseIdentifier = "SchoolCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
     fileprivate let itemsPerRow: CGFloat = 3
+    
+    var delegate: SettingsDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +49,11 @@ class SettingsSchoolViewController: UIViewController {
         updateValueForCurrentUser(key: "school", value: self.schoolNameLabel.text ?? "")
         
         // Update the Settings table
-        if let presentingController = self.presentingController as? SettingsViewController {
-            presentingController.loadData()
-            self.navigationController?.popViewController(animated: true)
+        if let delegate = self.delegate {
+            delegate.settingsUpdated(updatedValues: ["school" : self.schoolNameLabel.text ?? ""])
         }
+        
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

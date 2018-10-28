@@ -10,6 +10,10 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
+protocol SettingsDelegate {
+    func settingsUpdated(updatedValues: [String:String])
+}
+
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var settingsTable: UITableView!
@@ -77,31 +81,58 @@ class SettingsViewController: UIViewController {
         case "SettingsToBirthday":
             let birthdayController: SettingsBirthdayViewController = segue.destination as! SettingsBirthdayViewController
             
-            let birthdayString = self.rowData[0][3].1
-            birthdayController.initialDateString = birthdayString
-            birthdayController.presentingController = self
+            birthdayController.initialDateString = self.rowData[0][3].1
+            birthdayController.delegate = self
             
         case "SettingsToName":
             let nameController: SettingsNameViewController = segue.destination as! SettingsNameViewController
             
             nameController.firstName = self.rowData[0][0].1
             nameController.lastName = self.rowData[0][1].1
-            nameController.presentingController = self
+            nameController.delegate = self
             
         case "SettingsToEmail":
             let emailController: SettingsEmailViewController = segue.destination as! SettingsEmailViewController
             
             emailController.email = self.rowData[0][2].1
-            emailController.presentingController = self
+            emailController.delegate = self
             
         case "SettingsToSchool":
             let schoolController: SettingsSchoolViewController = segue.destination as! SettingsSchoolViewController
             
             schoolController.schoolName = self.rowData[0][4].1
-            schoolController.presentingController = self
+            schoolController.delegate = self
             
         default:
             var _ = 0
+        }
+    }
+}
+
+
+
+extension SettingsViewController: SettingsDelegate {
+    func settingsUpdated(updatedValues: [String:String]) {
+        for (key, value) in updatedValues {
+            switch key {
+            case "firstName":
+                self.rowData[0][0].1 = value
+            case "lastName":
+                self.rowData[0][1].1 = value
+            case "birthday":
+                self.rowData[0][3].1 = value
+            case "email":
+                self.rowData[0][2].1 = value
+            case "school":
+                self.rowData[0][4].1 = value
+            default:
+                var _ = 0
+            }
+            
+        }
+        
+        DispatchQueue.main.async {
+            self.settingsTable.reloadData()
         }
     }
 }

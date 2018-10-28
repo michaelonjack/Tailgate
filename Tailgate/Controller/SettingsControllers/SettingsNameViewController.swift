@@ -13,9 +13,10 @@ class SettingsNameViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: PaddedTextField!
     @IBOutlet weak var lastNameTextField: PaddedTextField!
     
-    var presentingController: UIViewController?
     var firstName:String?
     var lastName:String?
+    
+    var delegate:SettingsDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +38,14 @@ class SettingsNameViewController: UIViewController {
         updateValueForCurrentUser(key: "lastName", value: self.lastNameTextField.text ?? "")
         
         // Update the Settings table
-        if let presentingController = self.presentingController as? SettingsViewController {
-            presentingController.loadData()
-            self.navigationController?.popViewController(animated: true)
+        if let delegate = delegate {
+            var values:[String:String] = [:]
+            values["firstName"] = self.firstNameTextField.text ?? ""
+            values["lastName"] = self.lastNameTextField.text ?? ""
+            
+            delegate.settingsUpdated(updatedValues: values)
         }
+        
+        self.navigationController?.popViewController(animated: true)
     }
 }

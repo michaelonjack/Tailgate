@@ -16,8 +16,9 @@ class SettingsBirthdayViewController: UIViewController {
     @IBOutlet weak var updateButton: UIButton!
     
     let dateFormatter = DateFormatter()
-    var presentingController: UIViewController?
     var initialDateString: String = ""
+    
+    var delegate: SettingsDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +51,11 @@ class SettingsBirthdayViewController: UIViewController {
         updateValueForCurrentUser(key: "birthday", value: self.birthdayTextField.text ?? "")
         
         // Update the Settings table
-        if let presentingController = self.presentingController as? SettingsViewController {
-            presentingController.loadData()
-            self.navigationController?.popViewController(animated: true)
+        if let delegate = delegate {
+            delegate.settingsUpdated(updatedValues: ["birthday" : self.birthdayTextField.text ?? ""])
         }
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
