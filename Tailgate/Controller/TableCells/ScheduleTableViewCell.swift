@@ -23,7 +23,9 @@ class ScheduleTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        gameLink.titleLabel?.adjustsFontSizeToFitWidth = true
+        gameLink.titleLabel?.minimumScaleFactor = 0.5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
