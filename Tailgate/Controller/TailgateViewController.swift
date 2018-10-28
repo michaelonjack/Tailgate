@@ -329,6 +329,17 @@ class TailgateViewController: UIViewController {
         }
         optionsController.addAction(reportContentAction)
         
+        // User has requested to open the tailgate in Maps
+        let openInMapsAction = UIAlertAction(title: "Open in Maps", style: .default) { (action) in
+            if let tailgateCoordinate = self.tailgate.location?.coordinate {
+                let destination = MKMapItem(placemark: MKPlacemark(coordinate: tailgateCoordinate))
+                destination.name = self.tailgate.name
+                
+                MKMapItem.openMaps(with: [destination], launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking])
+            }
+        }
+        optionsController.addAction(openInMapsAction)
+        
         self.present(optionsController, animated: true, completion: nil)
     }
     
