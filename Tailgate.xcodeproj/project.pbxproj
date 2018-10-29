@@ -49,6 +49,10 @@
 		B18FFC7B218692F000901D71 /* TailgatePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC7A218692F000901D71 /* TailgatePageViewController.swift */; };
 		B18FFC7D218695AF00901D71 /* TailgatePhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC7C218695AF00901D71 /* TailgatePhotosViewController.swift */; };
 		B18FFC7F2186962100901D71 /* TailgateMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC7E2186962100901D71 /* TailgateMessagesViewController.swift */; };
+		B18FFC812186AE5600901D71 /* TailgatorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC802186AE5600901D71 /* TailgatorMessage.swift */; };
+		B18FFC832186B0F400901D71 /* TailgatorTextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC822186B0F400901D71 /* TailgatorTextMessageCell.swift */; };
+		B18FFC852186B1CB00901D71 /* TailgatorMessageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC842186B1CB00901D71 /* TailgatorMessageCellDelegate.swift */; };
+		B18FFC872186B2DF00901D71 /* TailgatorMediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC862186B2DF00901D71 /* TailgatorMediaMessageCell.swift */; };
 		B1929E672147548200431E1D /* PickerPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1929E662147548200431E1D /* PickerPopupViewController.swift */; };
 		B1936A3621296A5B00C53DDE /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1936A3521296A5B00C53DDE /* TutorialViewController.swift */; };
 		B1936A38212A199D00C53DDE /* SettingsContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1936A37212A199D00C53DDE /* SettingsContactViewController.swift */; };
@@ -146,6 +150,10 @@
 		B18FFC7A218692F000901D71 /* TailgatePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatePageViewController.swift; sourceTree = "<group>"; };
 		B18FFC7C218695AF00901D71 /* TailgatePhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatePhotosViewController.swift; sourceTree = "<group>"; };
 		B18FFC7E2186962100901D71 /* TailgateMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateMessagesViewController.swift; sourceTree = "<group>"; };
+		B18FFC802186AE5600901D71 /* TailgatorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatorMessage.swift; sourceTree = "<group>"; };
+		B18FFC822186B0F400901D71 /* TailgatorTextMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatorTextMessageCell.swift; sourceTree = "<group>"; };
+		B18FFC842186B1CB00901D71 /* TailgatorMessageCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatorMessageCellDelegate.swift; sourceTree = "<group>"; };
+		B18FFC862186B2DF00901D71 /* TailgatorMediaMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatorMediaMessageCell.swift; sourceTree = "<group>"; };
 		B1929E662147548200431E1D /* PickerPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerPopupViewController.swift; sourceTree = "<group>"; };
 		B1936A3521296A5B00C53DDE /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		B1936A37212A199D00C53DDE /* SettingsContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContactViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +273,7 @@
 		B10E9E9B1FDCC20200DB4751 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B18FFC802186AE5600901D71 /* TailgatorMessage.swift */,
 				B1AC03242071329000CB3661 /* Configuration.swift */,
 				B1E83BE51FDD890500185E17 /* User.swift */,
 				B13B81411FE6F1B6008F3A38 /* School.swift */,
@@ -381,6 +390,9 @@
 		B1DD1CD9203E505F00291EAE /* CollectionCells */ = {
 			isa = PBXGroup;
 			children = (
+				B18FFC862186B2DF00901D71 /* TailgatorMediaMessageCell.swift */,
+				B18FFC842186B1CB00901D71 /* TailgatorMessageCellDelegate.swift */,
+				B18FFC822186B0F400901D71 /* TailgatorTextMessageCell.swift */,
 				B1C6C3E920BC7A5D005DEED8 /* TailgateImageCollectionViewCell.swift */,
 				B1485628206752C1006A5456 /* FeedCollectionViewCell.swift */,
 				B1A18FD32054CD6600D9C12A /* ScheduleCollectionViewCell.swift */,
@@ -610,17 +622,20 @@
 				B1AC03252071329000CB3661 /* Configuration.swift in Sources */,
 				B1425A0A2159978A001C0E45 /* RankingsTableViewCell.swift in Sources */,
 				B1BC52CB1FE015D000BCBAE8 /* TailgateViewController.swift in Sources */,
+				B18FFC812186AE5600901D71 /* TailgatorMessage.swift in Sources */,
 				B10B21FE20E93E7600B3B49D /* String+Additions.swift in Sources */,
 				B13B81401FE6ECD4008F3A38 /* SchoolTableViewCell.swift in Sources */,
 				B18256EC20E1886D00BB6C9F /* ARKitHelper.swift in Sources */,
 				B13B81421FE6F1B6008F3A38 /* School.swift in Sources */,
 				B1DD1CD22039ED6600291EAE /* CreateTailgateFlairViewController.swift in Sources */,
 				B11FAF752065D75D00238981 /* GamedaySignsViewController.swift in Sources */,
+				B18FFC852186B1CB00901D71 /* TailgatorMessageCellDelegate.swift in Sources */,
 				B13B81441FE9FB29008F3A38 /* FoodTableViewCell.swift in Sources */,
 				B1E22738209E1B9600672F53 /* BiometricIDAuth.swift in Sources */,
 				B1E83BE61FDD890500185E17 /* User.swift in Sources */,
 				B1936A3621296A5B00C53DDE /* TutorialViewController.swift in Sources */,
 				B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */,
+				B18FFC832186B0F400901D71 /* TailgatorTextMessageCell.swift in Sources */,
 				B1E2273C20A6709100672F53 /* SupplyTableViewCell.swift in Sources */,
 				B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */,
 				B1DD1CD8203E409B00291EAE /* FriendsViewController.swift in Sources */,
@@ -639,6 +654,7 @@
 				B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */,
 				B148562B20681CB0006A5456 /* InterfaceHelper.swift in Sources */,
 				B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */,
+				B18FFC872186B2DF00901D71 /* TailgatorMediaMessageCell.swift in Sources */,
 				B13B81391FE60829008F3A38 /* CreateTailgateSuppliesViewController.swift in Sources */,
 				B1E227302084024A00672F53 /* SettingsSchoolViewController.swift in Sources */,
 				B1E83BE01FDD795000185E17 /* SignUpPasswordViewController.swift in Sources */,

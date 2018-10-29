@@ -25,7 +25,6 @@ class TailgateViewController: UIViewController {
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var invitesRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var profilePictureTopConstraint: NSLayoutConstraint!
-    @IBOutlet var emptyView: UIView!
     
     // LocationManager instance used to update the current user's location
     let locationManager = CLLocationManager()
@@ -165,16 +164,10 @@ class TailgateViewController: UIViewController {
                     let tailgateId:String = self.tailgate.id
                     let uploadPath:String = "images/users/" + tailgateOwnerId + "/tailgate/" + tailgateId + "/" +  timestamp
                     uploadImageToStorage(image: photo.image, uploadPath: uploadPath, completion: { (downloadUrl) in
-                        if let imageUrl = downloadUrl {
+                        if let _ = downloadUrl {
                             
                             let imageUrlsReference = Database.database().reference(withPath: "tailgates/" + self.tailgate.id + "/imageUrls")
                             imageUrlsReference.updateChildValues([timestamp: downloadUrl!])
-                            
-                            /*
-                            self.imageUrls.append(imageUrl)
-                            self.imageIds.append(timestamp)
-                            self.imageCollectionView.reloadData()
- */
                         }
                     })
                 }

@@ -11,6 +11,7 @@ import UIKit
 class TailgatePhotosViewController: UIViewController {
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet var emptyView: UIView!
     
     fileprivate let reuseIdentifier = "TailgateCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
@@ -59,6 +60,7 @@ class TailgatePhotosViewController: UIViewController {
         imageCollectionView.dataSource = self
         
         getTailgateImageUrls(tailgate: self.tailgate) { (imgUrls, imgIds) in
+            print("called getTailgateImageUrls")
             self.imageIds = imgIds
             self.imageUrls = imgUrls
             self.imageCollectionView.reloadData()
@@ -67,7 +69,6 @@ class TailgatePhotosViewController: UIViewController {
     
     
     func setCollectionBackgroundView() {
-        /*
         switch state {
         case .empty, .loading:
             imageCollectionView.backgroundView = emptyView
@@ -76,7 +77,6 @@ class TailgatePhotosViewController: UIViewController {
             imageCollectionView.backgroundView?.isHidden = true
             imageCollectionView.backgroundView = nil
         }
- */
     }
 
 }

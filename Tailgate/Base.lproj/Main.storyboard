@@ -957,7 +957,6 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="fHC-pn-yzm" id="lpA-R1-Hpl"/>
-                        <outlet property="emptyView" destination="1Hp-lt-Wss" id="IV7-K8-pGJ"/>
                         <outlet property="exitButton" destination="NAe-IT-bhu" id="8AG-be-ZKZ"/>
                         <outlet property="invitesButton" destination="WbL-xj-01T" id="erl-Hn-Biu"/>
                         <outlet property="invitesRightConstraint" destination="qHR-be-bxV" id="DV8-wU-TiP"/>
@@ -969,43 +968,6 @@
                         <segue destination="ahk-DB-uG8" kind="show" identifier="TailgateToReport" id="QPI-wl-mA4"/>
                     </connections>
                 </viewController>
-                <view contentMode="scaleToFill" id="1Hp-lt-Wss" userLabel="Empty View">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Football" translatesAutoresizingMaskIntoConstraints="NO" id="l1M-aU-995">
-                            <rect key="frame" x="77.5" y="105" width="220" height="220"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="l1M-aU-995" secondAttribute="height" multiplier="1:1" id="sEO-kC-WGU"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tailgate Photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="esF-eI-UX9">
-                            <rect key="frame" x="57" y="357" width="261" height="28"/>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos uploaded by you or your invites will show here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cgh-tZ-SiQ">
-                            <rect key="frame" x="44.5" y="393" width="286" height="43"/>
-                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
-                            <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="esF-eI-UX9" firstAttribute="width" secondItem="1Hp-lt-Wss" secondAttribute="width" multiplier="0.696" id="Cy3-he-Etb"/>
-                        <constraint firstItem="cgh-tZ-SiQ" firstAttribute="centerX" secondItem="vxD-rc-45K" secondAttribute="centerX" id="TMb-Pn-dn9"/>
-                        <constraint firstItem="cgh-tZ-SiQ" firstAttribute="top" secondItem="esF-eI-UX9" secondAttribute="bottom" constant="8" id="UOM-CI-opJ"/>
-                        <constraint firstItem="esF-eI-UX9" firstAttribute="top" secondItem="l1M-aU-995" secondAttribute="bottom" constant="32" id="Yj0-EZ-LHQ"/>
-                        <constraint firstItem="l1M-aU-995" firstAttribute="top" secondItem="vxD-rc-45K" secondAttribute="top" constant="85" id="fHF-VS-3Ff"/>
-                        <constraint firstItem="l1M-aU-995" firstAttribute="height" secondItem="1Hp-lt-Wss" secondAttribute="height" multiplier="0.329835" id="n6M-cL-uAG"/>
-                        <constraint firstItem="l1M-aU-995" firstAttribute="centerX" secondItem="vxD-rc-45K" secondAttribute="centerX" id="oB3-1t-uqo"/>
-                        <constraint firstItem="esF-eI-UX9" firstAttribute="centerX" secondItem="vxD-rc-45K" secondAttribute="centerX" id="pkf-dd-Wf3"/>
-                        <constraint firstItem="cgh-tZ-SiQ" firstAttribute="width" secondItem="1Hp-lt-Wss" secondAttribute="width" multiplier="0.762666" id="sqQ-iv-NPo"/>
-                    </constraints>
-                    <viewLayoutGuide key="safeArea" id="vxD-rc-45K"/>
-                </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xib-Ku-Kqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2984.8000000000002" y="-1526.0869565217392"/>
@@ -3903,7 +3865,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vd7-oD-26x">
-                                                    <rect key="frame" x="2" y="2" width="14" height="14"/>
+                                                    <rect key="frame" x="8" y="8" width="14" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="vd7-oD-26x" secondAttribute="height" multiplier="1:1" id="wmk-VS-kJ2"/>
                                                     </constraints>
@@ -3913,7 +3875,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZd-xv-3C3">
-                                                    <rect key="frame" x="184" y="2" width="14" height="14"/>
+                                                    <rect key="frame" x="180" y="8" width="12" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="SZd-xv-3C3" secondAttribute="height" multiplier="1:1" id="qvN-U9-yjj"/>
                                                     </constraints>
@@ -3925,15 +3887,15 @@ Violating these conditions may result in the suspension of your account upon rev
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="vd7-oD-26x" firstAttribute="leading" secondItem="4Ey-VK-ZSf" secondAttribute="leading" constant="2" id="3nj-Vf-JiW"/>
+                                            <constraint firstItem="vd7-oD-26x" firstAttribute="leading" secondItem="4Ey-VK-ZSf" secondAttribute="leading" constant="8" id="3nj-Vf-JiW"/>
                                             <constraint firstItem="3eb-PZ-U7V" firstAttribute="top" secondItem="4Ey-VK-ZSf" secondAttribute="top" id="CNS-8w-ess"/>
-                                            <constraint firstItem="SZd-xv-3C3" firstAttribute="top" secondItem="4Ey-VK-ZSf" secondAttribute="top" constant="2" id="FZl-nk-91J"/>
+                                            <constraint firstItem="SZd-xv-3C3" firstAttribute="top" secondItem="4Ey-VK-ZSf" secondAttribute="top" constant="8" id="FZl-nk-91J"/>
                                             <constraint firstAttribute="trailing" secondItem="3eb-PZ-U7V" secondAttribute="trailing" id="Ji3-1t-6tc"/>
                                             <constraint firstItem="vd7-oD-26x" firstAttribute="width" secondItem="3eb-PZ-U7V" secondAttribute="width" multiplier="0.07" id="KmB-S4-2q6"/>
-                                            <constraint firstAttribute="trailing" secondItem="SZd-xv-3C3" secondAttribute="trailing" constant="2" id="Per-x2-97f"/>
+                                            <constraint firstAttribute="trailing" secondItem="SZd-xv-3C3" secondAttribute="trailing" constant="8" id="Per-x2-97f"/>
                                             <constraint firstItem="3eb-PZ-U7V" firstAttribute="leading" secondItem="4Ey-VK-ZSf" secondAttribute="leading" id="Y8p-5C-4z4"/>
-                                            <constraint firstItem="SZd-xv-3C3" firstAttribute="width" secondItem="3eb-PZ-U7V" secondAttribute="width" multiplier="0.07" id="YYd-ua-jf0"/>
-                                            <constraint firstItem="vd7-oD-26x" firstAttribute="top" secondItem="4Ey-VK-ZSf" secondAttribute="top" constant="2" id="m7b-0O-Y6A"/>
+                                            <constraint firstItem="SZd-xv-3C3" firstAttribute="width" secondItem="3eb-PZ-U7V" secondAttribute="width" multiplier="0.06" id="YYd-ua-jf0"/>
+                                            <constraint firstItem="vd7-oD-26x" firstAttribute="top" secondItem="4Ey-VK-ZSf" secondAttribute="top" constant="8" id="m7b-0O-Y6A"/>
                                             <constraint firstAttribute="bottom" secondItem="3eb-PZ-U7V" secondAttribute="bottom" id="mQD-6P-J4i"/>
                                         </constraints>
                                         <connections>
@@ -3955,10 +3917,48 @@ Violating these conditions may result in the suspension of your account upon rev
                         <viewLayoutGuide key="safeArea" id="63O-Ab-kVN"/>
                     </view>
                     <connections>
+                        <outlet property="emptyView" destination="1Hp-lt-Wss" id="vjm-hI-hqN"/>
                         <outlet property="imageCollectionView" destination="HvK-yJ-ynJ" id="mQj-ht-6nn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VAA-AR-iXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="1Hp-lt-Wss" userLabel="Empty View">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Football" translatesAutoresizingMaskIntoConstraints="NO" id="l1M-aU-995">
+                            <rect key="frame" x="77.5" y="105" width="220" height="220"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="l1M-aU-995" secondAttribute="height" multiplier="1:1" id="sEO-kC-WGU"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tailgate Photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="esF-eI-UX9">
+                            <rect key="frame" x="57" y="357" width="261" height="28"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos uploaded by you or your invites will show here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cgh-tZ-SiQ">
+                            <rect key="frame" x="44.5" y="393" width="286" height="43"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                            <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="esF-eI-UX9" firstAttribute="width" secondItem="1Hp-lt-Wss" secondAttribute="width" multiplier="0.696" id="Cy3-he-Etb"/>
+                        <constraint firstItem="cgh-tZ-SiQ" firstAttribute="centerX" secondItem="vxD-rc-45K" secondAttribute="centerX" id="TMb-Pn-dn9"/>
+                        <constraint firstItem="cgh-tZ-SiQ" firstAttribute="top" secondItem="esF-eI-UX9" secondAttribute="bottom" constant="8" id="UOM-CI-opJ"/>
+                        <constraint firstItem="esF-eI-UX9" firstAttribute="top" secondItem="l1M-aU-995" secondAttribute="bottom" constant="32" id="Yj0-EZ-LHQ"/>
+                        <constraint firstItem="l1M-aU-995" firstAttribute="top" secondItem="vxD-rc-45K" secondAttribute="top" constant="85" id="fHF-VS-3Ff"/>
+                        <constraint firstItem="l1M-aU-995" firstAttribute="height" secondItem="1Hp-lt-Wss" secondAttribute="height" multiplier="0.329835" id="n6M-cL-uAG"/>
+                        <constraint firstItem="l1M-aU-995" firstAttribute="centerX" secondItem="vxD-rc-45K" secondAttribute="centerX" id="oB3-1t-uqo"/>
+                        <constraint firstItem="esF-eI-UX9" firstAttribute="centerX" secondItem="vxD-rc-45K" secondAttribute="centerX" id="pkf-dd-Wf3"/>
+                        <constraint firstItem="cgh-tZ-SiQ" firstAttribute="width" secondItem="1Hp-lt-Wss" secondAttribute="width" multiplier="0.762666" id="sqQ-iv-NPo"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="vxD-rc-45K"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="7341.6000000000004" y="-1491.0044977511245"/>
         </scene>

@@ -31,6 +31,8 @@ class User {
     var school:School?
     var blockedUserIds:[String] = []
     var blockedByUserIds:[String] = []
+    var upvotedMessageIds:[String] = []
+    var downvotedMessageIds:[String] = []
     var name:String {
         return firstName + " " + lastName
     }
@@ -75,6 +77,24 @@ class User {
             }
         }
         
+        // Get the IDs of the messages the user has upvoted
+        if let upvotedMessages = snapshotValue["upvoted"] as? NSDictionary {
+            for (_, messageId) in upvotedMessages {
+                if let messageId = messageId as? String {
+                    self.upvotedMessageIds.append(messageId)
+                }
+            }
+        }
+        
+        // Get the IDs of the messages the user has downvoted
+        if let downvotedMessages = snapshotValue["downvoted"] as? NSDictionary {
+            for (_, messageId) in downvotedMessages {
+                if let messageId = messageId as? String {
+                    self.downvotedMessageIds.append(messageId)
+                }
+            }
+        }
+        
         if let sName = schoolName {
             getSchoolByName(name: sName) { (school) in
                 self.school = school
@@ -103,6 +123,38 @@ class User {
     // Returns true if the user with user id userId has blocked the current user
     func blockedByUser(withId userId:String) -> Bool {
         return self.blockedByUserIds.contains(userId)
+    }
+    
+    
+    
+    // Returns true if the user upvoted the message with the parameter id
+    func didUpvoteMessage(withId messageId:String) -> Bool {
+        return upvotedMessageIds.contains(messageId)
+    }
+    
+    // Returns true if the user downvoted the message with the parameter id
+    func didDownvoteMessage(withId messageId:String) -> Bool {
+        return downvotedMessageIds.contains(messageId)
+    }
+    
+    // Upvote message
+    func upvoteMessage(withId messageId:String) {
+        upvotedMessageIds.append(messageId)
+    }
+    
+    // Downvote message
+    func downvoteMessage(withId messageId:String) {
+        downvotedMessageIds.append(messageId)
+    }
+    
+    func removeVoteFromMessage(withId messageId:String) {
+        if didUpvoteMessage(withId: messageId) {
+            upvotedMessageIds.remove(at: upvotedMessageIds.index(of: messageId)! )
+        }
+        
+        if didDownvoteMessage(withId: messageId) {
+            downvotedMessageIds.remove(at: downvotedMessageIds.index(of: messageId)! )
+        }
     }
 }
 

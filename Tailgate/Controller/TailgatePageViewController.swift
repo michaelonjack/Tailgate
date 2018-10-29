@@ -20,11 +20,14 @@ class TailgatePageViewController: UIPageViewController {
             photosController.tailgate = containerController.tailgate
         }
         
-        let messagesController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TailgateMessagesViewController")
-        
+        let messagesController:UIViewController = TailgateMessagesViewController()
+        if let messagesController = messagesController as? TailgateMessagesViewController {
+            messagesController.tailgate = containerController.tailgate
+        }
+    
         return [photosController, messagesController]
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

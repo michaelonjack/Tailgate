@@ -112,12 +112,14 @@ func deleteTailgateImage(tailgate: Tailgate, imageId: String) {
 // Returns the download urls of all images associated with the parameter tailgate
 //
 func getTailgateImageUrls(tailgate:Tailgate, completion: @escaping (_ urls: [String], _ ids: [String]) -> Void) {
-    var imgIds:[String] = []
-    var imgUrls:[String] = []
+    
     let imageUrlsReference = Database.database().reference(withPath: "tailgates/" + tailgate.id + "/imageUrls")
     imageUrlsReference.keepSynced(true)
     
-    imageUrlsReference.observeSingleEvent(of: .value, with: { (snapshot) in
+    imageUrlsReference.observe(.value) { (snapshot) in
+        var imgIds:[String] = []
+        var imgUrls:[String] = []
+        
         if let urlDict = snapshot.value as? [String:AnyObject] {
             for (id, url) in urlDict {
                 let imgUrl = url as? String ?? ""
@@ -129,7 +131,7 @@ func getTailgateImageUrls(tailgate:Tailgate, completion: @escaping (_ urls: [Str
         }
         
         completion(imgUrls, imgIds)
-    })
+    }
 }
 
 
