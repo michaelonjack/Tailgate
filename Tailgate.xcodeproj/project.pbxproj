@@ -46,6 +46,9 @@
 		B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */; };
 		B1817839204AE9ED0029CF27 /* SettingsBirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */; };
 		B18256EC20E1886D00BB6C9F /* ARKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18256EB20E1886D00BB6C9F /* ARKitHelper.swift */; };
+		B18FFC7B218692F000901D71 /* TailgatePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC7A218692F000901D71 /* TailgatePageViewController.swift */; };
+		B18FFC7D218695AF00901D71 /* TailgatePhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC7C218695AF00901D71 /* TailgatePhotosViewController.swift */; };
+		B18FFC7F2186962100901D71 /* TailgateMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC7E2186962100901D71 /* TailgateMessagesViewController.swift */; };
 		B1929E672147548200431E1D /* PickerPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1929E662147548200431E1D /* PickerPopupViewController.swift */; };
 		B1936A3621296A5B00C53DDE /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1936A3521296A5B00C53DDE /* TutorialViewController.swift */; };
 		B1936A38212A199D00C53DDE /* SettingsContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1936A37212A199D00C53DDE /* SettingsContactViewController.swift */; };
@@ -140,6 +143,9 @@
 		B1817834204A58AC0029CF27 /* SettingsChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B1817838204AE9ED0029CF27 /* SettingsBirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBirthdayViewController.swift; sourceTree = "<group>"; };
 		B18256EB20E1886D00BB6C9F /* ARKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARKitHelper.swift; sourceTree = "<group>"; };
+		B18FFC7A218692F000901D71 /* TailgatePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatePageViewController.swift; sourceTree = "<group>"; };
+		B18FFC7C218695AF00901D71 /* TailgatePhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatePhotosViewController.swift; sourceTree = "<group>"; };
+		B18FFC7E2186962100901D71 /* TailgateMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateMessagesViewController.swift; sourceTree = "<group>"; };
 		B1929E662147548200431E1D /* PickerPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerPopupViewController.swift; sourceTree = "<group>"; };
 		B1936A3521296A5B00C53DDE /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		B1936A37212A199D00C53DDE /* SettingsContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContactViewController.swift; sourceTree = "<group>"; };
@@ -306,6 +312,9 @@
 				B1E2273D20A694F300672F53 /* SuppliesViewController.swift */,
 				B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */,
 				B1BC52CA1FE015D000BCBAE8 /* TailgateViewController.swift */,
+				B18FFC7A218692F000901D71 /* TailgatePageViewController.swift */,
+				B18FFC7C218695AF00901D71 /* TailgatePhotosViewController.swift */,
+				B18FFC7E2186962100901D71 /* TailgateMessagesViewController.swift */,
 				B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */,
 				B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */,
 				B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */,
@@ -513,6 +522,8 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageInputBar/MessageInputBar.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -529,6 +540,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageInputBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -556,6 +569,7 @@
 				B1485629206752C1006A5456 /* FeedCollectionViewCell.swift in Sources */,
 				B1425A08215993E8001C0E45 /* GamedayRankingsViewController.swift in Sources */,
 				B1E2273A20A66D5B00672F53 /* Supply.swift in Sources */,
+				B18FFC7B218692F000901D71 /* TailgatePageViewController.swift in Sources */,
 				B1E83BD91FDCFC5600185E17 /* NewTailgateViewController.swift in Sources */,
 				B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */,
 				B13B81461FE9FB3A008F3A38 /* DrinkTableViewCell.swift in Sources */,
@@ -583,6 +597,7 @@
 				B1E22736209E0C1B00672F53 /* KeychainPasswordItem.swift in Sources */,
 				B1929E672147548200431E1D /* PickerPopupViewController.swift in Sources */,
 				B1A18FD42054CD6600D9C12A /* ScheduleCollectionViewCell.swift in Sources */,
+				B18FFC7D218695AF00901D71 /* TailgatePhotosViewController.swift in Sources */,
 				B1C6C3EE20CE014D005DEED8 /* Report.swift in Sources */,
 				B1E83BE41FDD857A00185E17 /* TopDownSegue.swift in Sources */,
 				B1DD1CD42039EF7700291EAE /* HighlightableImageCollectionViewCell.swift in Sources */,
@@ -619,6 +634,7 @@
 				B1AF1BED217AFCF500EDF931 /* APIHelper.swift in Sources */,
 				B1A18FD82054DFEB00D9C12A /* Game.swift in Sources */,
 				B166002420B0A1BD0055103C /* GamedayContainerViewController.swift in Sources */,
+				B18FFC7F2186962100901D71 /* TailgateMessagesViewController.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,
 				B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */,
 				B148562B20681CB0006A5456 /* InterfaceHelper.swift in Sources */,

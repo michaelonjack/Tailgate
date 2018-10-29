@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6C22E906788D5CC29768C0CF08F24C7A"
+               BlueprintIdentifier = "9665DA5A2795265A75F633C989DC1F9C"
                BuildableName = "Pods_Tailgate.framework"
                BlueprintName = "Pods-Tailgate"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6C22E906788D5CC29768C0CF08F24C7A"
+            BlueprintIdentifier = "9665DA5A2795265A75F633C989DC1F9C"
             BuildableName = "Pods_Tailgate.framework"
             BlueprintName = "Pods-Tailgate"
             ReferencedContainer = "container:Pods.xcodeproj">

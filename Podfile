@@ -17,5 +17,6 @@ target 'Tailgate' do
   pod 'VegaScrollFlowLayout'
   pod 'NotificationBannerSwift'
   pod 'MarqueeLabel/Swift'
+  pod 'MessageKit', '~> 2.0.0-beta.1'
 
 end
