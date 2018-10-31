@@ -21,7 +21,8 @@ class TailgateViewController: UIViewController {
     @IBOutlet weak var trashButton: UIButton!
     @IBOutlet weak var invitesButton: UIButton!
     @IBOutlet weak var exitButton: UIButton!
-    @IBOutlet weak var optionsButton: DropDownButton!
+    @IBOutlet weak var optionsButton: UIButton!
+    @IBOutlet weak var buttonsView: UIView!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var invitesRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var profilePictureTopConstraint: NSLayoutConstraint!
@@ -41,7 +42,7 @@ class TailgateViewController: UIViewController {
             self.trashButton.isHidden = true
             self.locationButton.isHidden = true
             self.invitesRightConstraint.isActive = false
-            self.invitesButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            self.invitesButton.centerXAnchor.constraint(equalTo: self.buttonsView.centerXAnchor).isActive = true
         } else {
             self.exitButton.isHidden = true
             self.optionsButton.isHidden = true

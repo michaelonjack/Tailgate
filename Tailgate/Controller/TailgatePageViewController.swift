@@ -59,6 +59,7 @@ extension TailgatePageViewController: UIPageViewControllerDelegate {
             //self.containerController.lastSelectedButtonIndex = self.pendingIndex
             //print(pendingIndex)
             //self.containerController.selectNavigationCell(indexPath: IndexPath(item: self.pendingIndex, section: 0))
+            
         }
     }
 }

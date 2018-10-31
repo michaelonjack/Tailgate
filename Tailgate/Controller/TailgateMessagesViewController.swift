@@ -18,12 +18,10 @@ class TailgateMessagesViewController: MessagesViewController {
 
     var tailgate: Tailgate!
     var lastSelectedMessageId:String!
-    var messages:[TailgatorMessage] = [
-        TailgatorMessage(text: "helloooooo", sender: Sender(id: "12345", displayName: "Leeroy Jenkins"), messageId: "12345678", date: Date()),
-        TailgatorMessage(text: "hey man", sender: Sender(id: "123456", displayName: "Leeroy Jinkies"), messageId: "12345678", date: Date())
-    ]
+    var messages:[TailgatorMessage] = []
     
     override func viewDidLoad() {
+        messagesCollectionView = MessagesCollectionView(frame: .zero, collectionViewLayout: TailgatorMessagesFlowLayout())
         super.viewDidLoad()
 
         messagesCollectionView.register(TailgatorTextMessageCell.self)
@@ -41,29 +39,27 @@ class TailgateMessagesViewController: MessagesViewController {
         messageInputBar.topStackView.distribution = .fillProportionally
         updateTopStackView()
         
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(
-                image: UIImage(named: "Sort"),
-                style: .plain,
-                target: self,
-                action: #selector(TailgateMessagesViewController.sortPressed)
-            ),
-            UIBarButtonItem(
-                image: UIImage(named: "Question"),
-                style: .plain,
-                target: self,
-                action: #selector(TailgateMessagesViewController.questionPressed)
-            )
-        ]
-        
         setupGestureRecognizers()
         loadMessages()
         setKeyboardStyle()
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.becomeFirstResponder()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.resignFirstResponder()
+        
+        // Once the user exits, do a mass save of their upvoted/downvoted messages
+        saveVotedMessages(forUser: configuration.currentUser)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.resignFirstResponder()
     }
     
     
@@ -72,6 +68,10 @@ class TailgateMessagesViewController: MessagesViewController {
         doubleTapGesture.delaysTouchesBegan = true
         doubleTapGesture.numberOfTapsRequired = 2
         messagesCollectionView.addGestureRecognizer(doubleTapGesture)
+        
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTapGesture(_:)))
+        singleTapGesture.delaysTouchesBegan = true
+        messagesCollectionView.addGestureRecognizer(singleTapGesture)
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(_:)))
         longPressGesture.delaysTouchesBegan = true
@@ -90,6 +90,14 @@ class TailgateMessagesViewController: MessagesViewController {
         } else if let cell = messagesCollectionView.cellForItem(at: indexPath) as? TailgatorMediaMessageCell {
             cell.handleDoubleTapGesture(gesture)
         }
+    }
+    
+    @objc
+    open func handleSingleTapGesture(_ gesture: UIGestureRecognizer) {
+        guard gesture.state == .ended else { return }
+        
+        self.becomeFirstResponder()
+        messagesCollectionView.handleTapGesture(gesture)
     }
     
     @objc
@@ -115,38 +123,56 @@ class TailgateMessagesViewController: MessagesViewController {
                 self.messages.append( TailgatorMessage(snapshot: messageSnapshot as! DataSnapshot) )
             }
             
+            self.messages.sort(by: { $0.sentDate < $1.sentDate })
+            
             DispatchQueue.main.async {
                 self.messagesCollectionView.reloadData()
+            }
+            
+            for (index,_message) in self.messages.enumerated() {
+                if let url = _message.imgUrl, _message.mediaStatus == .notLoaded {
+                    
+                    var message = _message
+                    
+                    // Update the media status to show the image is already being fetched
+                    message.mediaStatus = .loading
+                    print("loading")
+                    self.messages[index] = message
+                    
+                    SDWebImageDownloader.shared().downloadImage(with: url, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
+                        
+                        if error != nil {
+                            message.mediaStatus = .error
+                            print("error")
+                            self.messages[index] = message
+                        }
+                            
+                        else if let image = image {
+                            message.mediaStatus = .loaded
+                            print("loaded")
+                            let mediaItem = ImageMediaItem(image: image)
+                            message.kind = .photo(mediaItem)
+                            self.messages[index] = message
+                            
+                            DispatchQueue.main.async {
+                                self.messagesCollectionView.reloadSections(IndexSet(integer: index))
+                            }
+                        }
+                    })
+                }
             }
         }
     }
     
-    
-    @objc func sortPressed() {
-        let actionSheetController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let actions = [
-            UIAlertAction(title: "Sort by Sent Date", style: .default, handler: { (_) in
-                self.messages.sort(by: { $0.sentDate > $1.sentDate })
-                self.messagesCollectionView.reloadData()
-                self.messagesCollectionView.scrollToBottom()
-            }),
-            UIAlertAction(title: "Sort by Upvotes", style: .default, handler: { (_) in
-                self.messages.sort(by: { $0.score > $1.score })
-                self.messagesCollectionView.reloadData()
-                self.messagesCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-            }),
-            UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        ]
-        actions.forEach { actionSheetController.addAction($0) }
-        present(actionSheetController, animated: true, completion: nil)
+    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section - 1 >= 0 else { return false }
+        return messages[indexPath.section].sender == messages[indexPath.section - 1].sender
     }
     
-    
-    @objc func questionPressed() {
-        let howToAlert = createAlert(title: "How To", message: "Double tap the top of a message to upvote.\n\nDouble tap the bottom of a message to downvote.\n\nPress and hold a message to copy or report it.")
-        self.present(howToAlert, animated: true)
+    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section + 1 < messages.count else { return false }
+        return messages[indexPath.section].sender == messages[indexPath.section + 1].sender
     }
-    
     
     func updateTopStackView(forNewItem newItem: InputBarButtonItem? = nil, ofWidth width:CGFloat? = nil) {
         
@@ -350,12 +376,7 @@ extension TailgateMessagesViewController: MessagesDataSource {
     }
     
     func currentSender() -> Sender {
-        let currentUser = configuration.currentUser
-        if let currentUserSchool = currentUser?.school {
-            return Sender(id: currentUserSchool.name, displayName: currentUserSchool.teamName)
-        } else {
-            return Sender(id: "neutral", displayName: "Neutral Fan")
-        }
+        return Sender(id: configuration.currentUser.uid, displayName: configuration.currentUser.name)
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
@@ -363,23 +384,13 @@ extension TailgateMessagesViewController: MessagesDataSource {
     }
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        var labelText = ""
-        
-        if let message = message as? TailgatorMessage {
-            if message.showDetail {
-                labelText = message.sender.displayName
-            } else {
-                labelText = ""
-            }
-        }
-        
-        return NSAttributedString(string: labelText, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+        return NSAttributedString(string: message.sender.displayName, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
     }
     
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         
         if let message = message as? TailgatorMessage {
-            var scoreString = "Score: " + String(message.score)
+            var scoreString = String(message.score)
             
             if configuration.currentUser.didUpvoteMessage(withId: message.messageId) {
                 scoreString = scoreString + " 👍"
@@ -403,75 +414,21 @@ extension TailgateMessagesViewController: MessagesDataSource {
 
 
 extension TailgateMessagesViewController: MessagesLayoutDelegate {
-    func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 10.0
+    // Handled by TailgatorMessagesFlowLayout now
+    //func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat
+    
+    // Handled by TailgatorMessagesFlowLayout now
+    //func heightForMedia(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat
+    
+    // Handled by TailgatorMessagesFlowLayout now
+    //func widthForMedia(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat
+    
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return !isPreviousMessageSameSender(at: indexPath) ? 20 : 0
     }
     
-    func heightForMedia(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        
-        if var message = message as? TailgatorMessage {
-            
-            if let url = message.imgUrl, message.mediaStatus == .notLoaded {
-                
-                // Update the media status to show the image is already being fetched
-                message.mediaStatus = .loading
-                print("loading")
-                self.messages[indexPath.section] = message
-                
-                SDWebImageDownloader.shared().downloadImage(with: url, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
-                    
-                    if error != nil {
-                        message.mediaStatus = .error
-                        print("error")
-                        self.messages[indexPath.section] = message
-                    }
-                        
-                    else if let image = image {
-                        message.mediaStatus = .loaded
-                        print("loaded")
-                        let mediaItem = ImageMediaItem(image: image)
-                        message.kind = .photo(mediaItem)
-                        self.messages[indexPath.section] = message
-                        
-                        DispatchQueue.main.async {
-                            self.messagesCollectionView.reloadItems(at: [indexPath])
-                        }
-                    }
-                })
-            }
-            
-            switch message.mediaStatus {
-            case .notLoaded, .loading, .error:
-                return 40
-            case .loaded:
-                switch message.kind {
-                case .photo(let mediaItem), .video(let mediaItem):
-                    let boundingRect = CGRect(origin: .zero, size: CGSize(width: maxWidth, height: .greatestFiniteMagnitude))
-                    if let image = mediaItem.image {
-                        return AVMakeRect(aspectRatio: image.size, insideRect: boundingRect).height
-                    } else {
-                        return 0
-                    }
-                default:
-                    return 0
-                }
-            }
-        }
-        
-        return 40
-    }
-    
-    func widthForMedia(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        if let message = message as? TailgatorMessage {
-            switch message.mediaStatus {
-            case .notLoaded, .loading, .error:
-                return 40
-            case .loaded:
-                return maxWidth
-            }
-        }
-        
-        return maxWidth
+    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 20
     }
 }
 
@@ -542,8 +499,8 @@ extension TailgateMessagesViewController: MessagesDisplayDelegate {
         }
         
         avatarView.contentMode = .scaleAspectFit
-        avatarView.clipsToBounds = false
-        avatarView.setCorner(radius: 0)
+        avatarView.clipsToBounds = true
+        avatarView.setCorner(radius: avatarView.frame.height / 2)
         avatarView.backgroundColor = .clear
     }
     
@@ -555,16 +512,6 @@ extension TailgateMessagesViewController: MessagesDisplayDelegate {
     //
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         return isFromCurrentSender(message: message) ? UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1) : UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
-    }
-    
-    /////////////////////////////////////////////////////////////////
-    //
-    // shouldDisplayHeader
-    //
-    // Determines if the message header should be displayed for a specific message cell
-    //
-    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> Bool {
-        return false
     }
 }
 
@@ -628,29 +575,27 @@ extension TailgateMessagesViewController: MessageInputBarDelegate {
 
 extension TailgateMessagesViewController: TailgatorMessageCellDelegate {
     func didTapAvatar(in cell: MessageCollectionViewCell) {
-        if let indexPath = messagesCollectionView.indexPath(for: cell) {
-            var tappedMessage = messages[indexPath.section]
-            tappedMessage.showDetail = !tappedMessage.showDetail
-            
-            messages[indexPath.section] = tappedMessage
-            
-            DispatchQueue.main.async {
-                self.messagesCollectionView.reloadItems(at: [indexPath])
-            }
-        }
+        print("Avatar tapped")
     }
     
     func didTapMessage(in cell: MessageCollectionViewCell) {
         print("Message tapped")
     }
     
+    func didTapCellTopLabel(in cell: MessageCollectionViewCell) {
+        print("Top cell label tapped")
+    }
     
-    @objc(didTapCellTopLabelIn:) func didTapCellTopLabel(in cell: MessageCollectionViewCell) {
+    func didTapMessageTopLabel(in cell: MessageCollectionViewCell) {
         print("Top message label tapped")
     }
     
-    func didTapBottomLabel(in cell: MessageCollectionViewCell) {
-        print("Bottom label tapped")
+    func didTapMessageBottomLabel(in cell: MessageCollectionViewCell) {
+        print("Bottom message label tapped")
+    }
+    
+    func didTapAccessoryView(in cell: MessageCollectionViewCell) {
+        print("Accessory view tapped")
     }
     
     func didDoubleTapTopCell(in cell: MessageCollectionViewCell) {

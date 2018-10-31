@@ -53,6 +53,7 @@
 		B18FFC832186B0F400901D71 /* TailgatorTextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC822186B0F400901D71 /* TailgatorTextMessageCell.swift */; };
 		B18FFC852186B1CB00901D71 /* TailgatorMessageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC842186B1CB00901D71 /* TailgatorMessageCellDelegate.swift */; };
 		B18FFC872186B2DF00901D71 /* TailgatorMediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC862186B2DF00901D71 /* TailgatorMediaMessageCell.swift */; };
+		B18FFC8B2187765300901D71 /* TailgatorMessagesFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18FFC8A2187765300901D71 /* TailgatorMessagesFlowLayout.swift */; };
 		B1929E672147548200431E1D /* PickerPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1929E662147548200431E1D /* PickerPopupViewController.swift */; };
 		B1936A3621296A5B00C53DDE /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1936A3521296A5B00C53DDE /* TutorialViewController.swift */; };
 		B1936A38212A199D00C53DDE /* SettingsContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1936A37212A199D00C53DDE /* SettingsContactViewController.swift */; };
@@ -154,6 +155,7 @@
 		B18FFC822186B0F400901D71 /* TailgatorTextMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatorTextMessageCell.swift; sourceTree = "<group>"; };
 		B18FFC842186B1CB00901D71 /* TailgatorMessageCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatorMessageCellDelegate.swift; sourceTree = "<group>"; };
 		B18FFC862186B2DF00901D71 /* TailgatorMediaMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatorMediaMessageCell.swift; sourceTree = "<group>"; };
+		B18FFC8A2187765300901D71 /* TailgatorMessagesFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgatorMessagesFlowLayout.swift; sourceTree = "<group>"; };
 		B1929E662147548200431E1D /* PickerPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerPopupViewController.swift; sourceTree = "<group>"; };
 		B1936A3521296A5B00C53DDE /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		B1936A37212A199D00C53DDE /* SettingsContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContactViewController.swift; sourceTree = "<group>"; };
@@ -273,7 +275,6 @@
 		B10E9E9B1FDCC20200DB4751 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B18FFC802186AE5600901D71 /* TailgatorMessage.swift */,
 				B1AC03242071329000CB3661 /* Configuration.swift */,
 				B1E83BE51FDD890500185E17 /* User.swift */,
 				B13B81411FE6F1B6008F3A38 /* School.swift */,
@@ -284,6 +285,7 @@
 				B1E2273920A66D5B00672F53 /* Supply.swift */,
 				B1BBF2E41FEEBCA4007B1ACF /* Food.swift */,
 				B1C6C3ED20CE014D005DEED8 /* Report.swift */,
+				B18FFC802186AE5600901D71 /* TailgatorMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +293,7 @@
 		B10E9E9C1FDCC22900DB4751 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				B18FFC8A2187765300901D71 /* TailgatorMessagesFlowLayout.swift */,
 				B1E22737209E1B9600672F53 /* BiometricIDAuth.swift */,
 				B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */,
 				B1AF1BEC217AFCF500EDF931 /* APIHelper.swift */,
@@ -652,6 +655,7 @@
 				B18FFC7F2186962100901D71 /* TailgateMessagesViewController.swift in Sources */,
 				B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */,
 				B1E83BDE1FDD74B400185E17 /* SignUpEmailViewController.swift in Sources */,
+				B18FFC8B2187765300901D71 /* TailgatorMessagesFlowLayout.swift in Sources */,
 				B148562B20681CB0006A5456 /* InterfaceHelper.swift in Sources */,
 				B16BC4D21FEECA290087C2F1 /* Tailgate.swift in Sources */,
 				B18FFC872186B2DF00901D71 /* TailgatorMediaMessageCell.swift in Sources */,

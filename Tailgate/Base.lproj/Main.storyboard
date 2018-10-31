@@ -957,6 +957,7 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="fHC-pn-yzm" id="lpA-R1-Hpl"/>
+                        <outlet property="buttonsView" destination="j73-xB-qHv" id="lhe-V4-1pz"/>
                         <outlet property="exitButton" destination="NAe-IT-bhu" id="8AG-be-ZKZ"/>
                         <outlet property="invitesButton" destination="WbL-xj-01T" id="erl-Hn-Biu"/>
                         <outlet property="invitesRightConstraint" destination="qHR-be-bxV" id="DV8-wU-TiP"/>

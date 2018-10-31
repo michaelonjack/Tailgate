@@ -845,4 +845,23 @@ func getCurrentUserId() -> String {
 
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// saveVotedMessages
+//
+// Saves the parameter user's upvoted and downvoted messages
+//
+func saveVotedMessages(forUser user:User) {
+    var upvoted:[String:String] = [:]
+    for messageId in user.upvotedMessageIds {
+        upvoted[UUID().uuidString] = messageId
+    }
+    
+    var downvoted:[String:String] = [:]
+    for messageId in user.downvotedMessageIds {
+        downvoted[UUID().uuidString] = messageId
+    }
+    
+    updateValueForCurrentUser(key: "upvoted", value: upvoted)
+    updateValueForCurrentUser(key: "downvoted", value: downvoted)
+}
