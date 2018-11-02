@@ -823,6 +823,19 @@ func updateValueForCurrentUser(key:String, value:Any) {
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
+// updateValuesForTailgate
+//
+//
+//
+func updateValues(forTailgate tailgate:Tailgate, values:[String:Any]) {
+    let tailgateReference = Database.database().reference(withPath: "tailgates/" + tailgate.id)
+    tailgateReference.updateChildValues(values)
+}
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//
 // getTimestampString
 //
 // Returns the current timestamp as a string

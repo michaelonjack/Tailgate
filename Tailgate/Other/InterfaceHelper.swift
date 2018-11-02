@@ -33,6 +33,22 @@ extension NSLayoutConstraint {
 
 
 
+extension CALayer {
+    static func createBottomBorder(forFrame frame: CGRect, withThickness thickness: CGFloat, withColor color: CGColor) -> CALayer {
+        let bottomBorder = CALayer()
+        let borderWidth = frame.width
+        let borderHeight = thickness
+        let borderOffset = frame.height - thickness
+        
+        bottomBorder.frame = CGRect(x: 0.0, y: Double(borderOffset), width: Double(borderWidth), height: Double(borderHeight))
+        bottomBorder.backgroundColor = color
+        
+        return bottomBorder
+    }
+}
+
+
+
 class PaddedTextField: UITextField {
     
     let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10);

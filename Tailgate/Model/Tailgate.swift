@@ -13,10 +13,10 @@ import CoreLocation
 class Tailgate {
     let id: String!
     let ownerId: String!
-    let name: String!
-    let school: School!
-    let isPublic: Bool!
-    let startTime: Date!
+    var name: String!
+    var school: School!
+    var isPublic: Bool!
+    var startTime: Date!
     var owner: User?
     var location: CLLocation?
     var supplies:[Supply]!
@@ -42,6 +42,11 @@ class Tailgate {
     var startTimeStr:String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, h:mm a"
+        return formatter.string(from: self.startTime)
+    }
+    var startTimeDatabaseStr:String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter.string(from: self.startTime)
     }
     
@@ -134,18 +139,13 @@ class Tailgate {
             inviteDict["id"] = invite.uid
         }
         
-        let formatter = DateFormatter()
-        // initially set the format based on your datepicker date
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let startTimeStr = formatter.string(from: startTime)
-        
         return [
             "owner": ownerId,
             "name": name,
             "school": school.name,
             "isPublic": isPublic,
             "flairImageUrl": flairImageUrl,
-            "startTime": startTimeStr,
+            "startTime": startTimeDatabaseStr,
             "supplies": suppliesDict,
             "invites": inviteDict
         ]

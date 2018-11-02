@@ -24,6 +24,7 @@ class TailgateViewController: UIViewController {
     @IBOutlet weak var optionsButton: UIButton!
     @IBOutlet weak var buttonsView: UIView!
     @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var viewDetailsButton: UIButton!
     @IBOutlet weak var invitesRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var profilePictureTopConstraint: NSLayoutConstraint!
     
@@ -47,6 +48,11 @@ class TailgateViewController: UIViewController {
             self.exitButton.isHidden = true
             self.optionsButton.isHidden = true
         }
+        
+        // Add border to View Details button
+        viewDetailsButton.layer.borderWidth = 1.0
+        viewDetailsButton.layer.borderColor = UIColor.lightGray.cgColor
+        viewDetailsButton.layer.cornerRadius = 5.0
         
         self.profilePictureTopConstraint.updateVerticalConstantForViewHeight(view: self.view)
         
@@ -267,18 +273,23 @@ class TailgateViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier! == "TailgateToInvite" {
-            let invitesVC: InvitesViewController = segue.destination as! InvitesViewController
-            invitesVC.tailgate = self.tailgate
+            guard let invitesController: InvitesViewController = segue.destination as? InvitesViewController else { return }
+            invitesController.tailgate = self.tailgate
         }
         
         else if segue.identifier! == "TailgateToSupplies" {
-            let suppliesVC: SuppliesViewController = segue.destination as! SuppliesViewController
-            suppliesVC.tailgate = self.tailgate
+            guard let suppliesController: SuppliesViewController = segue.destination as? SuppliesViewController else { return }
+            suppliesController.tailgate = self.tailgate
         }
             
         else if segue.identifier! == "TailgateToReport" {
-            let reportVC: ReportContentViewController = segue.destination as! ReportContentViewController
-            reportVC.tailgate = self.tailgate
+            guard let reportController: ReportContentViewController = segue.destination as? ReportContentViewController else { return }
+            reportController.tailgate = self.tailgate
+        }
+            
+        else if segue.identifier! == "TailgateToDetails" {
+            guard let detailsController: TailgateDetailsViewController = segue.destination as? TailgateDetailsViewController else { return }
+            detailsController.tailgate = self.tailgate
         }
         
         // We're using an Embed segue to embed the PageController within our container view so this segue will be called automatically when the TailgateViewController loads
