@@ -45,6 +45,16 @@ extension CALayer {
         
         return bottomBorder
     }
+    
+    static func createTopBorder(forFrame frame: CGRect, withThickness thickness: CGFloat, withColor color: CGColor) -> CALayer {
+        let bottomBorder = CALayer()
+        let borderWidth = frame.width
+        print(borderWidth)
+        bottomBorder.frame = CGRect(x: 0.0, y: 0.0, width: Double(borderWidth), height: Double(thickness))
+        bottomBorder.backgroundColor = color
+        
+        return bottomBorder
+    }
 }
 
 

@@ -17,6 +17,9 @@ import NotificationBannerSwift
 class TailgateViewController: UIViewController {
 
     @IBOutlet weak var profilePictureImageView: UIImageView!
+    @IBOutlet weak var viewOptionsSelectionIndicator: UIView!
+    @IBOutlet weak var selectionIndicatorLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var viewOptionsCollectionView: UICollectionView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var trashButton: UIButton!
     @IBOutlet weak var invitesButton: UIButton!
@@ -34,9 +37,13 @@ class TailgateViewController: UIViewController {
     var locationBanner:StatusBarNotificationBanner = StatusBarNotificationBanner(attributedTitle: NSAttributedString(string: "Updating location..."), style: .warning)
     var tailgate: Tailgate!
     var hasFullAccess: Bool! = true
+    var tailgatePageViewController: TailgatePageViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewOptionsCollectionView.delegate = self
+        viewOptionsCollectionView.dataSource = self
         
         if hasFullAccess == false {
             self.backButton.isHidden = true
@@ -295,6 +302,15 @@ class TailgateViewController: UIViewController {
         // We're using an Embed segue to embed the PageController within our container view so this segue will be called automatically when the TailgateViewController loads
         else if let pageController = segue.destination as? TailgatePageViewController {
             pageController.containerController = self
+            tailgatePageViewController = pageController
+            
+            // Find scroll view to set delegate
+            for view in pageController.view.subviews {
+                if let scrollView = view as? UIScrollView {
+                    scrollView.delegate = self
+                    break
+                }
+            }
         }
     }
     
@@ -364,6 +380,114 @@ extension TailgateViewController : CLLocationManagerDelegate {
         if status == .authorizedWhenInUse {
             locationManager.requestLocation()
         }
+    }
+}
+
+
+
+
+
+extension TailgateViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let pageController = tailgatePageViewController else { return }
+        
+        let scrollViewWidth = scrollView.frame.width
+        let scrollViewContentOffset = scrollView.contentOffset.x
+        let percentScrolled = (scrollViewContentOffset - scrollViewWidth) / scrollViewWidth
+        
+        // Scrolling to the right
+        if percentScrolled > 0 && pageController.currentIndex < 1 {
+            DispatchQueue.main.async {
+                self.selectionIndicatorLeadingConstraint.constant = (scrollViewWidth / 2) * percentScrolled
+            }
+        }
+        
+        // Scrolling to the left
+        else if percentScrolled < 0 && pageController.currentIndex > 0 {
+            DispatchQueue.main.async {
+                self.selectionIndicatorLeadingConstraint.constant = (scrollViewWidth / 2) - ((scrollViewWidth/2) * percentScrolled * -1)
+            }
+        }
+    }
+}
+
+
+
+
+
+
+extension TailgateViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView,
+                        shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.row == 0 {
+            if let controllerToShow = self.tailgatePageViewController?.controllers[0] {
+                self.tailgatePageViewController?.setViewControllers([controllerToShow], direction: .reverse, animated: true, completion: { (completed) in
+                    // Update the page controller's current index
+                    self.tailgatePageViewController?.currentIndex = 0
+                })
+            }
+        } else {
+            if let controllerToShow = self.tailgatePageViewController?.controllers[1] {
+                self.tailgatePageViewController?.setViewControllers([controllerToShow], direction: .forward, animated: true, completion: { (completed) in
+                    // Update the page controller's current index
+                    self.tailgatePageViewController?.currentIndex = 1
+                })
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+    }
+}
+
+extension TailgateViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ViewOptionCell", for: indexPath) as! ImageCollectionViewCell
+        
+        if indexPath.row == 0 {
+            cell.imageView.image = UIImage(named: "Grid")
+        } else {
+            cell.imageView.image = UIImage(named: "Message")
+        }
+        
+        return cell
+    }
+}
+
+extension TailgateViewController : UICollectionViewDelegateFlowLayout {
+    // responsible for telling the layout the size of a given cell
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // Subtract 1 from the height and width so it doesn't complain about the cell being the same size as the container
+        return CGSize(width: collectionView.bounds.size.width/2 - 1, height: collectionView.bounds.size.height - 1)
+    }
+    
+    //  returns the spacing between the cells, headers, and footers. A constant is used to store the value
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0;
     }
 }
 

@@ -11,8 +11,8 @@ import UIKit
 class TailgatePageViewController: UIPageViewController {
     
     var containerController:TailgateViewController!
-    var currentIndex = 1
-    var pendingIndex = 1
+    var currentIndex = 0
+    var pendingIndex = 0
     
     lazy var controllers: [UIViewController] = {
         let photosController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TailgatePhotosViewController")
@@ -56,10 +56,6 @@ extension TailgatePageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
             self.currentIndex = self.pendingIndex
-            //self.containerController.lastSelectedButtonIndex = self.pendingIndex
-            //print(pendingIndex)
-            //self.containerController.selectNavigationCell(indexPath: IndexPath(item: self.pendingIndex, section: 0))
-            
         }
     }
 }
@@ -79,7 +75,7 @@ extension TailgatePageViewController: UIPageViewControllerDataSource {
         // User is on the first view controller and swiped left to loop to
         // the last view controller.
         guard previousIndex >= 0 else {
-            return controllers.last
+            return nil
         }
         
         guard controllers.count > previousIndex else {
@@ -99,7 +95,7 @@ extension TailgatePageViewController: UIPageViewControllerDataSource {
         // User is on the last view controller and swiped right to loop to
         // the first view controller.
         guard controllers.count != nextIndex else {
-            return controllers.first
+            return nil
         }
         
         guard controllers.count > nextIndex else {
