@@ -3894,6 +3894,43 @@ Violating these conditions may result in the suspension of your account upon rev
             </objects>
             <point key="canvasLocation" x="6409" y="-2296"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="9Sp-V9-XcV">
+            <objects>
+                <viewController storyboardIdentifier="TailgateMessagesDeniedViewController" id="Vh1-Ev-viw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Mf-Bb-KgY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NotificationMessage" translatesAutoresizingMaskIntoConstraints="NO" id="jq7-qE-YyI">
+                                <rect key="frame" x="77.5" y="173.5" width="220" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jq7-qE-YyI" secondAttribute="height" multiplier="1:1" id="trD-ZU-z5Z"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can only view messages for the tailgates you're invited to" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="o9p-X5-yU6">
+                                <rect key="frame" x="44.5" y="425.5" width="286" height="43"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jq7-qE-YyI" firstAttribute="centerX" secondItem="CC6-Ci-f97" secondAttribute="centerX" id="1hF-ud-ITT"/>
+                            <constraint firstItem="jq7-qE-YyI" firstAttribute="height" secondItem="8Mf-Bb-KgY" secondAttribute="height" multiplier="0.329835" id="6PU-7M-EO8"/>
+                            <constraint firstItem="o9p-X5-yU6" firstAttribute="centerX" secondItem="CC6-Ci-f97" secondAttribute="centerX" id="dY2-76-TNX"/>
+                            <constraint firstItem="o9p-X5-yU6" firstAttribute="width" secondItem="8Mf-Bb-KgY" secondAttribute="width" multiplier="0.762666" id="sXE-fn-vk0"/>
+                            <constraint firstItem="CC6-Ci-f97" firstAttribute="centerY" secondItem="jq7-qE-YyI" secondAttribute="centerY" constant="60" id="wb8-Ro-KGw"/>
+                            <constraint firstItem="o9p-X5-yU6" firstAttribute="top" secondItem="jq7-qE-YyI" secondAttribute="bottom" constant="32" id="zbi-VP-b16"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CC6-Ci-f97"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xUn-nm-gmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7150" y="-2296"/>
+        </scene>
         <!--Tailgate Details View Controller-->
         <scene sceneID="E65-4a-ctU">
             <objects>
@@ -4843,6 +4880,7 @@ Cg
         <image name="Location" width="409.60000610351562" height="409.60000610351562"/>
         <image name="More" width="481" height="481"/>
         <image name="Notification" width="566" height="564"/>
+        <image name="NotificationMessage" width="564" height="516"/>
         <image name="Reload" width="409.60000610351562" height="409.60000610351562"/>
         <image name="RivalFlairExample" width="890" height="1059"/>
         <image name="Search" width="409.60000610351562" height="409.60000610351562"/>

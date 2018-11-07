@@ -24,8 +24,15 @@ class TailgatePageViewController: UIPageViewController {
         if let messagesController = messagesController as? TailgateMessagesViewController {
             messagesController.tailgate = containerController.tailgate
         }
+        
+        let messagesDeniedController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TailgateMessagesDeniedViewController")
     
-        return [photosController, messagesController]
+        // If the current user is not invited to the tailgate, hide the messages
+        if containerController.tailgate.isUserInvited(userId: getCurrentUserId()) || containerController.tailgate.isOwner(userId: getCurrentUserId()) {
+            return [photosController, messagesController]
+        } else {
+            return [photosController, messagesDeniedController]
+        }
     }()
     
     override func viewDidLoad() {
