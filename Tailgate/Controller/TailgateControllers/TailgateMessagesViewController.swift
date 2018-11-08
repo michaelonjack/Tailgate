@@ -112,55 +112,61 @@ class TailgateMessagesViewController: MessagesViewController {
         }
     }
     
+    func insertNewMessage(message: TailgatorMessage) {
+        guard !messages.contains(message) else { return }
+        
+        messages.append(message)
+        messages.sort()
+        messagesCollectionView.reloadData()
+        
+        DispatchQueue.main.async {
+            self.messagesCollectionView.scrollToBottom(animated: true)
+        }
+        
+        if let url = message.imgUrl, message.mediaStatus == .notLoaded {
+            
+            var _message = message
+            
+            // Update the media status to show the image is already being fetched
+            _message.mediaStatus = .loading
+            print("loading")
+            self.messages[self.messages.firstIndex(of: _message)!] = _message
+            
+            SDWebImageDownloader.shared().downloadImage(with: url, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
+                
+                let currentIndex = self.messages.firstIndex(of: _message)!
+                
+                if error != nil {
+                    _message.mediaStatus = .error
+                    print("error")
+                    self.messages[currentIndex] = _message
+                }
+                    
+                else if let image = image {
+                    _message.mediaStatus = .loaded
+                    print("loaded")
+                    let mediaItem = ImageMediaItem(image: image)
+                    _message.kind = .photo(mediaItem)
+                    self.messages[currentIndex] = _message
+                    
+                    DispatchQueue.main.async {
+                        self.messagesCollectionView.reloadSections(IndexSet(integer: currentIndex))
+                    }
+                }
+            })
+        }
+
+    }
+    
     func loadMessages() {
         let messagesPath:String = "tailgates/" + tailgate.id + "/messages"
         
         let messagesReference = Database.database().reference(withPath: messagesPath)
         messagesReference.keepSynced(true)
         
-        messagesReference.observeSingleEvent(of: .value) { (snapshot) in
-            for messageSnapshot in snapshot.children {
-                self.messages.append( TailgatorMessage(snapshot: messageSnapshot as! DataSnapshot) )
-            }
-            
-            self.messages.sort(by: { $0.sentDate < $1.sentDate })
-            
-            DispatchQueue.main.async {
-                self.messagesCollectionView.reloadData()
-            }
-            
-            for (index,_message) in self.messages.enumerated() {
-                if let url = _message.imgUrl, _message.mediaStatus == .notLoaded {
-                    
-                    var message = _message
-                    
-                    // Update the media status to show the image is already being fetched
-                    message.mediaStatus = .loading
-                    print("loading")
-                    self.messages[index] = message
-                    
-                    SDWebImageDownloader.shared().downloadImage(with: url, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
-                        
-                        if error != nil {
-                            message.mediaStatus = .error
-                            print("error")
-                            self.messages[index] = message
-                        }
-                            
-                        else if let image = image {
-                            message.mediaStatus = .loaded
-                            print("loaded")
-                            let mediaItem = ImageMediaItem(image: image)
-                            message.kind = .photo(mediaItem)
-                            self.messages[index] = message
-                            
-                            DispatchQueue.main.async {
-                                self.messagesCollectionView.reloadSections(IndexSet(integer: index))
-                            }
-                        }
-                    })
-                }
-            }
+        // Child Added data events are called on every node currently at the location AND any time a node is added to the location
+        messagesReference.observe(.childAdded) { (snapshot) in
+            self.insertNewMessage(message: TailgatorMessage(snapshot: snapshot) )
         }
     }
     
@@ -531,9 +537,7 @@ extension TailgateMessagesViewController: MessageInputBarDelegate {
                 imageMessage.mediaStatus = .loaded
                 
                 uploadTailgatorMessage(message: imageMessage)
-                
-                self.messages.append(imageMessage)
-                self.messagesCollectionView.insertSections([messages.count-1])
+                insertNewMessage(message: imageMessage)
             }
         }
         
@@ -548,23 +552,22 @@ extension TailgateMessagesViewController: MessageInputBarDelegate {
                 imageMessage.mediaStatus = .loaded
                 
                 uploadTailgatorMessage(message: imageMessage)
-                
-                self.messages.append(imageMessage)
-                self.messagesCollectionView.insertSections([messages.count-1])
+                insertNewMessage(message: imageMessage)
             }
                 
             else if let text = component as? String {
                 let textMessage = TailgatorMessage(text: text, sender: currentSender(), messageId: UUID().uuidString, date: Date())
                 
                 uploadTailgatorMessage(message: textMessage)
-                
-                self.messages.append(textMessage)
-                self.messagesCollectionView.insertSections([messages.count-1])
+                insertNewMessage(message: textMessage)
             }
         }
         
         inputBar.inputTextView.text = String()
-        messagesCollectionView.scrollToBottom()
+        
+        DispatchQueue.main.async {
+            self.messagesCollectionView.scrollToBottom(animated: true)
+        }
     }
 }
 

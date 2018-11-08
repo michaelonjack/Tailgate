@@ -149,3 +149,16 @@ struct TailgatorMessage: MessageType {
         ]
     }
 }
+
+
+extension TailgatorMessage: Comparable {
+    
+    static func == (lhs: TailgatorMessage, rhs: TailgatorMessage) -> Bool {
+        return lhs.messageId == rhs.messageId
+    }
+    
+    static func < (lhs: TailgatorMessage, rhs: TailgatorMessage) -> Bool {
+        return lhs.sentDate < rhs.sentDate
+    }
+    
+}
