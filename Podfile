@@ -14,7 +14,6 @@ target 'Tailgate' do
   pod 'SDWebImage'
   pod 'SDWebImage/MapKit'
   pod 'SwipeNavigationController'
-  pod 'VegaScrollFlowLayout'
   pod 'NotificationBannerSwift'
   pod 'MarqueeLabel/Swift'
   pod 'MessageKit', '~> 2.0.0-beta.1'

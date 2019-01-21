@@ -57,7 +57,6 @@ extension GamedayPageViewController: UIPageViewControllerDelegate {
         if completed {
             self.currentIndex = self.pendingIndex
             self.containerController.lastSelectedButtonIndex = self.pendingIndex
-            print(pendingIndex)
             self.containerController.selectNavigationCell(indexPath: IndexPath(item: self.pendingIndex, section: 0))
         }
     }

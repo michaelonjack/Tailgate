@@ -19,6 +19,7 @@ class SettingsChangePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
 
         // Change font and color of nav header
         self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -36,8 +37,6 @@ class SettingsChangePasswordViewController: UIViewController {
         let confirmNewPassword = self.confirmNewPasswordTextField.text ?? ""
         
         getUserById(userId: (firUser!.uid)) { (currentUser) in
-            print(currentUser.email)
-            print(currentPassword)
             let credential = EmailAuthProvider.credential(withEmail: currentUser.email, password: currentPassword)
             
             firUser?.reauthenticateAndRetrieveData(with: credential, completion: { (result, error) in

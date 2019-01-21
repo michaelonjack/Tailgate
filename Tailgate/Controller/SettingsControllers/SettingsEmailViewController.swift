@@ -20,6 +20,7 @@ class SettingsEmailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
 
         self.emailTextField.text = self.email
         self.statusLabel.isHidden = true

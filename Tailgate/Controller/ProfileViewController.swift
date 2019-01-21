@@ -10,71 +10,50 @@ import UIKit
 import FirebaseDatabase
 import YPImagePicker
 import SDWebImage
-import VegaScrollFlowLayout
 
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profilePictureButton: UIButton!
-    @IBOutlet weak var invitesCollectionView: UICollectionView!
-    
-    @IBOutlet weak var settingsButtonLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var settingsButtonTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var profilePictureTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var friendsButtonTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var friendsButtonTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var detailsView: ProfileDetailsView!
+    @IBOutlet weak var buttonsView: UIView!
     @IBOutlet var emptyView: UIView!
     @IBOutlet var loadingView: UIView!
+    @IBOutlet weak var friendsButton: UIButton!
+    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var reloadButton: UIButton!
     
     let refreshControl = UIRefreshControl()
     let currentUserRef = Database.database().reference(withPath: "users/" + getCurrentUserId())
     
     var feedItems:[Tailgate] = []
-    var state = CollectionState.loading {
-        didSet {
-            setCollectionBackgroundView()
-        }
-    }
+    var schools:[School] = []
+    var showExploreViewAnimator: UIViewPropertyAnimator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        state = .loading
-        
-        self.invitesCollectionView.delegate = self
-        self.invitesCollectionView.dataSource = self
-        
-        let vegaLayout = VegaScrollFlowLayout()
-        self.invitesCollectionView.collectionViewLayout = vegaLayout
-        vegaLayout.minimumLineSpacing = 15
-        vegaLayout.itemSize = CGSize(width: self.invitesCollectionView.frame.width - 16, height: 90)
-        vegaLayout.sectionInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
-        vegaLayout.springHardness = 60
-        self.addRefreshControl()
+        view.clipsToBounds = true
         
         // Get all public tailgates and tailgates the current user is invited to
         getTailgatesToDisplay { (tailgates) in
             self.feedItems = tailgates
-            
-            if self.feedItems.count > 0 {
-                self.state = .populated
-            } else {
-                self.state = .empty
-            }
-            
-            self.invitesCollectionView.reloadData()
+            self.detailsView.feedCollectionView.reloadData()
         }
-       
-        loadProfilePicture()
         
-        // Update constraints
-        self.settingsButtonLeadingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
-        self.friendsButtonTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
-        self.settingsButtonTopConstraint.updateVerticalConstantForViewHeight(view: self.view)
-        self.profilePictureTopConstraint.updateVerticalConstantForViewHeight(view: self.view)
-        self.friendsButtonTopConstraint.updateVerticalConstantForViewHeight(view: self.view)
+        getSchools { (schools) in
+            self.schools = schools
+            self.detailsView.exploreCollectionView.reloadData()
+        }
+        
+        loadProfilePicture()
+        initDetailsView()
+        initButtonsView()
+        initAnimator()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         detectFirstLaunch()
     }
 
@@ -83,19 +62,65 @@ class ProfileViewController: UIViewController {
     }
     
     
-    func setCollectionBackgroundView() {
+    func initDetailsView() {
+        detailsView.feedCollectionView.delegate = self
+        detailsView.feedCollectionView.dataSource = self
         
-        switch state {
-        case .loading:
-            invitesCollectionView.backgroundView = loadingView
-            invitesCollectionView.backgroundView?.isHidden = false
-        case .empty:
-            invitesCollectionView.backgroundView = emptyView
-            invitesCollectionView.backgroundView?.isHidden = false
-        default:
-            invitesCollectionView.backgroundView?.isHidden = true
-            invitesCollectionView.backgroundView = nil
+        detailsView.exploreCollectionView.delegate = self
+        detailsView.exploreCollectionView.dataSource = self
+        
+        detailsView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(detailsViewPanned(gesture:))))
+    }
+    
+    
+    func initButtonsView() {
+        buttonsView.layer.cornerRadius = view.frame.height * 0.06 / 2
+        buttonsView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        buttonsView.clipsToBounds = true
+        
+        guard let friendsImage = UIImage(named: "Friends") else { return }
+        guard let settingsImage = UIImage(named: "Settings") else { return }
+        guard let reloadImage = UIImage(named: "Reload") else { return }
+        
+        friendsButton.setImage(friendsImage.withRenderingMode(.alwaysTemplate), for: .normal)
+        settingButton.setImage(settingsImage.withRenderingMode(.alwaysTemplate), for: .normal)
+        reloadButton.setImage(reloadImage.withRenderingMode(.alwaysTemplate), for: .normal)
+        
+        friendsButton.tintColor = .gray
+        settingButton.tintColor = .gray
+        reloadButton.tintColor = .gray
+    }
+    
+    
+    func initAnimator() {
+        showExploreViewAnimator = UIViewPropertyAnimator(duration: 1, curve: .easeOut, animations: { [weak self] in
+            guard let _self = self else { return }
+            
+            _self.detailsView.exploreView.alpha =  1
+            _self.profilePictureButton.transform = _self.profilePictureButton.transform.scaledBy(x: 0.95, y: 0.95)
+        })
+        
+        showExploreViewAnimator.pausesOnCompletion = true
+    }
+    
+    
+    @objc func detailsViewPanned(gesture: UIPanGestureRecognizer) {
+        let gestureTranslation = gesture.translation(in: detailsView)
+        let viewCurrentMinY = detailsView.frame.minY
+        let lowestAllowedY = view.frame.height / 3.5
+        let highestAllowedY = view.frame.height / 2.0
+        
+        if (viewCurrentMinY + gestureTranslation.y < highestAllowedY && gestureTranslation.y > 0)
+            || (viewCurrentMinY + gestureTranslation.y > lowestAllowedY && gestureTranslation.y < 0) {
+            showExploreViewAnimator.fractionComplete = (highestAllowedY - viewCurrentMinY) / (highestAllowedY - lowestAllowedY)
+            
+            detailsView.transform = detailsView.transform.translatedBy(x: 0, y: gestureTranslation.y)
+        } else if gestureTranslation.y > 0 {
+            // Completely hide the Explore View once we've reached the bottom
+            showExploreViewAnimator.fractionComplete = 0
         }
+        
+        gesture.setTranslation(CGPoint(x: gestureTranslation.x, y: 0), in: detailsView)
     }
     
     
@@ -106,6 +131,9 @@ class ProfileViewController: UIViewController {
     //  Pulls the user's profile picture from the database if it exists
     //
     func loadProfilePicture() {
+        
+        profilePictureButton.transform = profilePictureButton.transform.scaledBy(x: 1.05, y: 1.05)
+        
         // Load the stored image
         currentUserRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -117,10 +145,6 @@ class ProfileViewController: UIViewController {
                 if picUrlStr != "" {
                     let picUrl = URL(string: picUrlStr)
                     self.profilePictureButton.sd_setImage(with: picUrl, for: .normal, placeholderImage: UIImage(named: "Avatar"))
-                    
-                    // round picture corners
-                    self.profilePictureButton.layer.cornerRadius = 8.0
-                    self.profilePictureButton.clipsToBounds = true
                 }
             } else {
                 print("Error -- Loading Profile Picture")
@@ -128,6 +152,19 @@ class ProfileViewController: UIViewController {
         })
     }
     
+    
+    func detectFirstLaunch() {
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+            //print("Not first launch.")
+        } else {
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "ProfileToTutorial", sender: nil)
+            }
+        }
+    }
     
     
     @IBAction func profilePicturePressed(_ sender: UIButton) {
@@ -162,69 +199,51 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func reloadButtonPressed(_ sender: Any) {
+        // Animate the button spin
+        UIView.animate(withDuration: 0.2, animations: {
+            self.reloadButton.transform = self.reloadButton.transform.rotated(by: CGFloat.pi)
+        }) { (_) in
+            UIView.animate(withDuration: 0.2, animations: {
+                self.reloadButton.transform = self.reloadButton.transform.rotated(by: CGFloat.pi)
+            })
+        }
+        
+        // Reload the basic details view
+        detailsView.reloadBasicDetailsView()
+        
+        // Reload the feed collection view
+        getTailgatesToDisplay { (tailgates) in
+            self.feedItems = tailgates
+            self.detailsView.feedCollectionView.reloadData()
+        }
+    }
 }
 
 
 
-
-
 extension ProfileViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView,
-                        shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedFeedItem = self.feedItems[indexPath.row]
-        
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
-        tailgateViewController.tailgate = selectedFeedItem
-        tailgateViewController.hasFullAccess = false
-        self.present(tailgateViewController, animated: true, completion: nil)
-    }
-    
-    func addRefreshControl() {
-        // Add Refresh Control to Table View
-        if #available(iOS 10.0, *) {
-            self.invitesCollectionView.refreshControl = self.refreshControl
+        if collectionView == detailsView.exploreCollectionView {
+            guard let mapViewController = containerSwipeNavigationController?.leftViewController as? MapViewController else { return }
+            
+            let school = self.schools[indexPath.row]
+            
+            if let latitude = school.latitude, let longitude = school.longitude {
+                let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                mapViewController.centerMapOnLocation(location: location)
+                
+                containerSwipeNavigationController?.showEmbeddedView(position: .left)
+            }
         } else {
-            self.invitesCollectionView.addSubview(self.refreshControl)
-        }
-        
-        refreshControl.addTarget(self, action: #selector(refreshFeedCollectionView(_:)), for: .valueChanged)
-    }
-    
-    func detectFirstLaunch() {
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        if launchedBefore  {
-            //print("Not first launch.")
-        } else {
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
+            let selectedFeedItem = self.feedItems[indexPath.row]
             
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "ProfileToTutorial", sender: nil)
-            }
-        }
-    }
-    
-    @objc private func refreshFeedCollectionView(_ sender: Any) {
-        state = .loading
-        
-        // Get all public tailgates and tailgates the current user is invited to
-        getTailgatesToDisplay { (tailgates) in
-            self.feedItems = tailgates
-            
-            if self.feedItems.count > 0 {
-                self.state = .populated
-            } else {
-                self.state = .empty
-            }
-            
-            DispatchQueue.main.async {
-                self.invitesCollectionView.reloadData()
-                self.refreshControl.endRefreshing()
-            }
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
+            tailgateViewController.tailgate = selectedFeedItem
+            tailgateViewController.hasFullAccess = false
+            self.present(tailgateViewController, animated: true, completion: nil)
         }
     }
 }
@@ -232,84 +251,72 @@ extension ProfileViewController: UICollectionViewDelegate {
 
 
 extension ProfileViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        
-        return self.feedItems.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == detailsView.exploreCollectionView {
+            return schools.count
+        } else {
+            return feedItems.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCell", for: indexPath) as! FeedCollectionViewCell
         
-        let currentFeedItem = self.feedItems[indexPath.row]
-       
-        // Update constraints IF they have not been updated yet
-        if cell.imageViewTrailingConstraint.constant == 14 {
-            cell.imageViewTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
-        }
-        if cell.imageViewLeadingConstraint.constant == 12 {
-            cell.imageViewLeadingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
-        }
-        if cell.detailLabelTrailingConstraint.constant == 7.5 {
-            cell.detailLabelTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
-        }
-        if cell.indicatorTrailingConstraint.constant == 5 {
-            cell.indicatorTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.view)
-        }
-        
-        cell.titleLabel.text = currentFeedItem.name
-        
-        cell.imageView.layer.cornerRadius = 0.5 * cell.imageView.layer.bounds.width
-        cell.imageView.clipsToBounds = true
-        cell.activityTypeIndicator.layer.cornerRadius = 0.5 * cell.activityTypeIndicator.layer.bounds.width
-        
-        if currentFeedItem.isPublic {
-            cell.activityTypeIndicator.backgroundColor = .salmon
-        } else {
-            cell.activityTypeIndicator.backgroundColor = .cantaloupe
+        if collectionView == detailsView.exploreCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exploreCell", for: indexPath)
+            
+            guard let imageCell = cell as? ExploreCollectionViewCell else { return cell }
+            imageCell.imageView.contentMode = .scaleAspectFill
+            imageCell.layer.cornerRadius = (collectionView.frame.height * 0.667 - 4) / 4
+            imageCell.backgroundColor = .white
+            imageCell.clipsToBounds = true
+            
+            let school = schools[indexPath.row]
+            
+            if let schoolLogoUrlStr = school.logoUrl {
+                let schoolLogoUrl = URL(string: schoolLogoUrlStr)
+                imageCell.imageView.sd_setImage(with: schoolLogoUrl, completed: nil)
+            }
+            
+            return imageCell
         }
         
-        getUserById(userId: currentFeedItem.ownerId) { (user) in
-            DispatchQueue.main.async {
-                cell.detailLabel.text = user.name + " - " + currentFeedItem.school.name
-                if let profilePicUrl = user.profilePictureUrl {
-                    cell.imageView.sd_setImage(with: URL(string: profilePicUrl), completed: nil)
+        else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "feedCell", for: indexPath)
+            
+            guard let imageCell = cell as? FeedCollectionViewCell else { return cell }
+            imageCell.imageView.contentMode = .scaleAspectFill
+            imageCell.layer.cornerRadius = (collectionView.frame.height - 4) / 4
+            imageCell.backgroundColor = .white
+            imageCell.clipsToBounds = true
+            
+            let feedItem = feedItems[indexPath.row]
+            
+            getUserById(userId: feedItem.ownerId) { (user) in
+                if let profilePictureUrlStr = user.profilePictureUrl {
+                    let profilePictureUrl = URL(string: profilePictureUrlStr)
+                    imageCell.imageView.sd_setImage(with: profilePictureUrl, completed: nil)
                 }
             }
+            
+            return imageCell
         }
-        
-        cell.contentView.layer.cornerRadius = 8.0
-        cell.contentView.layer.borderWidth = 1.0
-        cell.contentView.layer.borderColor = UIColor.clear.cgColor
-        cell.contentView.layer.masksToBounds = true
-        
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        cell.layer.shadowRadius = 8.0
-        cell.layer.shadowOpacity = 0.7
-        cell.layer.masksToBounds = false
-        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
-        
-        return cell
     }
+    
+    
 }
 
 
 
-extension ProfileViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width-16, height: 90.0)
+extension ProfileViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == detailsView.exploreCollectionView {
+            return CGSize(width: collectionView.frame.height / 1.5, height: collectionView.frame.height / 1.5 - 4)
+        } else {
+            return CGSize(width: collectionView.frame.height, height: collectionView.frame.height - 4)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
     }
 }
-
-
-
-
-

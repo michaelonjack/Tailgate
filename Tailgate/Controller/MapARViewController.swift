@@ -29,11 +29,7 @@ class MapARViewController: UIViewController {
     @IBOutlet weak var distanceLabel: UILabel!
     
     let locationManager = CLLocationManager()
-    var userLocation = CLLocation() {
-        didSet {
-            print("userLocation: \(userLocation)")
-        }
-    }
+    var userLocation = CLLocation()
     var tailgateLocation:CLLocation!
     var distance : Float! = 0.0
     var state = ARState.initializing {
@@ -171,22 +167,17 @@ class MapARViewController: UIViewController {
             userTranslationTransform.columns.3.x = currentFrame.camera.transform.columns.3.x // left right
             userTranslationTransform.columns.3.y = currentFrame.camera.transform.columns.3.y // back!
             userTranslationTransform.columns.3.z = currentFrame.camera.transform.columns.3.z // up
-            print("userTranslationTransform: \(userTranslationTransform)")
             
             let bearingDegrees = bearingBetweenLocations(userLocation, tailgateLocation)
-            print("bearing: \(bearingDegrees)")
             let rotationMatrix = rotateAroundZ(matrix_identity_float4x4, Float(bearingDegrees))
-            print("rotationMatrix: \(rotationMatrix)")
             
             let position = vector_float4(0.0, -(distance), 0.0, 0.0)
             let translationMatrix = getTranslationMatrix(matrix_identity_float4x4, position)
-            print("translationMatrix: \(translationMatrix)")
             
             var combinedMatrix = simd_mul(rotationMatrix, translationMatrix)
             combinedMatrix.columns.3.x = combinedMatrix.columns.3.x * modelNodeScale
             combinedMatrix.columns.3.y = combinedMatrix.columns.3.y * modelNodeScale
             combinedMatrix.columns.3.z = combinedMatrix.columns.3.z * modelNodeScale
-            print("combinedMatrix: \(combinedMatrix)")
             
             let transformMatrix = simd_mul(userTranslationTransform, combinedMatrix)
             

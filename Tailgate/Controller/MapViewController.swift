@@ -81,6 +81,11 @@ class MapViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
     
+    func centerMapOnLocation(location: CLLocationCoordinate2D) {
+        let coordinateRegion = MKCoordinateRegion(center: location, latitudinalMeters: CLLocationDistance(exactly: 1000)!, longitudinalMeters: CLLocationDistance(exactly: 1000)!)
+        
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
     
     //////////////////////////////////////////////////////////////////////////////////////
     //

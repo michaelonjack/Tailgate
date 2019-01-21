@@ -118,7 +118,6 @@ extension GamedayScheduleViewController: PickerPopupDelegate {
                     
                     if self.games.count == self.conferences.count {
                         DispatchQueue.main.async {
-                            print("reloading")
                             self.schedulesCollectionView.reloadData()
                         }
                     }

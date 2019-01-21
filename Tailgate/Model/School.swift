@@ -12,7 +12,10 @@ class School {
     let name:String
     let teamName:String
     let isHidden:Bool
+    var latitude: Double?
+    var longitude: Double?
     var logoUrl:String?
+    
     
     init(name:String) {
         self.name = name
@@ -26,6 +29,8 @@ class School {
         self.name = snapshotValue["name"] as! String
         self.teamName = snapshotValue["teamName"] as! String
         self.logoUrl = snapshotValue["logoUrl"] as? String
+        self.latitude = snapshotValue["latitude"] as? Double
+        self.longitude = snapshotValue["longitude"] as? Double
         
         let isHidden = snapshotValue["isHidden"] as? Int ?? 0
         if isHidden == 1 {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC662CBB66DFBF297E1AE8050DE699D2"
+               BlueprintIdentifier = "2E2567A4D1DD128CA9ABF5DDDCB28A81"
                BuildableName = "NotificationBannerSwift.framework"
                BlueprintName = "NotificationBannerSwift"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BC662CBB66DFBF297E1AE8050DE699D2"
+            BlueprintIdentifier = "2E2567A4D1DD128CA9ABF5DDDCB28A81"
             BuildableName = "NotificationBannerSwift.framework"
             BlueprintName = "NotificationBannerSwift"
             ReferencedContainer = "container:Pods.xcodeproj">

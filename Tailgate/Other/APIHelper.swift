@@ -32,7 +32,6 @@ func updatesScores(forConference conference: String, forWeek week: Int, completi
         
         if let lastUpdatedDate = lastUpdatedDate {
             if let minutesSinceLastUpdate =  Calendar.current.dateComponents([.minute], from: lastUpdatedDate, to: Date()).minute {
-                print("minutes since last update: \(minutesSinceLastUpdate)")
                 
                 // If it has been less that 15 minutes since the last update, return
                 if minutesSinceLastUpdate < UPDATE_INTERVAL {

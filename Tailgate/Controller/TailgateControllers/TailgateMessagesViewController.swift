@@ -129,7 +129,7 @@ class TailgateMessagesViewController: MessagesViewController {
             
             // Update the media status to show the image is already being fetched
             _message.mediaStatus = .loading
-            print("loading")
+            
             self.messages[self.messages.firstIndex(of: _message)!] = _message
             
             SDWebImageDownloader.shared().downloadImage(with: url, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
@@ -138,13 +138,11 @@ class TailgateMessagesViewController: MessagesViewController {
                 
                 if error != nil {
                     _message.mediaStatus = .error
-                    print("error")
                     self.messages[currentIndex] = _message
                 }
                     
                 else if let image = image {
                     _message.mediaStatus = .loaded
-                    print("loaded")
                     let mediaItem = ImageMediaItem(image: image)
                     _message.kind = .photo(mediaItem)
                     self.messages[currentIndex] = _message

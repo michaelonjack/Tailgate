@@ -60,7 +60,6 @@ class TailgatePhotosViewController: UIViewController {
         imageCollectionView.dataSource = self
         
         getTailgateImageUrls(tailgate: self.tailgate) { (imgUrls, imgIds) in
-            print("called getTailgateImageUrls")
             self.imageIds = imgIds
             self.imageUrls = imgUrls
             self.imageCollectionView.reloadData()

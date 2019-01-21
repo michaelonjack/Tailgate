@@ -20,6 +20,7 @@ class SettingsNameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         
         self.firstNameTextField.text = self.firstName
         self.lastNameTextField.text = self.lastName

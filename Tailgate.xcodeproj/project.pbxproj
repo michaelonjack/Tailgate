@@ -20,6 +20,8 @@
 		B10E9E7F1FDCB91A00DB4751 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */; };
 		B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E9E801FDCBA6100DB4751 /* TailgateAnnotation.swift */; };
 		B11FAF752065D75D00238981 /* GamedaySignsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */; };
+		B12009A021F508E400981329 /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B120099F21F508E400981329 /* ProfileDetailsView.swift */; };
+		B12009A421F57A0F00981329 /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12009A321F57A0F00981329 /* ExploreCollectionViewCell.swift */; };
 		B12CCC33217E92DA00CC9C25 /* SettingsPrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12CCC32217E92DA00CC9C25 /* SettingsPrivacyPolicyViewController.swift */; };
 		B13B81331FE5F25F008F3A38 /* CreateTailgateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */; };
 		B13B81351FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */; };
@@ -123,6 +125,8 @@
 		B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B10E9E801FDCBA6100DB4751 /* TailgateAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailgateAnnotation.swift; sourceTree = "<group>"; };
 		B11FAF742065D75D00238981 /* GamedaySignsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamedaySignsViewController.swift; sourceTree = "<group>"; };
+		B120099F21F508E400981329 /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
+		B12009A321F57A0F00981329 /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = "<group>"; };
 		B12CCC32217E92DA00CC9C25 /* SettingsPrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		B13B81321FE5F25F008F3A38 /* CreateTailgateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateNameViewController.swift; sourceTree = "<group>"; };
 		B13B81341FE5FA6B008F3A38 /* CreateTailgateAccessibilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTailgateAccessibilityViewController.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 		B10E9E9D1FDCC25400DB4751 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B120099F21F508E400981329 /* ProfileDetailsView.swift */,
 				B1E22731208B66BB00672F53 /* FlairViewController.swift */,
 				B1E22733208B6E5500672F53 /* RivalFlairViewController.swift */,
 				B1625EF720AD0DDE00CCFFBA /* RivalFlairSubmitViewController.swift */,
@@ -404,6 +409,7 @@
 		B1DD1CD9203E505F00291EAE /* CollectionCells */ = {
 			isa = PBXGroup;
 			children = (
+				B12009A321F57A0F00981329 /* ExploreCollectionViewCell.swift */,
 				B18FFC862186B2DF00901D71 /* TailgatorMediaMessageCell.swift */,
 				B18FFC842186B1CB00901D71 /* TailgatorMessageCellDelegate.swift */,
 				B18FFC822186B0F400901D71 /* TailgatorTextMessageCell.swift */,
@@ -556,7 +562,6 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeNavigationController/SwipeNavigationController.framework",
-				"${BUILT_PRODUCTS_DIR}/VegaScrollFlowLayout/VegaScrollFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -574,7 +579,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeNavigationController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VegaScrollFlowLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -642,6 +646,7 @@
 				B18256EC20E1886D00BB6C9F /* ARKitHelper.swift in Sources */,
 				B18FFC8E218A2C5900901D71 /* TailgateDetailsViewController.swift in Sources */,
 				B13B81421FE6F1B6008F3A38 /* School.swift in Sources */,
+				B12009A021F508E400981329 /* ProfileDetailsView.swift in Sources */,
 				B1DD1CD22039ED6600291EAE /* CreateTailgateFlairViewController.swift in Sources */,
 				B11FAF752065D75D00238981 /* GamedaySignsViewController.swift in Sources */,
 				B18FFC852186B1CB00901D71 /* TailgatorMessageCellDelegate.swift in Sources */,
@@ -654,6 +659,7 @@
 				B1E2273C20A6709100672F53 /* SupplyTableViewCell.swift in Sources */,
 				B10E9E811FDCBA6100DB4751 /* TailgateAnnotation.swift in Sources */,
 				B1DD1CD8203E409B00291EAE /* FriendsViewController.swift in Sources */,
+				B12009A421F57A0F00981329 /* ExploreCollectionViewCell.swift in Sources */,
 				B10B21FC20E93E1500B3B49D /* UIViewController+Additions.swift in Sources */,
 				B166002020B074500055103C /* GamedayPageViewController.swift in Sources */,
 				B1DD1CDB203E591400291EAE /* UsersCollectionViewCell.swift in Sources */,
