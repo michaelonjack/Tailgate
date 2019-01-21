@@ -97,7 +97,7 @@ class ProfileViewController: UIViewController {
             guard let _self = self else { return }
             
             _self.detailsView.exploreView.alpha =  1
-            _self.profilePictureButton.transform = _self.profilePictureButton.transform.scaledBy(x: 0.95, y: 0.95)
+            _self.profilePictureButton.transform = _self.profilePictureButton.transform.scaledBy(x: 0.953, y: 0.953)
         })
         
         showExploreViewAnimator.pausesOnCompletion = true
@@ -106,6 +106,13 @@ class ProfileViewController: UIViewController {
     
     @objc func detailsViewPanned(gesture: UIPanGestureRecognizer) {
         let gestureTranslation = gesture.translation(in: detailsView)
+        
+        // The detail view should only be panned in the vertical direction so if we detect a significant change in the horizontal direction, delegate to the swipe controller's gesture handler
+        if abs(gestureTranslation.x) > abs(gestureTranslation.y) || gesture.state == .ended || gesture.state == .began {
+            containerSwipeNavigationController?.onPanGestureTriggered(sender: gesture)
+            return
+        }
+        
         let viewCurrentMinY = detailsView.frame.minY
         let lowestAllowedY = view.frame.height / 3.5
         let highestAllowedY = view.frame.height / 2.0
@@ -120,7 +127,7 @@ class ProfileViewController: UIViewController {
             showExploreViewAnimator.fractionComplete = 0
         }
         
-        gesture.setTranslation(CGPoint(x: gestureTranslation.x, y: 0), in: detailsView)
+        gesture.setTranslation(CGPoint(x: 0, y: 0), in: detailsView)
     }
     
     

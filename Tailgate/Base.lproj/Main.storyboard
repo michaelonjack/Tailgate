@@ -1780,7 +1780,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnX-qB-j59">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                <rect key="frame" x="0.0" y="-1.5" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DnX-qB-j59" secondAttribute="height" multiplier="1:1" id="iHl-mu-6am"/>
                                 </constraints>
@@ -1882,20 +1882,33 @@
                                     <constraint firstItem="1IZ-X7-OS2" firstAttribute="leading" secondItem="r1J-Vf-x2S" secondAttribute="leading" id="tn1-zH-jad"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fJc-Pz-Nub" userLabel="Bottom Cover View">
+                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="DnX-qB-j59" firstAttribute="leading" relation="lessThanOrEqual" secondItem="hsf-SM-pYR" secondAttribute="leading" id="3IE-hL-bXD"/>
                             <constraint firstItem="kNG-Fb-sNM" firstAttribute="leading" secondItem="hsf-SM-pYR" secondAttribute="leading" id="CUI-F9-ioP"/>
                             <constraint firstAttribute="centerY" secondItem="kNG-Fb-sNM" secondAttribute="top" id="Csg-xL-2ag"/>
+                            <constraint firstItem="DnX-qB-j59" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hsf-SM-pYR" secondAttribute="leading" constant="-55" id="GP0-Gu-s8k"/>
+                            <constraint firstAttribute="trailing" secondItem="fJc-Pz-Nub" secondAttribute="trailing" id="IUd-38-LJs"/>
                             <constraint firstItem="hsf-SM-pYR" firstAttribute="trailing" secondItem="kNG-Fb-sNM" secondAttribute="trailing" id="Jb8-Ok-e2m"/>
+                            <constraint firstItem="hsf-SM-pYR" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DnX-qB-j59" secondAttribute="trailing" constant="-55" id="LN8-x9-hgv"/>
                             <constraint firstItem="kNG-Fb-sNM" firstAttribute="height" secondItem="A45-Rb-3MN" secondAttribute="height" id="MmJ-sS-bbm"/>
                             <constraint firstItem="r1J-Vf-x2S" firstAttribute="height" secondItem="A45-Rb-3MN" secondAttribute="height" multiplier="0.07" id="N7S-CB-hz3"/>
+                            <constraint firstItem="fJc-Pz-Nub" firstAttribute="leading" secondItem="A45-Rb-3MN" secondAttribute="leading" id="YLy-aI-u2L"/>
+                            <constraint firstItem="DnX-qB-j59" firstAttribute="top" relation="greaterThanOrEqual" secondItem="A45-Rb-3MN" secondAttribute="top" constant="-15" id="ZFR-My-7D9"/>
+                            <constraint firstAttribute="bottom" secondItem="fJc-Pz-Nub" secondAttribute="bottom" id="ZTD-hQ-MVI"/>
+                            <constraint firstItem="kNG-Fb-sNM" firstAttribute="top" secondItem="DnX-qB-j59" secondAttribute="bottom" constant="-40" id="bm3-PI-P1a"/>
                             <constraint firstItem="hsf-SM-pYR" firstAttribute="trailing" secondItem="r1J-Vf-x2S" secondAttribute="trailing" id="ciV-wt-Fz5"/>
                             <constraint firstItem="DnX-qB-j59" firstAttribute="centerX" secondItem="hsf-SM-pYR" secondAttribute="centerX" id="clU-BC-Rsr"/>
-                            <constraint firstItem="DnX-qB-j59" firstAttribute="top" secondItem="A45-Rb-3MN" secondAttribute="top" id="fLx-av-wUt"/>
+                            <constraint firstItem="DnX-qB-j59" firstAttribute="top" relation="lessThanOrEqual" secondItem="A45-Rb-3MN" secondAttribute="top" id="fLx-av-wUt"/>
                             <constraint firstItem="hsf-SM-pYR" firstAttribute="bottom" secondItem="r1J-Vf-x2S" secondAttribute="bottom" id="g8J-9I-tis"/>
-                            <constraint firstItem="DnX-qB-j59" firstAttribute="width" secondItem="A45-Rb-3MN" secondAttribute="width" id="tbw-hh-kAD"/>
+                            <constraint firstItem="hsf-SM-pYR" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="DnX-qB-j59" secondAttribute="trailing" id="i5i-DT-k33"/>
+                            <constraint firstItem="r1J-Vf-x2S" firstAttribute="bottom" secondItem="fJc-Pz-Nub" secondAttribute="top" id="qhK-9z-wab"/>
                             <constraint firstItem="r1J-Vf-x2S" firstAttribute="leading" secondItem="hsf-SM-pYR" secondAttribute="leading" id="yQF-zd-aSh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hsf-SM-pYR"/>

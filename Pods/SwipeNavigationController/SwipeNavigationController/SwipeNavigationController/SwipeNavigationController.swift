@@ -278,7 +278,7 @@ open class SwipeNavigationController: UIViewController {
         return true
     }
     
-    @IBAction fileprivate func onPanGestureTriggered(sender: UIPanGestureRecognizer) {
+    @IBAction public func onPanGestureTriggered(sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .began:
             /* Restrict pan movement
