@@ -198,7 +198,11 @@ class DropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
 }
 
 
-
+enum ScrollDirection {
+    case horizontal
+    case vertical
+    case undefined
+}
 
 enum TableState {
     case loading

@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController {
     var feedItems:[Tailgate] = []
     var schools:[School] = []
     var showExploreViewAnimator: UIViewPropertyAnimator!
+    var panDirection: ScrollDirection = .undefined
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,26 +106,48 @@ class ProfileViewController: UIViewController {
     
     
     @objc func detailsViewPanned(gesture: UIPanGestureRecognizer) {
-        let gestureTranslation = gesture.translation(in: detailsView)
         
-        // The detail view should only be panned in the vertical direction so if we detect a significant change in the horizontal direction, delegate to the swipe controller's gesture handler
-        if abs(gestureTranslation.x) > abs(gestureTranslation.y) || gesture.state == .ended || gesture.state == .began {
+        switch gesture.state {
+        case .began:
             containerSwipeNavigationController?.onPanGestureTriggered(sender: gesture)
             return
-        }
-        
-        let viewCurrentMinY = detailsView.frame.minY
-        let lowestAllowedY = view.frame.height / 3.5
-        let highestAllowedY = view.frame.height / 2.0
-        
-        if (viewCurrentMinY + gestureTranslation.y < highestAllowedY && gestureTranslation.y > 0)
-            || (viewCurrentMinY + gestureTranslation.y > lowestAllowedY && gestureTranslation.y < 0) {
-            showExploreViewAnimator.fractionComplete = (highestAllowedY - viewCurrentMinY) / (highestAllowedY - lowestAllowedY)
+        case .ended:
+            panDirection = .undefined
+            containerSwipeNavigationController?.onPanGestureTriggered(sender: gesture)
+            return
+        case .changed:
+            let gestureTranslation = gesture.translation(in: detailsView)
             
-            detailsView.transform = detailsView.transform.translatedBy(x: 0, y: gestureTranslation.y)
-        } else if gestureTranslation.y > 0 {
-            // Completely hide the Explore View once we've reached the bottom
-            showExploreViewAnimator.fractionComplete = 0
+            if panDirection == .undefined {
+                if abs(gestureTranslation.x) > abs(gestureTranslation.y) {
+                    panDirection = .horizontal
+                } else {
+                    panDirection = .vertical
+                }
+            }
+            
+            // The detail view should only be panned in the vertical direction so if we detect a significant change in the horizontal direction, delegate to the swipe controller's gesture handler
+            if panDirection == .horizontal {
+                containerSwipeNavigationController?.onPanGestureTriggered(sender: gesture)
+                return
+            }
+            
+            let viewCurrentMinY = detailsView.frame.minY
+            let lowestAllowedY = view.frame.height / 3.5
+            let highestAllowedY = view.frame.height / 2.0
+            
+            if (viewCurrentMinY + gestureTranslation.y < highestAllowedY && gestureTranslation.y > 0)
+                || (viewCurrentMinY + gestureTranslation.y > lowestAllowedY && gestureTranslation.y < 0) {
+                showExploreViewAnimator.fractionComplete = (highestAllowedY - viewCurrentMinY) / (highestAllowedY - lowestAllowedY)
+                
+                detailsView.transform = detailsView.transform.translatedBy(x: 0, y: gestureTranslation.y)
+            } else if gestureTranslation.y > 0 {
+                // Completely hide the Explore View once we've reached the bottom
+                showExploreViewAnimator.fractionComplete = 0
+            }
+            
+        default:
+            return
         }
         
         gesture.setTranslation(CGPoint(x: 0, y: 0), in: detailsView)
