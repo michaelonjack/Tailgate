@@ -71,6 +71,7 @@ class ProfileViewController: UIViewController {
         detailsView.exploreCollectionView.dataSource = self
         
         detailsView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(detailsViewPanned(gesture:))))
+        
     }
     
     
@@ -326,6 +327,8 @@ extension ProfileViewController: UICollectionViewDataSource {
                     let profilePictureUrl = URL(string: profilePictureUrlStr)
                     imageCell.imageView.sd_setImage(with: profilePictureUrl, completed: nil)
                 }
+                
+                imageCell.detailsLabel.text = user.name + "\n" + feedItem.startTimeStr
             }
             
             return imageCell

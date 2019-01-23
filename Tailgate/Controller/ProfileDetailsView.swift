@@ -140,6 +140,7 @@ class ProfileDetailsView: UIView {
         
         feedView.addSubview(feedLabel)
         feedView.addSubview(feedCollectionView)
+        feedView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(handleFeedViewLongPress)))
         
         exploreView.addSubview(exploreLabel)
         exploreView.addSubview(exploreCollectionView)
@@ -230,6 +231,33 @@ class ProfileDetailsView: UIView {
                     }
                 })
             }
+        }
+    }
+    
+    @objc func handleFeedViewLongPress(gesture: UILongPressGestureRecognizer) {
+        
+        if gesture.state == .ended {
+            
+            feedCollectionView.visibleCells.filter { (cell) -> Bool in
+                guard let cell = cell as? FeedCollectionViewCell else { return false }
+                return cell.blurView.alpha == 1
+            }.forEach { (cell) in
+                // Once the long press completes, hide the details label and un-blur
+                guard let cell = cell as? FeedCollectionViewCell else { return }
+                UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+                    cell.detailsLabel.alpha = 0
+                    cell.blurView.alpha = 0
+                })
+            }
+        } else if gesture.state == .began {
+            let pressLocation = gesture.location(in: feedCollectionView)
+            guard let indexPath = feedCollectionView.indexPathForItem(at: pressLocation) else { return }
+            guard let cell = feedCollectionView.cellForItem(at: indexPath) as? FeedCollectionViewCell else { return }
+            
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+                cell.detailsLabel.alpha = 1
+                cell.blurView.alpha = 1
+            })
         }
     }
 }

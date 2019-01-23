@@ -316,7 +316,6 @@
 		B10E9E9D1FDCC25400DB4751 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B120099F21F508E400981329 /* ProfileDetailsView.swift */,
 				B1E22731208B66BB00672F53 /* FlairViewController.swift */,
 				B1E22733208B6E5500672F53 /* RivalFlairViewController.swift */,
 				B1625EF720AD0DDE00CCFFBA /* RivalFlairSubmitViewController.swift */,
@@ -331,6 +330,7 @@
 				B1E2273D20A694F300672F53 /* SuppliesViewController.swift */,
 				B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */,
 				B1E83BD61FDCFBE200185E17 /* ProfileViewController.swift */,
+				B120099F21F508E400981329 /* ProfileDetailsView.swift */,
 				B10E9E6C1FDCB6A200DB4751 /* LoginViewController.swift */,
 				B10E9E7E1FDCB91A00DB4751 /* MapViewController.swift */,
 				B1B1E1E920D69BD7001B81EA /* MapARViewController.swift */,
