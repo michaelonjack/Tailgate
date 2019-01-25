@@ -10,7 +10,7 @@ import UIKit
 
 class GamedayPageViewController: UIPageViewController {
     
-    var containerController:GamedayContainerViewController!
+    weak var containerController:GamedayContainerViewController!
     var currentIndex = 1
     var pendingIndex = 1
     

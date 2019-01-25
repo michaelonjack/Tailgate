@@ -10,7 +10,7 @@ import UIKit
 
 class TailgatePageViewController: UIPageViewController {
     
-    var containerController:TailgateViewController!
+    weak var containerController:TailgateViewController!
     var currentIndex = 0
     var pendingIndex = 0
     
