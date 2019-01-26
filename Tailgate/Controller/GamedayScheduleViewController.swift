@@ -19,7 +19,7 @@ class GamedayScheduleViewController: UIViewController {
     @IBOutlet weak var titleLableTopConstraint: NSLayoutConstraint!
     
     var conferences = ["BIG 10", "BIG 12", "ACC", "PAC-12", "SEC"]
-    var games:[String:[GameCell]] = [:]
+    var games:[String:[Game]] = [:]
     var selectedWeek: Int?
     var selectedConference: Int? 
     var collectionViewCurrentIndex:Int {
@@ -39,7 +39,7 @@ class GamedayScheduleViewController: UIViewController {
         for conference in conferences {
             let conferenceKey = conference.lowercased().replacingOccurrences(of: " ", with: "")
             
-            getGameCells(forConference: conferenceKey, completion: { (games) in
+            getGames(forConference: conferenceKey, completion: { (games) in
                 self.games[conferenceKey] = games
                 self.schedulesCollectionView.reloadItems(at: [IndexPath(item: self.games.count-1, section: 0)])
             })
@@ -112,7 +112,7 @@ extension GamedayScheduleViewController: PickerPopupDelegate {
             for conference in conferences {
                 let conferenceKey = conference.lowercased().replacingOccurrences(of: " ", with: "")
                 
-                getGameCells(forConference: conferenceKey, forWeek: selectedWeek!, completion: { (games) in
+                getGames(forConference: conferenceKey, forWeek: selectedWeek!, completion: { (games) in
                     self.games[conferenceKey] = games
                     self.schedulesCollectionView.reloadItems(at: [IndexPath(item: self.games.count-1, section: 0)])
                     
@@ -210,7 +210,7 @@ extension GamedayScheduleViewController : UICollectionViewDelegateFlowLayout {
             }
         }
         
-        return CGSize(width: collectionView.bounds.size.width, height: collectionViewHeight)
+        return CGSize(width: collectionView.frame.width, height: floor(collectionViewHeight))
     }
     
     //  returns the spacing between the cells, headers, and footers. A constant is used to store the value

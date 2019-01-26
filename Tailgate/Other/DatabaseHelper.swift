@@ -485,35 +485,6 @@ func getGames(forConference conferenceName:String, forWeek week:Int = configurat
 
 //////////////////////////////////////////////////////////////////////////////////////
 //
-// getGameCells
-//
-// Returns all games for this week
-//
-func getGameCells(forConference conferenceName:String, forWeek week:Int = configuration.weekNum, completion: @escaping (([GameCell]) -> Void)) {
-    var games:[GameCell] = []
-    let currentGamesReference = Database.database().reference(withPath: "games/week" + String(week) + "/" + conferenceName)
-    currentGamesReference.keepSynced(true)
-    
-    currentGamesReference.observeSingleEvent(of: .value, with: { (snapshot) in
-        for gamesSnapshot in snapshot.children {
-            
-            guard let gamesSnapshot = gamesSnapshot as? DataSnapshot else {continue}
-            
-            if let _ = gamesSnapshot.value as? [String: AnyObject] {
-                let game = Game(snapshot: gamesSnapshot)
-                games.append( GameCell(game: game) )
-            }
-        }
-        
-        games = games.sorted(by: { $0.game.startTime! < $1.game.startTime! })
-        completion(games)
-    })
-}
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////
-//
 // getRankings
 //
 // Returns dict of the ranking (i.e. [ {1:Alabama}, {2:Penn State}, ... ])

@@ -10,38 +10,87 @@ import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var teamsLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var gameLink: UIButton!
     @IBOutlet weak var awayTeamLogo: UIImageView!
     @IBOutlet weak var homeTeamLogo: UIImageView!
-    @IBOutlet weak var awayTeamLabel: UILabel!
-    @IBOutlet weak var homeTeamLabel: UILabel!
-    @IBOutlet weak var awayTeamLogoLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var homeTeamLogoTrailingConstraint: NSLayoutConstraint!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    var blurDetailView: UIVisualEffectView = {
+        let view = UIVisualEffectView(frame: CGRect.zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.effect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        view.alpha = 0
         
-        gameLink.titleLabel?.adjustsFontSizeToFitWidth = true
-        gameLink.titleLabel?.minimumScaleFactor = 0.5
+        return view
+    }()
+    
+    var teamsLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.textAlignment = .center
+        label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        
+        return label
+    }()
+    
+    var detailLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        
+        return label
+    }()
+    
+    var gameLink: UIButton = {
+        let button = UIButton(frame: CGRect.zero)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.lightGray, for: .normal)
+        
+        return button
+    }()
+    
+    var detailStackView: UIStackView!
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setupView()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setupView()
     }
-
-    @IBAction func gameLinkPressed(_ sender: Any) {
-        if let teamsStr = self.teamsLabel.text {
-            let gameLink = "https://www.google.com/search?q=" + teamsStr.replacingOccurrences(of: " ", with: "%20") + "%20football"
-            guard let gameUrl = URL(string: gameLink) else {
-                return
-            }
+    
+    func setupView() {
+        detailStackView = UIStackView(arrangedSubviews: [teamsLabel, detailLabel, gameLink])
+        detailStackView.translatesAutoresizingMaskIntoConstraints = false
+        detailStackView.alpha = 0
+        detailStackView.alignment = UIStackView.Alignment.center
+        detailStackView.axis = .vertical
+        detailStackView.distribution = .fillEqually
+        
+        addSubview(blurDetailView)
+        addSubview(detailStackView)
+        
+        setupLayout()
+    }
+    
+    func setupLayout() {
+        NSLayoutConstraint.activate([
+            blurDetailView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            blurDetailView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            blurDetailView.topAnchor.constraint(equalTo: topAnchor),
+            blurDetailView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            if UIApplication.shared.canOpenURL(gameUrl) {
-                UIApplication.shared.open(gameUrl, options: [:])
-            }
-        }
+            detailStackView.centerXAnchor.constraint(equalTo: blurDetailView.centerXAnchor),
+            detailStackView.centerYAnchor.constraint(equalTo: blurDetailView.centerYAnchor),
+            detailStackView.heightAnchor.constraint(equalTo: blurDetailView.heightAnchor, multiplier: 0.8),
+            detailStackView.widthAnchor.constraint(equalTo: blurDetailView.widthAnchor, multiplier: 0.7)
+        ])
     }
 }

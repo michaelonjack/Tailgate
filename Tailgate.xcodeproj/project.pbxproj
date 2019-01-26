@@ -103,6 +103,7 @@
 		B1E83BE61FDD890500185E17 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE51FDD890500185E17 /* User.swift */; };
 		B1E83BEA1FDDBF6100185E17 /* RightLeftSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */; };
 		B1E83BEC1FDE286B00185E17 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */; };
+		B1FE821021FC8779006AFD43 /* SlantedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FE820F21FC8779006AFD43 /* SlantedView.swift */; };
 		B1FEC4EE2042223400FEE05F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEC4ED2042223400FEE05F /* SettingsViewController.swift */; };
 		B1FEC4F020422AE500FEE05F /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FEC4EF20422AE500FEE05F /* SettingsTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -208,6 +209,7 @@
 		B1E83BE51FDD890500185E17 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B1E83BE91FDDBF6100185E17 /* RightLeftSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightLeftSegue.swift; sourceTree = "<group>"; };
 		B1E83BEB1FDE286B00185E17 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B1FE820F21FC8779006AFD43 /* SlantedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlantedView.swift; sourceTree = "<group>"; };
 		B1FEC4ED2042223400FEE05F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B1FEC4EF20422AE500FEE05F /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,6 +311,7 @@
 				B1E83BE31FDD857A00185E17 /* TopDownSegue.swift */,
 				B10E9E6A1FDCB6A200DB4751 /* AppDelegate.swift */,
 				B1E22735209E0C1B00672F53 /* KeychainPasswordItem.swift */,
+				B1FE820F21FC8779006AFD43 /* SlantedView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				B13B81461FE9FB3A008F3A38 /* DrinkTableViewCell.swift in Sources */,
 				B1817835204A58AC0029CF27 /* SettingsChangePasswordViewController.swift in Sources */,
 				B1E83BEA1FDDBF6100185E17 /* RightLeftSegue.swift in Sources */,
+				B1FE821021FC8779006AFD43 /* SlantedView.swift in Sources */,
 				B1E83BEC1FDE286B00185E17 /* HomeViewController.swift in Sources */,
 				B1CAD9A2204B5F7400934F57 /* SettingsNameViewController.swift in Sources */,
 				B166002620B0AE600055103C /* LabelCollectionViewCell.swift in Sources */,

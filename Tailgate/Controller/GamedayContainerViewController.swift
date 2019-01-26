@@ -142,7 +142,7 @@ extension GamedayContainerViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.size.width/3.5, height: collectionView.bounds.size.height)
+        return CGSize(width: collectionView.frame.width/3.5, height: collectionView.frame.height-2)
     }
     
     //  returns the spacing between the cells, headers, and footers. A constant is used to store the value

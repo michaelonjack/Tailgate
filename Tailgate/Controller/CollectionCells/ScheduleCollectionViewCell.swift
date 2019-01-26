@@ -8,24 +8,13 @@
 
 import UIKit
 
-
-struct GameCell {
-    var game: Game
-    var isExpanded: Bool
-    
-    init(game:Game) {
-        self.game = game
-        self.isExpanded = false
-    }
-}
-
 class ScheduleCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var scheduleTableView: UITableView!
     
     let refreshControl = UIRefreshControl()
     var conferenceName = ""
-    var games:[GameCell] = []
+    var games:[Game] = []
     var parentViewController:GamedayScheduleViewController!
 }
 
@@ -34,41 +23,30 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
 extension ScheduleCollectionViewCell: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ScheduleTableViewCell else { return }
         
-        if self.games[indexPath.row].isExpanded {
-            self.games[indexPath.row].isExpanded = false
+        if cell.blurDetailView.alpha == 0 {
+            UIView.animate(withDuration: 0.5) {
+                tableView.visibleCells.forEach({ (tableCell) in
+                    if let scheduleCell = tableCell as? ScheduleTableViewCell {
+                        scheduleCell.blurDetailView.alpha = 0
+                        scheduleCell.detailStackView.alpha = 0
+                    }
+                })
+                
+                cell.blurDetailView.alpha = 1
+                cell.detailStackView.alpha = 1
+            }
         } else {
-            self.games[indexPath.row].isExpanded = true
+            UIView.animate(withDuration: 0.5) {
+                cell.blurDetailView.alpha = 0
+                cell.detailStackView.alpha = 0
+            }
         }
-        
-        tableView.reloadRows(at: [indexPath], with: .fade)
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let gameCell = self.games[indexPath.row]
-        
-        let tableViewWidth = tableView.bounds.width
-        let detailLabelHeight = gameCell.game.score == "0 - 0" ?  gameCell.game.startTimeDisplayStr.height(withConstrainedWidth: tableViewWidth * 0.191136, font: UIFont.systemFont(ofSize: 12.0)) : gameCell.game.score.height(withConstrainedWidth: tableViewWidth * 0.191136, font: UIFont.systemFont(ofSize: 12.0))
-        let teamsLabelHeight = (gameCell.game.awayTeam + " at " + gameCell.game.homeTeam).height(withConstrainedWidth: tableViewWidth * 0.747922, font: UIFont.systemFont(ofSize: 12.0))
-        let awayTeamLabelHeight = gameCell.game.awayTeam.height(withConstrainedWidth: tableViewWidth * 0.3324, font: UIFont.systemFont(ofSize: 12.0))
-        let homeTeamLabelHeight = gameCell.game.homeTeam.height(withConstrainedWidth: tableViewWidth * 0.3324, font: UIFont.systemFont(ofSize: 12.0))
-        let teamLogoHeight:CGFloat = 80.0
-        
-        // Size of the teams label or detail label (whichever is bigger) plus the size of its top and bottom contraints
-        let minimizedHeight = 11 + max(detailLabelHeight, teamsLabelHeight) + 12.5
-        
-        // Size of the minimizedHeight plus the size of the team logo plus the size of the logo bottom constraint plus the size of the away team label or the home team label (whichever is bigger) plus the label bottom constraint height
-        let expandedHeight = minimizedHeight + teamLogoHeight + 11 + max(awayTeamLabelHeight, homeTeamLabelHeight) + 11
-        
-        if gameCell.isExpanded {
-            return expandedHeight
-        } else {
-            return minimizedHeight
-        }
+        return 150
     }
     
     
@@ -89,7 +67,7 @@ extension ScheduleCollectionViewCell: UITableViewDelegate {
         let conferenceKey = self.conferenceName.lowercased().replacingOccurrences(of: " ", with: "")
         
         updatesScores(forConference: conferenceKey, forWeek: self.parentViewController.selectedWeek ?? configuration.weekNum) { (success) in
-            getGameCells(forConference: conferenceKey, forWeek: self.parentViewController.selectedWeek ?? configuration.weekNum, completion: { (games) in
+            getGames(forConference: conferenceKey, forWeek: self.parentViewController.selectedWeek ?? configuration.weekNum, completion: { (games) in
                 self.games = games
                 
                 refreshSchoolCache(completion: { (schoolDict) in
@@ -113,27 +91,16 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         // Reset the recycled cell's labels
         cell.teamsLabel.text = ""
         cell.detailLabel.text = ""
-        cell.scoreLabel.text = "0 - 0"
-        cell.awayTeamLabel.text = ""
-        cell.homeTeamLabel.text = ""
         cell.gameLink.setTitle("View", for: .normal)
-        // Reset the cell's selection
-        cell.setSelected(false, animated: false)
+        cell.gameLink.tag = indexPath.row
+        cell.gameLink.addTarget(self, action: #selector(gameLinkPressed), for: .touchUpInside)
+        
         // Reset the recycled cell's logos
         cell.homeTeamLogo.image = UIImage(named: "HomeTeamDefault")
         cell.awayTeamLogo.image = UIImage(named: "AwayTeamDefault")
         
-        // Update constraints if they haven't already been updated in a previous dequeuing
-        if cell.awayTeamLogoLeadingConstraint.constant == 35 {
-            cell.awayTeamLogoLeadingConstraint.updateHorizontalConstantForViewWidth(view: self.superview!)
-            cell.homeTeamLogoTrailingConstraint.updateHorizontalConstantForViewWidth(view: self.superview!)
-        }
-        
-        let currGame = self.games[indexPath.row].game
+        let currGame = self.games[indexPath.row]
         cell.teamsLabel.text = currGame.awayTeam + " at " + currGame.homeTeam
-        cell.awayTeamLabel.text = currGame.awayTeam
-        cell.homeTeamLabel.text = currGame.homeTeam
-        cell.scoreLabel.text = currGame.score
         cell.gameLink.setTitle(currGame.status == "" ? "View" : currGame.status, for: .normal)
         if currGame.score == "0 - 0" {
             cell.detailLabel.text = currGame.startTimeDisplayStr
@@ -188,5 +155,20 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.conferenceName + " SCHEDULE"
+    }
+    
+    @objc func gameLinkPressed(_ sender: UIButton) {
+        guard let cell = scheduleTableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? ScheduleTableViewCell else { return }
+        
+        if let teamsStr = cell.teamsLabel.text {
+            let gameLink = "https://www.google.com/search?q=" + teamsStr.replacingOccurrences(of: " ", with: "%20") + "%20football"
+            guard let gameUrl = URL(string: gameLink) else {
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(gameUrl) {
+                UIApplication.shared.open(gameUrl, options: [:])
+            }
+        }
     }
 }
