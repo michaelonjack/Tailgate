@@ -3075,10 +3075,10 @@ Violating these conditions may result in the suspension of your account upon rev
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymQ-5i-DNM" customClass="SlantedView" customModule="Tailgate" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="2.5" width="187.5" height="154.5"/>
+                                                                        <rect key="frame" x="0.0" y="3" width="187.5" height="153.5"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AwayTeamDefault" translatesAutoresizingMaskIntoConstraints="NO" id="u6d-fw-0xa">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="154.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="153.5"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3098,10 +3098,10 @@ Violating these conditions may result in the suspension of your account upon rev
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lly-ml-JtT" customClass="SlantedView" customModule="Tailgate" customModuleProvider="target">
-                                                                        <rect key="frame" x="173.5" y="2.5" width="187.5" height="154.5"/>
+                                                                        <rect key="frame" x="173.5" y="3" width="187.5" height="153.5"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeTeamDefault" translatesAutoresizingMaskIntoConstraints="NO" id="bwq-C5-9uN">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="154.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="153.5"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3123,14 +3123,14 @@ Violating these conditions may result in the suspension of your account upon rev
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="Lly-ml-JtT" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="2.5" id="845-IF-S2N"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="Lly-ml-JtT" secondAttribute="bottom" constant="2.5" id="JsO-na-fTa"/>
+                                                                    <constraint firstItem="Lly-ml-JtT" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="3" id="845-IF-S2N"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Lly-ml-JtT" secondAttribute="bottom" constant="3" id="JsO-na-fTa"/>
                                                                     <constraint firstItem="Lly-ml-JtT" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" multiplier="0.52" id="Urz-Yj-aJQ"/>
                                                                     <constraint firstItem="ymQ-5i-DNM" firstAttribute="leading" secondItem="BDU-X9-BeQ" secondAttribute="leading" id="V84-Wd-aL8"/>
                                                                     <constraint firstItem="ymQ-5i-DNM" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" multiplier="0.52" id="XTy-FE-iOR"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Lly-ml-JtT" secondAttribute="trailing" id="rhW-g7-bSJ"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="ymQ-5i-DNM" secondAttribute="bottom" constant="2.5" id="u7c-Xb-lOi"/>
-                                                                    <constraint firstItem="ymQ-5i-DNM" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="2.5" id="vXY-AM-Nx3"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="ymQ-5i-DNM" secondAttribute="bottom" constant="3" id="u7c-Xb-lOi"/>
+                                                                    <constraint firstItem="ymQ-5i-DNM" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="3" id="vXY-AM-Nx3"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
                                                             <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
