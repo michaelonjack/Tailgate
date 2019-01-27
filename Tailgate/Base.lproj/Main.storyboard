@@ -991,7 +991,7 @@
                             <constraint firstItem="qqM-MA-RH3" firstAttribute="leading" secondItem="7dd-t0-qLm" secondAttribute="leading" id="FVb-o9-vUO"/>
                             <constraint firstItem="j73-xB-qHv" firstAttribute="height" secondItem="7dd-t0-qLm" secondAttribute="height" multiplier="0.07" id="GRH-wm-PSG"/>
                             <constraint firstItem="rgm-GR-msR" firstAttribute="height" secondItem="br0-jd-8t5" secondAttribute="height" multiplier="0.05" id="Gs4-B3-Y1Z"/>
-                            <constraint firstItem="7dd-t0-qLm" firstAttribute="bottom" secondItem="1Cl-Vh-yXg" secondAttribute="bottom" id="JD8-dM-mjo"/>
+                            <constraint firstAttribute="bottom" secondItem="1Cl-Vh-yXg" secondAttribute="bottom" id="JD8-dM-mjo"/>
                             <constraint firstItem="nyD-kO-9hO" firstAttribute="width" secondItem="j73-xB-qHv" secondAttribute="width" multiplier="0.8" id="L6j-Dv-Ov4"/>
                             <constraint firstItem="ALn-U1-A9X" firstAttribute="leading" secondItem="7dd-t0-qLm" secondAttribute="leading" constant="8" id="MFE-yW-Mry"/>
                             <constraint firstItem="1KF-Ig-f7f" firstAttribute="top" secondItem="fHC-pn-yzm" secondAttribute="bottom" constant="8" id="OMq-NT-aG5"/>
@@ -1780,7 +1780,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnX-qB-j59">
-                                <rect key="frame" x="-7" y="-15" width="389" height="388.5"/>
+                                <rect key="frame" x="0.0" y="-1.5" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DnX-qB-j59" secondAttribute="height" multiplier="1:1" id="iHl-mu-6am"/>
                                 </constraints>
@@ -2640,6 +2640,10 @@ Violating these conditions may result in the suspension of your account upon rev
                                     <action selector="donePressed:" destination="jYz-Re-I4F" eventType="touchUpInside" id="5iG-4u-FwR"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zw-Xq-Uq9" userLabel="Safe Area Cover View">
+                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="alF-nH-td9">
                                 <rect key="frame" x="0.0" y="119" width="375" height="453"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2702,11 +2706,15 @@ Violating these conditions may result in the suspension of your account upon rev
                             <constraint firstItem="LX9-QS-1fq" firstAttribute="bottom" secondItem="UQl-Nj-9Wd" secondAttribute="bottom" id="6OO-z3-nAD"/>
                             <constraint firstItem="LX9-QS-1fq" firstAttribute="centerX" secondItem="UQl-Nj-9Wd" secondAttribute="centerX" id="QX3-E4-eDK"/>
                             <constraint firstItem="B5B-jM-Rg5" firstAttribute="width" secondItem="XP5-qa-0u4" secondAttribute="width" multiplier="0.709333" id="R9e-6F-UwV"/>
-                            <constraint firstItem="alF-nH-td9" firstAttribute="height" secondItem="UQl-Nj-9Wd" secondAttribute="height" multiplier="0.700155" id="SVl-Lw-1he"/>
+                            <constraint firstItem="8zw-Xq-Uq9" firstAttribute="leading" secondItem="UQl-Nj-9Wd" secondAttribute="leading" id="Stc-1r-E7D"/>
+                            <constraint firstItem="8zw-Xq-Uq9" firstAttribute="top" secondItem="LX9-QS-1fq" secondAttribute="bottom" id="XLq-xX-FgA"/>
+                            <constraint firstAttribute="bottom" secondItem="8zw-Xq-Uq9" secondAttribute="bottom" id="Y5n-0X-1rk"/>
                             <constraint firstItem="alF-nH-td9" firstAttribute="width" secondItem="XP5-qa-0u4" secondAttribute="width" id="fBo-jy-hjd"/>
                             <constraint firstItem="dDo-Zd-Oyz" firstAttribute="width" secondItem="XP5-qa-0u4" secondAttribute="width" multiplier="0.5333" id="g5Y-LN-bvq"/>
+                            <constraint firstItem="UQl-Nj-9Wd" firstAttribute="trailing" secondItem="8zw-Xq-Uq9" secondAttribute="trailing" id="jVe-jb-Kp2"/>
                             <constraint firstItem="dDo-Zd-Oyz" firstAttribute="top" secondItem="B5B-jM-Rg5" secondAttribute="bottom" constant="8" id="pbB-oJ-hAM"/>
                             <constraint firstItem="B5B-jM-Rg5" firstAttribute="top" secondItem="UQl-Nj-9Wd" secondAttribute="top" constant="13" id="sT2-k9-Uxg"/>
+                            <constraint firstItem="LX9-QS-1fq" firstAttribute="top" secondItem="alF-nH-td9" secondAttribute="bottom" id="uVL-l8-QJd"/>
                             <constraint firstItem="alF-nH-td9" firstAttribute="top" secondItem="dDo-Zd-Oyz" secondAttribute="bottom" constant="8" id="udZ-B6-dhz"/>
                             <constraint firstItem="B5B-jM-Rg5" firstAttribute="height" secondItem="UQl-Nj-9Wd" secondAttribute="height" multiplier="0.0618238" id="wpU-DX-UAU"/>
                             <constraint firstItem="alF-nH-td9" firstAttribute="centerX" secondItem="UQl-Nj-9Wd" secondAttribute="centerX" id="yEH-F2-7Af"/>
@@ -2795,7 +2803,7 @@ Violating these conditions may result in the suspension of your account upon rev
                             </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qhj-S1-Fzs">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Qab-PK-Rba">
                                     <size key="itemSize" width="125" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -2830,22 +2838,29 @@ Violating these conditions may result in the suspension of your account upon rev
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jeu-ES-4kI" userLabel="Safe Area Cover View">
+                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="0.71436215753424659" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qhj-S1-Fzs" firstAttribute="centerX" secondItem="Zgj-qo-doD" secondAttribute="centerX" id="4Vj-wD-3a5"/>
                             <constraint firstItem="qhj-S1-Fzs" firstAttribute="bottom" secondItem="Zgj-qo-doD" secondAttribute="bottom" id="BOX-XS-ffw"/>
                             <constraint firstItem="qhj-S1-Fzs" firstAttribute="height" secondItem="Zgj-qo-doD" secondAttribute="height" multiplier="0.0695517" id="Cve-wn-6Wa"/>
+                            <constraint firstAttribute="bottom" secondItem="Jeu-ES-4kI" secondAttribute="bottom" id="DCl-Ln-19t"/>
                             <constraint firstItem="ebt-gM-YeM" firstAttribute="leading" secondItem="AgF-VA-jMO" secondAttribute="leading" id="Qfx-mb-5Bp"/>
                             <constraint firstAttribute="trailing" secondItem="ebt-gM-YeM" secondAttribute="trailing" id="WLb-Ae-I8e"/>
+                            <constraint firstItem="Zgj-qo-doD" firstAttribute="trailing" secondItem="Jeu-ES-4kI" secondAttribute="trailing" id="XoR-SK-3rM"/>
                             <constraint firstItem="qhj-S1-Fzs" firstAttribute="width" secondItem="Zgj-qo-doD" secondAttribute="width" id="fQ6-YS-phI"/>
+                            <constraint firstItem="Jeu-ES-4kI" firstAttribute="top" secondItem="qhj-S1-Fzs" secondAttribute="bottom" id="he5-zV-4Jy"/>
                             <constraint firstItem="ebt-gM-YeM" firstAttribute="bottom" secondItem="Zgj-qo-doD" secondAttribute="bottom" id="r9p-VV-8i4"/>
                             <constraint firstItem="ebt-gM-YeM" firstAttribute="top" secondItem="AgF-VA-jMO" secondAttribute="top" id="rtr-kJ-Xlw"/>
+                            <constraint firstItem="Jeu-ES-4kI" firstAttribute="leading" secondItem="Zgj-qo-doD" secondAttribute="leading" id="x1l-8G-lVg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zgj-qo-doD"/>
                     </view>
                     <connections>
-                        <outlet property="containerView" destination="ebt-gM-YeM" id="S7x-OQ-lyy"/>
                         <outlet property="navigationCollectionView" destination="qhj-S1-Fzs" id="79n-39-hlO"/>
                     </connections>
                 </viewController>
@@ -3075,45 +3090,46 @@ Violating these conditions may result in the suspension of your account upon rev
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ymQ-5i-DNM" customClass="SlantedView" customModule="Tailgate" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="3" width="187.5" height="153.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="361" height="159.5"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AwayTeamDefault" translatesAutoresizingMaskIntoConstraints="NO" id="u6d-fw-0xa">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="187" height="153.5"/>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AwayTeamDefault" translatesAutoresizingMaskIntoConstraints="NO" id="u6d-fw-0xa">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="198.5" height="143.5"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstItem="u6d-fw-0xa" firstAttribute="leading" secondItem="ymQ-5i-DNM" secondAttribute="leading" id="992-0N-CaA"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="u6d-fw-0xa" secondAttribute="bottom" id="J97-3b-wOQ"/>
+                                                                            <constraint firstItem="u6d-fw-0xa" firstAttribute="height" secondItem="ymQ-5i-DNM" secondAttribute="height" multiplier="0.9" id="GA0-n4-szx"/>
+                                                                            <constraint firstItem="u6d-fw-0xa" firstAttribute="width" secondItem="ymQ-5i-DNM" secondAttribute="width" multiplier="0.55" id="WDY-Wj-cyy"/>
                                                                             <constraint firstItem="u6d-fw-0xa" firstAttribute="top" secondItem="ymQ-5i-DNM" secondAttribute="top" id="fB9-rb-2wA"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="u6d-fw-0xa" secondAttribute="trailing" constant="0.5" id="y8C-Ot-dKF"/>
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="slantSide">
                                                                                 <integer key="value" value="1"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="slantHeight">
-                                                                                <real key="value" value="25"/>
+                                                                                <real key="value" value="360"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lly-ml-JtT" customClass="SlantedView" customModule="Tailgate" customModuleProvider="target">
-                                                                        <rect key="frame" x="173.5" y="3" width="187.5" height="153.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="361" height="159.5"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeTeamDefault" translatesAutoresizingMaskIntoConstraints="NO" id="bwq-C5-9uN">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="153.5"/>
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeTeamDefault" translatesAutoresizingMaskIntoConstraints="NO" id="bwq-C5-9uN">
+                                                                                <rect key="frame" x="162.5" y="16" width="198.5" height="143.5"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="trailing" secondItem="bwq-C5-9uN" secondAttribute="trailing" id="MCd-7c-ITA"/>
-                                                                            <constraint firstItem="bwq-C5-9uN" firstAttribute="top" secondItem="Lly-ml-JtT" secondAttribute="top" id="MtG-sw-vGQ"/>
                                                                             <constraint firstAttribute="bottom" secondItem="bwq-C5-9uN" secondAttribute="bottom" id="XhT-Ap-Tgu"/>
-                                                                            <constraint firstItem="bwq-C5-9uN" firstAttribute="leading" secondItem="Lly-ml-JtT" secondAttribute="leading" id="ww5-ub-7dE"/>
+                                                                            <constraint firstItem="bwq-C5-9uN" firstAttribute="height" secondItem="Lly-ml-JtT" secondAttribute="height" multiplier="0.9" id="yGp-3l-k9r"/>
+                                                                            <constraint firstItem="bwq-C5-9uN" firstAttribute="width" secondItem="Lly-ml-JtT" secondAttribute="width" multiplier="0.55" id="zne-bn-7Y1"/>
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="slantHeight">
-                                                                                <real key="value" value="25"/>
+                                                                                <real key="value" value="360"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="slantSide">
                                                                                 <integer key="value" value="0"/>
@@ -3123,14 +3139,14 @@ Violating these conditions may result in the suspension of your account upon rev
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="Lly-ml-JtT" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="3" id="845-IF-S2N"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="Lly-ml-JtT" secondAttribute="bottom" constant="3" id="JsO-na-fTa"/>
-                                                                    <constraint firstItem="Lly-ml-JtT" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" multiplier="0.52" id="Urz-Yj-aJQ"/>
+                                                                    <constraint firstItem="Lly-ml-JtT" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" id="845-IF-S2N"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Lly-ml-JtT" secondAttribute="bottom" id="JsO-na-fTa"/>
+                                                                    <constraint firstItem="Lly-ml-JtT" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" id="Urz-Yj-aJQ"/>
                                                                     <constraint firstItem="ymQ-5i-DNM" firstAttribute="leading" secondItem="BDU-X9-BeQ" secondAttribute="leading" id="V84-Wd-aL8"/>
-                                                                    <constraint firstItem="ymQ-5i-DNM" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" multiplier="0.52" id="XTy-FE-iOR"/>
+                                                                    <constraint firstItem="ymQ-5i-DNM" firstAttribute="width" secondItem="BDU-X9-BeQ" secondAttribute="width" id="XTy-FE-iOR"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Lly-ml-JtT" secondAttribute="trailing" id="rhW-g7-bSJ"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="ymQ-5i-DNM" secondAttribute="bottom" constant="3" id="u7c-Xb-lOi"/>
-                                                                    <constraint firstItem="ymQ-5i-DNM" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" constant="3" id="vXY-AM-Nx3"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="ymQ-5i-DNM" secondAttribute="bottom" id="u7c-Xb-lOi"/>
+                                                                    <constraint firstItem="ymQ-5i-DNM" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" id="vXY-AM-Nx3"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
                                                             <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3629,6 +3645,10 @@ Violating these conditions may result in the suspension of your account upon rev
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPq-QZ-QcK" userLabel="Safe Area Cover View">
+                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBx-9F-FKh">
                                 <rect key="frame" x="0.0" y="572" width="375" height="95"/>
                                 <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3710,8 +3730,11 @@ Violating these conditions may result in the suspension of your account upon rev
                             <constraint firstItem="hBx-9F-FKh" firstAttribute="bottom" secondItem="I3D-dk-Ssi" secondAttribute="bottom" id="1q6-zc-n9L"/>
                             <constraint firstItem="hBx-9F-FKh" firstAttribute="top" secondItem="SVo-9t-4Qm" secondAttribute="bottom" id="4fg-zE-INL"/>
                             <constraint firstItem="aUO-XE-ZjX" firstAttribute="leading" secondItem="UEL-eg-G7U" secondAttribute="trailing" constant="8" id="5ZY-Eh-1ER"/>
+                            <constraint firstItem="LPq-QZ-QcK" firstAttribute="leading" secondItem="I3D-dk-Ssi" secondAttribute="leading" id="5p3-CA-1Gg"/>
                             <constraint firstItem="gHJ-fe-Hfw" firstAttribute="top" secondItem="I3D-dk-Ssi" secondAttribute="top" constant="13" id="9ZP-x6-o4e"/>
+                            <constraint firstItem="LPq-QZ-QcK" firstAttribute="top" secondItem="hBx-9F-FKh" secondAttribute="bottom" id="Bgx-c4-SuN"/>
                             <constraint firstItem="hBx-9F-FKh" firstAttribute="width" secondItem="6JX-GI-NSi" secondAttribute="width" id="CuL-iR-qSj"/>
+                            <constraint firstItem="I3D-dk-Ssi" firstAttribute="trailing" secondItem="LPq-QZ-QcK" secondAttribute="trailing" id="D7e-vY-gQD"/>
                             <constraint firstItem="SVo-9t-4Qm" firstAttribute="centerX" secondItem="I3D-dk-Ssi" secondAttribute="centerX" id="HAp-BO-qMv"/>
                             <constraint firstItem="UEL-eg-G7U" firstAttribute="width" secondItem="6JX-GI-NSi" secondAttribute="width" multiplier="0.53333" id="HXe-of-st2"/>
                             <constraint firstItem="gHJ-fe-Hfw" firstAttribute="centerX" secondItem="I3D-dk-Ssi" secondAttribute="centerX" id="LPR-Bp-LWg"/>
@@ -3720,8 +3743,8 @@ Violating these conditions may result in the suspension of your account upon rev
                             <constraint firstItem="gHJ-fe-Hfw" firstAttribute="height" secondItem="I3D-dk-Ssi" secondAttribute="height" multiplier="0.0618238" id="WWj-S3-zdl"/>
                             <constraint firstItem="gHJ-fe-Hfw" firstAttribute="width" secondItem="6JX-GI-NSi" secondAttribute="width" multiplier="0.7" id="XXz-3F-3c3"/>
                             <constraint firstItem="aUO-XE-ZjX" firstAttribute="centerY" secondItem="UEL-eg-G7U" secondAttribute="centerY" id="Yjx-Ix-huG"/>
-                            <constraint firstItem="SVo-9t-4Qm" firstAttribute="height" secondItem="I3D-dk-Ssi" secondAttribute="height" multiplier="0.700155" id="Zyz-Ac-Un0"/>
                             <constraint firstItem="UEL-eg-G7U" firstAttribute="centerX" secondItem="I3D-dk-Ssi" secondAttribute="centerX" id="d0p-A9-CxD"/>
+                            <constraint firstAttribute="bottom" secondItem="LPq-QZ-QcK" secondAttribute="bottom" id="hIR-eW-Fac"/>
                             <constraint firstItem="hBx-9F-FKh" firstAttribute="centerX" secondItem="I3D-dk-Ssi" secondAttribute="centerX" id="pUo-iu-nfN"/>
                             <constraint firstItem="SVo-9t-4Qm" firstAttribute="top" secondItem="UEL-eg-G7U" secondAttribute="bottom" constant="8" id="xj5-z2-wi7"/>
                         </constraints>
@@ -3919,6 +3942,10 @@ Violating these conditions may result in the suspension of your account upon rev
                                 </constraints>
                                 <state key="normal" image="Avatar"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTp-t8-UQB" userLabel="Safe Area Cover View">
+                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUq-Yl-r69">
                                 <rect key="frame" x="0.0" y="185" width="375" height="482"/>
                                 <subviews>
@@ -4220,9 +4247,13 @@ Violating these conditions may result in the suspension of your account upon rev
                         <constraints>
                             <constraint firstItem="FGr-Uj-1ob" firstAttribute="trailing" secondItem="hUq-Yl-r69" secondAttribute="trailing" id="5mC-IN-KEj"/>
                             <constraint firstItem="hUq-Yl-r69" firstAttribute="leading" secondItem="FGr-Uj-1ob" secondAttribute="leading" id="6od-zg-MAo"/>
+                            <constraint firstAttribute="bottom" secondItem="uTp-t8-UQB" secondAttribute="bottom" id="Hps-3l-fi8"/>
                             <constraint firstItem="VDQ-Tr-RFl" firstAttribute="leading" secondItem="FGr-Uj-1ob" secondAttribute="leading" constant="16" id="OmO-TS-vtm"/>
+                            <constraint firstItem="FGr-Uj-1ob" firstAttribute="trailing" secondItem="uTp-t8-UQB" secondAttribute="trailing" id="Q5g-WF-wv2"/>
+                            <constraint firstItem="uTp-t8-UQB" firstAttribute="leading" secondItem="FGr-Uj-1ob" secondAttribute="leading" id="RAi-4N-ziq"/>
                             <constraint firstItem="FGr-Uj-1ob" firstAttribute="bottom" secondItem="hUq-Yl-r69" secondAttribute="bottom" id="XgR-bo-Cx3"/>
                             <constraint firstItem="kzw-SM-vA6" firstAttribute="centerX" secondItem="FGr-Uj-1ob" secondAttribute="centerX" id="bAE-ro-0AK"/>
+                            <constraint firstItem="hUq-Yl-r69" firstAttribute="bottom" secondItem="uTp-t8-UQB" secondAttribute="top" id="cUk-cr-I1g"/>
                             <constraint firstItem="JeV-pJ-39t" firstAttribute="top" secondItem="FGr-Uj-1ob" secondAttribute="top" id="gtY-5Y-THK"/>
                             <constraint firstItem="kzw-SM-vA6" firstAttribute="top" secondItem="FGr-Uj-1ob" secondAttribute="top" constant="30" id="hhg-ke-2YS"/>
                             <constraint firstItem="hUq-Yl-r69" firstAttribute="top" secondItem="kzw-SM-vA6" secondAttribute="bottom" constant="25" id="jX2-nG-XXd"/>
@@ -4339,7 +4370,7 @@ Violating these conditions may result in the suspension of your account upon rev
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HvK-yJ-ynJ" firstAttribute="leading" secondItem="63O-Ab-kVN" secondAttribute="leading" id="04l-MQ-BLH"/>
-                            <constraint firstItem="63O-Ab-kVN" firstAttribute="bottom" secondItem="HvK-yJ-ynJ" secondAttribute="bottom" id="2vQ-RM-0dc"/>
+                            <constraint firstAttribute="bottom" secondItem="HvK-yJ-ynJ" secondAttribute="bottom" id="2vQ-RM-0dc"/>
                             <constraint firstItem="63O-Ab-kVN" firstAttribute="trailing" secondItem="HvK-yJ-ynJ" secondAttribute="trailing" id="gwy-rE-9kF"/>
                             <constraint firstItem="HvK-yJ-ynJ" firstAttribute="top" secondItem="63O-Ab-kVN" secondAttribute="top" id="ulT-eR-i6D"/>
                         </constraints>
@@ -4834,34 +4865,34 @@ Cg
         </scene>
     </scenes>
     <resources>
-        <image name="Add" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="Avatar" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="AwayTeamDefault" width="540" height="540"/>
-        <image name="BackArrowLeft" width="405" height="405"/>
-        <image name="BackArrowRight" width="405" height="405"/>
-        <image name="Beverage" width="204.80000305175781" height="204.80000305175781"/>
-        <image name="Camera" width="204.80000305175781" height="204.80000305175781"/>
-        <image name="Exit" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="Exit2" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="FlairExample" width="1125" height="1284"/>
-        <image name="Food2" width="523" height="534"/>
-        <image name="Football" width="530" height="553"/>
-        <image name="Friends" width="204.80000305175781" height="204.80000305175781"/>
-        <image name="Friends2" width="204.80000305175781" height="204.80000305175781"/>
-        <image name="HomeTeamDefault" width="540" height="540"/>
-        <image name="Icon" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="Location" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="More" width="481" height="481"/>
-        <image name="Notification" width="566" height="564"/>
-        <image name="NotificationMessage" width="564" height="516"/>
-        <image name="Reload" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="RivalFlairExample" width="890" height="1059"/>
-        <image name="Search" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="Search2" width="409.60000610351562" height="409.60000610351562"/>
-        <image name="Settings" width="204.80000305175781" height="204.80000305175781"/>
-        <image name="SettingsArrow" width="405" height="405"/>
-        <image name="Share" width="102.40000152587891" height="102.40000152587891"/>
-        <image name="Trash" width="204.80000305175781" height="204.80000305175781"/>
+        <image name="Add" width="256" height="256"/>
+        <image name="Avatar" width="256" height="256"/>
+        <image name="AwayTeamDefault" width="270" height="270"/>
+        <image name="BackArrowLeft" width="270" height="270"/>
+        <image name="BackArrowRight" width="270" height="270"/>
+        <image name="Beverage" width="128" height="128"/>
+        <image name="Camera" width="128" height="128"/>
+        <image name="Exit" width="256" height="256"/>
+        <image name="Exit2" width="256" height="256"/>
+        <image name="FlairExample" width="562" height="642"/>
+        <image name="Food2" width="261" height="267"/>
+        <image name="Football" width="265" height="276"/>
+        <image name="Friends" width="128" height="128"/>
+        <image name="Friends2" width="128" height="128"/>
+        <image name="HomeTeamDefault" width="270" height="270"/>
+        <image name="Icon" width="256" height="256"/>
+        <image name="Location" width="256" height="256"/>
+        <image name="More" width="240" height="240"/>
+        <image name="Notification" width="283" height="282"/>
+        <image name="NotificationMessage" width="282" height="258"/>
+        <image name="Reload" width="256" height="256"/>
+        <image name="RivalFlairExample" width="445" height="529"/>
+        <image name="Search" width="256" height="256"/>
+        <image name="Search2" width="256" height="256"/>
+        <image name="Settings" width="128" height="128"/>
+        <image name="SettingsArrow" width="270" height="270"/>
+        <image name="Share" width="64" height="64"/>
+        <image name="Trash" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yNH-Gd-PbQ"/>

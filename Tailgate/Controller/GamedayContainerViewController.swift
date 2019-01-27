@@ -10,7 +10,6 @@ import UIKit
 
 class GamedayContainerViewController: UIViewController {
 
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var navigationCollectionView: UICollectionView!
     
     let navigationButtons:[String] = ["RANKINGS", "SIGNS", "SCHEDULE", "FLAIR"]
@@ -23,12 +22,6 @@ class GamedayContainerViewController: UIViewController {
         
         self.navigationCollectionView.delegate = self
         self.navigationCollectionView.dataSource = self
-        
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.navigationCollectionView.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.navigationCollectionView.backgroundView = blurEffectView
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,7 +49,6 @@ extension GamedayContainerViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         selectNavigationCell(indexPath: indexPath)
         
         // If the selected index is to the right of the current index, animate a scroll forward

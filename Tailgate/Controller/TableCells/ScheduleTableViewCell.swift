@@ -12,6 +12,15 @@ class ScheduleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var awayTeamLogo: UIImageView!
     @IBOutlet weak var homeTeamLogo: UIImageView!
+    
+    var diagonalLine: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        
+        return view
+    }()
+    
     var blurDetailView: UIVisualEffectView = {
         let view = UIVisualEffectView(frame: CGRect.zero)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -60,6 +69,12 @@ class ScheduleTableViewCell: UITableViewCell {
         setupView()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        diagonalLine.transform = CGAffineTransform(rotationAngle: atan((frame.size.width * 0.5) / (frame.size.height * 0.5)))
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -74,6 +89,7 @@ class ScheduleTableViewCell: UITableViewCell {
         detailStackView.axis = .vertical
         detailStackView.distribution = .fillEqually
         
+        addSubview(diagonalLine)
         addSubview(blurDetailView)
         addSubview(detailStackView)
         
@@ -90,7 +106,12 @@ class ScheduleTableViewCell: UITableViewCell {
             detailStackView.centerXAnchor.constraint(equalTo: blurDetailView.centerXAnchor),
             detailStackView.centerYAnchor.constraint(equalTo: blurDetailView.centerYAnchor),
             detailStackView.heightAnchor.constraint(equalTo: blurDetailView.heightAnchor, multiplier: 0.8),
-            detailStackView.widthAnchor.constraint(equalTo: blurDetailView.widthAnchor, multiplier: 0.7)
+            detailStackView.widthAnchor.constraint(equalTo: blurDetailView.widthAnchor, multiplier: 0.7),
+            
+            diagonalLine.centerXAnchor.constraint(equalTo: centerXAnchor),
+            diagonalLine.centerYAnchor.constraint(equalTo: centerYAnchor),
+            diagonalLine.widthAnchor.constraint(equalToConstant: 5),
+            diagonalLine.heightAnchor.constraint(equalToConstant: 500)
         ])
     }
 }
