@@ -11,7 +11,9 @@ import UIKit
 class ScheduleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var awayTeamLogo: UIImageView!
+    @IBOutlet weak var awayTeamView: SlantedView!
     @IBOutlet weak var homeTeamLogo: UIImageView!
+    @IBOutlet weak var homeTeamView: SlantedView!
     
     var diagonalLine: UIView = {
         let view = UIView()

@@ -98,6 +98,8 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         // Reset the recycled cell's logos
         cell.homeTeamLogo.image = UIImage(named: "HomeTeamDefault")
         cell.awayTeamLogo.image = UIImage(named: "AwayTeamDefault")
+        cell.homeTeamView.backgroundColor = .clear
+        cell.awayTeamView.backgroundColor = .clear
         
         let currGame = self.games[indexPath.row]
         cell.teamsLabel.text = currGame.awayTeam + " at " + currGame.homeTeam
@@ -114,12 +116,14 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
             if let school = configuration.schoolCache[currGame.awayTeam], let logoUrlStr = school.logoUrl {
                 let logoUrl = URL(string: logoUrlStr)
                 cell.awayTeamLogo.sd_setImage(with: logoUrl, completed: nil)
+                cell.awayTeamView.backgroundColor = school.backgroundColor
             }
             
             // Set home team logo
             if let school = configuration.schoolCache[currGame.homeTeam], let logoUrlStr = school.logoUrl {
                 let logoUrl = URL(string: logoUrlStr)
                 cell.homeTeamLogo.sd_setImage(with: logoUrl, completed: nil)
+                cell.homeTeamView.backgroundColor = school.backgroundColor
             }
         }
         
@@ -130,6 +134,7 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
                 if let school = school, let logoUrlStr = school.logoUrl {
                     let logoUrl = URL(string: logoUrlStr)
                     cell.awayTeamLogo.sd_setImage(with: logoUrl, completed: nil)
+                    cell.awayTeamView.backgroundColor = school.backgroundColor
                 }
             }
             
@@ -138,6 +143,7 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
                 if let school = school, let logoUrlStr = school.logoUrl {
                     let logoUrl = URL(string: logoUrlStr)
                     cell.homeTeamLogo.sd_setImage(with: logoUrl, completed: nil)
+                    cell.homeTeamView.backgroundColor = school.backgroundColor
                 }
             }
         }

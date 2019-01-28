@@ -185,6 +185,7 @@ extension GamedayScheduleViewController: UICollectionViewDataSource {
         cell.scheduleTableView.rowHeight = UITableView.automaticDimension
         cell.scheduleTableView.estimatedRowHeight = 44
         cell.scheduleTableView.layer.cornerRadius = 10
+        cell.scheduleTableView.separatorStyle = .none
         cell.games = self.games[conferenceKey] ?? []
         cell.conferenceName = conferenceName
         cell.parentViewController = self

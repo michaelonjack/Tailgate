@@ -16,6 +16,8 @@ class Game {
     var homeTeamScore:Int
     var awayTeamScore:Int
     var status:String
+    var homeTeamBackgroundColor: UIColor?
+    var awayTeamBackgroundColor: UIColor?
     let startTime:Date?
     var score:String {
         let scoreStr = String(awayTeamScore) + " - " + String(homeTeamScore)

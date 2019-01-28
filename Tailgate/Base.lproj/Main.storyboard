@@ -3137,7 +3137,7 @@ Violating these conditions may result in the suspension of your account upon rev
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="Lly-ml-JtT" firstAttribute="top" secondItem="BDU-X9-BeQ" secondAttribute="top" id="845-IF-S2N"/>
                                                                     <constraint firstAttribute="bottom" secondItem="Lly-ml-JtT" secondAttribute="bottom" id="JsO-na-fTa"/>
@@ -3152,7 +3152,9 @@ Violating these conditions may result in the suspension of your account upon rev
                                                             <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <connections>
                                                                 <outlet property="awayTeamLogo" destination="u6d-fw-0xa" id="kd6-Aa-E8R"/>
+                                                                <outlet property="awayTeamView" destination="ymQ-5i-DNM" id="jyO-gQ-mzV"/>
                                                                 <outlet property="homeTeamLogo" destination="bwq-C5-9uN" id="rQf-vc-zkr"/>
+                                                                <outlet property="homeTeamView" destination="Lly-ml-JtT" id="Yt7-Z9-RLh"/>
                                                             </connections>
                                                         </tableViewCell>
                                                     </prototypes>
