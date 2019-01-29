@@ -74,6 +74,14 @@ class ScheduleTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        layer.cornerRadius = self.frame.height / 10
+        clipsToBounds = true
+        
+        if Int(homeTeamView.slantHeight) != Int(frame.width) {
+            homeTeamView.slantHeight = frame.width
+            awayTeamView.slantHeight = frame.width
+        }
+        
         diagonalLine.transform = CGAffineTransform(rotationAngle: atan((frame.size.width * 0.5) / (frame.size.height * 0.5)))
     }
     

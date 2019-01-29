@@ -92,7 +92,7 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         cell.teamsLabel.text = ""
         cell.detailLabel.text = ""
         cell.gameLink.setTitle("View", for: .normal)
-        cell.gameLink.tag = indexPath.row
+        cell.gameLink.tag = indexPath.section
         cell.gameLink.addTarget(self, action: #selector(gameLinkPressed), for: .touchUpInside)
         
         // Reset the recycled cell's logos
@@ -101,7 +101,7 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         cell.homeTeamView.backgroundColor = .clear
         cell.awayTeamView.backgroundColor = .clear
         
-        let currGame = self.games[indexPath.row]
+        let currGame = self.games[indexPath.section]
         cell.teamsLabel.text = currGame.awayTeam + " at " + currGame.homeTeam
         cell.gameLink.setTitle(currGame.status == "" ? "View" : currGame.status, for: .normal)
         if currGame.score == "0 - 0" {
@@ -152,15 +152,34 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.games.count
+        return 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.games.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.conferenceName + " SCHEDULE"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 35.0
+        } else {
+            return 8.0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        // We always want the header title to be displayed in the first section
+        if section == 0 {
+            return nil
+        }
+        
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
     }
     
     @objc func gameLinkPressed(_ sender: UIButton) {
