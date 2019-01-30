@@ -142,9 +142,9 @@ func getTailgateImageUrls(tailgate:Tailgate, completion: @escaping (_ urls: [Str
 //
 // Returns the download urls of all gameday sign images
 //
-func getGamedaySignImageUrls(forWeek week:Int = configuration.weekNum, completion: @escaping (_ urls: [String]) -> Void) {
+func getGamedaySignImageUrls(forSeason season:String = configuration.season, forWeek week:Int = configuration.weekNum, completion: @escaping (_ urls: [String]) -> Void) {
     var imgUrls:[String] = []
-    let imageUrlsReference = Database.database().reference(withPath: "gameday/week" + String(week) + "/imageUrls")
+    let imageUrlsReference = Database.database().reference(withPath: "gameday/" + season + "/week" + String(week) + "/imageUrls")
     imageUrlsReference.keepSynced(true)
     
     imageUrlsReference.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -431,8 +431,8 @@ func getDrinks(completion: @escaping (([Drink]) -> Void)) {
 //
 //
 //
-func getLastUpdatedDate(forConference conference:String, forWeek week:Int = configuration.weekNum, completion: @escaping((Date?)->Void)) {
-    let gameReference = Database.database().reference(withPath: "games/week" + String(week) + "/" + conference)
+func getLastUpdatedDate(forConference conference:String, forSeason season:String = configuration.season, forWeek week:Int = configuration.weekNum, completion: @escaping((Date?)->Void)) {
+    let gameReference = Database.database().reference(withPath: "games/" + season + "/week" + String(week) + "/" + conference)
     
     gameReference.observeSingleEvent(of: .value, with: { (snapshot) in
         let snapshotValue = snapshot.value as! [String: AnyObject]
@@ -460,9 +460,9 @@ func getLastUpdatedDate(forConference conference:String, forWeek week:Int = conf
 //
 // Returns all games for this week
 //
-func getGames(forConference conferenceName:String, forWeek week:Int = configuration.weekNum, completion: @escaping (([Game]) -> Void)) {
+func getGames(forConference conferenceName:String, forSeason season: String = configuration.season, forWeek week:Int = configuration.weekNum, completion: @escaping (([Game]) -> Void)) {
     var games:[Game] = []
-    let currentGamesReference = Database.database().reference(withPath: "games/week" + String(week) + "/" + conferenceName)
+    let currentGamesReference = Database.database().reference(withPath: "games/" + season + "/week" + String(week) + "/" + conferenceName)
     currentGamesReference.keepSynced(true)
     
     currentGamesReference.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -489,9 +489,9 @@ func getGames(forConference conferenceName:String, forWeek week:Int = configurat
 //
 // Returns dict of the ranking (i.e. [ {1:Alabama}, {2:Penn State}, ... ])
 //
-func getRankings(forWeek week:Int = configuration.weekNum, completion: @escaping (([Int:School]) -> Void)) {
+func getRankings(forSeason season:String = configuration.season, forWeek week:Int = configuration.weekNum, completion: @escaping (([Int:School]) -> Void)) {
     var rankings:[Int:School] = [:]
-    let rankingsReference = Database.database().reference(withPath: "gameday/week" + String(week) + "/rankings/ap")
+    let rankingsReference = Database.database().reference(withPath: "gameday/" + season + "/week" + String(week) + "/rankings/ap")
     rankingsReference.keepSynced(true)
     
     rankingsReference.observeSingleEvent(of: .value, with: { (snapshot) in
