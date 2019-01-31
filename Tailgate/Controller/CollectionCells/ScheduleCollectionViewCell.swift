@@ -93,7 +93,6 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         cell.detailLabel.text = ""
         cell.gameLink.setTitle("View", for: .normal)
         cell.gameLink.tag = indexPath.section
-        cell.gameLink.addTarget(self, action: #selector(gameLinkPressed), for: .touchUpInside)
         
         // Reset the recycled cell's logos
         cell.homeTeamLogo.image = UIImage(named: "HomeTeamDefault")
@@ -180,20 +179,5 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         let view = UIView()
         view.backgroundColor = .clear
         return view
-    }
-    
-    @objc func gameLinkPressed(_ sender: UIButton) {
-        guard let cell = scheduleTableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? ScheduleTableViewCell else { return }
-        
-        if let teamsStr = cell.teamsLabel.text {
-            let gameLink = "https://www.google.com/search?q=" + teamsStr.replacingOccurrences(of: " ", with: "%20") + "%20football"
-            guard let gameUrl = URL(string: gameLink) else {
-                return
-            }
-            
-            if UIApplication.shared.canOpenURL(gameUrl) {
-                UIApplication.shared.open(gameUrl, options: [:])
-            }
-        }
     }
 }

@@ -103,6 +103,8 @@ class ScheduleTableViewCell: UITableViewCell {
         addSubview(blurDetailView)
         addSubview(detailStackView)
         
+        gameLink.addTarget(self, action: #selector(gameLinkPressed), for: .touchUpInside)
+        
         setupLayout()
     }
     
@@ -123,5 +125,19 @@ class ScheduleTableViewCell: UITableViewCell {
             diagonalLine.widthAnchor.constraint(equalToConstant: 5),
             diagonalLine.heightAnchor.constraint(equalToConstant: 500)
         ])
+    }
+    
+    @objc func gameLinkPressed(_ sender: UIButton) {
+        
+        if let teamsStr = self.teamsLabel.text {
+            let gameLink = "https://www.google.com/search?q=" + teamsStr.replacingOccurrences(of: " ", with: "%20") + "%20football"
+            guard let gameUrl = URL(string: gameLink) else {
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(gameUrl) {
+                UIApplication.shared.open(gameUrl, options: [:])
+            }
+        }
     }
 }
