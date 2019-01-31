@@ -145,7 +145,7 @@ class GamedaySignsViewController: UIViewController {
         picker.didFinishPicking { items, _ in
             
             if let photo = items.singlePhoto {
-                let uploadPath = "images/Gameday/" + configuration.week + "/submitted/" +  getTimestampString() + ".jpg"
+                let uploadPath = "images/Gameday/" + configuration.season + "/" + configuration.week + "/submitted/" +  getTimestampString() + ".jpg"
                 uploadImageToStorage(image: photo.image, uploadPath: uploadPath, completion: { (downloadUrl) in
                     // Nothing for now!
                 })

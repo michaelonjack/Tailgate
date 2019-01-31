@@ -65,7 +65,7 @@ func updatesScores(forConference conference: String, forWeek week: Int, completi
                                 game.awayTeamScore = Int(jsonGame.awayTeamScore) ?? 0
                                 game.homeTeamScore = Int(jsonGame.homeTeamScore) ?? 0
                                 game.status = jsonGame.status
-                                let gameReference = Database.database().reference(withPath: "games/week" + String(week) + "/" + conference)
+                                let gameReference = Database.database().reference(withPath: "games/" + configuration.season + "/week" + String(week) + "/" + conference)
                                 gameReference.updateChildValues([game.id : game.toAnyObject()])
                                 
                                 let dateFormatter = DateFormatter()
