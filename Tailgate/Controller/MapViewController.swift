@@ -154,6 +154,7 @@ extension MapViewController: MKMapViewDelegate {
             let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
             tailgateViewController.tailgate = tailgateAnnotation.tailgate
             tailgateViewController.hasFullAccess = false
+            tailgateViewController.modalPresentationStyle = .fullScreen
             self.present(tailgateViewController, animated: true, completion: nil)
         }
     }

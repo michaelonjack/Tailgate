@@ -14,8 +14,7 @@ target 'Tailgate' do
   pod 'SDWebImage'
   pod 'SDWebImage/MapKit'
   pod 'SwipeNavigationController'
-  pod 'NotificationBannerSwift'
-  pod 'MarqueeLabel/Swift'
+  pod 'NotificationBannerSwift', '2.5.0'
   pod 'MessageKit', '~> 2.0.0-beta.1'
 
 end

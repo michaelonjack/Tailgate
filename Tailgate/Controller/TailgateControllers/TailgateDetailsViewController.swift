@@ -47,6 +47,12 @@ class TailgateDetailsViewController: UIViewController {
         initializeFields()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        profilePictureButton.layer.cornerRadius = profilePictureButton.frame.height / 2
+    }
+    
     func addContainerViewBorders() {
         let bottomBorder = CALayer()
         let borderWidth = organizerContainerView.frame.width

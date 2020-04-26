@@ -86,7 +86,6 @@ PODS:
   - GTMSessionFetcher/Core (1.3.1)
   - leveldb-library (1.22)
   - MarqueeLabel (4.0.2)
-  - MarqueeLabel/Swift (3.2.1)
   - MessageInputBar/Core (0.4.1)
   - MessageKit (2.0.0):
     - MessageInputBar/Core
@@ -95,7 +94,7 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
-  - NotificationBannerSwift (3.0.2):
+  - NotificationBannerSwift (2.5.0):
     - MarqueeLabel (~> 4.0.0)
     - SnapKit (~> 5.0.0)
   - PromisesObjC (1.2.8)
@@ -117,9 +116,8 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
-  - MarqueeLabel/Swift
   - MessageKit (~> 2.0.0-beta.1)
-  - NotificationBannerSwift
+  - NotificationBannerSwift (= 2.5.0)
   - SDWebImage
   - SDWebImage/MapKit
   - SwipeNavigationController
@@ -173,11 +171,11 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
-  MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
+  MarqueeLabel: f762aa681ae201f66c1d511858b171f75d83013a
   MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
   MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
-  NotificationBannerSwift: 713e20f21b6105f4a36a00e5d9fa414a930d3d8e
+  NotificationBannerSwift: 684966fa934c48b70eff8bbec93fccf8db603365
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   PryntTrimmerView: 67e67573ffd4c073f1308effa66aefd0cfa667a0
   SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
@@ -186,6 +184,6 @@ SPEC CHECKSUMS:
   SwipeNavigationController: 592681599a3105a44484e5b7af9055cee7a0d7b9
   YPImagePicker: accf310f9526641a84372c0ecf943547d9b1e52c
 
-PODFILE CHECKSUM: 9a5e2578e6facc9b6bc6ced264a25bce267fc59d
+PODFILE CHECKSUM: eaadc8b1791c8541ba0be5a1c0725db19cb166a2
 
 COCOAPODS: 1.6.0

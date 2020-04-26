@@ -111,6 +111,7 @@ class SignUpAgreementViewController: UIViewController {
                 })
                 
                 DispatchQueue.main.async {
+                    swipeNavigationController.modalPresentationStyle = .fullScreen
                     self.present(swipeNavigationController, animated: true, completion: nil)
                 }
                 

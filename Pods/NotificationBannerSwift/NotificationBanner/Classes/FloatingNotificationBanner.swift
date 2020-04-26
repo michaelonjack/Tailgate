@@ -19,7 +19,7 @@
 import UIKit
 import SnapKit
 
-open class FloatingNotificationBanner: GrowingNotificationBanner {
+public class FloatingNotificationBanner: GrowingNotificationBanner {
     
     public init(title: String? = nil,
                 subtitle: String? = nil,
@@ -66,8 +66,6 @@ open class FloatingNotificationBanner: GrowingNotificationBanner {
     
     public init(customView: UIView) {
         super.init(style: .customView)
-        self.customView = customView
-        
         contentView.addSubview(customView)
         customView.snp.makeConstraints { (make) in
             make.edges.equalTo(contentView)
@@ -133,9 +131,7 @@ private extension FloatingNotificationBanner {
                              cornerRadius: CGFloat = 0,
                              offset: UIOffset = .zero,
                              edgeInsets: UIEdgeInsets? = nil) {
-
-        guard blurRadius >= 0 else { return }
-
+        guard blurRadius > 0 else { return }
         contentView.layer.shadowColor = color.cgColor
         contentView.layer.shadowOpacity = Float(opacity)
         contentView.layer.shadowRadius = blurRadius
@@ -150,9 +146,6 @@ private extension FloatingNotificationBanner {
             shadowRect.size.height -= (edgeInsets.top + edgeInsets.bottom)
             contentView.layer.shadowPath = UIBezierPath(roundedRect: shadowRect, cornerRadius: cornerRadius).cgPath
         }
-        
-        contentView.layer.rasterizationScale = UIScreen.main.scale
-        contentView.layer.shouldRasterize = true
     }
     
 }

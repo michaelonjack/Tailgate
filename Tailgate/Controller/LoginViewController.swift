@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
         Auth.auth().addStateDidChangeListener() { auth, user in
             if user != nil {
                 let swipeNavigationController = self.createSwipeController()
+                swipeNavigationController.modalPresentationStyle = .fullScreen
                 
                 DispatchQueue.main.async {
                     self.present(swipeNavigationController, animated: true, completion: nil)
@@ -73,6 +74,7 @@ class LoginViewController: UIViewController {
                 updateKeychainCredentials(email:email, password:password)
                 
                 let swipeNavigationController = self.createSwipeController()
+                swipeNavigationController.modalPresentationStyle = .fullScreen
                 
                 DispatchQueue.main.async {
                     self.present(swipeNavigationController, animated: true, completion: nil)
@@ -154,6 +156,7 @@ class LoginViewController: UIViewController {
                         if let _ = Auth.auth().currentUser {
                             
                             let swipeNavigationController = self.createSwipeController()
+                            swipeNavigationController.modalPresentationStyle = .fullScreen
                             
                             DispatchQueue.main.async {
                                 self.present(swipeNavigationController, animated: true, completion: nil)

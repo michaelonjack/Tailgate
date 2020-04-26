@@ -274,6 +274,7 @@ extension ProfileViewController: UICollectionViewDelegate {
             let tailgateViewController = mainStoryboard.instantiateViewController(withIdentifier: "TailgateViewController") as! TailgateViewController
             tailgateViewController.tailgate = selectedFeedItem
             tailgateViewController.hasFullAccess = false
+            tailgateViewController.modalPresentationStyle = .fullScreen
             self.present(tailgateViewController, animated: true, completion: nil)
         }
     }

@@ -33,11 +33,10 @@ class BannerPositionFrame: NSObject {
          bannerWidth: CGFloat,
          bannerHeight: CGFloat,
          maxY: CGFloat,
-         finishYOffset: CGFloat = 0,
          edgeInsets: UIEdgeInsets?) {
         super.init()
         self.startFrame = startFrame(for: bannerPosition, bannerWidth: bannerWidth, bannerHeight: bannerHeight, maxY: maxY, edgeInsets: edgeInsets)
-        self.endFrame = endFrame(for: bannerPosition, bannerWidth: bannerWidth, bannerHeight: bannerHeight, maxY: maxY, finishYOffset: finishYOffset, edgeInsets: edgeInsets)
+        self.endFrame = endFrame(for: bannerPosition, bannerWidth: bannerWidth, bannerHeight: bannerHeight, maxY: maxY, edgeInsets: edgeInsets)
     }
     
     /**
@@ -78,14 +77,12 @@ class BannerPositionFrame: NSObject {
      - parameter bannerWidth: The width of the notification banner
      - parameter bannerHeight: The height of the notification banner
      - parameter maxY: The maximum `y` position the banner can slide in from. This value is only used if the bannerPosition is .bottom
-     - parameter finishYOffset: The `y` position offset the banner can slide in. Used for displaying several banenrs simaltaneously
      - parameter edgeInsets: The sides edges insets from superview
      */
     private func endFrame(for bannerPosition: BannerPosition,
                             bannerWidth: CGFloat,
                             bannerHeight: CGFloat,
                             maxY: CGFloat,
-                            finishYOffset: CGFloat = 0,
                             edgeInsets: UIEdgeInsets?) -> CGRect {
         
         let edgeInsets = edgeInsets ?? .zero
@@ -93,12 +90,12 @@ class BannerPositionFrame: NSObject {
         switch bannerPosition {
         case .bottom:
             return CGRect(x: edgeInsets.left,
-                          y: maxY - bannerHeight - edgeInsets.bottom - finishYOffset,
+                          y: maxY - bannerHeight - edgeInsets.bottom,
                           width: startFrame.width,
                           height: startFrame.height)
         case .top:
             return CGRect(x: edgeInsets.left,
-                          y: edgeInsets.top + finishYOffset,
+                          y: edgeInsets.top,
                           width: startFrame.width,
                           height: startFrame.height)
         }

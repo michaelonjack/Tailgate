@@ -22,7 +22,7 @@ import SnapKit
 import MarqueeLabel
 
 @objcMembers
-open class NotificationBanner: BaseNotificationBanner {
+public class NotificationBanner: BaseNotificationBanner {
     
     /// The bottom most label of the notification if a subtitle is provided
     public private(set) var subtitleLabel: MarqueeLabel?
@@ -51,23 +51,22 @@ open class NotificationBanner: BaseNotificationBanner {
         if let leftView = leftView {
             contentView.addSubview(leftView)
             
-            let size = (leftView.frame.height > 0) ? min(44, leftView.frame.height) : 44
-            
             leftView.snp.makeConstraints({ (make) in
-                make.centerY.equalToSuperview().offset(heightAdjustment / 4)
+                make.top.equalToSuperview().offset(10)
                 make.left.equalToSuperview().offset(10)
-                make.size.equalTo(size)
+                make.bottom.equalToSuperview().offset(-10)
+                make.width.equalTo(leftView.snp.height)
             })
         }
         
         if let rightView = rightView {
             contentView.addSubview(rightView)
             
-            let size = (rightView.frame.height > 0) ? min(44, rightView.frame.height) : 44
             rightView.snp.makeConstraints({ (make) in
-                make.centerY.equalToSuperview().offset(heightAdjustment / 4)
-                make.left.equalToSuperview().offset(10)
-                make.size.equalTo(size)
+                make.top.equalToSuperview().offset(10)
+                make.right.equalToSuperview().offset(-10)
+                make.bottom.equalToSuperview().offset(-10)
+                make.width.equalTo(rightView.snp.height)
             })
         }
         
@@ -118,7 +117,7 @@ open class NotificationBanner: BaseNotificationBanner {
         }
         
         labelsView.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview().offset(heightAdjustment / 4)
+            make.centerY.equalToSuperview()
             
             if let leftView = leftView {
                 make.left.equalTo(leftView.snp.right).offset(padding)
@@ -158,8 +157,6 @@ open class NotificationBanner: BaseNotificationBanner {
     
     public init(customView: UIView) {
         super.init(style: .customView)
-        self.customView = customView
-        
         contentView.addSubview(customView)
         customView.snp.makeConstraints { (make) in
             make.edges.equalTo(contentView)
@@ -174,7 +171,7 @@ open class NotificationBanner: BaseNotificationBanner {
     
     internal override func updateMarqueeLabelsDurations() {
         super.updateMarqueeLabelsDurations()
-        subtitleLabel?.speed = .duration(CGFloat(duration <= 3 ? 0.5 : duration - 3))
+        subtitleLabel?.speed = .duration(CGFloat(duration - 3))
     }
     
 }
