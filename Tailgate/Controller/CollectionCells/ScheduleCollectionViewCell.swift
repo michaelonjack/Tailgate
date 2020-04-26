@@ -100,6 +100,9 @@ extension ScheduleCollectionViewCell: UITableViewDataSource {
         cell.homeTeamView.backgroundColor = .clear
         cell.awayTeamView.backgroundColor = .clear
         
+        cell.blurDetailView.alpha = 0
+        cell.detailStackView.alpha = 0
+        
         let currGame = self.games[indexPath.section]
         cell.teamsLabel.text = currGame.awayTeam + " at " + currGame.homeTeam
         cell.gameLink.setTitle(currGame.status == "" ? "View" : currGame.status, for: .normal)

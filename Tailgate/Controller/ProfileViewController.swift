@@ -27,7 +27,6 @@ class ProfileViewController: UIViewController {
     
     var feedItems:[Tailgate] = []
     var schools:[School] = []
-    var showExploreViewAnimator: UIViewPropertyAnimator!
     var panDirection: ScrollDirection = .undefined
     
     override func viewDidLoad() {
@@ -49,7 +48,6 @@ class ProfileViewController: UIViewController {
         loadProfilePicture()
         initDetailsView()
         initButtonsView()
-        initAnimator()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,18 +92,6 @@ class ProfileViewController: UIViewController {
     }
     
     
-    func initAnimator() {
-        showExploreViewAnimator = UIViewPropertyAnimator(duration: 1, curve: .easeOut, animations: { [weak self] in
-            guard let _self = self else { return }
-            
-            _self.detailsView.exploreView.alpha =  1
-            _self.profilePictureButton.transform = _self.profilePictureButton.transform.scaledBy(x: 0.953, y: 0.953)
-        })
-        
-        showExploreViewAnimator.pausesOnCompletion = true
-    }
-    
-    
     @objc func detailsViewPanned(gesture: UIPanGestureRecognizer) {
         
         switch gesture.state {
@@ -136,16 +122,20 @@ class ProfileViewController: UIViewController {
             let viewCurrentMinY = detailsView.frame.minY
             let lowestAllowedY = view.frame.height / 3.5
             let highestAllowedY = view.frame.height / 2.0
+            let percentageComplete = (highestAllowedY - viewCurrentMinY) / (highestAllowedY - lowestAllowedY)
             
-            if (viewCurrentMinY + gestureTranslation.y < highestAllowedY && gestureTranslation.y > 0)
-                || (viewCurrentMinY + gestureTranslation.y > lowestAllowedY && gestureTranslation.y < 0) {
-                showExploreViewAnimator.fractionComplete = (highestAllowedY - viewCurrentMinY) / (highestAllowedY - lowestAllowedY)
-                
-                detailsView.transform = detailsView.transform.translatedBy(x: 0, y: gestureTranslation.y)
-            } else if gestureTranslation.y > 0 {
-                // Completely hide the Explore View once we've reached the bottom
-                showExploreViewAnimator.fractionComplete = 0
+            if viewCurrentMinY + gestureTranslation.y > highestAllowedY {
+                detailsView.exploreView.alpha = 0
+                return
             }
+            
+            else if viewCurrentMinY + gestureTranslation.y < lowestAllowedY {
+                return
+            }
+                
+            detailsView.transform = detailsView.transform.translatedBy(x: 0, y: gestureTranslation.y)
+            detailsView.exploreView.alpha =  percentageComplete
+            //_self.profilePictureButton.transform = _self.profilePictureButton.transform.scaledBy(x: 0.953, y: 0.953)
             
         default:
             return

@@ -149,12 +149,9 @@ extension SettingsViewController: UITableViewDelegate {
             do {
                 try Auth.auth().signOut()
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {break}
-                guard let swipeController = self.navigationController?.presentingViewController as? SwipeNavigationController else {break}
-                guard let profileController = swipeController.centerViewController as? ProfileViewController else {break}
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "InitialNavigationController") as! UINavigationController
                 
-                profileController.showExploreViewAnimator.stopAnimation(true)
                 appDelegate.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 appDelegate.window?.rootViewController = initialViewController
             } catch {
