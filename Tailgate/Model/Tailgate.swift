@@ -176,7 +176,7 @@ extension Tailgate: Equatable {
 
 
 extension Tailgate: Hashable {
-    var hashValue: Int {
-        return self.id.hashValue
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id.hashValue)
     }
 }

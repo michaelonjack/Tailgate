@@ -39,7 +39,7 @@ class SettingsChangePasswordViewController: UIViewController {
         getUserById(userId: (firUser!.uid)) { (currentUser) in
             let credential = EmailAuthProvider.credential(withEmail: currentUser.email, password: currentPassword)
             
-            firUser?.reauthenticateAndRetrieveData(with: credential, completion: { (result, error) in
+            firUser?.reauthenticate(with: credential, completion: { (result, error) in
                 // User entered the correct password
                 if error == nil {
                     // New password and confirmation password match

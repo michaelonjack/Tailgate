@@ -38,7 +38,7 @@ func uploadImageToStorage(image:UIImage, uploadPath:String, completion : @escapi
                     let downloadUrl = url?.absoluteString
                     completion(downloadUrl)
                 } else {
-                    print(error as? String ?? "")
+                    print(error?.localizedDescription ?? "")
                 }
             })
         }

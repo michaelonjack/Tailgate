@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fIY-Kk-ac4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fIY-Kk-ac4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -4876,19 +4876,19 @@ Cg
         <image name="Camera" width="128" height="128"/>
         <image name="Exit" width="256" height="256"/>
         <image name="Exit2" width="256" height="256"/>
-        <image name="FlairExample" width="562" height="642"/>
-        <image name="Food2" width="261" height="267"/>
-        <image name="Football" width="265" height="276"/>
+        <image name="FlairExample" width="562.5" height="642"/>
+        <image name="Food2" width="261.5" height="267"/>
+        <image name="Football" width="265" height="276.5"/>
         <image name="Friends" width="128" height="128"/>
         <image name="Friends2" width="128" height="128"/>
         <image name="HomeTeamDefault" width="270" height="270"/>
         <image name="Icon" width="256" height="256"/>
         <image name="Location" width="256" height="256"/>
-        <image name="More" width="240" height="240"/>
+        <image name="More" width="240.5" height="240.5"/>
         <image name="Notification" width="283" height="282"/>
         <image name="NotificationMessage" width="282" height="258"/>
         <image name="Reload" width="256" height="256"/>
-        <image name="RivalFlairExample" width="445" height="529"/>
+        <image name="RivalFlairExample" width="445" height="529.5"/>
         <image name="Search" width="256" height="256"/>
         <image name="Search2" width="256" height="256"/>
         <image name="Settings" width="128" height="128"/>

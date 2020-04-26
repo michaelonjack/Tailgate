@@ -33,11 +33,11 @@ class SignUpEmailViewController: UIViewController {
     }
 
     @IBAction func nextPressed(_ sender: UIButton) {
-        if email.text! != "" {
+        if let emailText = email.text, emailText != "" {
             status.text = "Checking..."
             status.isHidden = false
             
-            Auth.auth().fetchProviders(forEmail: email.text!, completion: { (providers, error) in
+            Auth.auth().fetchSignInMethods(forEmail: emailText) { (providers, error) in
                 if let providers = providers, providers.count > 0 {
                     DispatchQueue.main.async {
                         self.status.text = "Email already in use."
@@ -48,7 +48,7 @@ class SignUpEmailViewController: UIViewController {
                         self.performSegue(withIdentifier: "EmailToPassword", sender: nil)
                     }
                 }
-            })
+            }
         }
         
         else {

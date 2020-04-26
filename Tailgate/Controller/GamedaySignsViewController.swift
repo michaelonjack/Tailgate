@@ -136,7 +136,7 @@ class GamedaySignsViewController: UIViewController {
         var ypConfig = YPImagePickerConfiguration()
         ypConfig.onlySquareImagesFromCamera = true
         ypConfig.library.onlySquare = true
-        ypConfig.showsFilters = true
+        ypConfig.showsPhotoFilters = true
         ypConfig.library.mediaType = .photo
         ypConfig.usesFrontCamera = false
         ypConfig.shouldSaveNewPicturesToAlbum = false

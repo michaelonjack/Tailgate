@@ -58,7 +58,7 @@ class RivalFlairSubmitViewController: UIViewController {
         if let _ = schoolTable.indexPathForSelectedRow {
             var ypConfig = YPImagePickerConfiguration()
             ypConfig.library.onlySquare = true
-            ypConfig.showsFilters = true
+            ypConfig.showsPhotoFilters = true
             ypConfig.library.mediaType = .photo
             ypConfig.screens = [.library]
             

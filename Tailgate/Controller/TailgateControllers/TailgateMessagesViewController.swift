@@ -132,7 +132,7 @@ class TailgateMessagesViewController: MessagesViewController {
             
             self.messages[self.messages.firstIndex(of: _message)!] = _message
             
-            SDWebImageDownloader.shared().downloadImage(with: url, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
+            SDWebImageDownloader.shared.downloadImage(with: url, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
                 
                 let currentIndex = self.messages.firstIndex(of: _message)!
                 
@@ -248,7 +248,7 @@ class TailgateMessagesViewController: MessagesViewController {
             var ypConfig = YPImagePickerConfiguration()
             ypConfig.onlySquareImagesFromCamera = false
             ypConfig.library.onlySquare = false
-            ypConfig.showsFilters = false
+            ypConfig.showsPhotoFilters = false
             ypConfig.library.mediaType = .photo
             ypConfig.usesFrontCamera = false
             ypConfig.shouldSaveNewPicturesToAlbum = false
@@ -468,7 +468,7 @@ extension TailgateMessagesViewController: MessagesDisplayDelegate {
             if let sendingUser = message.user, let profilePictureUrlStr = sendingUser.profilePictureUrl {
                 let profilePictureUrl = URL(string: profilePictureUrlStr)
                 
-                SDWebImageDownloader.shared().downloadImage(with: profilePictureUrl, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
+                SDWebImageDownloader.shared.downloadImage(with: profilePictureUrl, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
                     
                     var profilePicture: UIImage = UIImage(named: "Avatar")!
                     if let image = image, error == nil {
@@ -487,7 +487,7 @@ extension TailgateMessagesViewController: MessagesDisplayDelegate {
                         
                         let profilePictureUrl = URL(string: profilePictureUrlStr)
                         
-                        SDWebImageDownloader.shared().downloadImage(with: profilePictureUrl, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
+                        SDWebImageDownloader.shared.downloadImage(with: profilePictureUrl, options: SDWebImageDownloaderOptions(rawValue: 0), progress: nil, completed: { (image, data, error, bool) in
                             
                             var profilePicture: UIImage = UIImage(named: "Avatar")!
                             if let image = image, error == nil {
